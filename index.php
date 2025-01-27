@@ -12,10 +12,10 @@
     <div class="marginHeader"></div>
     <div class="container">
         <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center">
-            <div class= "col-12 col-lg-6 mr-4">
+            <div class= "col-12 col-lg-6 mr-5 ml-5">
                 <img src="./ASSETS/CampusJob.png" class="logoMini" alt="Logo">
             </div>
-            <div class= "col-12 col-lg-6 ml-4">
+            <div class= "col-12 col-lg-6 ml-5 mr-5">
                 <form action="./PHP/login.php" method="POST">
                     <div class="form-group">
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Username">
@@ -28,17 +28,18 @@
             </div>
         </div>
     </div>
+    <div class="marginFooter"></div>
     <footer class="col-12 text-center">
         <div class = "footer-links">
             <a href="#">Informació</a>
             <a href="#">Ayuda</a>
             <a href="#">política de cookies</a>
             <a href="#">Política de privacidad</a>
-            <a href="#">Condiciones de servicio</a>
             <a href="#">Accesibilitat</a>
+            <a href="#">Condiciones de servicio</a>
         </div>
         <div>
-            <p class="p-footer">© 2025 Anonims Corp.</p>
+            <p class="p-footer">© 2025 Campus Job.</p>
         </div>
     </footer>
 </body>
