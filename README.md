@@ -5,12 +5,12 @@ CampusJob
 
 
 ## Autors
-Oriol Pujades, Eric Garcia, Jasin el edrissie y Alex Ruiz
+Oriol Pujades, Eric Garcia, Yasin El Edrissi y Alex Ruiz
 
 ## Licencia
 Licencia de Uso Personal
 
-Copyright (c) [2024] [CampusJob]
+Copyright © 2025 CampusJob.
 
 Se concede permiso, de forma gratuita, a cualquier persona que obtenga una copia
 de este software y los archivos de documentación asociados (el "Software"), para
