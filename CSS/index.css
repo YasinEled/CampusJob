@@ -3,8 +3,73 @@ body {
     background-color: #05302d; /* Fondo oscuro */
     color: #ffffff; /* Texto blanco */
 }
+.marginHeader{
+    margin-top: calc(50vh - 300px);
+}
+/* .logoMini {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+} */
+.btn-crear-cuenta {
+    border: none;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: #05302d;
+    background-color: #ffffff; /* Color azul */
+    text-decoration: none;
+    border-radius: 50px;
+    margin-top: 10px; /* Reducir el margen superior */
+    margin-bottom: 30px;
+    font-weight: bold; /* Texto en negrita */
+}
+.btn-login {
+    border: none;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: #05302d;
+    background-color: #ffffff; /* Color azul */
+    text-decoration: none;
+    border-radius: 50px;
+    margin-top: 15px; /* Reducir el margen superior */
+    margin-bottom: 30px;
+    font-weight: bold; /* Texto en negrita */
+}
+.form-group {
+    margin-top: -40px;
+    margin-bottom: 30px;
+}
+.form-control {
+    margin-bottom: 35px;
+    background-color: #05302d; /* Fondo oscuro */
+    color: #ffffff; /* Texto blanco */
+    border: none;
+    border-bottom: 2px solid #ffffff; /* Borde blanco */
+    border-radius: 0;
+    padding: 10px;
+    font-size: 1.2em;
+}
 
+.container {
+    padding: 20px; /* Ajusta el valor del padding según tus necesidades */
+}
+
+/* Estilos para el MOVIL */
 @media (max-width: 991px) {
 
-    
+    .marginHeader{
+        margin-top: calc(-10vh);
+    }
+    .container {
+        width: 100%;
+    }
 }
