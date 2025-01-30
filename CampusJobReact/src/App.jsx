@@ -1,42 +1,69 @@
+import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 function App() {
+  const { t, i18n } = useTranslation("global");
+  const [showLangOptions, setShowLangOptions] = useState(false);
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+    setShowLangOptions(false);
+  };
+
   return (
     <main>
-      <div class="marginHeader"></div>
-      <div class="container">
-        <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center">
-          <div class= "col-12 col-lg-6 mr-5 ml-5">
-            <img class="logoMini" src="/src/assets/Logo/CampusJob.png" alt="Logo" />
-          </div>
-            <div class= "col-12 col-lg-6 ml-5 mr-5">
-              <form action="./PHP/login.php" method="POST">
-                <div class="form-group">
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Username"/>
-                  <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password"/>
-                </div>
-                <button type="submit" class="btn-login">Iniciar Sesión</button>
-              </form>
-              <p class="p-login">¿ Eres un nuevo centro estudiantil ?</p>
-              <a href="#loginModal" class="btn-crear-cuenta">Contactanos</a>
+      <div className="marginHeader">
+        <div className="language-selector">
+          <button className="transparent-button" onClick={() => setShowLangOptions(!showLangOptions)}>
+            {showLangOptions ? (
+              <span >leng&nbsp;&nbsp;&nbsp;&nbsp;▲&nbsp;&nbsp;</span>
+            ) : (
+              <span >leng&nbsp;&nbsp;&nbsp;&nbsp;▼&nbsp;&nbsp;</span>
+            )}
+          </button>
+          {showLangOptions && (
+            <div className="lang-options">
+              <button className="transparent-button" onClick={() => changeLanguage('es')}>Es</button>
+              <button className="transparent-button" onClick={() => changeLanguage('en')}>En</button>
+              <button className="transparent-button" onClick={() => changeLanguage('cat')}>Cat</button>
             </div>
+          )}
         </div>
       </div>
-    <div class="marginFooter"></div>
-    <footer class="col-12 text-center">
-        <div class = "footer-links">
-            <a href="#">Informació</a>
-            <a href="#">Ayuda</a>
-            <a href="#">política de cookies</a>
-            <a href="#">Política de privacidad</a>
-            <a href="#">Accesibilitat</a>
-            <a href="#">Condiciones de servicio</a>
+      <div className="container">
+        <div className="d-flex flex-column flex-lg-row justify-content-center align-items-center">
+          <div className="col-12 col-lg-6 mr-5 ml-5">
+            <img className="logoMini" src="/src/assets/Logo/CampusJob.png" alt="Logo" />
+          </div>
+          <div className="col-12 col-lg-6 ml-5 mr-5">
+            <form action="./PHP/login.php" method="POST">
+              <div className="form-group">
+                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Username" />
+                <input type="password" className="form-control" id="exampleInputPassword1" name="password" placeholder="Password" />
+              </div>
+              <button type="submit" className="btn-login">{t("header.login")}</button>
+            </form>
+            <p className="p-login">{t("header.newCenter")}</p>
+            <a href="#loginModal" className="btn-crear-cuenta">{t("header.contact")}</a>
+          </div>
+        </div>
+      </div>
+      <div className="marginFooter"></div>
+      <footer className="col-12 text-center">
+        <div className="footer-links">
+          <a href="#">{t("footer.information")}</a>
+          <a href="#">{t("footer.help")}</a>
+          <a href="#">{t("footer.cookies")}</a>
+          <a href="#">{t("footer.privacyPolicy")}</a>
+          <a href="#">{t("footer.accessibility")}</a>
+          <a href="#">{t("footer.termsOfService")}</a>
         </div>
         <div>
-            <p class="p-footer">© 2025 Campus Job.</p>
+            <p className="p-footer">© 2025 Campus Job.</p>
         </div>
-    </footer>
+      </footer>
     </main>
-  )
+  );
 }
 
-export default App
+export default App;

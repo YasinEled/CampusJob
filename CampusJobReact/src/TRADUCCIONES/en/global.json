@@ -1,0 +1,16 @@
+{
+    "header": {
+        "title": "Campus Jobs",
+        "login": "Log In",
+        "contact": "Contact",
+        "newCenter": "Are you a new educational center ?"
+    },
+    "footer": {
+        "information": "Information",
+        "help": "Help",
+        "cookies": "Cookies policy",
+        "privacyPolicy": "Privacy Policy",
+        "accessibility": "Accessibility",
+        "termsOfService": "Terms of Service"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "header": {
+        "title": "Campus Jobs",
+        "login": "Iniciar sesion",
+        "contact": "Contacto",
+        "newCenter": "¿ Eres un nuevo centro educativo ?"
+    },
+    "footer": {
+        "information": "Informacion",
+        "help": "Ayuda",
+        "cookies": "Politica de cookies",
+        "privacyPolicy": "Polotica de privacidad",
+        "accessibility": "Accesibilidad",
+        "termsOfService": "Terminos de servicio"
+    }
+}
+
