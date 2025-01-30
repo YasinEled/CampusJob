@@ -43,8 +43,6 @@ function App() {
               </div>
               <button type="submit" className="btn-login">{t("header.login")}</button>
             </form>
-            <p className="p-login">{t("header.newCenter")}</p>
-            <a href="#loginModal" className="btn-crear-cuenta">{t("header.contact")}</a>
           </div>
         </div>
       </div>
