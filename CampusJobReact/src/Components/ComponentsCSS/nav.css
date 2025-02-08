@@ -1,26 +1,120 @@
 @import "tailwindcss";
 
-button:focus {
+/* botones */
+.container-Nav button:focus {
   outline: none;
   box-shadow: none;
 }
 
-.container-nav {
-  margin-left: 100px; /* Ajuste de margen izquierdo */
-  margin-right: 100px; /* Ajuste de margen derecho */
+
+/* displays-nav */
+.LinkNavHamburguer {
+  display: flex;
+}
+.LinkNav {
+  display: none;
+}
+
+.container-Nav {
+  padding: 30px 20px 0 20px;
+
+  transition: all 0.3s ease-in-out; /* Transición suave para cambios de estilo */
+}
+.linkHamburguer {
+  display: flex;
+  flex-direction: column;
+  position:absolute;
+  top: 0px;
+  right: 0;
+  background-color: #659692;
+  padding: 70px 0px 0px 0px;
+}
+
+/* Animación para los elementos del menú */
+.linkHamburguer li {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+.linkHamburguer li.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .logoLetrasNav {
-  width: 220px;
-  margin-top: -20px; /* Eliminar margen negativo para una mejor alineación */
-  margin-left: 10px!important; /* Agregar espacio entre los logos */
+  display: flex;
+    width: 100px;
+    margin-top: -10px; /* Eliminar margen negativo para una mejor alineación */
+    margin-left: auto;
+    margin-right: auto; /* Centrar los logos */
 }
-
 .logoNav {
-  width: 70px;
+  width: 28px;
+  margin-left: auto;
+  margin-right: auto; /* Centrar los logos */
+  transition: all 0.3s ease-in-out;
 }
 
 .ULPERS {
-  margin-bottom: 0px;
+  margin-bottom: 0;
   font-family: 'Roboto Mono', monospace;
+  text-align: center; /* Centrar el texto */
+}
+
+/* Media query para pantallas más grandes */
+@media (min-width: 560px) {
+  .container-Nav {
+    max-width: 550px; /* Ancho máximo del contenedor */
+    margin: 0 auto;
+
+  }
+  .LinkNav li {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .logoNav {
+    width: 45px;
+    margin-left: auto;
+    margin-right: auto; /* Centrar los logos */
+  }
+  .logoLetrasNav{
+    display: none;
+  }
+  .LinkNavHamburguer{
+    display: none;
+  }
+  .LinkNav {
+    display: flex;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-Nav {
+    max-width: 600px; /* Ancho máximo del contenedor */
+    margin: 0 auto;
+  }
+  .logoNav {
+    width: 70px;
+    margin-left: auto;
+    margin-right: auto; /* Centrar los logos */
+  }
+  
+}
+
+@media (min-width: 1090px) {
+  .container-Nav {
+    max-width: 1050px; /* Ancho máximo del contenedor */
+    margin: 0 auto;
+  }
+  .logoLetrasNav {
+    display: flex;
+    width: 220px;
+    margin-top: -20px; /* Eliminar margen negativo para una mejor alineación */
+    margin-left: auto;
+    margin-right: auto; /* Centrar los logos */
+  }
+  .LinkNav li {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
 }
