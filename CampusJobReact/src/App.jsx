@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import "./index.css";
+
 
 function App() {
   const { t, i18n } = useTranslation("global");

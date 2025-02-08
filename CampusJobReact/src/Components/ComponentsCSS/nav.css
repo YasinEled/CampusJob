@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.container-nav {
+  margin-left: 100px; /* Ajuste de margen izquierdo */
+  margin-right: 100px; /* Ajuste de margen derecho */
+}
+
+.logoLetrasNav {
+  width: 220px;
+  margin-top: -20px; /* Eliminar margen negativo para una mejor alineación */
+  margin-left: 10px!important; /* Agregar espacio entre los logos */
+}
+
+.logoNav {
+  width: 70px;
+}
+
+.ULPERS {
+  margin-bottom: 0px;
+  font-family: 'Roboto Mono', monospace;
+}
