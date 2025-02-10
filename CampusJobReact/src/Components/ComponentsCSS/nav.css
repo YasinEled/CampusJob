@@ -7,38 +7,48 @@
 }
 
 
-/* displays-nav */
+/* displays-navs */
 .LinkNavHamburguer {
   display: flex;
+  
 }
 .LinkNav {
   display: none;
 }
 
+.LinkNav a {
+  text-decoration: none;
+  color: #05302d;
+}
+.LinkNav a:hover {
+  color: #ffffff;
+}
+
 .container-Nav {
   padding: 30px 20px 0 20px;
-
   transition: all 0.3s ease-in-out; /* Transición suave para cambios de estilo */
 }
 .linkHamburguer {
-  display: flex;
-  flex-direction: column;
-  position:absolute;
-  top: 0px;
-  right: 0;
-  background-color: #659692;
-  padding: 70px 0px 0px 0px;
+  position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100vh;
+  padding: 110px 0px 10px 0px;
+  background-color: rgba(13, 223, 206, 0);
+  backdrop-filter: blur(5px);
+  transition: top  0.3s ease-out;
+  z-index: 1;
 }
 
-/* Animación para los elementos del menú */
-.linkHamburguer li {
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+.linkHamburguer.show {
+  top: 0;
 }
-.linkHamburguer li.show {
-  opacity: 1;
-  transform: translateY(0);
+
+.linkHamburguer a {
+  margin-bottom: 5px; /* Espacio entre los elementos */
+  width: 100%;
+  text-decoration: none;
+
 }
 
 .logoLetrasNav {
@@ -68,7 +78,7 @@
     margin: 0 auto;
 
   }
-  .LinkNav li {
+  .LinkNav a {
     padding-left: 10px;
     padding-right: 10px;
   }
@@ -94,7 +104,7 @@
     margin: 0 auto;
   }
   .logoNav {
-    width: 70px;
+    width: 50px;
     margin-left: auto;
     margin-right: auto; /* Centrar los logos */
   }
@@ -103,18 +113,19 @@
 
 @media (min-width: 1090px) {
   .container-Nav {
-    max-width: 1050px; /* Ancho máximo del contenedor */
+    max-width: 850px; /* Ancho máximo del contenedor */
     margin: 0 auto;
   }
   .logoLetrasNav {
     display: flex;
-    width: 220px;
-    margin-top: -20px; /* Eliminar margen negativo para una mejor alineación */
+    width: 150px;
+    margin-top: -16px; /* Eliminar margen negativo para una mejor alineación */
     margin-left: auto;
     margin-right: auto; /* Centrar los logos */
   }
-  .LinkNav li {
-    padding-left: 48px;
-    padding-right: 48px;
+  .LinkNav a {
+    padding-left: 30px;
+    padding-right: 30px;
   }
+
 }

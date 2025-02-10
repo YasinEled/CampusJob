@@ -6,14 +6,14 @@ import NavHamburguer from "./hamburguer.jsx";
 function Nav() {
   
   return (
-    <nav className="container-Nav scaled">
+    <nav className="container-Nav">
       <div className="flex justify-between items-center z-2 ">
         {/* Logo de la marca */}
         <div className="flex items-center mr-2">
-          <a className="navbar-brand z-1" href="#">
+          <a className="navbar-brand z-2" href="/#">
             <img className="logoNav" src={logoMini} alt="CampusJobMini" />
           </a>
-          <img className="logoLetrasNav z-1" src={logoLetras} alt="CampusJobLetras" />
+          <img className="logoLetrasNav z-2" src={logoLetras} alt="CampusJobLetras" />
         </div>
         
         {/* Botones de navegación */}

@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&slant=0..1&display=swap");
+
+.variable-proximity {
+  font-family: "Inter", sans-serif;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  
+}
+
+
+.titleContainer{
+  top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  letter-spacing: -0.1em;
+}
+.variable-proximity span {
+  color: #05302D; /* Cambia esto por el color deseado */
+  font-size:8vw;
+  font-weight:bolder;
+  margin-top: -15px;
+}
+
+.labelTitle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+}
+
+
+
+@media (min-width: 560px) {
+  .variable-proximity span {
+    font-size: 6vw;
+  }
+  .labelTitle{
+    position: relative;
+  }
+  .titleContainer{
+    top: 50px;
+    letter-spacing: -0.2em;
+  } 
+  .principalLabelTitle{
+    position: relative;
+  }
+
+}
+@media (min-width: 768px) {
+
+  .variable-proximity span {
+    font-size: 40px;
+  }
+  .labelTitle{
+    position: relative;
+    flex-direction: row;
+    left: 12vw;
+
+  }
+  .titleContainer{
+    top: 50px;
+    letter-spacing: -0.2em;
+  } 
+  .principalLabelTitle{
+    position: relative;
+    left: -7vw;
+
+  }
+}
+
+
+@media (min-width: 1090px) {
+  .variable-proximity span {
+    font-size: 50px;
+  }
+  .labelTitle{
+    position: relative;
+    flex-direction: row;
+    left: 10vw;
+  }
+  .titleContainer{
+    top: 50px;
+  } 
+  .principalLabelTitle{
+    position: relative;
+    left: -6vw;
+  }
+
+}
+
+
+@media (min-width: 1550px) {
+  .variable-proximity span {
+    font-size:60px;
+  }
+  .labelTitle{
+    position: relative;
+    flex-direction: row;
+    left: 10vw;
+  }
+  .titleContainer{
+    top: 60px;
+  } 
+  .principalLabelTitle{
+    position: relative;
+    left: -5vw;
+  }
+
+}

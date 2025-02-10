@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+.Description {
+  font-size: 1em;  
+  max-width: 402px;
+}
+
+
+/* Aplica estilos al contenedor padre */
+.ParentContainer {
+}
+
+.comilla1 {
+  font-size: 1.5em;
+  position: relative;
+  top: -40px;
+  left: 7vh;
+  color: #05302d;
+  width: fit-content;
+}
+
+@media (min-width: 560px) {
+    .Description {
+        font-size: 1em;  
+        max-width: 550px;
+      }
+}
+  
+@media (min-width: 768px) {
+
+    
+}
+  
+@media (min-width: 1090px) {
+   
+  
+}
+  

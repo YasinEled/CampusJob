@@ -17,6 +17,9 @@ const SlideTabs = () => {
     opacity: 0,
   });
 
+
+  // EL CONTENEDOR DE TODO
+
   return (
     <ul
       onMouseLeave={() => {
@@ -25,23 +28,27 @@ const SlideTabs = () => {
           opacity: 0,
         }));
       }}
-      className="ULPERS LinkNav relative mx-auto flex w-fit rounded-full bg-gradient-to-br px-4 from-[#05302D] via-white to-[#05302D] bg-[length:200%_200%] bg-[position:50%_50%] p-1"
+      className="ULPERS LinkNav relative mx-auto flex w-fit rounded-full bg-gradient-to-br px-4 from-[#05302D] via-[#ffffffd7] to-[#05302D] bg-[length:200%_200%] bg-[position:50%_50%] p-1"
     >
-      <Tab setPosition={setPosition}>Tu Centro</Tab>
-      <Tab setPosition={setPosition}>Características</Tab>
-      <Tab setPosition={setPosition}>Contactar</Tab>
+      <Tab setPosition={setPosition} href="/#">Tu Centro</Tab>
+      <Tab setPosition={setPosition} href="google.com">Características</Tab>
+      <Tab setPosition={setPosition} href="#">Contactar</Tab>
 
       <Cursor position={position} />
     </ul>
   );
 };
 
-const Tab = ({ children, setPosition }) => {
+
+// ESTO SON LAS PALABRAS
+
+const Tab = ({ children, setPosition, href }) => {
   const ref = useRef(null);
 
   return (
-    <li
+    <a
       ref={ref}
+      href={href}
       onMouseEnter={() => {
         if (!ref?.current) return;
 
@@ -53,12 +60,14 @@ const Tab = ({ children, setPosition }) => {
           opacity: 1,
         });
       }}
-      className="relative z-10 block cursor-pointer   py-1.5 font-bold text-[#05302D] duration-500 md:px-5 md:py-3 md:text-base hover:text-[#ffffff] "
-    >
+      className="relative z-10 block cursor-pointer py-1.5 font-bold  duration-500 md:px-5 md:py-2 md:text-base hover:text-white">
       {children}
-    </li>
+    </a>
   );
 };
+
+
+// LO QUE SE MUEVE DENTRO
 
 const Cursor = ({ position }) => {
   return (
@@ -66,7 +75,7 @@ const Cursor = ({ position }) => {
       animate={{
         ...position,
       }}
-      className="absolute z-0 h-9 rounded-full bg-[#05302D] md:h-12 "
+      className="absolute z-0 h-5 rounded-full no-underline bg-[#05302D] md:h-10 "
     />
   );
 };

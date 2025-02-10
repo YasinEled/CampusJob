@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+.bodyComercial {
+    background-color: #052b28;   
+
+}
+
+.bola-Azul {
+    background-image: radial-gradient(circle, #a5c9cae1 20%,#557D7C 100%);
+    
+}
+
+.bola-Amarilla {
+    background-image: radial-gradient(circle, #ffdac6 70%,#ffdac68e 50%);
+}
+
+.bola-Rosa {
+    background-image: radial-gradient(circle, #ffd6e0e0 20%,#ffd6e059 100%);
+}
+
+.borosso {
+    backdrop-filter: blur(70px);
+}
+
+.topp {
+    top: 140px;
+}
+
+@media (min-width: 560px) {
+    .topp {
+        top: 175px;
+    }
+}
