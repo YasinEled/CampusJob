@@ -3,37 +3,75 @@ body {
     overflow-x: hidden;
 }
 .bodyComercial {
+    
     background-color: #052b28;   
 
 }
 .fondo {
-    width: 100vw;
-    height: 100vh;
+  
 }
 .bola-Azul {
+    top: 140px;
     background-image: radial-gradient(circle, #a5c9cae1 20%,#557D7C 100%);
-    
+
+    width: 40em;
+    height: 24em;
 }
 
 .bola-Amarilla {
+    top: 140px;
     background-image: radial-gradient(circle, #ffdac6 70%,#ffdac68e 50%);
+
+    width: 40em;
+    height: 33em;
 }
 
 .bola-Rosa {
+    top: 140px;
     background-image: radial-gradient(circle, #ffd6e0e0 20%,#ffd6e059 100%);
+    width: 50em;
+    height: 33em;
+}
+.bola-Rosa1 {
+    top: 18em;
+    background-image: radial-gradient(circle, #ffd6e0e0 20%,#ffd6e059 100%);
+    width: 40em;
+    height: 24em;
 }
 
 .borosso {
     backdrop-filter: blur(70px);
-    z-index: 0;
 }
 
-.topp {
-    top: 140px;
-}
 
-@media (min-width: 560px) {
-    .topp {
-        top: 175px;
+
+@media (min-width: 1550px) {
+   
+    .bola-Azul {
+        top: 150px;
+    
+        width: 40em;
+        height: 24em;
+    }
+    
+    .bola-Amarilla {
+        top: 150px;
+        background-image: radial-gradient(circle, #ffdac6 70%,#ffdac68e 50%);
+    
+        width: 40em;
+        height: 37em;
+    }
+    
+    .bola-Rosa {
+        top: 150px;
+        background-image: radial-gradient(circle, #ffd6e0e0 20%,#ffd6e059 100%);
+        width: 50em;
+        height: 37em;
+    }
+    .bola-Rosa1 {
+        top: 18em;
+        background-image: radial-gradient(circle, #ffd6e0e0 20%,#ffd6e059 100%);
+        width: 40em;
+        height: 30em;
     }
 }
