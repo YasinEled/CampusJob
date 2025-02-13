@@ -9,9 +9,9 @@ import "./Components/ComponentsCSS/publicationGeneral.css"
 function PublicationHeader() {
 
   return (
-    <header  className="relative h-screen">
+    <header  className="">
       
-      <div className="absolute   w-screen py-10 h-screen inset-0 z-0">
+      <div className="absolute fondo inset-0 z-0">
         <HeaderBg />
       </div>
 
