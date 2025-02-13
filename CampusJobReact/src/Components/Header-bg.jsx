@@ -2,7 +2,7 @@ import "./ComponentsCSS/headerBg.css";
 
 function HeaderBg() {
     return (
-        <div className="absolute   top-0  w-full py-10 h-full flex overflow-hidden items-center justify-center">
+        <div className="absolute  fondo  items-center justify-center">
             <div className="absolute top-100 left-20 w-166 h-90  rounded-full bola-Rosa"></div>
 
             <div className="absolute topp right-15  h-130 w-200 rounded-full bola-Rosa"></div>

@@ -1,10 +1,15 @@
 @import "tailwindcss";
-
+body {
+    overflow-x: hidden;
+}
 .bodyComercial {
     background-color: #052b28;   
 
 }
-
+.fondo {
+    width: 100vw;
+    height: 100vh;
+}
 .bola-Azul {
     background-image: radial-gradient(circle, #a5c9cae1 20%,#557D7C 100%);
     
@@ -20,6 +25,7 @@
 
 .borosso {
     backdrop-filter: blur(70px);
+    z-index: 0;
 }
 
 .topp {

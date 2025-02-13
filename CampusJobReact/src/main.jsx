@@ -5,7 +5,7 @@ import { I18nextProvider } from "react-i18next";
 import i18next from "i18next";
 
 import App from "./App.jsx";
-import Publication from "./Publication.jsx";
+import PublicationHeader from "./PublicationHeader.jsx";
 
 
 // Import language files
@@ -28,7 +28,7 @@ await i18next.init({
 if (document.getElementById("Publication")) {
   createRoot(document.getElementById("Publication")).render(
     <StrictMode>
-      <Publication />
+      <PublicationHeader />
     </StrictMode>
   );
 }

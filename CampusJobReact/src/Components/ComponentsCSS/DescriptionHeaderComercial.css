@@ -1,38 +1,152 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&slant=0..1&display=swap");
 @import "tailwindcss";
 
-.Description {
-  font-size: 1em;  
-  max-width: 402px;
+.top_description{
+    top: 190px
+}
+
+.description-header {
+    max-width: 750px;
+    display: flex;
+    align-items: center;
+    color: #05302d;
+    justify-content: space-between; /* Distribuye los elementos con espacio entre ellos */
+    padding: 10px; /* Ajusta según necesites */
+    font-family: "Inter", sans-serif;
+    margin-right: 8px;
+}
+  
+.quote-left, .quote-right {
+    font-size: 4rem; /* Ajusta el tamaño de la comilla */
+
+}
+.quote-left h1, .quote-right h1 {
+    margin: 0; /* Elimina el margen de las comillas */
+    font-size: 60px;
 }
 
 
-/* Aplica estilos al contenedor padre */
-.ParentContainer {
+.quote-left{
+    padding-bottom: 30px;
+    padding-right: 10px;
 }
-
-.comilla1 {
-  font-size: 1.5em;
-  position: relative;
-  top: -40px;
-  left: 7vh;
-  color: #05302d;
-  width: fit-content;
+.quote-right{
+    padding-top: 67px;
+}
+  
+.description-center {
+    flex: 1; /* Permite que la descripción ocupe el espacio intermedio */
+    margin:0; /* Espaciado entre la comilla y la descripción */
+    text-align: center; /* Centra el texto si lo deseas */
+    font-size: 0.7em;
+}
+  
+@media (min-width: 360px) {
+    .top_description{
+        top: 48vw;
+    }
+    
+    .description-header {
+        max-width: 750px;
+        display: flex;
+        align-items: center;
+        color: #05302d;
+        justify-content: space-between; /* Distribuye los elementos con espacio entre ellos */
+        padding: 10px; /* Ajusta según necesites */
+        font-family: "Inter", sans-serif;
+    }
 }
 
 @media (min-width: 560px) {
-    .Description {
-        font-size: 1em;  
-        max-width: 550px;
-      }
-}
-  
-@media (min-width: 768px) {
+    .top_description{
+        top: 37vw;
+    }
+    .description-header {
+        max-width: 500px;
+        display: flex;
+        align-items: center;
+        color: #05302d;
+        justify-content: space-between; /* Distribuye los elementos con espacio entre ellos */
+        padding: 20px; /* Ajusta según necesites */
+        font-family: "Inter", sans-serif;
+        margin-right: 0;
 
-    
+    }
+    .description-center {
+        flex: 1; /* Permite que la descripción ocupe el espacio intermedio */
+        margin:0; /* Espaciado entre la comilla y la descripción */
+        text-align: center; /* Centra el texto si lo deseas */
+        font-size: 1em;
+    }
+    .quote-left{
+        padding-bottom: 60px;
+    }
+    .quote-right{
+        padding-top: 67px;
+    }
 }
-  
+@media (min-width: 768px) {
+    .top_description{
+        top: 12em;
+    }
+    .description-header {
+        max-width: 750px;
+        display: flex;
+        align-items: center;
+        color: #05302d;
+        justify-content: space-between; /* Distribuye los elementos con espacio entre ellos */
+        padding: 20px; /* Ajusta según necesites */
+        font-family: "Inter", sans-serif;
+    }
+    .description-center {
+        flex: 1; /* Permite que la descripción ocupe el espacio intermedio */
+        margin:0; /* Espaciado entre la comilla y la descripción */
+        text-align: center; /* Centra el texto si lo deseas */
+        font-size: 1.1em;
+    }
+}
+
+
 @media (min-width: 1090px) {
-   
-  
+    .top_description{
+        top: 15em;
+    }
+    .description-header {
+        max-width: 750px;
+        display: flex;
+        align-items: center;
+        color: #05302d;
+        justify-content: space-between; /* Distribuye los elementos con espacio entre ellos */
+        padding: 20px; /* Ajusta según necesites */
+        font-family: "Inter", sans-serif;
+    }
+    .description-center {
+        flex: 1; /* Permite que la descripción ocupe el espacio intermedio */
+        margin:0; /* Espaciado entre la comilla y la descripción */
+        text-align: center; /* Centra el texto si lo deseas */
+        font-size: 1.1em;
+    }
+
 }
-  
+
+
+@media (min-width: 1550px) {
+    .top_description{
+        top: 16em;
+    }
+    .description-header {
+        max-width: 750px;
+        display: flex;
+        align-items: center;
+        color: #05302d;
+        justify-content: space-between; /* Distribuye los elementos con espacio entre ellos */
+        padding: 20px; /* Ajusta según necesites */
+        font-family: "Inter", sans-serif;  
+    }
+    .description-center {
+        flex: 1; /* Permite que la descripción ocupe el espacio intermedio */
+        margin:0; /* Espaciado entre la comilla y la descripción */
+        text-align: center; /* Centra el texto si lo deseas */
+        font-size: 1.1em;
+    }
+}
