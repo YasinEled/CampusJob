@@ -109,10 +109,10 @@
 
 @media (min-width: 1090px) {
     .top_description{
-        top: 15em;
+        top: 10em;
     }
     .description-header {
-        max-width: 750px;
+        max-width: 650px;
         display: flex;
         align-items: center;
         color: #05302d;
@@ -124,7 +124,7 @@
         flex: 1; /* Permite que la descripción ocupe el espacio intermedio */
         margin:0; /* Espaciado entre la comilla y la descripción */
         text-align: center; /* Centra el texto si lo deseas */
-        font-size: 1.1em;
+        font-size: 0.9em;
     }
 
 }
