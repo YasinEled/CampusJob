@@ -20,7 +20,7 @@ function App() {
     event.preventDefault();
 
     try {
-      const response = await fetch('http://localhost/Backend/index.php', {
+      const response = await fetch('http://localhost/Backend/login.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ function App() {
               </div>
               <button type="submit" className="btn-login">{t("header.login")}</button>
             </form>
-            {message && <h1>{message}</h1>}
+            {message && <h4>{message}</h4>}
           </div>
         </div>
       </div>

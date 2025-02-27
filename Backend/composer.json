@@ -1,0 +1,9 @@
+{
+    "name": "campusjobs/backend",
+    "description": "backend en php",
+    "type": "project",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {}
+}
