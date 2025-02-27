@@ -99,7 +99,7 @@
    
 }
 @media (min-width: 768px) {
-   
+    
 }
 
 
@@ -113,9 +113,9 @@
         padding: 2em;
         border-radius: 20px;
         background-color: rgba(255, 255, 255, 0.123);
-        width: 32em;
+        width: 26em;
         border: px solid #ffffff5b;
-        height: 20em;
+        height: 15em;
     }
     .targeta-containerR {
         display: flex;
@@ -123,9 +123,10 @@
         padding: 2em;
         border-radius: 20px;
         background-color: rgba(255, 255, 255, 0.123);
-        width: 30em;
+        width: 26em;
         border: 2px solid #ffffff5b;
-        height: 18em;
+        height: 15em;
+        top: 3.5em;
     }
     .targeta-containerL {
         display: flex;
@@ -133,9 +134,11 @@
         padding: 2em;
         border-radius: 20px;
         background-color: rgba(255, 255, 255, 0.123);
-        width: 30em;
+        width: 26em;
         border: 2px solid #ffffff5b;
-        height: 18em;
+        height: 15em;
+        top: 3.5em;
+
     }
     
     .targeta-CV {
@@ -192,7 +195,96 @@
 }
 
 
-@media (min-width: 1550px) {
+@media (min-width: 1335px) {
+    .top_Targeta {
+        top: 27em;
+    }
+    .targeta-container {
+        display: flex;
+        box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.37);
+        padding: 3em;
+        border-radius: 20px;
+        background-color: rgba(255, 255, 255, 0.123);
+        width: 36em;
+        border: 2px solid #ffffff5b;
+        height: 24em;
+    }
+    .targeta-containerR {
+        display: flex;
+        box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.37);
+        padding: 3em;
+        border-radius: 20px;
+        background-color: rgba(255, 255, 255, 0.123);
+        width: 34em;
+        border: 2px solid #ffffff5b;
+        height: 22em;
+    }
+    .targeta-containerL {
+        display: flex;
+        box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.37);
+        padding: 3em;
+        border-radius: 20px;
+        background-color: rgba(255, 255, 255, 0.123);
+        width: 34em;
+        border: 2px solid #ffffff5b;
+        height: 22em;
+    }
+    
+    .targeta-CV {
+        margin-right: 0.5em;
+    
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.37);
+        border-radius: 20px;
+        background-color: rgba(255, 255, 255, 0.123);
+        border: 2px solid #ffffff5b;
+    }
+    .targeta-User {
+        display: flex;
+    
+        align-items: center;
+        justify-content: center;
+        flex: 4;
+        box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.37);
+        border-radius: 20px;
+        background-color: rgba(255, 255, 255, 0.123);
+        border: 2px solid #ffffff5b;
+    }
+    .targeta-secundaria {
+        margin-top: 1.3em;
+        flex: 1;
+        box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.37);
+        border-radius: 20px;
+        background-color: rgba(255, 255, 255, 0.123);
+        border: 2px solid #ffffff5b;
+    }
+    .targeta-principal {
+        margin-left: 1.2em;
+        flex: 1.5;
+        display: flex;
+        flex-direction: column;
+    }
+    .logoUser {
+        filter:drop-shadow(1px 1px 2px rgb(4, 39, 37));
+        height: 4em;
+        width: 10em;
+    }
+    .CV {
+        font-size: 3em;
+        
+        font-weight: bold;
+        font-family: 'Roboto';
+        text-shadow: 1px 1px 2px rgba(5, 48, 45, 0.562);
+        color: #05302d4d;
+    
+    }
+}
+
+
+@media (min-width: 1750px) {
     .top_Targeta {
         top: 27em;
     }

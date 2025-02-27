@@ -40,7 +40,11 @@ body {
 }
 
 .borosso {
-    backdrop-filter: blur(70px);
+    -webkit-filter: blur(55px);
+    -moz-filter: blur(55px);
+    -o-filter: blur(55px);
+    -ms-filter: blur(55px);
+    filter: blur(55px);
 }
 
 
