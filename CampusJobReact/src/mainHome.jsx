@@ -5,7 +5,7 @@ function MenuHome() {
 
 
   return (
-    <main>
+    <main className="menuHome">
         <Menu />
     </main>
   );
