@@ -1,12 +1,11 @@
 .MeuIzq {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    background-color: #042522; 
+    justify-self: center;
     width: 15vh;
     height: 100%;
-    position:sticky;
-    top:0;
+    position:fixed;
+    top: 0;
 }
 /* 042522 */
 .limenuizq {
@@ -33,10 +32,19 @@
 font-size: 3rem;
 }
 .MenuIzqNav {
+  padding: 1em;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #042522; 
+
+}
+.MenuIzqNav ul{
+  margin-bottom: 0em;
 }
 
   nav ul li a {

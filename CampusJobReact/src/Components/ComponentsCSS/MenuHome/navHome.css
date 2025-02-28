@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .navHome{
-    width: 100vw;
+    width: 100%;
     background-image: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent);
     height: 7em;
     display: flex;
@@ -17,6 +17,7 @@
     padding: 1em;
     padding-right: 3em;
     width: 100%;
+    
 }
 
 .selectorsNav a{
@@ -34,13 +35,21 @@
 .logoLetrasNav{
     width: 10em;
     margin-top: -1em;
-    margin-left: 1em;
+    margin-left: 3em;
     margin-right: 1em;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
+.logoNav{
+    width: 4em;
+    margin-top: -0em;
+    margin-left: 4.5em;
+    margin-right: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .logoNavSelector{
     display: flex;
     align-items: center;

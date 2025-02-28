@@ -2,7 +2,8 @@ import { nav } from "framer-motion/client";
 import { UserOutlined ,GlobalOutlined,HeartOutlined,InboxOutlined,SunOutlined} from '@ant-design/icons';
 
 import '../../ComponentsCSS/MenuHome/navHome.css'
-import logoLetras from "../../../assets/Logo/ssCampusJob.png"
+import logoLetras from "../../../assets/Logo/ssCampusJob.png";
+import logoIcon from "../../../assets/Logo/logoroundblanco.png";
 
 function NavHome() {
 
@@ -10,11 +11,12 @@ function NavHome() {
     return (
       <nav className="navHome">
           <div className="logoNavSelector">
+          <img className="logoNav" src={logoIcon} alt="CampusJobLetras" />
             <img className="logoLetrasNav" src={logoLetras} alt="CampusJobLetras" />
           </div>
           <ul className="selectorsNav">
             <li>
-              <a href="/"><SunOutlined /></a>
+              <a href="/"><SunOutlined  /></a>
             </li>
             <li>
               <a href="/"><HeartOutlined /></a>
