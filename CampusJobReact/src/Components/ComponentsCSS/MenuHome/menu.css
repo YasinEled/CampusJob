@@ -1,0 +1,61 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #042522; 
+    width: 15vh;
+    height: 100%;
+    position: fixed;
+}
+/* 042522 */
+li {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    margin-top: 2vh;
+}
+.inici{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+img {
+    margin-top: 3vh;
+    width: 7vh;
+    height: auto;
+    margin-bottom: 4vh;
+    border-radius: 14px;
+
+}
+.logoMnuIzq {
+font-size: 3rem;
+}
+nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: flex;
+    gap: 8px;
+  }
+
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  nav ul li svg {
+    color: white;
+  }
+  
+  
+  

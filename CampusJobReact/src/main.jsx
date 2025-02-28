@@ -35,6 +35,7 @@ switch (enlace) {
 }
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
+
 root.render(
   <StrictMode>
     <I18nextProvider i18n={i18next}>
