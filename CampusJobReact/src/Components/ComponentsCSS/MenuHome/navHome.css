@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+.navHome{
+    width: 100vw;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent);
+    height: 7em;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+
+.selectorsNav{
+    display:flex;
+    flex-direction: row;
+    justify-content: end;
+    font-size: 2.2em;
+    padding: 1em;
+    padding-right: 3em;
+    width: 100%;
+}
+
+.selectorsNav a{
+    color: white;
+}
+.selectorsNav li{
+    margin-left: 0.4em;
+}
+
+.selectorsNav li:hover{
+    color: rgb(255, 255, 255);
+    scale: 1.2;
+}
+
+.logoLetrasNav{
+    width: 10em;
+    margin-top: -1em;
+    margin-left: 1em;
+    margin-right: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logoNavSelector{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

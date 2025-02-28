@@ -2,6 +2,7 @@ import {HomeOutlined, SettingOutlined, DollarOutlined, FundProjectionScreenOutli
 import Imagenlogomenuizquierdahecho from '../../../assets/Logo/CampusJobBorderLogo.png';
 import '../../ComponentsCSS/MenuHome/menu.css';
 
+
 function Menu() {
 
 
@@ -28,5 +29,5 @@ function Menu() {
     );
   }
   
-  export default Menu;
+export default Menu;
   
