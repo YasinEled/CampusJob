@@ -9,7 +9,7 @@ function MenuHome() {
     <main className="menuHome">
       
         <NavHome />
-        <Menu />  
+        <Menu /> 
 
     </main>
   );
