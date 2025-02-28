@@ -7,11 +7,11 @@ function Menu() {
 
 
     return (
-      <main>
-        <img src={Imagenlogomenuizquierdahecho} alt="Logo" />
-        <nav>
+      <main className="MeuIzq">
+        <img className="MeuIzqlogoimg" src={Imagenlogomenuizquierdahecho} alt="Logo" />
+        <nav className="MenuIzqNav">
           <ul>
-            <li>
+            <li className="limenuizq">
               <a href="/menu"  className='inici'><HomeOutlined  className="logoMnuIzq"/>Inici</a>
             </li>
             <li>

@@ -1,14 +1,15 @@
-main {
+.MeuIzq {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #042522; 
     width: 15vh;
     height: 100%;
-    position: fixed;
+    position:absolute;
+    top:0;
 }
 /* 042522 */
-li {
+.limenuizq {
     display: flex;
     flex-direction: column;
     justify-items: center;
@@ -20,7 +21,7 @@ li {
     gap: 1rem;
     align-items: center;
 }
-img {
+.MeuIzqlogoimg {
     margin-top: 3vh;
     width: 7vh;
     height: auto;
@@ -31,30 +32,23 @@ img {
 .logoMnuIzq {
 font-size: 3rem;
 }
-nav {
+.MenuIzqNav {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  nav ul li {
-    display: flex;
-    gap: 8px;
-  }
-
   nav ul li a {
     color: white;
     text-decoration: none;
+    
   }
   
-  nav ul li svg {
+  nav ul li a:hover {
     color: white;
+    text-decoration: none;
+    scale: 1.1;
   }
   
   
