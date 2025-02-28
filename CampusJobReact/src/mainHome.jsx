@@ -7,6 +7,7 @@ function MenuHome() {
 
   return (
     <main className="menuHome">
+      
         <NavHome />
         <Menu />  
 
