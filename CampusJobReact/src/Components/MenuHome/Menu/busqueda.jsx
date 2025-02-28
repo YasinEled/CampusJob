@@ -1,17 +1,15 @@
-import {HomeOutlined, SettingOutlined, DollarOutlined, FundProjectionScreenOutlined } from '@ant-design/icons';
-import Imagenlogomenuizquierdahecho from '../../../assets/Logo/CampusJobBorderLogo.png';
-import '../../ComponentsCSS/MenuHome/menu.css';
+import '../../ComponentsCSS/MenuHome/busqueda.css'
 
 
-function busqueda() {
+function Busqueda() {
 
 
     return (
-      <div>
+      <div className="busquedaContainer">
         
       </div>
     );
   }
   
-export default Menu;
+export default Busqueda;
   
