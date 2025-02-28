@@ -5,7 +5,7 @@ import { I18nextProvider } from "react-i18next";
 import i18next from "i18next";
 
 import App from "./App.jsx";
-import c from "./Components/WebComercial/menuHome.jsx";
+import MenuHome from "./mainHome.jsx";
 // Import language files
 import global_es from "./TRADUCCIONES/es/global.json";
 import global_en from "./TRADUCCIONES/en/global.json";
@@ -33,7 +33,7 @@ switch (enlace) {
     component = <MenuHome />;
     break;
 }
-
+const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 root.render(
   <StrictMode>

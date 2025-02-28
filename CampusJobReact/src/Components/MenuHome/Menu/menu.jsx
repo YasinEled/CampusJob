@@ -1,4 +1,5 @@
 
+import { CheckCircleTwoTone, HeartTwoTone, SmileTwoTone } from '@ant-design/icons';
 
 
 function Menu() {
@@ -10,5 +11,5 @@ function Menu() {
     );
   }
   
-  export default Menu;
+export default Menu;
   

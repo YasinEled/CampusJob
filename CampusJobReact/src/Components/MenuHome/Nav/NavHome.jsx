@@ -1,0 +1,38 @@
+import { nav } from "framer-motion/client";
+import { UserOutlined ,GlobalOutlined,HeartOutlined,InboxOutlined,SunOutlined} from '@ant-design/icons';
+
+import '../../ComponentsCSS/MenuHome/navHome.css'
+import logoLetras from "../../../assets/Logo/ssCampusJob.png"
+
+function NavHome() {
+
+
+    return (
+      <nav className="navHome">
+          <div className="logoNavSelector">
+            <img className="logoLetrasNav" src={logoLetras} alt="CampusJobLetras" />
+          </div>
+          <ul className="selectorsNav">
+            <li>
+              <a href="/"><SunOutlined /></a>
+            </li>
+            <li>
+              <a href="/"><HeartOutlined /></a>
+            </li>
+            <li>
+              <a href="/"><InboxOutlined /></a>
+            </li>
+            <li>
+              <a href="/"><GlobalOutlined /></a>
+            </li>
+            <li>
+              <a href="/"><UserOutlined /></a>
+            </li>
+          </ul>
+          
+      </nav>
+    );
+  }
+  
+export default NavHome;
+  
