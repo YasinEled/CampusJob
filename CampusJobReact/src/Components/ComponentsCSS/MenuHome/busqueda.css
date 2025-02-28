@@ -1,5 +1,6 @@
 .busquedaContainer{
-    width: 10em;
-    height: 10em;
-    background-color: white;
+    width: 65em;
+    height: 6em;
+    background: linear-gradient(to right, gray, #FFFFFF);
+    border-radius: 15px;
 }
