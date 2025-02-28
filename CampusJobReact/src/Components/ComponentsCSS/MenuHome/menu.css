@@ -5,7 +5,7 @@
     background-color: #042522; 
     width: 15vh;
     height: 100%;
-    position:absolute;
+    position:sticky;
     top:0;
 }
 /* 042522 */
@@ -42,6 +42,8 @@ font-size: 3rem;
   nav ul li a {
     color: white;
     text-decoration: none;
+        margin-bottom: 3vh;
+
     
   }
   

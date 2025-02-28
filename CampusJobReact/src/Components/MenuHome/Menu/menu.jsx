@@ -8,7 +8,9 @@ function Menu() {
 
     return (
       <main className="MeuIzq">
-        <img className="MeuIzqlogoimg" src={Imagenlogomenuizquierdahecho} alt="Logo" />
+        <a href="/menu">
+          <img className="MeuIzqlogoimg" src={Imagenlogomenuizquierdahecho} alt="Logo" />
+        </a>
         <nav className="MenuIzqNav">
           <ul>
             <li className="limenuizq">
