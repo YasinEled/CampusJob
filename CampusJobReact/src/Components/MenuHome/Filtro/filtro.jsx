@@ -1,4 +1,4 @@
-
+import '../../ComponentsCSS/MenuHome/filter.css'
 
 
 function FilterMenu() {
