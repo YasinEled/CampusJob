@@ -8,5 +8,14 @@
 
 .mainBusqueda{
     margin-right: 3em;
+    margin-left: 11em;
+    width: 100%;
 }
 
+
+
+.mainFilter{
+    display: flex;
+    justify-content: center;
+    margin-right: 3em;
+}
