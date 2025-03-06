@@ -55,3 +55,43 @@
     align-items: center;
     justify-content: center;
 }
+
+/* Estilos generales */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: #05302D;
+    color: white;
+}
+
+/* Estilos para el modo claro */
+body.light-mode {
+    background-color: #A1DAD2;
+    color: black;
+}
+
+/* Ajustar los colores del menú */
+body.light-mode .navHome {
+    background-image: linear-gradient(to bottom, #0f857f, transparent, 3em);
+}
+
+body.light-mode .selectorsNav a {
+    color: black;
+}
+
+body.light-mode .selectorsNav li:hover {
+    color: rgb(50, 50, 50);
+}
+
+/* Modo claro para el menú lateral */
+body.light-mode .MenuIzqNav {
+    background-color: #f0f0f0;
+}
+
+
+body.light-mode nav ul li a {
+    color: black;
+}
+
+body.light-mode nav ul li a:hover {
+    color: rgb(50, 50, 50);
+}
