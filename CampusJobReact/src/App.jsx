@@ -20,7 +20,7 @@ function App() {
     event.preventDefault();
 
     try {
-      const response = await fetch('http://localhost/Backend/login.php', {
+      const response = await fetch('http://localhost/CampusJob/Backend/login.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
