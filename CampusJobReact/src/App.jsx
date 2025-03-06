@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom"; // Importa useNavigate
 import "./index.css";
 
 function App() {
   const { t, i18n } = useTranslation("global");
   const [showLangOptions, setShowLangOptions] = useState(false);
-
-  // AÑADIDO PARA BACKEND
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const navigate = useNavigate(); // Inicializa useNavigate
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -30,6 +30,10 @@ function App() {
 
       const data = await response.json();
       setMessage(data.message);
+
+      if (data.success) {
+        navigate('/mainHome'); // Redirige a mainHome.jsx
+      }
     } catch (error) {
       console.error('Error:', error);
     }
