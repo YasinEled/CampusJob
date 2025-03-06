@@ -1,0 +1,65 @@
+.container-Filter{
+    width: 20em;
+    height: 49em;
+    background-color: #042522;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ordenarOfertes{
+    display: flex;
+    flex-direction: column;
+    align-items: start    ;
+}
+
+.radioSelectorStyle{
+    display: flex;
+    flex-direction: row;
+}
+
+.palabraClave{
+    display: flex;  
+    flex-direction: column;
+}
+.FormPalabraClave{
+    display: flex;
+    flex-direction: row;
+}
+
+.combobox {
+  position: relative;
+  display: inline-block;
+  width: 200px; /* Ajusta el ancho según necesites */
+}
+
+.combobox-button {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  background: #042522;
+  text-align: left;
+  cursor: pointer;
+}
+
+.combobox-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #042522;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.combobox-option {
+  display: block;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.combobox-option:hover {
+  background: #f1f1f1;
+}

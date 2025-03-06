@@ -1,17 +1,17 @@
 import React, { useRef } from 'react';
-import NavPublication from "./Components/nav.jsx";
-import HeaderBg from "./Components/Header-bg.jsx";
-import TileHeader from './Components/titleHeader.jsx';
-import DescriptionHeader from './Components/headerDescrptionComercial.jsx';
-import Targeta from './Components/TarjetaPublicidad.jsx';
-import "./Components/ComponentsCSS/publicationGeneral.css"
+import NavPublication from "./nav.jsx";
+import HeaderBg from "./Header-bg.jsx";
+import TileHeader from './titleHeader.jsx';
+import DescriptionHeader from './headerDescrptionComercial.jsx';
+import Targeta from './TarjetaPublicidad.jsx';
+import "./Components/WebComercial/ComponentsCSS/publicationGeneral.css"
 
 function PublicationHeader() {
 
   return (
     <header  className="">
       
-      <div className="absolute fondo inset-0 z-0">
+      <div className="absolute fondo w-full h-250 z-0">
         <HeaderBg />
       </div>
 

@@ -5,9 +5,7 @@ import { I18nextProvider } from "react-i18next";
 import i18next from "i18next";
 
 import App from "./App.jsx";
-import PublicationHeader from "./PublicationHeader.jsx";
-
-
+import MenuHome from "./mainHome.jsx";
 // Import language files
 import global_es from "./TRADUCCIONES/es/global.json";
 import global_en from "./TRADUCCIONES/en/global.json";
@@ -23,22 +21,25 @@ await i18next.init({
     cat: { global: global_cat },
   },
 });
+let enlace = "LogIn"; // Puedes cambiar este valor según la navegación
 
-// Renderizar los componentes
-if (document.getElementById("Publication")) {
-  createRoot(document.getElementById("Publication")).render(
-    <StrictMode>
-      <PublicationHeader />
-    </StrictMode>
-  );
+// Seleccionamos el componente en función del valor de "enlace"
+let component;
+switch (enlace) {
+  case "LogIn":
+    component = <App />;
+    break;
+    case "MenuHome":
+    component = <MenuHome />;
+    break;
 }
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
 
-if (document.getElementById("root")) {
-  createRoot(document.getElementById("root")).render(
-    <StrictMode>
-      <I18nextProvider i18n={i18next}>
-        <App />
-      </I18nextProvider>
-    </StrictMode>
-  );
-}
+root.render(
+  <StrictMode>
+    <I18nextProvider i18n={i18next}>
+      {component}
+    </I18nextProvider>
+  </StrictMode>
+);

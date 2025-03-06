@@ -85,19 +85,21 @@
 
 @media (min-width: 1090px) {
   .variable-proximity span {
-    font-size: 50px;
+    font-size: 1.6em;
   }
   .labelTitle{
     position: relative;
     flex-direction: row;
-    left: 10vw;
+    left: 8.4vw;
   }
   .titleContainer{
     top: 50px;
+    letter-spacing: -0.1em;
+
   } 
   .principalLabelTitle{
     position: relative;
-    left: -6vw;
+    left: -5vw;
   }
 
 }

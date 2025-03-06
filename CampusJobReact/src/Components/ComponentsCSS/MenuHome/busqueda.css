@@ -1,0 +1,57 @@
+.busquedaContainer {
+    flex: 1;
+    width: 100%;
+    height: 8em;
+    background: linear-gradient(135deg, gray, #ffffff);
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.TextoBusquedaUbicacion {
+    padding-top: 1%;
+    margin-left: 3%;
+    font-size: 1.5em;
+    color: #05302D;
+}
+
+.BuscaUbicacionTextBox {
+    margin-left: 3%;
+    width: 78%;
+    height: 2.5em;
+    background-color: #05302D;
+    border-radius: 5px;
+    padding-left: 1em;
+    color: white; 
+    border: none;  
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    transition: all 0.3s ease;  /* Transición suave al focus */
+}
+
+.BuscaUbicacionTextBox:focus {
+    outline: none;  /* Elimina el contorno cuando el input está enfocado */
+    box-shadow: 0px 0px 8px rgba(29, 168, 158, 0.6);  /* Sombra de enfoque para resaltar */
+}
+
+.BuscaButtonUbicacion {
+    width: 13%;
+    height: 2.5em;
+    margin-left: 3%;
+    background-color: #1DA89E;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s, transform 0.2s ease-in-out;  
+}
+
+.BuscaButtonUbicacion:hover {
+    background-color: #16a98d;  /* Cambio de color al pasar el mouse */
+    transform: scale(1.05);  /* Efecto de "aumento" al hacer hover */
+}
+
+.BuscaUbicacion {
+    display: flex;
+    flex-direction: row;
+    align-items: center;  /* Centra verticalmente los elementos */
+}

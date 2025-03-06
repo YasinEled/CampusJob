@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+.navHome{
+    width: 100%;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent);
+    height: 7em;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+
+.selectorsNav{
+    display:flex;
+    flex-direction: row;
+    justify-content: end;
+    font-size: 2.2em;
+    padding: 1em;
+    padding-right: 3em;
+    width: 100%;
+    
+}
+
+.selectorsNav a{
+    color: white;
+}
+.selectorsNav li{
+    margin-left: 0.4em;
+}
+
+.selectorsNav li:hover{
+    color: rgb(255, 255, 255);
+    scale: 1.2;
+}
+
+.logoLetrasNav{
+    width: 10em;
+    margin-top: -1em;
+    margin-left: 3em;
+    margin-right: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logoNav{
+    width: 4em;
+    margin-top: -0em;
+    margin-left: 4.5em;
+    margin-right: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logoNavSelector{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilos generales */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: #05302D;
+    color: white;
+}
+
+/* Estilos para el modo claro */
+body.light-mode {
+    background-color: #A1DAD2;
+    color: black;
+}
+
+/* Ajustar los colores del menú */
+body.light-mode .navHome {
+    background-image: linear-gradient(to bottom, #0f857f, transparent, 3em);
+}
+
+body.light-mode .selectorsNav a {
+    color: black;
+}
+
+body.light-mode .selectorsNav li:hover {
+    color: rgb(50, 50, 50);
+}
+
+/* Modo claro para el menú lateral */
+body.light-mode .MenuIzqNav {
+    background-color: #f0f0f0;
+}
+
+
+body.light-mode nav ul li a {
+    color: black;
+}
+
+body.light-mode nav ul li a:hover {
+    color: rgb(50, 50, 50);
+}

@@ -1,0 +1,22 @@
+.container-mainBusqueda{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+}
+
+
+.mainBusqueda{
+    margin-right: 3em;
+    margin-left: 11em;
+    width: 100%;
+}
+
+
+
+.mainFilter{
+    display: flex;
+    justify-content: center;
+    margin-right: 3em;
+}
+

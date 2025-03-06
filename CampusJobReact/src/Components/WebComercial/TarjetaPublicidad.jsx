@@ -22,7 +22,7 @@ function Targeta() {
               </div>
             </div>
         </div>
-        <motion.div style={{ transform: "scale(0.8)" }} className="absolute right-0 targeta-containerR  top-30 overflow-hidden  w-screen h-screen"  initial={{ rotate: 12 , x: 100 }}>
+        <motion.div style={{ transform: "scale(0.8)" }} className="absolute right-0 targeta-containerR  topR overflow-hidden  w-screen h-screen"  initial={{ rotate: 12 , x: 100 }}>
             <div className="targeta-CV">
               <p className="CV">CV</p>
             </div>
@@ -40,7 +40,7 @@ function Targeta() {
               </div>
             </div>
         </motion.div>
-        <motion.div className=" absolute targeta-containerL top-30 "  initial={{ rotate: -12 , x: -100 }} >
+        <motion.div className=" absolute targeta-containerL topL "  initial={{ rotate: -12 , x: -100 }} >
             <div className="targeta-CV">
               <p className="CV">CV</p>
             </div>
