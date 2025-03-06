@@ -21,12 +21,12 @@ await i18next.init({
     cat: { global: global_cat },
   },
 });
-let enlace = "MenuHome"; // Puedes cambiar este valor según la navegación
+let enlace = "LogIn"; // Puedes cambiar este valor según la navegación
 
 // Seleccionamos el componente en función del valor de "enlace"
 let component;
 switch (enlace) {
-  case "Home":
+  case "LogIn":
     component = <App />;
     break;
     case "MenuHome":
