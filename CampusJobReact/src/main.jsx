@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { I18nextProvider } from "react-i18next";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import i18next from "i18next";
 
@@ -21,25 +22,19 @@ await i18next.init({
     cat: { global: global_cat },
   },
 });
-let enlace = "LogIn"; // Puedes cambiar este valor según la navegación
 
-// Seleccionamos el componente en función del valor de "enlace"
-let component;
-switch (enlace) {
-  case "LogIn":
-    component = <App />;
-    break;
-    case "MenuHome":
-    component = <MenuHome />;
-    break;
-}
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
     <I18nextProvider i18n={i18next}>
-      {component}
+      <Router>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/mainHome" element={<MenuHome />} />
+        </Routes>
+      </Router>
     </I18nextProvider>
   </StrictMode>
 );

@@ -1,15 +1,42 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom"; // Importa useNavigate
 import "./index.css";
-
 
 function App() {
   const { t, i18n } = useTranslation("global");
   const [showLangOptions, setShowLangOptions] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
+  const navigate = useNavigate(); // Inicializa useNavigate
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
     setShowLangOptions(false);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost/CampusJob/Backend/login.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await response.json();
+      setMessage(data.message);
+
+      if (data.success) {
+        navigate('/mainHome'); // Redirige a mainHome.jsx
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
@@ -18,9 +45,9 @@ function App() {
         <div className="language-selector">
           <button className="transparent-button" onClick={() => setShowLangOptions(!showLangOptions)}>
             {showLangOptions ? (
-              <span >leng&nbsp;&nbsp;&nbsp;&nbsp;▲&nbsp;&nbsp;</span>
+              <span>leng&nbsp;&nbsp;&nbsp;&nbsp;▲&nbsp;&nbsp;</span>
             ) : (
-              <span >leng&nbsp;&nbsp;&nbsp;&nbsp;▼&nbsp;&nbsp;</span>
+              <span>leng&nbsp;&nbsp;&nbsp;&nbsp;▼&nbsp;&nbsp;</span>
             )}
           </button>
           {showLangOptions && (
@@ -38,13 +65,32 @@ function App() {
             <img className="logoMini" src="/src/assets/Logo/CampusJob.png" alt="Logo" />
           </div>
           <div className="col-12 col-lg-6 ml-5 mr-5">
-            <form action="./PHP/login.php" method="POST">
+            <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Username" />
-                <input type="password" className="form-control" id="exampleInputPassword1" name="password" placeholder="Password" />
+                <input
+                  type="text"
+                  className="form-control"
+                  id="exampleInputUsername1"
+                  name="username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Username"
+                  required
+                />
+                <input
+                  type="password"
+                  className="form-control"
+                  id="exampleInputPassword1"
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Password"
+                  required
+                />
               </div>
               <button type="submit" className="btn-login">{t("header.login")}</button>
             </form>
+            {message && <h4>{message}</h4>}
           </div>
         </div>
       </div>
@@ -59,7 +105,7 @@ function App() {
           <a href="#">{t("footer.termsOfService")}</a>
         </div>
         <div>
-            <p className="p-footer">© 2025 Campus Job.</p>
+          <p className="p-footer">© 2025 Campus Job.</p>
         </div>
       </footer>
     </main>
