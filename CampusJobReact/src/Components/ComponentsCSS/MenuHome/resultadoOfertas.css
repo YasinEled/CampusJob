@@ -1,0 +1,72 @@
+.OfertasContainer{
+    display: flex;
+    flex-direction: row;
+    background-color: #042522;
+    border-radius: 10px;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 1em;
+}
+
+.OfertaTextContainer{
+    margin-left: 1em;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: #042522;
+    margin-top: 1em;
+}
+
+.ImagenOfertaEmpresa{
+width: 100px;
+height: 100px;
+border-radius: 10px;  
+background-color: rgb(2, 2, 2);
+margin-top: 1em;
+}
+
+.NomOfertaEmpresa{
+color: #00FFED;
+}
+
+.OfertaInfoPrincipalContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.OfertaUbicacion{
+    margin-right: 0.5em;
+}
+
+.OfertaTipoModalidad{
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+}
+
+.OfertaFecha{
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+}
+
+.OfertaFecha{
+    color: #00FFED;
+}
+
+.OfertaInfoContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.OfertaTipoContrato{
+    margin-right: 0.5em;
+}
+
+.OfertaTipoJornada{
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+}
+.OfertaSalario{
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+}
