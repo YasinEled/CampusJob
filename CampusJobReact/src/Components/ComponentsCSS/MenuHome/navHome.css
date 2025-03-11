@@ -96,4 +96,92 @@ body.light-mode nav ul li a:hover {
     color: rgb(50, 50, 50);
 }
 
+.OfertasContainer.light {
+    background-color: #ffffff;
+    color: black;
+    border: 1px solid #ccc;
+}
+
+
+/* Modo claro ofertas empresas */
+
+body.light-mode .OfertaTextContainer {
+    background-color: #f8f8f8;
+    color: black;
+}
+
+body.light-mode .OfertasContainer{
+    background-color: #f8f8f8;
+    color: black;
+}
+
+body.light-mode .NomOfertaEmpresa {
+    color: #001B43;
+}
+
+body.light-mode .OfertaFecha {
+    color: #001B43;
+}
+
+/* Menu claro filtro  */
+
+/* Estilos para el modo claro en los filtros */
+/* Estilos para el modo claro en los filtros */
+body.light-mode .container-Filter {
+    background-color: #f8f8f8 !important;
+    color: black !important;
+    border: 1px solid #ccc !important;
+}
+
+body.light-mode .ordenarOfertes h3,
+body.light-mode .palabraClave h3,
+body.light-mode .ordenarFecha h3,
+body.light-mode .presencialTeletrabajo h3,
+body.light-mode .JornadaLaboral h3,
+body.light-mode .Salario-slider h3 {
+    color: #0d6b66 !important;
+}
+
+body.light-mode .buscadorFiltroPalabraClave {
+    background-color: #ffffff !important;
+    color: black !important;
+    border: 1px solid #ccc !important;
+}
+
+body.light-mode .buscadorFiltroPalabraClaveBoton {
+    background-color: #0d6b66 !important;
+    color: white !important;
+}
+
+body.light-mode .buscadorFiltroPalabraClaveBoton:hover {
+    background-color: #0a514d !important;
+}
+
+body.light-mode .combobox-button {
+    background: #e0e0e0 !important;
+    color: black !important;
+    border: 1px solid #ccc !important;
+}
+
+body.light-mode .combobox-dropdown {
+    background: #f0f0f0 !important;
+    border: 1px solid #ccc !important;
+}
+
+body.light-mode .combobox-option {
+    color: black !important;
+}
+
+body.light-mode .combobox-option:hover {
+    background: #d0d0d0 !important;
+}
+
+/* Asegurar que todo el texto sea negro en modo claro */
+body.light-mode label,
+body.light-mode p,
+body.light-mode span {
+    color: black !important;
+}
+
+
 

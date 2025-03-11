@@ -156,7 +156,7 @@ function FilterMenu() {
           </div>
         </div>
         <div className="presencialTeletrabajo">
-          <h3>presencial/Teletrabajo</h3>
+          <h3>Presencial/Teletrabajo</h3>
           <div>
             <input
               type="checkbox"
