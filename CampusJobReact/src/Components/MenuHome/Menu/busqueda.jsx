@@ -13,6 +13,7 @@ function Busqueda() {
         <input type="text" placeholder="Escribe aquí" className="BuscaUbicacionTextBox"></input>
         <button className="BuscaButtonUbicacion">BUSCAR</button>
         </div>
+        
       </div>
     );
   }

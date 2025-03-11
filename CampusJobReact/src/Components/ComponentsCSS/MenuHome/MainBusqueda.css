@@ -1,22 +1,36 @@
-.container-mainBusqueda{
+.container-mainBusqueda {
     display: flex;
-    flex-direction: row;
+    flex-direction: row; /* Alinea los elementos en fila */
     justify-content: center;
-    align-self: center;
-}
-
-
-.mainBusqueda{
-    margin-right: 3em;
-    margin-left: 11em;
+    align-items: flex-start;
     width: 100%;
 }
 
-
-
-.mainFilter{
+/* Contenedor para la búsqueda y el resultado (columna central) */
+.mainContent {
     display: flex;
-    justify-content: center;
-    margin-right: 3em;
+    margin-left: 10.4em;
+    flex-direction: column; /* Apila búsqueda y resultados */
+    align-items: center;
+    width: 70%; /* Ocupa la mayor parte del espacio */
 }
 
+/* Búsqueda */
+.mainBusqueda {
+    margin-bottom: 2em; /* Espacio entre búsqueda y resultado */
+    width: 100%;
+}
+
+/* Resultado */
+.mainCenter {
+    width: 100%;
+    height: 100%;
+}
+
+/* Filtro en el lateral derecho */
+.mainFilter {
+    width: 20%; /* Ajusta el ancho del filtro */
+    display: flex;
+    justify-content: center;
+    margin-left: 2em; /* Espacio entre el resultado y el filtro */
+}
