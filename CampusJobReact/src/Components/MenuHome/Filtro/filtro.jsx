@@ -118,7 +118,7 @@ function FilterMenu() {
             name="ofertes"
             value="relevancia"
           />
-          <label htmlFor="relevancia">relevancia</label>
+          <label htmlFor="relevancia">Relevancia</label>
         </div>
       </div>
       <div className="palabraClave">
@@ -140,7 +140,7 @@ function FilterMenu() {
               name="fecha"
               value="CualquierFecha"
             />
-            <label htmlFor="CualquierFecha">CualquierFecha</label>
+            <label htmlFor="CualquierFecha">Cualquier Fecha</label>
           </div>
           <div>
             <input type="radio" id="24H" name="fecha" value="24H" />
