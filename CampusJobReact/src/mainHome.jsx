@@ -1,7 +1,9 @@
 import Menu from "./Components/MenuHome/Menu/menu";
+import { Outlet } from "react-router-dom";  // Importa Outlet
+
 import NavHome from "./Components/MenuHome/Nav/NavHome";
 import './Components/ComponentsCSS/MenuHome/general.css';
-import MainBusqueda from "./Components/MenuHome/MainBusqueda/MainBusqueda";
+
 
 function MenuHome() {
 
@@ -11,7 +13,8 @@ function MenuHome() {
 
         <NavHome />
         <Menu /> 
-        <MainBusqueda />
+        <Outlet /> {/* Aquí se renderizarán las subrutas */}
+
     </main>
   );
 }
