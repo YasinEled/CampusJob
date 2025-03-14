@@ -1,59 +1,120 @@
-.container-Filter{
-    width: 20em;
-    background-color: #042522;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    padding: 1em;
+.container-Filter {
+  width: 20em;
+  background-color: #042522;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.ordenarOfertes{
-    display: flex;
-    flex-direction: column;
-    align-items: start    ;
+.ordenarOfertes {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-bottom: 1em;
 }
 
-.radioSelectorStyle{
-    display: flex;
-    flex-direction: row;
+.ordenarOfertes h3 {
+  color: #1DA89E;
+  margin-bottom: 0.5em;
 }
-.buscadorFiltroPalabraClave{
-  background-color: white;
-  color:black;
-  border-radius: 2px;
+.palabraClave h3 {
+  color: #1DA89E;
+  margin-bottom: 0.5em;
+}
+
+.radioSelectorStyle {
+  display: flex;
+  flex-direction: row;
+}
+
+.buscadorFiltroPalabraClave {
+  background-color: #ffffff;
+  color: #333;
+  border-radius: 4px;
+  padding: 0.5em;
+  width: 80%;
   margin-right: 1em;
-  padding: 0.2em;
-}
-.palabraClave{
-    display: flex;  
-    flex-direction: column;
+  border: none;
+  outline: none;
+  font-size: 1em;
 }
 
-.buscadorFiltroPalabraClaveBoton{
-background-color: #1DA89E;
-color:black;
-padding: 0.3em;
-border-radius: 2px;
+.palabraClave {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5em;
 }
 
-.FormPalabraClave{
-    display: flex;
-    flex-direction: row;
+.buscadorFiltroPalabraClaveBoton {
+  background-color: #1DA89E;
+  color: white;
+  padding: 0.5em;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.buscadorFiltroPalabraClaveBoton:hover {
+  background-color: #168a7d;
+}
+
+.FormPalabraClave {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1em;
+}
+
+.ordenarFecha,
+.presencialTeletrabajo,
+.JornadaLaboral,
+.Salario-slider {
+  margin-bottom: 1.5em;
+}
+
+.ordenarFecha h3,
+.presencialTeletrabajo h3,
+.JornadaLaboral h3,
+.Salario-slider h3 {
+  color: #1DA89E;
+  margin-bottom: 0.5em;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 0.5em;
+}
+
+input[type="radio"]:checked,
+input[type="checkbox"]:checked {
+  background-color: #1DA89E;
 }
 
 .combobox {
   position: relative;
   display: inline-block;
-  width: 200px; /* Ajusta el ancho según necesites */
+  width: 100%;
+  margin-bottom: 1.5em;
 }
 
 .combobox-button {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   border: 1px solid #ccc;
   background: #042522;
+  color: #fff;
+  font-size: 1em;
   text-align: left;
   cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.combobox-button:hover {
+  background: #1DA89E;
 }
 
 .combobox-dropdown {
@@ -66,14 +127,46 @@ border-radius: 2px;
   max-height: 200px;
   overflow-y: auto;
   z-index: 10;
+  border-radius: 4px;
 }
 
 .combobox-option {
   display: block;
-  padding: 5px;
+  padding: 10px;
   cursor: pointer;
+  color: #fff;
+  transition: background 0.3s;
 }
 
 .combobox-option:hover {
-  background: #f1f1f1;
+  background: #1DA89E;
+}
+
+.experience-slider,
+.Salario-slider {
+  margin-bottom: 1.5em;
+}
+
+input[type="range"] {
+  width: 100%;
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+label {
+  color: #fff;
+  font-size: 1em;
+  margin-bottom: 0.5em;
+}
+
+input[type="checkbox"] {
+  margin-right: 0.5em;
+}
+
+.JornadaLaboral input[type="checkbox"] {
+  margin-right: 1em;
 }

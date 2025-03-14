@@ -1,5 +1,5 @@
 import '../../ComponentsCSS/MenuHome/resultadoOfertas.css'
-import campusJobFavicon from '../../../assets/Logo/CampusJob_copy.png';
+import campusJobFavicon from '../../../assets/Logo/CampusJob.png';
 
 
 function ResultadoOfertas() {
