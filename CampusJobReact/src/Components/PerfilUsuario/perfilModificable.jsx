@@ -5,7 +5,7 @@ function perfilMod() {
 
   return (
     <main className="">
-
+      
     </main>
   );
 }
