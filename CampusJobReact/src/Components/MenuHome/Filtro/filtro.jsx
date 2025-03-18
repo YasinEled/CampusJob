@@ -205,7 +205,7 @@ function FilterMenu() {
             </div>
           )}
         </div>
-        <div className="experience-slider">
+        <div className="experience-slider slider">
           <label htmlFor="experienceRange">
             Experiencia: {experience} {experience === "1" ? "año" : "años"}
           </label>
@@ -219,7 +219,7 @@ function FilterMenu() {
             onChange={handleChange}
           />
         </div>
-        <div className="Salario-slider">
+        <div className="Salario-slider slider">
           <label htmlFor="salarioRange">
             Salario: {salario} {salario === "1" ? "Euro" : "Euros"}
           </label>

@@ -6,6 +6,54 @@
   flex-direction: column;
   padding: 1.5em;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2em;
+  
+}
+.container-Filter h3 {
+  font-size: 1.3em;
+    
+}
+
+.slider input[type="range"] {
+  accent-color: #1DA89E !important;
+  width: 100%;
+  background-color: #FFFFFF;
+}
+
+.slider input[type="range"]::-webkit-slider-runnable-track {
+  background-color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  
+}
+
+
+/* Estilos adicionales para el control deslizante */
+.slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: #1DA89E;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.slider input[type="range"]::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  background: #1DA89E;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.slider input[type="range"]::-ms-thumb {
+  width: 15px;
+  height: 15px;
+  background: #1DA89E;
+  cursor: pointer;
+  border-radius: 50%;
 }
 
 .ordenarOfertes {
@@ -22,6 +70,7 @@
 .palabraClave h3 {
   color: #1DA89E;
   margin-bottom: 0.5em;
+  
 }
 
 .radioSelectorStyle {
