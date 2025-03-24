@@ -17,11 +17,11 @@ function FormOfertas() {
 
               <div class="">
                 <div style={{display: "flex" , justifyContent: "space-between"}}>
-                  <div>
+                  <div style={{width: "44%"}}>
                     <label for="telefono">Teléfono de contacto *</label>
                     <input type="text" id="telefono" name="telefono" required/>
                   </div>
-                  <div>
+                  <div style={{width: "44%"}}>
                     <label for="ubicacion">Ubicación *</label>
                     <input type="text" id="ubicacion" name="ubicacion" required/>
                   </div>
@@ -59,8 +59,17 @@ function FormOfertas() {
             <input type="text" id="ubicacion" name="ubicacion" required/>
           </div>
           <div className="formOfertesRight">
-
+            <button>
+              Publicar
+            </button>
+            <button>
+              Cancelar
+            </button>
+            <button className="botonBorrador">
+              Borrador
+            </button>
           </div>
+          
         </div>
         
       </div>
