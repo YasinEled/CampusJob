@@ -49,25 +49,31 @@ function FormOfertas() {
 
             <label for="ubicacion">Requisitos</label>
             <input type="text" id="ubicacion" name="ubicacion" required/>
-            <div style={{ width:"100%", height:"100px", backgroundColor:"#ccc", borderRadius:"5px", marginTop:"10px"}}>
+            <div style={{ width:"100%", height:"100px", backgroundColor:"white", borderRadius:"5px", marginTop:"10px"}}>
             </div>
             <label for="ubicacion">Extras</label>
             <input type="text" id="ubicacion" name="ubicacion" required/>
-            <div style={{ width:"100%", height:"100px", backgroundColor:"#ccc", borderRadius:"5px", marginTop:"10px"}}>
+            <div style={{ width:"100%", height:"100px", backgroundColor:"white", borderRadius:"5px", marginTop:"10px"}}>
             </div>
             <label for="ubicacion">Fecha Límite para Postularse</label>
             <input type="text" id="ubicacion" name="ubicacion" required/>
           </div>
           <div className="formOfertesRight">
-            <button>
-              Publicar
-            </button>
-            <button>
-              Cancelar
-            </button>
-            <button className="botonBorrador">
-              Borrador
-            </button>
+            <div className="botonesOfertas">
+              <button>
+              CREAR OFERTA
+              </button>
+              <button>
+                CANCELAR
+              </button>
+              
+            </div>
+            <div className="botoneBorrador">
+              <button className="botonBorrador">
+                BORRADORES
+              </button>
+            </div>
+            
           </div>
           
         </div>
