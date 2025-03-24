@@ -12,16 +12,16 @@ function Menu() {
         <nav className="MenuIzqNav">
           <ul>
             <li className="limenuizq">
-              <a href="/menu"  className='inici'><HomeOutlined  className="logoMnuIzq"/>Inici</a>
+              <a href="/menu"  className='inici'><HomeOutlined  className="logoMnuIzq"/></a>
             </li>
             <li>
-              <a href="/menu" className='inici'><FundProjectionScreenOutlined className="logoMnuIzq" />Empresas</a>
+              <a href="/menu" className='inici'><FundProjectionScreenOutlined className="logoMnuIzq" /></a>
             </li>
             <li>
-              <a href="/menu" className='inici'><DollarOutlined className="logoMnuIzq"/>Salaris</a>
+              <a href="/menu" className='inici'><DollarOutlined className="logoMnuIzq"/></a>
             </li>
             <li>
-              <a href="/menu" className='inici'> <SettingOutlined className="logoMnuIzq" />Configuració</a>
+              <a href="/menu" className='inici'> <SettingOutlined className="logoMnuIzq" /></a>
             </li>
           </ul>
         </nav>

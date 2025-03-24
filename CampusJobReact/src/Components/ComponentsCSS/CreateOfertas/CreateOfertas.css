@@ -12,6 +12,8 @@
     padding-left: 3em;
     padding-right: 3em;
     padding-top: 1.8em;
+    padding-bottom: 0em;
+    margin-bottom: 0em;
 }
 
 .lineageneralFormOfertas{
@@ -26,23 +28,31 @@
     flex-direction: row;
     justify-content: space-around;
     margin-top: 1em;
-    width: 100%;
 }
 
 .formOfertasLeft{
-    flex : 1;
+    flex : 1.5;
     margin-right: 2em;
 }
 
 .formOfertasCenter{
-    flex : 1;
+    flex : 1.5;
     margin-right: 2em;
     margin-left: 2em;
 }
 
 .formOfertesRight{
-    flex : 1;
+    flex : 0.7;
     margin-left: 2em;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    
+}
+.botonBorrador{
+  justify-content: flex-end;
+  align-self: flex-end;
 }
 
 
