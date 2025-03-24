@@ -32,7 +32,7 @@ function App() {
       setMessage(data.message);
 
       if (data.success) {
-        navigate('/mainHome'); // Redirige a mainHome.jsx
+        navigate('mainHome/busqueda'); // Redirige a mainHome.jsx
       }
     } catch (error) {
       console.error('Error:', error);
