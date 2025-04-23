@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom"; // Importa useNavigate
+import { useNavigate } from "react-router-dom";
 import "./index.css";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const navigate = useNavigate(); // Inicializa useNavigate
+  const navigate = useNavigate();
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -32,7 +32,7 @@ function App() {
       setMessage(data.message);
 
       if (data.success) {
-        navigate('mainHome/busqueda'); // Redirige a mainHome.jsx
+        navigate('mainHome/busqueda');
       }
     } catch (error) {
       console.error('Error:', error);
@@ -40,62 +40,64 @@ function App() {
   };
 
   return (
-    <main>
-      <div className="marginHeader">
-        <div className="language-selector">
-          <button className="transparent-button" onClick={() => setShowLangOptions(!showLangOptions)}>
-            {showLangOptions ? (
-              <span>lang&nbsp;&nbsp;&nbsp;&nbsp;▲&nbsp;&nbsp;</span>
-            ) : (
-              <span>lang&nbsp;&nbsp;&nbsp;&nbsp;▼&nbsp;&nbsp;</span>
-            )}
-          </button>
-          {showLangOptions && (
-            <div className="lang-options">
-              <button className="transparent-button" onClick={() => changeLanguage('es')}>Es</button>
-              <button className="transparent-button" onClick={() => changeLanguage('en')}>En</button>
-              <button className="transparent-button" onClick={() => changeLanguage('cat')}>Cat</button>
-            </div>
-          )}
-        </div>
-      </div>
-      <div className="container">
-        <div className="d-flex flex-column flex-lg-row justify-content-center align-items-center">
-          <div className="col-12 col-lg-6 mr-5 ml-5">
-            <img className="logoMini" src="/src/assets/Logo/CampusJob.png" alt="Logo" />
-          </div>
-          <div className="col-12 col-lg-6 ml-5 mr-5">
-            <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="exampleInputUsername1"
-                  name="username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  placeholder="Username"
-                  required
-                />
-                <input
-                  type="password"
-                  className="form-control"
-                  id="exampleInputPassword1"
-                  name="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Password"
-                  required
-                />
+    <div className="page-wrapper body-style">
+      <main className="main-wrapper">
+        <div className="marginHeader">
+          <div className="language-selector">
+            <button className="transparent-button" onClick={() => setShowLangOptions(!showLangOptions)}>
+              {showLangOptions ? (
+                <span>lang&nbsp;&nbsp;&nbsp;&nbsp;▲&nbsp;&nbsp;</span>
+              ) : (
+                <span>lang&nbsp;&nbsp;&nbsp;&nbsp;▼&nbsp;&nbsp;</span>
+              )}
+            </button>
+            {showLangOptions && (
+              <div className="lang-options">
+                <button className="transparent-button" onClick={() => changeLanguage('es')}>Es</button>
+                <button className="transparent-button" onClick={() => changeLanguage('en')}>En</button>
+                <button className="transparent-button" onClick={() => changeLanguage('cat')}>Cat</button>
               </div>
-              <button type="submit" className="btn-login">{t("header.login")}</button>
-            </form>
-            {message && <h4>{message}</h4>}
+            )}
           </div>
         </div>
-      </div>
-      <div className="marginFooter"></div>
-      <footer className="col-12 text-center">
+        <div className="container">
+          <div className="d-flex flex-column flex-lg-row justify-content-center align-items-center">
+            <div className="col-12 col-lg-6 mr-5 ml-5">
+              <img className="logoMini" src="/src/assets/Logo/CampusJob.png" alt="Logo" />
+            </div>
+            <div className="col-12 col-lg-6 ml-5 mr-5">
+              <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="exampleInputUsername1"
+                    name="username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Username"
+                    required
+                  />
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="exampleInputPassword1"
+                    name="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Password"
+                    required
+                  />
+                </div>
+                <button type="submit" className="btn-login">{t("header.login")}</button>
+              </form>
+              {message && <h4>{message}</h4>}
+            </div>
+          </div>
+        </div>
+        <div className="marginFooter"></div>
+      </main>
+      <footer className="footer-container col-12 text-center">
         <div className="footer-links">
           <a href="#">{t("footer.information")}</a>
           <a href="#">{t("footer.help")}</a>
@@ -108,7 +110,7 @@ function App() {
           <p className="p-footer">© 2025 Campus Job.</p>
         </div>
       </footer>
-    </main>
+    </div>
   );
 }
 
