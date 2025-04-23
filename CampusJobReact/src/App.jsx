@@ -45,9 +45,9 @@ function App() {
         <div className="language-selector">
           <button className="transparent-button" onClick={() => setShowLangOptions(!showLangOptions)}>
             {showLangOptions ? (
-              <span>leng&nbsp;&nbsp;&nbsp;&nbsp;▲&nbsp;&nbsp;</span>
+              <span>lang&nbsp;&nbsp;&nbsp;&nbsp;▲&nbsp;&nbsp;</span>
             ) : (
-              <span>leng&nbsp;&nbsp;&nbsp;&nbsp;▼&nbsp;&nbsp;</span>
+              <span>lang&nbsp;&nbsp;&nbsp;&nbsp;▼&nbsp;&nbsp;</span>
             )}
           </button>
           {showLangOptions && (

@@ -1,11 +1,27 @@
+/* GENERAL */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: #05302d; /* Fondo oscuro */
   color: #ffffff; /* Texto blanco */
 }
-.marginHeader{
+
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* HEADER MARGIN */
+.marginHeader {
   /* margin-top: calc(50vh - 300px); */
 }
+
+/* LANGUAGE SELECTOR */
 .language-selector {
   position: absolute;
   top: 20px;
@@ -18,23 +34,37 @@ body {
   color: #cccccc; /* Color del texto */
   font-size: 1em;
   cursor: pointer;
-  outline: none; /* Eliminar borde y subrayado */
+  outline: none;
 }
 
 .transparent-button:focus {
-  outline: none; /* Eliminar borde y subrayado */
-}
-.transparent-button:hover {
-  color: #ffffff; /* Cambiar color del texto al pasar el mouse */
+  outline: none;
 }
 
+.transparent-button:hover {
+  color: #ffffff;
+}
+
+/* MAIN CONTAINER */
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  height: auto; /* Quitamos 100vh para evitar conflictos con main */
+}
+
+/* LANGUAGE OPTIONS */
 .lang-options {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.btn-crear-cuenta {
+/* BOTONES */
+.btn-crear-cuenta, .btn-login {
   border: none;
   text-align: center;
   display: inline-block;
@@ -42,87 +72,82 @@ body {
   padding: 10px 20px;
   font-size: 1.2em;
   color: #05302d;
-  background-color: #ffffff; /* Color azul */
+  background-color: #ffffff;
   text-decoration: none;
   border-radius: 50px;
-  margin-top: 10px; /* Reducir el margen superior */
+  margin-top: 10px;
   margin-bottom: 30px;
-  font-weight: bold; /* Texto en negrita */
+  font-weight: bold;
 }
+
 .btn-login {
-  border: none;
-  text-align: center;
-  display: inline-block;
-  width: 100%;
-  padding: 10px 20px;
-  font-size: 1.2em;
-  color: #05302d;
-  background-color: #ffffff; /* Color azul */
-  text-decoration: none;
-  border-radius: 50px;
-  margin-top: 15px; /* Reducir el margen superior */
-  margin-bottom: 30px;
-  font-weight: bold; /* Texto en negrita */
+  margin-top: 15px;
 }
+
+/* FORMULARIO */
 .form-group {
   margin-top: -40px;
   margin-bottom: 30px;
 }
+
 .form-control {
   margin-bottom: 35px;
-  background-color: #05302d; /* Fondo oscuro */
-  color: #ffffff; /* Texto blanco */
+  background-color: #05302d;
+  color: #ffffff;
   border: none;
-  border-bottom: 2px solid #ffffff; /* Borde blanco */
+  border-bottom: 2px solid #ffffff;
   border-radius: 0;
   padding: 10px;
   font-size: 1.2em;
 }
+
 .form-control:focus {
   box-shadow: none;
-  background-color: #05302d; /* Fondo oscuro */
-  color: #ffffff; /* Texto blanco */
+  background-color: #05302d;
+  color: #ffffff;
   border: none;
-  border-bottom: 2px solid #ffffff; /* Borde blanco */
+  border-bottom: 2px solid #ffffff;
 }
 
-.container {
-  padding: 20px; /* Ajusta el valor del padding según tus necesidades */
+/* FOOTER */
+footer {
+  padding: 20px 0;
+  background-color: #05302d;
+  text-align: center;
 }
+
 .footer-links a {
-  color: #c4c4c4; /* Texto blanco */
+  color: #c4c4c4;
   text-decoration: none;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 0 10px;
 }
+
 .footer-links a:hover {
-  color: #ffffff; /* Cambiar texto a blanco al pasar el mouse */
-}
-.marginFooter{
-  margin-top: calc(10vh);
+  color: #ffffff;
 }
 
 .p-footer {
   margin-top: 20px;
-  margin-bottom: 20px;
 }
 
+.marginFooter {
+  height: 0; /* Elimina o mantenlo sin efecto */
+}
 
-/* Estilos para el MOVIL */
+/* RESPONSIVE */
 @media (max-width: 991px) {
-
-  .marginHeader{
-      margin-top: calc(-10vh);
+  .marginHeader {
+    margin-top: calc(-10vh);
   }
   .container {
-      width: 100%;
+    width: 100%;
   }
   .logoMini {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      width: 100%;
-      margin-top: 20px;
-      margin-bottom: 20px;
-  }   
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 }
