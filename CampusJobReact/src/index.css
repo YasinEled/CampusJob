@@ -1,27 +1,31 @@
-/* GENERAL */
-html, body {
-  height: 100%;
-  margin: 0;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #05302d; /* Fondo oscuro */
-  color: #ffffff; /* Texto blanco */
-}
-
-main {
+.page-wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* HEADER MARGIN */
+.main-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Fondo, fuente y color general */
+.body-style {
+  font-family: Arial, sans-serif;
+  background-color: #05302d;
+  color: #ffffff;
+  margin: 0;
+  height: 100%;
+}
+
+/* HEADER */
 .marginHeader {
   /* margin-top: calc(50vh - 300px); */
 }
 
-/* LANGUAGE SELECTOR */
 .language-selector {
   position: absolute;
   top: 20px;
@@ -31,7 +35,7 @@ main {
 .transparent-button {
   background-color: transparent;
   border: none;
-  color: #cccccc; /* Color del texto */
+  color: #cccccc;
   font-size: 1em;
   cursor: pointer;
   outline: none;
@@ -45,26 +49,20 @@ main {
   color: #ffffff;
 }
 
-/* MAIN CONTAINER */
+/* CONTENIDO */
 .container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
   padding: 20px;
-  height: auto; /* Quitamos 100vh para evitar conflictos con main */
 }
 
-/* LANGUAGE OPTIONS */
 .lang-options {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-/* BOTONES */
-.btn-crear-cuenta, .btn-login {
+.btn-crear-cuenta,
+.btn-login {
   border: none;
   text-align: center;
   display: inline-block;
@@ -75,16 +73,18 @@ main {
   background-color: #ffffff;
   text-decoration: none;
   border-radius: 50px;
-  margin-top: 10px;
   margin-bottom: 30px;
   font-weight: bold;
+}
+
+.btn-crear-cuenta {
+  margin-top: 10px;
 }
 
 .btn-login {
   margin-top: 15px;
 }
 
-/* FORMULARIO */
 .form-group {
   margin-top: -40px;
   margin-bottom: 30px;
@@ -110,7 +110,7 @@ main {
 }
 
 /* FOOTER */
-footer {
+.footer-container {
   padding: 20px 0;
   background-color: #05302d;
   text-align: center;
@@ -131,7 +131,7 @@ footer {
 }
 
 .marginFooter {
-  height: 0; /* Elimina o mantenlo sin efecto */
+  height: 0;
 }
 
 /* RESPONSIVE */
@@ -139,9 +139,11 @@ footer {
   .marginHeader {
     margin-top: calc(-10vh);
   }
+
   .container {
     width: 100%;
   }
+
   .logoMini {
     display: block;
     margin-left: auto;
