@@ -24,14 +24,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $input['username'];
     $password = $input['password'];
 
-    // Prepare and execute the query
+    
     $stmt = $conn->prepare("SELECT * FROM usuario WHERE nomUsuari = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
 
-    // Verify the password and if the account is active
+    // Verificar si el usuario existe y la contraseña es correcta
     if ($user && $password === $user['password'] && $user['activo'] == 1) {
         echo json_encode(["success" => true, "message" => "Login successful."]);
     } else {

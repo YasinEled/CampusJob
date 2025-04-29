@@ -20,24 +20,24 @@ function App() {
     event.preventDefault();
 
     try {
-      const response = await fetch('http://localhost/CampusJob/Backend/login.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      });
+        const response = await fetch('http://localhost:3000/api/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, password }), // Cambiado a username
+        });
 
-      const data = await response.json();
-      setMessage(data.message);
+        const data = await response.json();
+        setMessage(data.message);
 
-      if (data.success) {
-        navigate('mainHome/busqueda');
-      }
+        if (data.success) {
+            navigate('mainHome/busqueda');
+        }
     } catch (error) {
-      console.error('Error:', error);
+        console.error('Error:', error);
     }
-  };
+};
 
   return (
     <div className="page-wrapper body-style">
