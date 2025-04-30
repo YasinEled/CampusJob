@@ -20,12 +20,12 @@ function App() {
     event.preventDefault();
 
     try {
-        const response = await fetch('/api/auth/login', {
+        const response = await fetch('https://campusjobbackend.onrender.com/api/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ username, password }), // Cambiado a username
+            body: JSON.stringify({ username, password }),
         });
 
         const data = await response.json();
@@ -36,8 +36,9 @@ function App() {
         }
     } catch (error) {
         console.error('Error:', error);
+        setMessage(t("login.connectionError"));
     }
-};
+  };
 
   return (
     <div className="page-wrapper body-style">
@@ -63,7 +64,7 @@ function App() {
         <div className="container">
           <div className="d-flex flex-column flex-lg-row justify-content-center align-items-center">
             <div className="col-12 col-lg-6 mr-5 ml-5">
-              <img className="logoMini" src="/src/assets/Logo/CampusJob.png" alt="Logo" />
+              <img className="logoMini" src="/src/assets/Logo/CampusJob.png" alt="Logo CampusJob" />
             </div>
             <div className="col-12 col-lg-6 ml-5 mr-5">
               <form onSubmit={handleSubmit}>

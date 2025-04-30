@@ -12,6 +12,9 @@
         "privacyPolicy": "Polotica de privacidad",
         "accessibility": "Accesibilidad",
         "termsOfService": "Terminos de servicio"
-    }
+    },
+    "login": {
+        "connectionError": "Hubo un problema conectando con el servidor"
+      }
 }
 
