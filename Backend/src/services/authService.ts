@@ -5,11 +5,11 @@ export class AuthService {
         this.users = usersModel;
     }
 
-    async validateUser(email: string, password: string): Promise<any> {
-        const user = await this.users.findByEmail(email); // Cambiado a buscar por email
+    async validateUser(username: string, password: string): Promise<any> {
+        const user = await this.users.findByUsername(username); // Cambiado a buscar por username
         if (user && user.password === password && user.activo === 1) {
             return { success: true, user };
         }
-        return { success: false, message: "Email or password not correct, or account not activated." };
+        return { success: false, message: "Username or password not correct, or account not activated." };
     }
 }

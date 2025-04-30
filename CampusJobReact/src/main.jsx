@@ -19,15 +19,17 @@ import global_cat from "./TRADUCCIONES/cat/global.json";
 import NotFound from "./NotFound.jsx";  // Importa el componente NotFound
 
 // Inicializar i18next
-await i18next.init({
-  interpolation: { escapeValue: false },
-  lng: "cat",
-  resources: {
-    es: { global: global_es },
-    en: { global: global_en },
-    cat: { global: global_cat },
-  },
-});
+(async () => {
+  await i18next.init({
+    interpolation: { escapeValue: false },
+    lng: "cat",
+    resources: {
+      es: { global: global_es },
+      en: { global: global_en },
+      cat: { global: global_cat },
+    },
+  });
+})();
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
