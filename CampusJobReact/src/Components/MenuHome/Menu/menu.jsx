@@ -1,6 +1,8 @@
 import {HomeOutlined, SettingOutlined, DollarOutlined, FundProjectionScreenOutlined } from '@ant-design/icons';
 import Imagenlogomenuizquierdahecho from '../../../assets/Logo/CampusJobBorderLogo.png';
 import '../../ComponentsCSS/MenuHome/menu.css';
+import { Link } from "react-router-dom";
+
 
 
 function Menu() {
@@ -12,7 +14,9 @@ function Menu() {
         <nav className="MenuIzqNav">
           <ul>
             <li className="limenuizq">
-              <a href="/menu"  className='inici'><HomeOutlined  className="logoMnuIzq"/></a>
+            <Link to="/mainhome/busqueda" className="inici">
+            <HomeOutlined className="logoMnuIzq" />
+            </Link>            
             </li>
             <li>
               <a href="/menu" className='inici'><FundProjectionScreenOutlined className="logoMnuIzq" /></a>
