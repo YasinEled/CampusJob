@@ -11,6 +11,9 @@ import MainBusqueda from "./Components/MenuHome/MainBusqueda/MainBusqueda";
 import PerfilPropio from "./Components/PerfilUsuario/perfilPropio.jsx"; 
 import PerfilMod from "./Components/PerfilUsuario/perfilModificable.jsx";
 import FormOfertas from "./Components/createOfertas/createOfertas.jsx";
+import PerfilEmpresa from "./Components/PerfilEmpresa/PerfilEmpresa.jsx"; 
+import BuscadorPerfil from "./Components/BuscadorPerfil/BuscadorPerfil.jsx";
+
 // Import language files
 import global_es from "./TRADUCCIONES/es/global.json";
 import global_en from "./TRADUCCIONES/en/global.json";
@@ -41,8 +44,10 @@ root.render(
           <Route path="/mainHome" element={<MenuHome />}>
             <Route path="busqueda" element={<MainBusqueda />} />
             <Route path="perfil" element={<PerfilPropio />} />
+            <Route path="PerfilEmpresa" element={<PerfilEmpresa />} />
             <Route path="perfilModificable" element={<PerfilMod />} />
             <Route path="formOfertes" element={<FormOfertas />} />
+            <Route path="BuscadorPerfil" element={<BuscadorPerfil />} />
           </Route>
 
           {/* Ruta para manejar 404 */}
