@@ -1,231 +1,75 @@
-/* buscadorPerfil.css */
-.buscadorPerfil__container {
-  display: flex;
-  margin-left: 10.4em;
-  height: calc(100vh - 7em);
-  flex-direction: column;
-  justify-content: flex-start;
-  overflow: hidden;
+/* .perfilContainer: Aseguramos que el contenedor principal ocupe todo el espacio disponible, 
+   excluyendo el espacio del header (ajustar 60px según el tamaño real del header) */
+   .perfilContainer {
+    display: flex;
+    margin-left: 10.4em;
+    height: calc(100vh - 7em); /* Restamos la altura del header (ajustar 60px a la altura real del header) */
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden; /* Evita que haya barras de desplazamiento */
 }
 
-.buscadorPerfil__usuario {
-  background: #042522;
-  width: 60%;
-  height: 100%;
-  border-radius: 15px;
-  color: white;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-  position: relative;
-  overflow: hidden;
+/* .PerfilUsuario: Este es el contenedor del perfil */
+.PerfilUsuario {
+    background: #042522;
+    width: 60%;
+    height: 100%; /* Hace que el perfil ocupe toda la altura disponible dentro de .perfilContainer */
+    border-radius: 15px;
+    color: white;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden; /* Evita que haya barras de desplazamiento dentro del perfil */
 }
 
 /* Fondo */
-.buscadorPerfil__fondo {
-  background: white;
-  width: 100%;
-  height: 8em;
-  border-radius: 12px 12px 0 0;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.fondo {
+    background: white;
+    width: 100%;
+    height: 14em;
+    border-radius: 12px 12px 0 0;
+    position: relative; /* Para que los elementos hijos con posición absoluta se ubiquen en relación con este contenedor */
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente (si es necesario) */
 }
 
-.buscadorPerfil__fondo h2 {
-  color: #042522;
-  font-size: 1.8rem;
-  font-weight: 600;
+/* Imagen de perfil */
+.profile {
+    width: 9em;
+    height: 9em;
+    border-radius: 50%;
+    border: 3px solid #042522;
+    position: absolute; /* Permite colocar la imagen sobre el fondo */
+    bottom: -4.5em; /* Ajusta la posición para que sobresalga la mitad */
+    left: 8em; /* Coloca la imagen en el centro */
+    transform: translateX(-50%); /* Ajuste fino para centrarla correctamente */
 }
 
-/* Contenedor de información */
-.buscadorPerfil__infoContainer {
-  padding: 2em;
+
+.infoPerfil {
+    font-size: 14px;
+    padding-left: 2em;
+    padding-top: 7em;
+    max-width: 70%;
 }
 
-.buscadorPerfil__infoPerfil {
-  font-size: 14px;
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5em;
+/* Información en el perfil */
+.InfoContainer {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 2em;
+    padding-left: 2em;
 }
 
-/* Filtros */
-.buscadorPerfil__filtros {
-  display: flex;
-  align-items: center;
-  gap: 1em;
+/* Imagen de centro en el perfil */
+.ImagenCentroPerfil {
+    width: 6em;
+    height: 6em;
+    border-radius: 20%;
+    margin-top: 1em;
+    margin-right: 2em;
 }
 
-.buscadorPerfil__filtros label {
-  font-weight: 600;
-  color: #1abc9c;
-  min-width: 80px;
-}
-
-.buscadorPerfil__filtros select {
-  padding: 0.75em 1em;
-  font-size: 14px;
-  border: 1px solid #1abc9c;
-  border-radius: 12px;
-  background-color: #0f3a36;
-  color: white;
-  transition: all 0.3s ease;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-  width: 200px;
-}
-
-.buscadorPerfil__filtros select:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-.buscadorPerfil__filtros select:focus {
-  outline: none;
-  border-color: #1abc9c;
-  background-color: #144440;
-  box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.3);
-}
-
-/* Búsqueda */
-.buscadorPerfil__busqueda {
-  display: flex;
-  align-items: center;
-  gap: 1em;
-}
-
-.buscadorPerfil__busqueda label {
-  font-weight: 600;
-  color: #1abc9c;
-  min-width: 120px;
-}
-
-.buscadorPerfil__busqueda input {
-  width: 100%;
-  padding: 0.75em 1em;
-  font-size: 14px;
-  border: 1px solid #1abc9c;
-  border-radius: 12px;
-  background-color: #0f3a36;
-  color: white;
-  transition: all 0.3s ease;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-.buscadorPerfil__busqueda input::placeholder {
-  color: #b0d1cd;
-}
-
-.buscadorPerfil__busqueda input:focus {
-  outline: none;
-  border-color: #1abc9c;
-  background-color: #144440;
-  box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.3);
-}
-
-/* Resultados */
-.buscadorPerfil__resultados {
-  background-color: #0f3a36;
-  padding: 1.5em;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  margin-top: 1em;
-}
-
-.buscadorPerfil__resultados h3 {
-  margin-top: 0;
-  margin-bottom: 1em;
-  color: #1abc9c;
-  font-size: 1.2rem;
-  font-weight: 600;
-  border-bottom: 2px solid #1abc9c;
-  padding-bottom: 0.5em;
-  display: inline-block;
-}
-
-.buscadorPerfil__resultados p {
-  font-size: 15px;
-  color: #b0d1cd;
-}
-
-/* Botones (por si los necesitas en el futuro) */
-.buscadorPerfil__btn {
-  padding: 0.75em;
-  border: none;
-  background-color: #1abc9c;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.buscadorPerfil__btn:hover {
-  background-color: #17a589;
-  transform: scale(1.05);
-}
-
-.buscadorPerfil__btn:active {
-  transform: scale(0.97);
-}
-
-/* Responsive */
-@media (max-width: 1200px) {
-  .buscadorPerfil__usuario {
-      width: 75%;
-  }
-}
-
-@media (max-width: 992px) {
-  .buscadorPerfil__container {
-      margin-left: 5em;
-  }
-  
-  .buscadorPerfil__usuario {
-      width: 80%;
-  }
-}
-
-@media (max-width: 768px) {
-  .buscadorPerfil__container {
-      margin-left: 0;
-      padding: 1em;
-  }
-  
-  .buscadorPerfil__usuario {
-      width: 100%;
-  }
-  
-  .buscadorPerfil__filtros,
-  .buscadorPerfil__busqueda {
-      flex-direction: column;
-      align-items: flex-start;
-  }
-  
-  .buscadorPerfil__filtros label,
-  .buscadorPerfil__busqueda label {
-      min-width: auto;
-      margin-bottom: 0.5em;
-  }
-  
-  .buscadorPerfil__filtros select,
-  .buscadorPerfil__busqueda input {
-      width: 100%;
-  }
-}
-
-/* Animaciones */
-@keyframes fadeIn {
-  from {
-      opacity: 0;
-      transform: translateY(10px);
-  }
-  to {
-      opacity: 1;
-      transform: translateY(0);
-  }
-}
-
-.buscadorPerfil__resultados {
-  animation: fadeIn 0.4s ease-out;
+.InformacionPrincipalUsuario{
+    max-width: 20em;
 }
