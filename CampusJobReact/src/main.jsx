@@ -13,6 +13,7 @@ import PerfilMod from "./Components/PerfilUsuario/perfilModificable.jsx";
 import FormOfertas from "./Components/createOfertas/createOfertas.jsx";
 import PerfilEmpresa from "./Components/PerfilEmpresa/PerfilEmpresa.jsx"; 
 import BuscadorPerfil from "./Components/BuscadorPerfil/BuscadorPerfil.jsx";
+import PerfilTeacher from "./Components/PerfilTeacher/PerfilTeacher.jsx";
 
 // Import language files
 import global_es from "./TRADUCCIONES/es/global.json";
@@ -48,6 +49,8 @@ root.render(
             <Route path="perfilModificable" element={<PerfilMod />} />
             <Route path="formOfertes" element={<FormOfertas />} />
             <Route path="BuscadorPerfil" element={<BuscadorPerfil />} />
+            <Route path="PerfilTeacher" element={<PerfilTeacher />} />
+            
           </Route>
 
           {/* Ruta para manejar 404 */}
