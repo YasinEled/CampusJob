@@ -13,7 +13,7 @@ import PerfilMod from "./Components/PerfilUsuario/perfilModificable.jsx";
 import FormOfertas from "./Components/createOfertas/createOfertas.jsx";
 import PerfilEmpresa from "./Components/PerfilEmpresa/PerfilEmpresa.jsx"; 
 import BuscadorPerfil from "./Components/BuscadorPerfil/BuscadorPerfil.jsx";
-
+import CreadorProfesor from "./Components/CreadorProfesores/CreadorProfesor.jsx"; // Importa el componente CreadorProfesor
 // Import language files
 import global_es from "./TRADUCCIONES/es/global.json";
 import global_en from "./TRADUCCIONES/en/global.json";
@@ -43,6 +43,8 @@ root.render(
           <Route path="/" element={<App />} />
           <Route path="/mainHome" element={<MenuHome />}>
             <Route path="busqueda" element={<MainBusqueda />} />
+            <Route path="CreadorProfesor" element={<CreadorProfesor />} />
+
             <Route path="perfil" element={<PerfilPropio />} />
             <Route path="PerfilEmpresa" element={<PerfilEmpresa />} />
             <Route path="perfilModificable" element={<PerfilMod />} />
