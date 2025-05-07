@@ -12,8 +12,8 @@ import PerfilPropio from "./Components/PerfilUsuario/perfilPropio.jsx";
 import PerfilMod from "./Components/PerfilUsuario/perfilModificable.jsx";
 import FormOfertas from "./Components/createOfertas/createOfertas.jsx";
 import PerfilEmpresa from "./Components/PerfilEmpresa/PerfilEmpresa.jsx"; 
-import BuscadorPerfil from "./Components/BuscadorPerfil/BuscadorPerfil.jsx";
 import CreadorProfesor from "./Components/CreadorProfesores/CreadorProfesor.jsx"; // Importa el componente CreadorProfesor
+import SeachUser from "./Components/BuscadorPerfil/SeachUser.js";
 // Import language files
 import global_es from "./TRADUCCIONES/es/global.json";
 import global_en from "./TRADUCCIONES/en/global.json";
@@ -49,7 +49,7 @@ root.render(
             <Route path="PerfilEmpresa" element={<PerfilEmpresa />} />
             <Route path="perfilModificable" element={<PerfilMod />} />
             <Route path="formOfertes" element={<FormOfertas />} />
-            <Route path="BuscadorPerfil" element={<BuscadorPerfil />} />
+            <Route path="BuscadorPerfil" element={<SeachUser />} />
           </Route>
 
           {/* Ruta para manejar 404 */}

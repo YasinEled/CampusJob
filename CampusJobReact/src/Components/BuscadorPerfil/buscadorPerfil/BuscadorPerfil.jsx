@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../Components/ComponentsCSS/BuscadorPerfil/buscadorPerfil.css';
+import '../../../Components/ComponentsCSS/BuscadorPerfil/buscadorPerfil.css';
 
 const BuscadorPerfil = () => {
 
