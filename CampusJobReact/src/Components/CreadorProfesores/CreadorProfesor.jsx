@@ -190,6 +190,284 @@ const FormularioRegistro = () => {
           Registrarse
         </button>
       </form>
+      <form onSubmit={handleSubmit} className="CreadorProfessorFormulario">
+        <div className="CreadorProfessorGrupo">
+          <label className="CreadorProfessorEtiqueta">
+            Nombre:
+            <input
+              type="text"
+              name="nombre"
+              value={formData.nombre}
+              onChange={handleChange}
+              className="CreadorProfessorEntrada"
+              required
+            />
+          </label>
+        </div>
+
+        <div className="CreadorProfessorGrupo">
+          <label className="CreadorProfessorEtiqueta">
+            Apellido:
+            <input
+              type="text"
+              name="apellido"
+              value={formData.apellido}
+              onChange={handleChange}
+              className="CreadorProfessorEntrada"
+              required
+            />
+          </label>
+        </div>
+
+        <div className="CreadorProfessorGrupo">
+          <label className="CreadorProfessorEtiqueta">
+            Email:
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="CreadorProfessorEntrada"
+              required
+            />
+          </label>
+        </div>
+
+        <div className="CreadorProfessorGrupo">
+          <label className="CreadorProfessorEtiqueta">
+            DNI:
+            <input
+              type="text"
+              name="dni"
+              value={formData.dni}
+              onChange={handleChange}
+              className="CreadorProfessorEntrada"
+              required
+            />
+          </label>
+        </div>
+
+        <div className="CreadorProfessorGrupo">
+          <label className="CreadorProfessorEtiqueta">
+            Nombre de Usuario:
+            <input
+              type="text"
+              name="nombreUsuario"
+              value={formData.nombreUsuario}
+              onChange={handleChange}
+              className="CreadorProfessorEntrada"
+              required
+            />
+          </label>
+        </div>
+
+        <div className="CreadorProfessorGrupo">
+          <label className="CreadorProfessorEtiqueta">
+            Contraseña:
+            <input
+              type="password"
+              name="contrasena"
+              value={formData.contrasena}
+              onChange={handleChange}
+              className="CreadorProfessorEntrada"
+              required
+            />
+          </label>
+        </div>
+
+        <div className="CreadorProfessorGrupo">
+          <label className="CreadorProfessorEtiqueta">
+            Confirmar Contraseña:
+            <input
+              type="password"
+              name="confirmarContrasena"
+              value={formData.confirmarContrasena}
+              onChange={handleChange}
+              className="CreadorProfessorEntrada"
+              required
+            />
+          </label>
+        </div>
+
+        <div className="CreadorProfessorGrupo">
+          <label className="CreadorProfessorEtiqueta">
+            Foto de Perfil:
+            <input
+              type="file"
+              name="fotoPerfil"
+              onChange={handleFileChange}
+              className="CreadorProfessorEntradaArchivo"
+              accept="image/*"
+            />
+          </label>
+          
+          {previewImage && (
+            <div className="CreadorProfessorPreviewContainer">
+              <img 
+                src={previewImage} 
+                alt="Vista previa de avatar" 
+                className="CreadorProfessorAvatarPreview" 
+              />
+            </div>
+          )}
+        </div>
+
+        <div className="CreadorProfessorGrupo">
+          <label className="CreadorProfessorEtiqueta">
+            Descripción:
+            <textarea
+              name="descripcion"
+              value={formData.descripcion}
+              onChange={handleChange}
+              className="CreadorProfessorAreaTexto"
+              rows="4"
+            ></textarea>
+          </label>
+        </div>
+
+        <button type="submit" className="CreadorProfessorBoton">
+          Registrarse
+        </button>
+      </form>
+      <form onSubmit={handleSubmit} className="CreadorProfessorFormulario">
+        <div className="CreadorProfessorGrupo">
+          <label className="CreadorProfessorEtiqueta">
+            Nombre:
+            <input
+              type="text"
+              name="nombre"
+              value={formData.nombre}
+              onChange={handleChange}
+              className="CreadorProfessorEntrada"
+              required
+            />
+          </label>
+        </div>
+
+        <div className="CreadorProfessorGrupo">
+          <label className="CreadorProfessorEtiqueta">
+            Apellido:
+            <input
+              type="text"
+              name="apellido"
+              value={formData.apellido}
+              onChange={handleChange}
+              className="CreadorProfessorEntrada"
+              required
+            />
+          </label>
+        </div>
+
+        <div className="CreadorProfessorGrupo">
+          <label className="CreadorProfessorEtiqueta">
+            Email:
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="CreadorProfessorEntrada"
+              required
+            />
+          </label>
+        </div>
+
+        <div className="CreadorProfessorGrupo">
+          <label className="CreadorProfessorEtiqueta">
+            DNI:
+            <input
+              type="text"
+              name="dni"
+              value={formData.dni}
+              onChange={handleChange}
+              className="CreadorProfessorEntrada"
+              required
+            />
+          </label>
+        </div>
+
+        <div className="CreadorProfessorGrupo">
+          <label className="CreadorProfessorEtiqueta">
+            Nombre de Usuario:
+            <input
+              type="text"
+              name="nombreUsuario"
+              value={formData.nombreUsuario}
+              onChange={handleChange}
+              className="CreadorProfessorEntrada"
+              required
+            />
+          </label>
+        </div>
+
+        <div className="CreadorProfessorGrupo">
+          <label className="CreadorProfessorEtiqueta">
+            Contraseña:
+            <input
+              type="password"
+              name="contrasena"
+              value={formData.contrasena}
+              onChange={handleChange}
+              className="CreadorProfessorEntrada"
+              required
+            />
+          </label>
+        </div>
+
+        <div className="CreadorProfessorGrupo">
+          <label className="CreadorProfessorEtiqueta">
+            Confirmar Contraseña:
+            <input
+              type="password"
+              name="confirmarContrasena"
+              value={formData.confirmarContrasena}
+              onChange={handleChange}
+              className="CreadorProfessorEntrada"
+              required
+            />
+          </label>
+        </div>
+
+        <div className="CreadorProfessorGrupo">
+          <label className="CreadorProfessorEtiqueta">
+            Foto de Perfil:
+            <input
+              type="file"
+              name="fotoPerfil"
+              onChange={handleFileChange}
+              className="CreadorProfessorEntradaArchivo"
+              accept="image/*"
+            />
+          </label>
+          
+          {previewImage && (
+            <div className="CreadorProfessorPreviewContainer">
+              <img 
+                src={previewImage} 
+                alt="Vista previa de avatar" 
+                className="CreadorProfessorAvatarPreview" 
+              />
+            </div>
+          )}
+        </div>
+
+        <div className="CreadorProfessorGrupo">
+          <label className="CreadorProfessorEtiqueta">
+            Descripción:
+            <textarea
+              name="descripcion"
+              value={formData.descripcion}
+              onChange={handleChange}
+              className="CreadorProfessorAreaTexto"
+              rows="4"
+            ></textarea>
+          </label>
+        </div>
+
+        <button type="submit" className="CreadorProfessorBoton">
+          Registrarse
+        </button>
+      </form>
     </div>
   );
 };

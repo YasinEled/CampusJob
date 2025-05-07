@@ -1,0 +1,48 @@
+import React, { useState } from "react";
+import "../Styles/CreadorUser.css";
+
+const options = [
+  { id: "alumne", label: "Alumne" },
+  { id: "profesor", label: "Profesor" },
+  { id: "empresa", label: "Empresa" },
+];
+
+const CreatorUsers = () => {
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+
+  const handleLabelClick = (value: string) => {
+    // Si el usuario hace clic en el mismo valor, se deselecciona
+    setSelectedOption(prev => (prev === value ? null : value));
+  };
+
+  return (
+    <main className="creatorUsersMain">
+      <div className="containerCreatorUser">
+          {options
+            .filter(opt => selectedOption === null || selectedOption === opt.id)
+            .map(opt => (
+              <React.Fragment key={opt.id}>
+                <input
+                  className="CreatorSelectorUser"
+                  type="radio"
+                  id={opt.id}
+                  name="selector"
+                  value={opt.id}
+                  checked={selectedOption === opt.id}
+                  readOnly // Previene cambios indeseados
+                  style={{ display: "none" }}
+                />
+                <label
+                  htmlFor={opt.id}
+                  onClick={() => handleLabelClick(opt.id)}
+                >
+                  {opt.label}
+                </label>
+              </React.Fragment>
+            ))}
+        </div>
+    </main>
+  );
+};
+
+export default CreatorUsers;
