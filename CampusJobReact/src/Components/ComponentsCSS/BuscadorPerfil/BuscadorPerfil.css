@@ -96,8 +96,8 @@
 .buscador-container input:focus,
 .buscador-container select:focus {
     outline: none;
-    border: 2px solid #007bff;
-}
+    border-color: #00FFED;
+    box-shadow: 0 0 8px rgba(0, 255, 237, 0.5);}
 
 .buscador-container button {
     width: 100%;
