@@ -20,6 +20,16 @@ export default function ModalCrearUsuarios({ onClose }) {
     if (tipo === "Usuario") {
       navigate("/AñadirUsuario"); 
     }
+    if (tipo === "Admin") {
+      navigate("/AñadirUsuario"); 
+    }
+    if (tipo === "Profesor") {
+      navigate("/AñadirUsuario"); 
+    }
+    if (tipo === "Empresa") {
+      navigate("/AñadirUsuario"); 
+    }
+
   };
 
   return (
