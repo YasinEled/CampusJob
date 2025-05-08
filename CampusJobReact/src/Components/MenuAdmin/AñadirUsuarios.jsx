@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import "../ComponentsCSS/MenuAdmin/AñadirUsuarios.css";
+import { useNavigate } from "react-router-dom";
 
 export default function ModalCrearUsuarios({ onClose }) {
+  const navigate = useNavigate(); 
+
   const [tipoUsuario, setTipoUsuario] = useState("");
   const [email, setEmail] = useState("");
   const [mensaje, setMensaje] = useState("");
@@ -14,7 +17,9 @@ export default function ModalCrearUsuarios({ onClose }) {
 
   const handleCrear = (tipo) => {
     abrirModal(tipo);
-    // Aquí puedes agregar lógica adicional según el tipo
+    if (tipo === "Usuario") {
+      navigate("/AñadirUsuario"); 
+    }
   };
 
   return (
