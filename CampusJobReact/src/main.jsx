@@ -15,7 +15,7 @@ import PerfilEmpresa from "./Components/PerfilEmpresa/PerfilEmpresa.jsx";
 import CreatorUsers from "./Components/CreadorUser/Page/CreatorUsers.js";
 import SeachUser from "./Components/BuscadorPerfil/SeachUser.js";
 import PrimerInicio from "./Components/PrimerInici/PrimerIniciUsuari.jsx"; // Importa el componente PrimerInicio
-
+import MenuAdmin from "./Components/MenuAdmin/MenuAdmin.jsx";
 // Import language files
 import global_es from "./TRADUCCIONES/es/global.json";
 import global_en from "./TRADUCCIONES/en/global.json";
@@ -53,6 +53,7 @@ root.render(
             <Route path="formOfertes" element={<FormOfertas />} />
             <Route path="BuscadorPerfil" element={<SeachUser />} />
             <Route path="PrimerInicio" element={<PrimerInicio />} />
+            <Route path="MenuAdmin" element={<MenuAdmin />} />
 
           </Route>
 
