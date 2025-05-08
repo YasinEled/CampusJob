@@ -12,6 +12,10 @@ import PerfilPropio from "./Components/PerfilUsuario/perfilPropio.jsx";
 import PerfilMod from "./Components/PerfilUsuario/perfilModificable.jsx";
 import FormOfertas from "./Components/createOfertas/createOfertas.jsx";
 import PerfilEmpresa from "./Components/PerfilEmpresa/PerfilEmpresa.jsx"; 
+import CreatorUsers from "./Components/CreadorUser/Page/CreatorUsers.js";
+import SeachUser from "./Components/BuscadorPerfil/SeachUser.js";
+import PrimerInicio from "./Components/PrimerInici/PrimerIniciUsuari.jsx"; // Importa el componente PrimerInicio
+import MenuAdmin from "./Components/MenuAdmin/MenuAdmin.jsx";
 import BuscadorPerfil from "./Components/BuscadorPerfil/BuscadorPerfil.jsx";
 import PerfilTeacher from "./Components/PerfilTeacher/PerfilTeacher.jsx";
 
@@ -44,10 +48,15 @@ root.render(
           <Route path="/" element={<App />} />
           <Route path="/mainHome" element={<MenuHome />}>
             <Route path="busqueda" element={<MainBusqueda />} />
+            <Route path="CreatorUsers" element={<CreatorUsers />} />
+
             <Route path="perfil" element={<PerfilPropio />} />
             <Route path="PerfilEmpresa" element={<PerfilEmpresa />} />
             <Route path="perfilModificable" element={<PerfilMod />} />
             <Route path="formOfertes" element={<FormOfertas />} />
+            <Route path="BuscadorPerfil" element={<SeachUser />} />
+            <Route path="PrimerInicio" element={<PrimerInicio />} />
+            <Route path="MenuAdmin" element={<MenuAdmin />} />
             <Route path="BuscadorPerfil" element={<BuscadorPerfil />} />
             <Route path="PerfilTeacher" element={<PerfilTeacher />} />
             
