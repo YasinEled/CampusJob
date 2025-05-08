@@ -16,6 +16,9 @@ import CreatorUsers from "./Components/CreadorUser/Page/CreatorUsers.js";
 import SeachUser from "./Components/BuscadorPerfil/SeachUser.js";
 import PrimerInicio from "./Components/PrimerInici/PrimerIniciUsuari.jsx"; // Importa el componente PrimerInicio
 import MenuAdmin from "./Components/MenuAdmin/MenuAdmin.jsx";
+import BuscadorPerfil from "./Components/BuscadorPerfil/BuscadorPerfil.jsx";
+import PerfilTeacher from "./Components/PerfilTeacher/PerfilTeacher.jsx";
+
 // Import language files
 import global_es from "./TRADUCCIONES/es/global.json";
 import global_en from "./TRADUCCIONES/en/global.json";
@@ -54,7 +57,9 @@ root.render(
             <Route path="BuscadorPerfil" element={<SeachUser />} />
             <Route path="PrimerInicio" element={<PrimerInicio />} />
             <Route path="MenuAdmin" element={<MenuAdmin />} />
-
+            <Route path="BuscadorPerfil" element={<BuscadorPerfil />} />
+            <Route path="PerfilTeacher" element={<PerfilTeacher />} />
+            
           </Route>
 
           {/* Ruta para manejar 404 */}
