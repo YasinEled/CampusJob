@@ -17,6 +17,8 @@ import SeachUser from "./Components/BuscadorPerfil/SeachUser.js";
 import PrimerInicio from "./Components/PrimerInici/PrimerIniciUsuari.jsx"; // Importa el componente PrimerInicio
 import MenuAdmin from "./Components/MenuAdmin/MenuAdmin.jsx";
 import AñadirUsuario from "./Components/MenuAdmin/AñadirUsuario.jsx";
+import MenuProfesor from "./Components/MenuProfesor/MenuProfesor.jsx";
+import AñadirCursos from "./Components/MenuProfesor/AñadirCursos.jsx";
 // import BuscadorPerfil from "./Components/BuscadorPerfil/BuscadorPerfil.jsx";
 import PerfilTeacher from "./Components/PerfilTeacher/PerfilTeacher.jsx";
 // Import language files
@@ -62,6 +64,9 @@ root.render(
           {/* Rutas de Admin con anidación */}
           <Route path="MenuAdmin" element={<MenuAdmin />} />
           <Route path="AñadirUsuario" element={<AñadirUsuario />} />
+
+          <Route path="MenuProfesor" element={<MenuProfesor />} />
+          <Route path="AñadirCursos" element={<AñadirCursos />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
