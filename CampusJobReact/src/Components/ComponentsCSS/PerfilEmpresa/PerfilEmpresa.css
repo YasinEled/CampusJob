@@ -1,0 +1,190 @@
+
+.perfilContainer {
+    display: flex;
+    margin-left: 10.4em;
+    height: calc(100vh - 7em);
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden; 
+}
+
+.PerfilEmpresa {
+    position: relative; /* Necesario para el posicionamiento del botón */
+    background: #042522;
+    width: 60%;
+    height: 100%;
+    border-radius: 15px;
+    color: white;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+  }
+
+/* Fondo */
+.fondo {
+    position: relative;
+    background: white;
+    width: 100%;
+    height: 14em;
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+/* Imagen de perfil */
+.logoEmpresa {
+    width: 9em;
+    height: 9em;
+    border-radius: 20%;
+    border: 3px solid #042522;
+    position: absolute;
+    bottom: -4.5em;
+    left: 8em;
+    transform: translateX(-50%);
+  }
+
+.infoPerfil {
+    font-size: 14px;
+    padding-left: 2em;
+    padding-top: 7em;
+    max-width: 70%;
+}
+
+/* Información en el perfil */
+.InfoContainer {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 2em;
+    padding-left: 2em;
+}
+
+/* Imagen de centro en el perfil */
+.ImagenCentroPerfil {
+    width: 6em;
+    height: 6em;
+    border-radius: 20%;
+    margin-top: 1em;
+    margin-right: 2em;
+    margin-top:3em;
+}
+
+.InformacionPrincipalUsuario{
+    max-width: 20em;
+}
+
+.btnEditarPerfil {
+    margin-top: 1em;
+    padding: 0.5em 1em;
+    background-color: #1abc9c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .popupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popupContenido {
+    background: #042522;
+    padding: 2em;
+    border-radius: 16px;
+    width: 30em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    color: white;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  }
+  
+  .popupContenido input,
+  .popupContenido textarea {
+    width: 100%;
+    padding: 0.75em 1em;
+    font-size: 14px;
+    border: 1px solid #1abc9c;
+    border-radius: 12px;
+    background-color: #0f3a36;
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+  
+  .popupContenido input::placeholder,
+  .popupContenido textarea::placeholder {
+    color: #b0d1cd;
+  }
+  
+  .popupContenido input:focus,
+  .popupContenido textarea:focus {
+    outline: none;
+    border-color: #1abc9c;
+    background-color: #144440;
+    box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.3);
+  }
+  
+  .popupContenido textarea {
+    min-height: 6em;
+    resize: vertical;
+  }
+  
+  .popupContenido button {
+    padding: 0.5em;
+    border: none;
+    background-color: #042522;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .popupContenido button {
+    padding: 0.75em;
+    border: none;
+    background-color: #1abc9c;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .popupContenido button:hover {
+    background-color: #17a589;
+    transform: scale(1.05);
+  }
+  
+  .popupContenido button:active {
+    transform: scale(0.97);
+  }
+  
+
+  .btnMensaje {
+    position: absolute;
+    top: 10px; /* Lo coloca en la parte superior del contenedor */
+    right: 10px; /* Alineado a la derecha */
+    background-color: #0b6651;
+    color: white;
+    border: none;
+    padding: 0.6em 1.2em;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    z-index: 10; /* Asegura que el botón esté por encima del contenido */
+  }
+  
+  .btnMensaje:hover {
+    background-color: #0e8a6f;
+    transform: scale(1.03);
+  }

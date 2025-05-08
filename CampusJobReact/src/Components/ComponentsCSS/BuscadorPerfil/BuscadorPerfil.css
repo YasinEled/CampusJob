@@ -1,0 +1,130 @@
+.buscador-container {
+    margin-left: 10.4em;
+    width: 86%;
+    display: flex;
+    flex-direction: column;
+    background-color: #042522;
+    border-radius: 15px;
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-top: 1.8em;
+    padding-bottom: 0em;
+    margin-bottom: 0em;
+}
+
+.lineageneralBuscador {
+    width: 100%;
+    height: 0.2em;
+    background-color: #05302D;
+    border-radius: 50px;
+    margin-top: 1.5em;
+}
+
+.buscador-central {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 1em;
+}
+
+.form-buscador-left {
+    flex: 1.5;
+    margin-right: 2em;
+}
+
+.form-buscador-center {
+    flex: 1.5;
+    margin-right: 2em;
+    margin-left: 2em;
+}
+
+.form-buscador-right {
+    flex: 0.7;
+    margin-left: 2em;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+}
+
+.boton-buscar-general {
+    width: 100%;
+    background-color: #1DA89E; 
+    color: #1DA89E;
+    padding: 12px; 
+    border-radius: 8px; /* Radio de bordes un poco más suave */
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem; /* Asegura que el texto sea legible */
+    text-align: center; /* Asegura que el texto esté centrado */
+    transition: background-color 0.3s, transform 0.2s; /* Transición suave para hover y focus */
+}
+
+.boton-buscar-general:hover {
+    background-color: #0056b3; /* Cambiar a un color más fuerte al pasar el ratón */
+    transform: scale(1.05); /* Efecto de ampliación al pasar el ratón */
+}
+
+
+
+.boton-buscar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el botón dentro del contenedor */
+    align-items: center;
+}
+
+
+.buscador-container label {
+    display: block;
+    margin-top: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+.buscador-container input,
+.buscador-container select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    background: #05302D;
+}
+
+.buscador-container input:focus,
+.buscador-container select:focus {
+    outline: none;
+    border-color: #00FFED;
+    box-shadow: 0 0 8px rgba(0, 255, 237, 0.5);}
+
+.buscador-container button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    background: #1DA89E;
+    color: #042522;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    height: 3em;
+}
+
+.buscador-container button:hover {
+    background: #1DA89E;
+}
+
+.buscador-container button:focus {
+    outline: none;
+}
+
+.resultado {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+}

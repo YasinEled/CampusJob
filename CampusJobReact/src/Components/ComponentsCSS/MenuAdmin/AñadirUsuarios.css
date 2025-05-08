@@ -1,0 +1,219 @@
+
+.MenuAdminContenedor {
+  display: flex;
+  flex-direction: column;
+  background-color: #042522;
+  border-radius: 10px;
+  padding: 2em;
+  max-width: 800px;
+  margin: 0 auto;
+  color: white;
+}
+
+.MenuAdminTitulo {
+  color: white;
+  margin-bottom: 1.5em;
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: 600;
+}
+
+.CreadorAdminAdmin,
+.CreadorAdminProfe,
+.CreadorAdminEmpresa,
+.CreadorAdminUsuario {
+  background-color: #00FFED;
+  color: #042522;
+  border: none;
+  border-radius: 8px;
+  padding: 1em;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 1em;
+  transition: all 0.3s ease;
+}
+
+.CreadorAdminAdmin:hover,
+.CreadorAdminProfe:hover,
+.CreadorAdminEmpresa:hover,
+.CreadorAdminUsuario:hover {
+  background-color: #00e6d5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 255, 237, 0.3);
+}
+
+/* Idea Millonaria */
+/* .CreadorAdminAdmin {
+  background-color: #00FFED;
+}
+
+.CreadorAdminProfe {
+  background-color: #00D1FF;
+}
+
+.CreadorAdminEmpresa {
+  background-color: #00AEFF;
+}
+
+.CreadorAdminUsuario {
+  background-color: #008BFF;
+} */
+
+.MenuAdminPopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.MenuAdminPopupContent {
+  background-color: #042522;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 0 20px rgba(0, 255, 237, 0.3);
+  border: 2px solid rgba(0, 255, 237, 0.2);
+}
+
+.MenuAdminPopupHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2em;
+  border-bottom: 1px solid rgba(0, 255, 237, 0.2);
+}
+
+.MenuAdminPopupHeader h3 {
+  color: #00FFED;
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.MenuAdminPopupHeader button {
+  background: none;
+  border: none;
+  color: #00FFED;
+  font-size: 1.5em;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.MenuAdminPopupHeader button:hover {
+  color: #ff6b6b;
+  transform: scale(1.1);
+}
+
+.MenuAdminPopupBody {
+  padding: 1.5em;
+}
+
+.MenuAdminPopupBody label {
+  display: block;
+  margin-bottom: 0.5em;
+  color: white;
+  font-weight: 500;
+}
+
+.MenuAdminPopupBody input {
+  width: 100%;
+  background-color: rgb(2, 2, 2);
+  border-radius: 6px;
+  padding: 0.8em;
+  color: white;
+  border: 1px solid rgba(0, 255, 237, 0.3);
+  font-size: 1em;
+  margin-bottom: 1em;
+  transition: all 0.3s ease;
+}
+
+.MenuAdminPopupBody input:focus {
+  outline: none;
+  border-color: #00FFED;
+  box-shadow: 0 0 8px rgba(0, 255, 237, 0.5);
+}
+
+.MenuAdminPopupMensaje {
+  text-align: center;
+  padding: 0.8em;
+  margin: 0 1.5em;
+  border-radius: 6px;
+  background-color: rgba(0, 255, 237, 0.1);
+  color: #00FFED;
+}
+
+.MenuAdminPopupFooter {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1.5em;
+  gap: 1em;
+  border-top: 1px solid rgba(0, 255, 237, 0.2);
+}
+
+.MenuAdminPopupFooter button {
+  padding: 0.8em 1.5em;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.MenuAdminPopupFooter button:first-child {
+  background-color: transparent;
+  border: 1px solid #00FFED;
+  color: #00FFED;
+}
+
+.MenuAdminPopupFooter button:first-child:hover {
+  background-color: rgba(0, 255, 237, 0.1);
+}
+
+.MenuAdminPopupFooter button:last-child {
+  background-color: #00FFED;
+  border: none;
+  color: #042522;
+}
+
+.MenuAdminPopupFooter button:last-child:hover {
+  background-color: #00e6d5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 255, 237, 0.3);
+}
+
+.MenuAdminError {
+  color: #ff6b6b;
+  font-size: 0.9em;
+  margin-top: 0.3em;
+}
+
+.MenuAdminExito {
+  color: #00FFED;
+  font-size: 0.9em;
+  margin-top: 0.3em;
+}
+
+@media (max-width: 768px) {
+  .MenuAdminContenedor {
+    padding: 1.5em;
+    width: 90%;
+  }
+  
+  .MenuAdminPopupContent {
+    width: 95%;
+  }
+  
+  .MenuAdminPopupFooter {
+    flex-direction: column;
+  }
+  
+  .MenuAdminPopupFooter button {
+    width: 100%;
+  }
+}
