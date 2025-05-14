@@ -19,6 +19,8 @@ import MenuAdmin from "./Components/MenuAdmin/MenuAdmin.jsx";
 import AñadirUsuario from "./Components/MenuAdmin/AñadirUsuario.jsx";
 import MenuProfesor from "./Components/MenuProfesor/MenuProfesor.jsx";
 import AñadirCursos from "./Components/MenuProfesor/AñadirCursos.jsx";
+import AñadirCentro from "./Components/MenuAdmin/AñadirCentro.jsx";
+
 // import BuscadorPerfil from "./Components/BuscadorPerfil/BuscadorPerfil.jsx";
 import PerfilTeacher from "./Components/PerfilTeacher/PerfilTeacher.jsx";
 // Import language files
@@ -64,12 +66,16 @@ root.render(
             <Route path="AñadirCursos" element={<AñadirCursos />} />
             <Route path="AñadirUsuario" element={<AñadirUsuario />} />         
             <Route path="CreaCurso" element={<CreaCurso />} />                               
+
+
           </Route>
 
           {/* Rutas de Admin con anidación */}
-          <Route path="AñadirUsuario" element={<AñadirUsuario />} />
 
           <Route path="MenuProfesor" element={<MenuProfesor />} />
+          <Route path="AñadirCursos" element={<AñadirCursos />} />
+          <Route path="AñadirCentro" element={<AñadirCentro />} />
+
 
           <Route path="*" element={<NotFound />} />
         </Routes>
