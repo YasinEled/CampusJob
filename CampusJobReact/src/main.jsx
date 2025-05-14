@@ -29,6 +29,7 @@ import global_en from "./TRADUCCIONES/en/global.json";
 import global_cat from "./TRADUCCIONES/cat/global.json";
 // Import NotFound component
 import NotFound from "./NotFound.jsx"; // Importa el componente NotFound
+import CreaCurso from "./Components/creadorCursos/createCursos.js";
 
 // Inicializar i18next
 await i18next.init({
@@ -61,12 +62,15 @@ root.render(
             <Route path="BuscadorPerfil" element={<SeachUser />} />
             <Route path="PrimerInicio" element={<PrimerInicio />} />
             <Route path="PerfilTeacher" element={<PerfilTeacher />} />
+            <Route path="MenuAdmin" element={<MenuAdmin />} />
+            <Route path="AñadirCursos" element={<AñadirCursos />} />
+            <Route path="AñadirUsuario" element={<AñadirUsuario />} />         
+            <Route path="CreaCurso" element={<CreaCurso />} />                               
+
 
           </Route>
 
           {/* Rutas de Admin con anidación */}
-          <Route path="MenuAdmin" element={<MenuAdmin />} />
-          <Route path="AñadirUsuario" element={<AñadirUsuario />} />
 
           <Route path="MenuProfesor" element={<MenuProfesor />} />
           <Route path="AñadirCursos" element={<AñadirCursos />} />
