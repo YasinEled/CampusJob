@@ -24,7 +24,8 @@ const AñadirCentro = () => {
 
     return (
         <div>
-            <h2>Añadir Centro</h2>
+            <h1>Añadir Centro</h1>
+            <h2>Informacion Centro</h2>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="nombre">Nombre del Centro:</label>
@@ -59,6 +60,18 @@ const AñadirCentro = () => {
                         required
                     />
                 </div>
+            <h2>Informacion Usuario Administrador</h2>
+                <div>
+                    <label htmlFor="emailUsrAdmin">Email del Usuario Admin: </label>
+                    <input
+                        type="text"
+                        id="emailUsrAdmin"
+                        name="emailUsrAdmin"
+                        value={formData.emailUsrAdmin}
+                        onChange={handleChange}
+                        required
+                    />
+                    </div>
                 <button type="submit">Crear Centro</button>
             </form>
         </div>
