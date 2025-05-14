@@ -32,8 +32,10 @@ function App() {
         setMessage(data.message);
 
         if (data.success) {
-            navigate('mainHome/busqueda');
-        }
+          localStorage.setItem('idUsuario', data.idUsuario);
+          localStorage.setItem('nivelUsuario', data.nivelUsuario);
+          navigate('mainHome/busqueda');
+      }
     } catch (error) {
         console.error('Error:', error);
         setMessage(t("login.connectionError"));
