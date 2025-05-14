@@ -15,7 +15,7 @@ import PerfilEmpresa from "./Components/PerfilEmpresa/PerfilEmpresa.jsx";
 import CreatorUsers from "./Components/CreadorUser/Page/CreatorUsers.js";
 import SeachUser from "./Components/BuscadorPerfil/SeachUser.js";
 import PrimerInicio from "./Components/PrimerInici/PrimerIniciUsuari.jsx"; // Importa el componente PrimerInicio
-import MenuAdmin from "./Components/MenuAdmin/MenuAdmin.jsx";
+import MenuAdmin from "./Components/MenuAdmin/MenuSuperAdmin.jsx";
 import AñadirUsuario from "./Components/MenuAdmin/AñadirUsuario.jsx";
 import MenuProfesor from "./Components/MenuProfesor/MenuProfesor.jsx";
 import AñadirCursos from "./Components/MenuProfesor/AñadirCursos.jsx";
