@@ -18,12 +18,13 @@ const CreatorUsers = () => {
   return (
     <main className="creatorUsersMain">
       <div className="containerCreatorUser">
+        <h1 className="titleCreatorUser">CREACIÓ D'USUARIS</h1>
+        <div className="selectorContainer">
           {options
             .filter(opt => selectedOption === null || selectedOption === opt.id)
             .map(opt => (
               <React.Fragment key={opt.id}>
                 <input
-                  className="CreatorSelectorUser"
                   type="radio"
                   id={opt.id}
                   name="selector"
@@ -33,6 +34,8 @@ const CreatorUsers = () => {
                   style={{ display: "none" }}
                 />
                 <label
+                                  className="CreatorSelectorUser"
+
                   htmlFor={opt.id}
                   onClick={() => handleLabelClick(opt.id)}
                 >
@@ -40,6 +43,8 @@ const CreatorUsers = () => {
                 </label>
               </React.Fragment>
             ))}
+        </div>
+          
         </div>
     </main>
   );

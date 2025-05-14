@@ -7,7 +7,7 @@ function ResultadoOfertas() {
 
   // Cargar ofertas al montar el componente
   useEffect(() => {
-    fetch('http://localhost:4000/api/auth/ofertas')
+    fetch('http://10.0.11.133:4000/api/auth/ofertas')
       .then((res) => res.json())
       .then((data) => setOfertas(data))
       .catch((err) => console.error('Error al cargar las ofertas:', err));
