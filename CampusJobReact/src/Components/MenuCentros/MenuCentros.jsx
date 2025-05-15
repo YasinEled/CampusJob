@@ -10,7 +10,7 @@ export default function CrearUsuarios() {
   const navigate = useNavigate();
 
   const handleAñadirCurso = () => {
-    navigate("/añadircentro");
+    navigate("/mainhome/AñadirCentro");
   };
 
   const handleVerInformacion = () => {

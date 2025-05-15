@@ -15,7 +15,7 @@ import PerfilEmpresa from "./Components/PerfilEmpresa/PerfilEmpresa.jsx";
 import CreatorUsers from "./Components/CreadorUser/Page/CreatorUsers.js";
 import SeachUser from "./Components/BuscadorPerfil/SeachUser.js";
 import PrimerInicio from "./Components/PrimerInici/PrimerIniciUsuari.jsx"; // Importa el componente PrimerInicio
-import MenuAdmin from "./Components/MenuAdmin/MenuSuperAdmin.jsx";
+import MenuCentros from "./Components/MenuCentros/MenuCentros.jsx";
 import AñadirUsuario from "./Components/MenuAdmin/AñadirUsuario.jsx";
 import MenuProfesor from "./Components/MenuProfesor/MenuProfesor.jsx";
 import MenuCursos from "./Components/MenuCursos/MenuCursos.jsx";
@@ -62,8 +62,8 @@ root.render(
             <Route path="BuscadorPerfil" element={<SeachUser />} />
             <Route path="PrimerInicio" element={<PrimerInicio />} />
             <Route path="PerfilTeacher" element={<PerfilTeacher />} />
-            
-            <Route path="MenuAdmin" element={<MenuAdmin />} />
+
+            <Route path="MenuCentros" element={<MenuCentros />} />
             <Route path="MenuCursos" element={<MenuCursos />} />
             <Route path="AñadirUsuario" element={<AñadirUsuario />} />         
             <Route path="CreaCurso" element={<CreaCurso />} />                               
