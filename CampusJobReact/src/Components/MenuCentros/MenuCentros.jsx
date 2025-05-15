@@ -14,7 +14,7 @@ export default function CrearUsuarios() {
   };
 
   const handleVerInformacion = () => {
-    navigate("/InformacionCentro");
+    navigate("/MenuCursos");
   };
 
   return (
