@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import i18next from "i18next";
 
-// Componentes
 import App from "./App.jsx";
 import MenuHome from "./mainHome.jsx";
 import MainBusqueda from "./Components/MenuHome/MainBusqueda/MainBusqueda";
@@ -15,32 +14,45 @@ import FormOfertas from "./Components/createOfertas/createOfertas.jsx";
 import PerfilEmpresa from "./Components/PerfilEmpresa/PerfilEmpresa.jsx";
 import CreatorUsers from "./Components/CreadorUser/Page/CreatorUsers.js";
 import SeachUser from "./Components/BuscadorPerfil/SeachUser.js";
-import PrimerInicio from "./Components/PrimerInici/PrimerIniciUsuari.jsx";
-import MenuAdmin from "./Components/MenuAdmin/MenuAdmin.jsx";
+import PrimerInicio from "./Components/PrimerInici/PrimerIniciUsuari.jsx"; // Importa el componente PrimerInicio
+import MenuCentros from "./Components/MenuCentros/MenuCentros.jsx";
 import AñadirUsuario from "./Components/MenuAdmin/AñadirUsuario.jsx";
 import MenuProfesor from "./Components/MenuProfesor/MenuProfesor.jsx";
-import AñadirCursos from "./Components/MenuProfesor/AñadirCursos.jsx";
+import MenuCursos from "./Components/MenuCursos/MenuCursos.jsx";
 import AñadirCentro from "./Components/MenuAdmin/AñadirCentro.jsx";
-import CreaCurso from "./Components/creadorCursos/createCursos.js";
-import NotFound from "./NotFound.jsx";
-import Unauthorized from "./Unauthorized.jsx";
-import ProtectedRoute from "./ProtectedRoute";
+import AñadirCurso from "./Components/creadorCursos/createCursos.js";
+import GestionarCursos from "./Components/MenuCursos/GestionCursos.jsx";
+// import BuscadorPerfil from "./Components/BuscadorPerfil/BuscadorPerfil.jsx";
+import PerfilTeacher from "./Components/PerfilTeacher/PerfilTeacher.jsx";
+// Import language files
+import global_es from "./TRADUCCIONES/es/global.json";
+import global_en from "./TRADUCCIONES/en/global.json";
+import global_cat from "./TRADUCCIONES/cat/global.json";
+// Import NotFound component
+import NotFound from "./NotFound.jsx"; // Importa el componente NotFound
 
-// Ruta principal
+// Inicializar i18next
+await i18next.init({
+  interpolation: { escapeValue: false },
+  lng: "cat",
+  resources: {
+    es: { global: global_es },
+    en: { global: global_en },
+    cat: { global: global_cat },
+  },
+});
+
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
 root.render(
   <StrictMode>
     <I18nextProvider i18n={i18next}>
       <Router>
         <Routes>
-          {/* Ruta pública */}
           <Route path="/" element={<App />} />
 
-          {/* Rutas protegidas dentro de /mainHome */}
-          <Route
-            path="/mainHome"
-            element={<MenuHome />}
-          >
-            <Route index element={<MainBusqueda />} />
+          <Route path="/mainHome" element={<MenuHome />}>
             <Route path="busqueda" element={<MainBusqueda />} />
             <Route path="CreatorUsers" element={<CreatorUsers />} />
             <Route path="perfil" element={<PerfilPropio />} />
@@ -51,42 +63,21 @@ root.render(
             <Route path="PrimerInicio" element={<PrimerInicio />} />
             <Route path="PerfilTeacher" element={<PerfilTeacher />} />
 
-            {/* Rutas protegidas - nivel admin = 0 */}
-            <Route
-              path="MenuAdmin"
-              element={
-                <ProtectedRoute requiredRole={0}>
-                  <MenuAdmin />
-                </ProtectedRoute>
-              }
-            >
-              <Route path="AñadirCursos" element={<AñadirCursos />} />
-              <Route path="AñadirUsuario" element={<AñadirUsuario />} />
-            </Route>
+            <Route path="AñadirUsuario" element={<AñadirUsuario />} />         
+            <Route path="MenuProfesor" element={<MenuProfesor />} />
+
           </Route>
 
-          {/* Rutas protegidas fuera de /mainHome */}
-          <Route
-            path="AñadirCursos"
-            element={
-              <ProtectedRoute requiredRole={0}>
-                <AñadirCursos />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="AñadirCentro"
-            element={
-              <ProtectedRoute requiredRole={0}>
-                <AñadirCentro />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="MenuCursos" element={<MenuCursos />} />
+          <Route path="MenuCentros" element={<MenuCentros />} />
+          <Route path="AñadirCentro" element={<AñadirCentro />} />
+          <Route path="AñadirCurso" element={<AñadirCurso />} />                               
+          <Route path="GestionarCursos" element={<GestionarCursos />} />                               
 
-          {/* Página de acceso denegado */}
-          <Route path="/unauthorized" element={<Unauthorized />} />
 
-          {/* Página no encontrada */}
+
+          {/* Rutas de Admin con anidación */}
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
