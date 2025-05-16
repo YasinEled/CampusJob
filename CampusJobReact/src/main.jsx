@@ -50,29 +50,68 @@ root.render(
     <I18nextProvider i18n={i18next}>
       <Router>
         <Routes>
+          //ruta publica de login
           <Route path="/" element={<App />} />
 
-          <Route path="/mainHome" element={<MenuHome />}>
+          //pagina para todos pero tienes q hacer login
+          //menu para elegir Curso
+          <Route path="MenuCursos" element={<MenuCursos />} />
+          //ruta de menu alumno y empresa en un curso
+            <Route path="/mainHome" element={<MenuHome />}>
+            //BuscadorOfertas
             <Route path="busqueda" element={<MainBusqueda />} />
-            <Route path="CreatorUsers" element={<CreatorUsers />} />
+            //perfil Alumno
             <Route path="perfil" element={<PerfilPropio />} />
+            //perfil Empresa
             <Route path="PerfilEmpresa" element={<PerfilEmpresa />} />
-            <Route path="perfilModificable" element={<PerfilMod />} />
-            <Route path="formOfertes" element={<FormOfertas />} />
+            
+            //Buscador de perfil pero De este querre hacer varios con la misma pagina. De normal los usuarios normales solo podran buscar los de su curso. Pero si soy admindeCentro podre buscar de todo mi centro y si soy Admin, que somos los de la aplicacion, Podre ver TODOS los usuarios en el buscadro entonces alomejor hay q hacer vairas rutas
             <Route path="BuscadorPerfil" element={<SeachUser />} />
-            <Route path="PrimerInicio" element={<PrimerInicio />} />
+            
+            //Perfil de Profesor
             <Route path="PerfilTeacher" element={<PerfilTeacher />} />
 
-            <Route path="AñadirUsuario" element={<AñadirUsuario />} />         
+            </Route>
+
+
+          //Pagina para 0,2,3 y 4
+          
+          //Pagina para rellenar info si es tu primera vez en al aplicacion si eres alumno/Profe
+            <Route path="PrimerInicio" element={<PrimerInicio />} />
+
+
+          //pagina para 1,2,3 y 4
+
+          //Creador de ofertas de trabajo
+            <Route path="formOfertes" element={<FormOfertas />} />
+
+
+          //Solo para 2,3 y 4
+
+          //Menu para los profesores 
             <Route path="MenuProfesor" element={<MenuProfesor />} />
 
-          </Route>
+            //Pagina para crear Usuarios. Estaria guay enviar un codigo para decir que tipo de usr 1=Alumno,2=empresa,3=Profesor
+            <Route path="CreatorUsers" element={<CreatorUsers />} />
 
-          <Route path="MenuCursos" element={<MenuCursos />} />
+            //Pagina para añadir usuarios  Logicamente que si eres profe no podras crear mas profes
+            <Route path="AñadirUsuario" element={<AñadirUsuario />} />
+
+
+          //Solo para 3 y 4
+
+          //Menu para elgir centros
           <Route path="MenuCentros" element={<MenuCentros />} />
+          //pagina Crear Curso
+          <Route path="AñadirCurso" element={<AñadirCurso />} />         
+          //pagina para gestionar un Curso
+          <Route path="GestionarCursos" element={<GestionarCursos />} />  
+
+
+
+          //Solo para 4
+          //Pagina de añadir Centro
           <Route path="AñadirCentro" element={<AñadirCentro />} />
-          <Route path="AñadirCurso" element={<AñadirCurso />} />                               
-          <Route path="GestionarCursos" element={<GestionarCursos />} />                               
 
 
 

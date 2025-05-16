@@ -1,4 +1,4 @@
-// src/ProtectedRoute.jsx
+// src/Components/Servicios/ProtectedRoute.jsx
 import { Navigate, useLocation } from "react-router-dom";
 
 export default function ProtectedRoute({ children, requiredRole }) {
@@ -6,14 +6,17 @@ export default function ProtectedRoute({ children, requiredRole }) {
   const idUsuario = localStorage.getItem("idUsuario");
   const nivelUsuario = localStorage.getItem("nivelUsuario");
 
-  // Si no está logueado → redirige al login
-  if (!idUsuario) return <Navigate to="/" replace />;
+  // Si NO está logueado → permite acceder a `/` (login)
+  if (!idUsuario) {
+    if (location.pathname === "/") return children;
+    return <Navigate to="/" replace />;
+  }
 
-  // Si requiere rol y no coincide → redirige a página no autorizada
-  if (requiredRole && nivelUsuario !== requiredRole) {
+  // Si requiere rol y no coincide → redirige a /unauthorized
+  if (requiredRole && !String(requiredRole).includes(nivelUsuario)) {
     return <Navigate to="/unauthorized" replace />;
   }
 
-  // Si todo bien → muestra el contenido
+  // Si todo ok → muestra el contenido
   return children;
 }
