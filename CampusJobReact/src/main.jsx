@@ -60,7 +60,7 @@ root.render(
 
           {/* Rutas de Super Admin */}
 
-          <Route path="SuperAdmin">
+          <Route path="AdminSupremo" element={<MenuHome userType="AdminSupremo" />}>
             <Route index element={<NotFound />} />
             <Route path="HomeAdmin" element={<MenuCentros />} /> {/* FALTA ARREGLAR CSS. */}
             <Route path="AñadirCentro" element={<AñadirCentro />} /> {/* FALTA ARREGLAR CSS. */}
@@ -69,7 +69,7 @@ root.render(
 
           {/* Rutas de Admin */}
 
-          <Route path="Admin">
+          <Route path="Admin" element={<MenuHome userType="Admin" />}>
             <Route index element={<NotFound />} />
             <Route path="HomeCursos" element={<MenuCursos />} /> {/* FALTA  ARREGLAR CSS. */}
             <Route path="AñadirCurso" element={<AñadirCurso />} /> {/* FALTA ARREGLAR CSS. */}        
@@ -80,7 +80,7 @@ root.render(
           /*   MenuAlumno/HomeCurso    */
              
           {/* Rutas de Profesor */}
-          <Route path="profesor">
+          <Route path="Profesor"element={<MenuHome userType="Profesor" />}>
             <Route index element={<NotFound />} />
             <Route path="MenuProfesor" element={<MenuProfesor />} /> {/* FALTA CSS. */} {/* FALTA SABER PARA QUE SIRVE */}
             <Route path="PerfilProfesor" element={<PerfilTeacher />} />  {/* FALTA ARREGLAR CSS. */} 
@@ -88,14 +88,14 @@ root.render(
           </Route>
 
           {/* Rutas de Alumno */}
-          <Route path="Alumno" element={<MenuHome />}>
+          <Route path="Alumno" element={<MenuHome userType="Alumno" />}>
             <Route index element={<NotFound />} />
             <Route path="PerfilAlumno" element={<PerfilPropio />} />
             <Route path="BusquedaOfertas" element={<MainBusqueda />} />
           </Route>
 
           {/* Rutas de Empresa */}
-          <Route path="Empresa">
+          <Route path="Empresa" element={<MenuHome userType="Empresa" />}>
             <Route index element={<NotFound />} />
             <Route path="PerfilEmpresa" element={<PerfilEmpresa />} /> {/* FALTA ARREGLAR CSS. */}
             <Route path="CrearOfertas" element={<FormOfertas />} />
