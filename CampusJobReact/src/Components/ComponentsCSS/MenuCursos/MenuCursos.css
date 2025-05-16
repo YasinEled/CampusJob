@@ -1,0 +1,65 @@
+/* MenuCursos.css */
+
+.MenuAdminContenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 10.4em;
+  height: calc(100vh - 7em);
+  padding: 2em;
+  overflow: hidden;
+}
+
+.CursoCard {
+  background-color: #042522;
+  color: white;
+  width: 60%;
+  border-radius: 15px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  margin-bottom: 2em;
+  padding: 1.5em;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.CursoCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.CursoNombre {
+  font-size: 1.8em;
+  margin-bottom: 0.5em;
+}
+
+.CursoAdmin {
+  font-size: 1em;
+  margin-bottom: 1em;
+}
+
+.CursoImagen {
+  width: 9em;
+  height: 9em;
+  border-radius: 20%;
+  border: 3px solid #16a085;
+  object-fit: cover;
+}
+
+.BotonAñadirCurso {
+  padding: 0.7em 1.5em;
+  background-color: #1abc9c;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.BotonAñadirCurso:hover {
+  background-color: #16a085;
+  transform: scale(1.03);
+}

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import fotoProfesor from "../../assets/Logo/CampusJob.png";
-import "../ComponentsCSS/MenuAdmin/MenuAdmin.css";
+import "../ComponentsCSS/MenuCentros/MenuCentros.css";
 
 export default function CrearUsuarios() {
   const nombreCentro = "DAM";
@@ -10,7 +10,7 @@ export default function CrearUsuarios() {
   const navigate = useNavigate();
 
   const handleAñadirCurso = () => {
-    navigate("/mainhome/AñadirCentro");
+    navigate("/añadirCentro");
   };
 
   const handleVerInformacion = () => {

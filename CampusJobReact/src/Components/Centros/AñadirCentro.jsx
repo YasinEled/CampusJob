@@ -18,7 +18,7 @@ const AñadirCentro = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Centro creado:', formData);
-        // Aquí puedes agregar la lógica para enviar los datos al backend
+        
         setFormData({ nombre: '', correo: '', telefono: '' });
     };
 
