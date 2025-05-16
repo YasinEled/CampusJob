@@ -59,8 +59,6 @@ root.render(
 
 
           {/* NO SIRVEN CREO */}
-          <Route path="AñadirUsuario" element={<AñadirUsuario />} /> {/* FALTA CSS. */}    {/* PONER CORREO AÑADIR USUARIOS */}  
-          <Route path="CrearUsuarios" element={<CreatorUsers />} /> {/* FALTA ARREGLARLO */}
 
           {/* Rutas de Super Admin */}
 
@@ -68,7 +66,8 @@ root.render(
             <Route index element={<NotFound />} />
             <Route path="HomeAdmin" element={<MenuCentros />} /> {/* FALTA ARREGLAR CSS. */}
             <Route path="AñadirCentro" element={<AñadirCentro />} /> {/* FALTA ARREGLAR CSS. */}
-            
+            <Route path="AñadirUsuario" element={<AñadirUsuario />} /> {/* FALTA CSS. */}    {/* PONER CORREO AÑADIR USUARIOS */}  
+
           </Route>
 
           {/* Rutas de Admin */}
@@ -77,6 +76,9 @@ root.render(
             <Route index element={<NotFound />} />
             <Route path="HomeCursos" element={<MenuCursos />} /> {/* FALTA  ARREGLAR CSS. */}
             <Route path="AñadirCurso" element={<AñadirCurso />} /> {/* FALTA ARREGLAR CSS. */}        
+            <Route path="CrearUsuarios" element={<CreatorUsers />} /> {/* FALTA ARREGLARLO */}
+            <Route path="AñadirUsuario" element={<AñadirUsuario />} /> {/* FALTA CSS. */}    {/* PONER CORREO AÑADIR USUARIOS */}  
+
           </Route>
 
 
@@ -87,6 +89,7 @@ root.render(
             <Route path="MenuProfesor" element={<MenuProfesor />} /> {/* FALTA CSS. */} {/* FALTA SABER PARA QUE SIRVE */}
             <Route path="PerfilProfesor" element={<PerfilTeacher />} />  {/* FALTA ARREGLAR CSS. */} 
             <Route path="GestionarCursosAlumnos" element={<GestionarCursos />} /> {/* FALTA CSS. */}              
+            <Route path="AñadirUsuario" element={<AñadirUsuario />} /> {/* FALTA CSS. */}    {/* PONER CORREO AÑADIR USUARIOS */}  
           </Route>
 
           {/* Rutas de Alumno */}

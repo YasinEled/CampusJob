@@ -11,7 +11,6 @@ import './Components/ComponentsCSS/MenuHome/general.css';
 function NotFound() {
   return (
     <div className="NotFoundWrapper">
-      <NavHome />
       <Menu /> 
       <Outlet />
       <div className="container404">

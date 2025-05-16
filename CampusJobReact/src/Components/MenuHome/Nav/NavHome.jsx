@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { UserOutlined, GlobalOutlined, HeartOutlined, InboxOutlined, SunOutlined, SettingOutlined, TeamOutlined, BookOutlined, ShopOutlined } from "@ant-design/icons";
+import { UserOutlined,HomeOutlined,UserAddOutlined,FormOutlined, GlobalOutlined, HeartOutlined, InboxOutlined, SunOutlined, SettingOutlined, TeamOutlined, BookOutlined, ShopOutlined } from "@ant-design/icons";
 import PropTypes from 'prop-types';
 import "../../ComponentsCSS/MenuHome/navHome.css";
 
@@ -12,32 +12,47 @@ const logoIconDark = new URL("../../../assets/Logo/logoroundblanco.png", import.
 // Configuración de menús por tipo de usuario
 const menuConfig = {
   AdminSupremo: [
-    { path: "/settings", icon: <SettingOutlined />, label: "Ajustes" },
+    { path: "/AñadirCentro", icon:<FormOutlined />, label: "AddCentro" },
+    { path: "/AñadirCentro", icon:<UserAddOutlined />, label: "AddUser" },
     { path: "/users", icon: <TeamOutlined />, label: "Usuarios" },
     { path: "/global", icon: <GlobalOutlined />, label: "Global" },
+    { path: "/settings", icon: <SettingOutlined />, label: "Ajustes" },
+    { path: "/HomeCursos", icon:<HomeOutlined />, label: "Finanzas" },
     { path: "/profile", icon: <UserOutlined />, label: "Perfil" },
   ],
   Admin: [
+    { path: "/AñadirCurso", icon:<FormOutlined />, label: "AddCurso" },
+    { path: "/AñadirCentro", icon:<UserAddOutlined />, label: "AddUser" },
+    { path: "/CrearUsuarios", icon: <TeamOutlined />, label: "Usuarios" },
+    { path: "/global", icon: <GlobalOutlined />, label: "Global" },
     { path: "/settings", icon: <SettingOutlined />, label: "Ajustes" },
-    { path: "/users", icon: <TeamOutlined />, label: "Usuarios" },
-    { path: "/profile", icon: <UserOutlined />, label: "Perfil" },
+    { path: "/home", icon:<HomeOutlined />, label: "Finanzas" },
+    { path: "/HomeCursos", icon: <UserOutlined />, label: "Perfil" },
   ],
   Profesor: [
     { path: "/courses", icon: <BookOutlined />, label: "Cursos" },
+    { path: "/AñadirCentro", icon:<UserAddOutlined />, label: "AddUser" },
     { path: "/inbox", icon: <InboxOutlined />, label: "Mensajes" },
+    { path: "/settings", icon: <SettingOutlined />, label: "Ajustes" },
+    { path: "/home", icon:<HomeOutlined />, label: "Finanzas" },
     { path: "/profile", icon: <UserOutlined />, label: "Perfil" },
   ],
   Alumno: [
     { path: "/favorites", icon: <HeartOutlined />, label: "Favoritos" },
     { path: "/inbox", icon: <InboxOutlined />, label: "Mensajes" },
+    { path: "/settings", icon: <SettingOutlined />, label: "Ajustes" },
+    { path: "/home", icon:<HomeOutlined />, label: "Finanzas" },
     { path: "/profile", icon: <UserOutlined />, label: "Perfil" },
   ],
   Empresa: [
     { path: "/post-job", icon: <ShopOutlined />, label: "Publicar" },
     { path: "/favorites", icon: <HeartOutlined />, label: "Favoritos" },
+    { path: "/settings", icon: <SettingOutlined />, label: "Ajustes" },
+    { path: "/home", icon:<HomeOutlined />, label: "Finanzas" },
     { path: "/profile", icon: <UserOutlined />, label: "Perfil" },
   ],
 };
+
 
 function NavHome({ userType }) {
   const [isLightMode, setIsLightMode] = useState(() => {
