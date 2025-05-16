@@ -15,12 +15,13 @@ import PerfilEmpresa from "./Components/PerfilEmpresa/PerfilEmpresa.jsx";
 import CreatorUsers from "./Components/CreadorUser/Page/CreatorUsers.js";
 import SeachUser from "./Components/BuscadorPerfil/SeachUser.js";
 import PrimerInicio from "./Components/PrimerInici/PrimerIniciUsuari.jsx"; // Importa el componente PrimerInicio
-import MenuAdmin from "./Components/MenuAdmin/MenuAdmin.jsx";
+import MenuCentros from "./Components/MenuCentros/MenuCentros.jsx";
 import AñadirUsuario from "./Components/MenuAdmin/AñadirUsuario.jsx";
 import MenuProfesor from "./Components/MenuProfesor/MenuProfesor.jsx";
-import AñadirCursos from "./Components/MenuProfesor/AñadirCursos.jsx";
+import MenuCursos from "./Components/MenuCursos/MenuCursos.jsx";
 import AñadirCentro from "./Components/MenuAdmin/AñadirCentro.jsx";
-
+import AñadirCurso from "./Components/creadorCursos/createCursos.js";
+import GestionarCursos from "./Components/MenuCursos/GestionCursos.jsx";
 // import BuscadorPerfil from "./Components/BuscadorPerfil/BuscadorPerfil.jsx";
 import PerfilTeacher from "./Components/PerfilTeacher/PerfilTeacher.jsx";
 // Import language files
@@ -29,7 +30,6 @@ import global_en from "./TRADUCCIONES/en/global.json";
 import global_cat from "./TRADUCCIONES/cat/global.json";
 // Import NotFound component
 import NotFound from "./NotFound.jsx"; // Importa el componente NotFound
-import CreaCurso from "./Components/creadorCursos/createCursos.js";
 
 // Inicializar i18next
 (async () => {
@@ -64,20 +64,21 @@ root.render(
             <Route path="BuscadorPerfil" element={<SeachUser />} />
             <Route path="PrimerInicio" element={<PrimerInicio />} />
             <Route path="PerfilTeacher" element={<PerfilTeacher />} />
-            <Route path="MenuAdmin" element={<MenuAdmin />} />
-            <Route path="AñadirCursos" element={<AñadirCursos />} />
-            <Route path="AñadirUsuario" element={<AñadirUsuario />} />         
-            <Route path="CreaCurso" element={<CreaCurso />} />                               
 
+            <Route path="AñadirUsuario" element={<AñadirUsuario />} />         
+            <Route path="MenuProfesor" element={<MenuProfesor />} />
 
           </Route>
 
-          {/* Rutas de Admin con anidación */}
-
-          <Route path="MenuProfesor" element={<MenuProfesor />} />
-          <Route path="AñadirCursos" element={<AñadirCursos />} />
+          <Route path="MenuCursos" element={<MenuCursos />} />
+          <Route path="MenuCentros" element={<MenuCentros />} />
           <Route path="AñadirCentro" element={<AñadirCentro />} />
+          <Route path="AñadirCurso" element={<AñadirCurso />} />                               
+          <Route path="GestionarCursos" element={<GestionarCursos />} />                               
 
+
+
+          {/* Rutas de Admin con anidación */}
 
           <Route path="*" element={<NotFound />} />
         </Routes>
