@@ -4,14 +4,13 @@ import "../ComponentsCSS/PrimerInicio/PrimerInicio.css";
 const FormularioRegistro = () => {
   const [formData, setFormData] = useState({
     email: "",
-    dni: "",
+    nif: "",
     nombreUsuario: "",
     contrasena: "",
     confirmarContrasena: "",
     fotoPerfil: null,
     descripcion: "",
     nombre: "",
-    apellido: ""
   });
   
   const [previewImage, setPreviewImage] = useState(null);
@@ -69,20 +68,6 @@ const FormularioRegistro = () => {
 
         <div className="CreadorProfessorGrupo">
           <label className="CreadorProfessorEtiqueta">
-            Apellido:
-            <input
-              type="text"
-              name="apellido"
-              value={formData.apellido}
-              onChange={handleChange}
-              className="CreadorProfessorEntrada"
-              required
-            />
-          </label>
-        </div>
-
-        <div className="CreadorProfessorGrupo">
-          <label className="CreadorProfessorEtiqueta">
             Email:
             <input
               type="email"
@@ -97,11 +82,11 @@ const FormularioRegistro = () => {
 
         <div className="CreadorProfessorGrupo">
           <label className="CreadorProfessorEtiqueta">
-            DNI:
+            NIF:
             <input
               type="text"
-              name="dni"
-              value={formData.dni}
+              name="NIF"
+              value={formData.nif}
               onChange={handleChange}
               className="CreadorProfessorEntrada"
               required
