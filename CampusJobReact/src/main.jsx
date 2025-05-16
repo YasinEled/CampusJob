@@ -19,7 +19,7 @@ import MenuCentros from "./Components/MenuCentros/MenuCentros.jsx";
 import AñadirUsuario from "./Components/MenuAdmin/AñadirUsuario.jsx";
 import MenuProfesor from "./Components/MenuProfesor/MenuProfesor.jsx";
 import MenuCursos from "./Components/MenuCursos/MenuCursos.jsx";
-import AñadirCentro from "./Components/MenuAdmin/AñadirCentro.jsx";
+import AñadirCentro from "./Components/MenuCentros/AñadirCentro.jsx";
 import AñadirCurso from "./Components/creadorCursos/createCursos.js";
 import GestionarCursos from "./Components/MenuCursos/GestionCursos.jsx";
 // import BuscadorPerfil from "./Components/BuscadorPerfil/BuscadorPerfil.jsx";
