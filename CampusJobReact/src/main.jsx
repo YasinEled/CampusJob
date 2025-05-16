@@ -21,7 +21,10 @@ import MenuCursos from "./Components/Cursos/MenuCursos.jsx";
 import AñadirCentro from "./Components/Centros/AñadirCentro.jsx";
 import AñadirCurso from "./Components/creadorCursos/createCursos.js";
 import GestionarCursos from "./Components/Cursos/GestionCursos.jsx";
+import PrimerInicioProf from "./Components/PrimerInici/PrimerIniciProfesor.jsx";
+import PrimerInicioEmpresa from "./Components/PrimerInici/PrimerIniciEmpresa.jsx";
 // import BuscadorPerfil from "./Components/BuscadorPerfil/BuscadorPerfil.jsx";
+
 import PerfilTeacher from "./Components/Perfiles/PerfilTeacher.jsx";
 // Import language files
 import global_es from "./TRADUCCIONES/es/global.json";
@@ -69,10 +72,6 @@ root.render(
             <Route path="HomeCursos" element={<MenuCursos />} /> {/* FALTA  ARREGLAR CSS. */}
             <Route path="AñadirCurso" element={<AñadirCurso />} /> {/* FALTA ARREGLAR CSS. */}        
           </Route>
-
-
-          /*   MenuAdmin/HomeCurso    */
-          /*   MenuAlumno/HomeCurso    */
              
           {/* Rutas de Profesor */}
           <Route path="profesor">
@@ -95,6 +94,8 @@ root.render(
 
           {/* Rutas de Primer Inicio */}
           <Route path="PrimerInicioAlumno" element={<PrimerInicio />} />
+          <Route path="PrimerInicioProfesor" element={<PrimerInicioProf />} /> 
+          <Route path="PrimerInicioEmpresa" element={<PrimerInicioEmpresa />} />
 
 
           {/* Rutas Generales */}
