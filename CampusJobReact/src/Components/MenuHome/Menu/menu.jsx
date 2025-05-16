@@ -14,7 +14,7 @@ function Menu() {
         <nav className="MenuIzqNav">
           <ul>
             <li className="limenuizq">
-            <Link to="/mainhome/busqueda" className="inici">
+            <Link to="/alumno/BusquedaOfertas" className="inici">
             <HomeOutlined className="logoMnuIzq" />
             </Link>            
             </li>

@@ -8,22 +8,21 @@ import i18next from "i18next";
 import App from "./App.jsx";
 import MenuHome from "./mainHome.jsx";
 import MainBusqueda from "./Components/MenuHome/MainBusqueda/MainBusqueda";
-import PerfilPropio from "./Components/PerfilUsuario/perfilPropio.jsx";
-import PerfilMod from "./Components/PerfilUsuario/perfilModificable.jsx";
+import PerfilPropio from "./Components/Perfiles/PerfilAlumno.jsx";
 import FormOfertas from "./Components/createOfertas/createOfertas.jsx";
-import PerfilEmpresa from "./Components/PerfilEmpresa/PerfilEmpresa.jsx";
+import PerfilEmpresa from "./Components/Perfiles/PerfilEmpresa.jsx";
 import CreatorUsers from "./Components/CreadorUser/Page/CreatorUsers.js";
 import SeachUser from "./Components/BuscadorPerfil/SeachUser.js";
 import PrimerInicio from "./Components/PrimerInici/PrimerIniciUsuari.jsx"; // Importa el componente PrimerInicio
-import MenuCentros from "./Components/MenuCentros/MenuCentros.jsx";
-import AñadirUsuario from "./Components/MenuAdmin/AñadirUsuario.jsx";
+import MenuCentros from "./Components/Centros/MenuCentros.jsx";
+import AñadirUsuario from "./Components/AñadirUsuarios/AñadirUsuario.jsx";
 import MenuProfesor from "./Components/MenuProfesor/MenuProfesor.jsx";
-import MenuCursos from "./Components/MenuCursos/MenuCursos.jsx";
-import AñadirCentro from "./Components/MenuCentros/AñadirCentro.jsx";
+import MenuCursos from "./Components/Cursos/MenuCursos.jsx";
+import AñadirCentro from "./Components/Centros/AñadirCentro.jsx";
 import AñadirCurso from "./Components/creadorCursos/createCursos.js";
-import GestionarCursos from "./Components/MenuCursos/GestionCursos.jsx";
+import GestionarCursos from "./Components/Cursos/GestionCursos.jsx";
 // import BuscadorPerfil from "./Components/BuscadorPerfil/BuscadorPerfil.jsx";
-import PerfilTeacher from "./Components/PerfilTeacher/PerfilTeacher.jsx";
+import PerfilTeacher from "./Components/Perfiles/PerfilTeacher.jsx";
 // Import language files
 import global_es from "./TRADUCCIONES/es/global.json";
 import global_en from "./TRADUCCIONES/en/global.json";
@@ -52,7 +51,6 @@ root.render(
         <Routes>
           <Route path="/" element={<App />} />
 
-          <Route path="perfilModificable" element={<PerfilMod />} /> {/* VACIO */}
 
           {/* NO SIRVEN CREO */}
           <Route path="AñadirUsuario" element={<AñadirUsuario />} /> {/* FALTA CSS. */}    {/* PONER CORREO AÑADIR USUARIOS */}  
@@ -61,16 +59,20 @@ root.render(
           {/* Rutas de Super Admin */}
 
           <Route path="SuperAdmin">
-            <Route path="MenuCentros" element={<MenuCentros />} /> {/* FALTA ARREGLAR CSS. */}
+            <Route path="HomeAdmin" element={<MenuCentros />} /> {/* FALTA ARREGLAR CSS. */}
             <Route path="AñadirCentro" element={<AñadirCentro />} /> {/* FALTA ARREGLAR CSS. */}
           </Route>
 
           {/* Rutas de Admin */}
 
           <Route path="Admin">
-            <Route path="MenuCursos" element={<MenuCursos />} /> {/* FALTA  ARREGLAR CSS. */}
+            <Route path="HomeCursos" element={<MenuCursos />} /> {/* FALTA  ARREGLAR CSS. */}
             <Route path="AñadirCurso" element={<AñadirCurso />} /> {/* FALTA ARREGLAR CSS. */}        
           </Route>
+
+
+          /*   MenuAdmin/HomeCurso    */
+          /*   MenuAlumno/HomeCurso    */
              
           {/* Rutas de Profesor */}
           <Route path="profesor">
@@ -80,9 +82,8 @@ root.render(
           </Route>
 
           {/* Rutas de Alumno */}
-          <Route path="Alumno">
-            <Route path="PrimerInicioAlumno" element={<PrimerInicio />} /> {/* FALTA CSS. */} 
-            <Route path="PerfilAlumno" element={<PerfilPropio />} /> {/* FALTA BOTON VER CV */}
+          <Route path="Alumno" element={<MenuHome />}>
+            <Route path="PerfilAlumno" element={<PerfilPropio />} />
             <Route path="BusquedaOfertas" element={<MainBusqueda />} />
           </Route>
 
@@ -91,6 +92,9 @@ root.render(
             <Route path="PerfilEmpresa" element={<PerfilEmpresa />} /> {/* FALTA ARREGLAR CSS. */}
             <Route path="CrearOfertas" element={<FormOfertas />} />
           </Route>
+
+          {/* Rutas de Primer Inicio */}
+          <Route path="PrimerInicioAlumno" element={<PrimerInicio />} />
 
 
           {/* Rutas Generales */}
