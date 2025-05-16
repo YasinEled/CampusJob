@@ -56,63 +56,62 @@ root.render(
         <Routes>
           <Route path="/login" element={<App />} />
           {/* NO SIRVEN CREO */}
-          <Route path="AñadirUsuario" element={<AñadirUsuario />} />{" "}
-          {/* FALTA CSS. */} {/* PONER CORREO AÑADIR USUARIOS */}
-          <Route path="CrearUsuarios" element={<CreatorUsers />} />{" "}
-          {/* FALTA ARREGLARLO */}
+          <Route path="AñadirUsuario" element={<AñadirUsuario />} /> {/* FALTA CSS. */}    {/* PONER CORREO AÑADIR USUARIOS */}  
+          <Route path="CrearUsuarios" element={<CreatorUsers />} /> {/* FALTA ARREGLARLO */}
+
           {/* Rutas de Super Admin */}
-          <Route path="SuperAdmin">
+
+          <Route path="AdminSupremo" element={<MenuHome userType="AdminSupremo" />}>
             <Route index element={<NotFound />} />
-            <Route path="HomeAdmin" element={<MenuCentros />} />{" "}
-            {/* FALTA ARREGLAR CSS. */}
-            <Route path="AñadirCentro" element={<AñadirCentro />} />{" "}
-            {/* FALTA ARREGLAR CSS. */}
+            <Route path="HomeAdmin" element={<MenuCentros />} /> {/* FALTA ARREGLAR CSS. */}
+            <Route path="AñadirCentro" element={<AñadirCentro />} /> {/* FALTA ARREGLAR CSS. */}
+            
           </Route>
+
           {/* Rutas de Admin */}
-          <Route path="Admin">
-            <Route index element={<NotFound />} />
-            <Route path="HomeCursos" element={<MenuCursos />} />{" "}
-            {/* FALTA  ARREGLAR CSS. */}
-            <Route path="AñadirCurso" element={<AñadirCurso />} />{" "}
-            {/* FALTA ARREGLAR CSS. */}
-          </Route>             
 
-          {/* Rutas de Profesor */}
-          <Route path="profesor">
+          <Route path="Admin" element={<MenuHome userType="Admin" />}>
             <Route index element={<NotFound />} />
-            <Route path="MenuProfesor" element={<MenuProfesor />} />{" "}
-            {/* FALTA CSS. */} {/* FALTA SABER PARA QUE SIRVE */}
-            <Route path="PerfilProfesor" element={<PerfilTeacher />} />{" "}
-            {/* FALTA ARREGLAR CSS. */}
-            <Route
-              path="GestionarCursosAlumnos"
-              element={<GestionarCursos />}
-            />{" "}
-            {/* FALTA CSS. */}
+            <Route path="HomeCursos" element={<MenuCursos />} /> {/* FALTA  ARREGLAR CSS. */}
+            <Route path="AñadirCurso" element={<AñadirCurso />} /> {/* FALTA ARREGLAR CSS. */}        
           </Route>
-          {/* Rutas de Alumno */}
-          <Route path="Alumno" element={<MenuHome />}>
-            <Route index element={<NotFound />} />
 
+
+          /*   MenuAdmin/HomeCurso    */
+          /*   MenuAlumno/HomeCurso    */
+             
+          {/* Rutas de Profesor */}
+          <Route path="Profesor"element={<MenuHome userType="Profesor" />}>
+            <Route index element={<NotFound />} />
+            <Route path="MenuProfesor" element={<MenuProfesor />} /> {/* FALTA CSS. */} {/* FALTA SABER PARA QUE SIRVE */}
+            <Route path="PerfilProfesor" element={<PerfilTeacher />} />  {/* FALTA ARREGLAR CSS. */} 
+            <Route path="GestionarCursosAlumnos" element={<GestionarCursos />} /> {/* FALTA CSS. */}              
+          </Route>
+
+          {/* Rutas de Alumno */}
+          <Route path="Alumno" element={<MenuHome userType="Alumno" />}>
+            <Route index element={<NotFound />} />
             <Route path="PerfilAlumno" element={<PerfilPropio />} />
             <Route path="BusquedaOfertas" element={<MainBusqueda />} />
           </Route>
+
           {/* Rutas de Empresa */}
-          <Route path="Empresa">
+          <Route path="Empresa" element={<MenuHome userType="Empresa" />}>
             <Route index element={<NotFound />} />
-            <Route path="PerfilEmpresa" element={<PerfilEmpresa />} />{" "}
-            {/* FALTA ARREGLAR CSS. */}
+            <Route path="PerfilEmpresa" element={<PerfilEmpresa />} /> {/* FALTA ARREGLAR CSS. */}
             <Route path="CrearOfertas" element={<FormOfertas />} />
           </Route>
+
           {/* Rutas de Primer Inicio */}
           <Route path="PrimerInicioAlumno" element={<PrimerInicio />} />
           <Route path="PrimerInicioProfesor" element={<PrimerInicioProf />} /> 
           <Route path="PrimerInicioEmpresa" element={<PrimerInicioEmpresa />} />
 
+
           {/* Rutas Generales */}
-          <Route path="BuscadorPerfil" element={<SeachUser />} />{" "}
-          {/* FALTA ARREGLAR CSS */}
+          <Route path="BuscadorPerfil" element={<SeachUser />} /> {/* FALTA ARREGLAR CSS */}
           <Route path="*" element={<NotFound />} />
+
         </Routes>
       </Router>
     </I18nextProvider>

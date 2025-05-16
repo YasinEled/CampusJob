@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { UserOutlined, GlobalOutlined, HeartOutlined, InboxOutlined, SunOutlined } from "@ant-design/icons";
+import { UserOutlined, GlobalOutlined, HeartOutlined, InboxOutlined, SunOutlined, SettingOutlined, TeamOutlined, BookOutlined, ShopOutlined } from "@ant-design/icons";
+import PropTypes from 'prop-types';
 import "../../ComponentsCSS/MenuHome/navHome.css";
 
 // Importamos ambas versiones del logo
@@ -8,8 +9,37 @@ const logoLetrasDark = new URL("../../../assets/Logo/ssCampusJob.png", import.me
 const logoIconLight = new URL("../../../assets/Logo/CampusJobBorderLogoGreen.png", import.meta.url).href;
 const logoIconDark = new URL("../../../assets/Logo/logoroundblanco.png", import.meta.url).href;
 
+// Configuración de menús por tipo de usuario
+const menuConfig = {
+  AdminSupremo: [
+    { path: "/settings", icon: <SettingOutlined />, label: "Ajustes" },
+    { path: "/users", icon: <TeamOutlined />, label: "Usuarios" },
+    { path: "/global", icon: <GlobalOutlined />, label: "Global" },
+    { path: "/profile", icon: <UserOutlined />, label: "Perfil" },
+  ],
+  Admin: [
+    { path: "/settings", icon: <SettingOutlined />, label: "Ajustes" },
+    { path: "/users", icon: <TeamOutlined />, label: "Usuarios" },
+    { path: "/profile", icon: <UserOutlined />, label: "Perfil" },
+  ],
+  Profesor: [
+    { path: "/courses", icon: <BookOutlined />, label: "Cursos" },
+    { path: "/inbox", icon: <InboxOutlined />, label: "Mensajes" },
+    { path: "/profile", icon: <UserOutlined />, label: "Perfil" },
+  ],
+  Alumno: [
+    { path: "/favorites", icon: <HeartOutlined />, label: "Favoritos" },
+    { path: "/inbox", icon: <InboxOutlined />, label: "Mensajes" },
+    { path: "/profile", icon: <UserOutlined />, label: "Perfil" },
+  ],
+  Empresa: [
+    { path: "/post-job", icon: <ShopOutlined />, label: "Publicar" },
+    { path: "/favorites", icon: <HeartOutlined />, label: "Favoritos" },
+    { path: "/profile", icon: <UserOutlined />, label: "Perfil" },
+  ],
+};
 
-function NavHome() {
+function NavHome({ userType }) {
   const [isLightMode, setIsLightMode] = useState(() => {
     return localStorage.getItem("theme") === "light";
   });
@@ -28,6 +58,9 @@ function NavHome() {
   const logoLetras = isLightMode ? logoLetrasLight : logoLetrasDark;
   const logoIcon = isLightMode ? logoIconLight : logoIconDark;
 
+  // Obtener menú para el tipo de usuario, o un menú vacío si no existe
+  const menuItems = menuConfig[userType] || [];
+
   return (
     <nav className="navHome">
       <div className="logoNavSelector">
@@ -35,26 +68,28 @@ function NavHome() {
         <img className="logoLetrasNav" src={logoLetras} alt="CampusJob Letras" />
       </div>
       <ul className="selectorsNav">
+        {/* Botón de cambio de tema */}
         <li>
-          <a href="#" onClick={() => setIsLightMode(!isLightMode)}>
+          <button onClick={() => setIsLightMode(!isLightMode)} className="theme-toggle">
             <SunOutlined />
-          </a>
+          </button>
         </li>
-        <li>
-          <a href="/"><HeartOutlined /></a>
-        </li>
-        <li>
-          <a href="/"><InboxOutlined /></a>
-        </li>
-        <li>
-          <a href="/"><GlobalOutlined /></a>
-        </li>
-        <li>
-          <a href="/"><UserOutlined /></a>
-        </li>
+
+        {/* Renderizado dinámico de elementos de menú según userType */}
+        {menuItems.map((item) => (
+          <li key={item.path}>
+            <a href={item.path} title={item.label}>
+              {item.icon}
+            </a>
+          </li>
+        ))}
       </ul>
     </nav>
   );
 }
+
+NavHome.propTypes = {
+  userType: PropTypes.oneOf(["AdminSupremo", "Admin", "Profesor", "Alumno", "Empresa"]).isRequired,
+};
 
 export default NavHome;
