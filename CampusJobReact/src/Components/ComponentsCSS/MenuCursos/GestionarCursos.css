@@ -1,0 +1,89 @@
+/* GestionarCursos.css */
+
+.añadirusuariocurso-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em;
+  margin-left: 10.4em;
+  padding: 2em;
+  height: calc(100vh - 7em);
+  overflow-y: auto;
+}
+
+.añadirusuariocurso-panel {
+  background-color: #042522;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 2em;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.añadirusuariocurso-title {
+  font-size: 1.5em;
+  color: white;
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+.añadirusuariocurso-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.añadirusuariocurso-item {
+  background-color: #1abc9c;
+  border: 1px solid #bce5df;
+  border-radius: 8px;
+  padding: 0.7em 1em;
+  margin-bottom: 0.7em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1em;
+}
+
+.añadirusuariocurso-button {
+  background-color: #1abc9c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4em 0.8em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 0.9em;
+}
+
+.añadirusuariocurso-button:hover {
+  background-color: #16a085;
+}
+
+.añadirusuariocurso-add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.añadirusuariocurso-input {
+  padding: 0.6em;
+  font-size: 1em;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.añadirusuariocurso-input:focus {
+  border-color: #1abc9c;
+}
+
+.añadirusuariocurso-footer {
+  width: 100%;
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+}
