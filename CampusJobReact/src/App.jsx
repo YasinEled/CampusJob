@@ -20,22 +20,23 @@ function App() {
     event.preventDefault();
 
     try {
-      const response = await fetch('http://localhost/CampusJob/Backend/login.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      });
+        const response = await fetch('http://localhost:4000/api/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, password }),
+        });
 
-      const data = await response.json();
-      setMessage(data.message);
+        const data = await response.json();
+        setMessage(data.message);
 
-      if (data.success) {
-        navigate('mainHome/busqueda');
-      }
+        if (data.success) {
+            navigate('mainHome/busqueda');
+        }
     } catch (error) {
-      console.error('Error:', error);
+        console.error('Error:', error);
+        setMessage(t("login.connectionError"));
     }
   };
 
@@ -63,7 +64,7 @@ function App() {
         <div className="container">
           <div className="d-flex flex-column flex-lg-row justify-content-center align-items-center">
             <div className="col-12 col-lg-6 mr-5 ml-5">
-              <img className="logoMini" src="/src/assets/Logo/CampusJob.png" alt="Logo" />
+              <img className="logoMini" src="/src/assets/Logo/CampusJob.png" alt="Logo CampusJob" />
             </div>
             <div className="col-12 col-lg-6 ml-5 mr-5">
               <form onSubmit={handleSubmit}>
