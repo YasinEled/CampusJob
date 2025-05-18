@@ -73,7 +73,8 @@ root.render(
           <Route path="Admin" element={<MenuHome userType="Admin" />}>
             <Route index element={<NotFound />} />
             <Route path="HomeCursos" element={<MenuCursos />} /> {/* FALTA  ARREGLAR CSS. */}
-            <Route path="AñadirCurso" element={<AñadirCurso />} /> {/* FALTA ARREGLAR CSS. */}        
+            <Route path="AñadirCurso" element={<AñadirCurso />} /> {/* FALTA ARREGLAR CSS. */}
+            <Route path="GestionarCursosAlumnos" element={<GestionarCursos />} /> {/* FALTA CSS. */}                      
           </Route>
 
 
@@ -85,7 +86,6 @@ root.render(
             <Route index element={<NotFound />} />
             <Route path="MenuProfesor" element={<MenuProfesor />} /> {/* FALTA CSS. */} {/* FALTA SABER PARA QUE SIRVE */}
             <Route path="PerfilProfesor" element={<PerfilTeacher />} />  {/* FALTA ARREGLAR CSS. */} 
-            <Route path="GestionarCursosAlumnos" element={<GestionarCursos />} /> {/* FALTA CSS. */}              
           </Route>
 
           {/* Rutas de Alumno */}
