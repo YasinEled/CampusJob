@@ -8,51 +8,82 @@ const AñadirCentro = () => {
     correo: '',
     telefono: '',
     emailUsrAdmin: '',
-    nomUsrAdmin: ''
+    nomUsrAdmin: '',
+    logoCentro: null
   });
 
   const [message, setMessage] = useState('');
+  const [errorType, setErrorType] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleLogoChange = (e) => {
+    const file = e.target.files[0];
+    
+    if (!file) return;
+
+    // Validar tamaño (máximo 5MB)
+    const maxSizeInBytes = 5 * 1024 * 1024;
+    if (file.size > maxSizeInBytes) {
+      setMessage('El logo no puede superar los 5MB');
+      setErrorType('logoTooBig');
+      return;
+    }
+
+    // Validar tipo de archivo (solo imágenes)
+    const validImageTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    if (!validImageTypes.includes(file.type)) {
+      setMessage('Solo se permiten imágenes (JPG, PNG, GIF)');
+      setErrorType('invalidLogo');
+      return;
+    }
+
+    // Convertir a base64
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      setFormData({ ...formData, logoCentro: event.target.result });
+      setErrorType('');
+    };
+    reader.onerror = () => {
+      setMessage('Error al leer el archivo');
+      setErrorType('readError');
+    };
+    reader.readAsDataURL(file);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setMessage('');
+    setErrorType('');
 
     try {
       const response = await fetch('http://localhost:4000/api/adminCentro/crear', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
 
       const data = await response.json();
 
       if (data.success) {
-        setMessage("Centro y usuario creados correctamente");
+        setMessage(data.message);
         setFormData({
-          nombre: '',
-          correo: '',
-          telefono: '',
-          emailUsrAdmin: '',
-          nomUsrAdmin: ''
+          nombre: '', correo: '', telefono: '',
+          emailUsrAdmin: '', nomUsrAdmin: '', logoCentro: ''
         });
-        setTimeout(() => {
-          navigate("/AdminSupremo/homeAdmin");
-        }, 1500);
+        setTimeout(() => navigate("/centros"), 2000);
       } else {
-        setMessage(data.message || "Error al crear el centro");
+        setMessage(data.message);
+        setErrorType(data.errorType);
       }
+
     } catch (error) {
-      console.error('Error:', error);
-      setMessage("Hubo un problema al conectar con el servidor");
+      console.error('Error al conectar con el servidor:', error.message);
+      setMessage('Hubo un problema al conectar con el servidor');
+      setErrorType('serverError');
     }
   };
 
@@ -63,7 +94,8 @@ const AñadirCentro = () => {
         <h2>Información del Centro</h2>
 
         <form onSubmit={handleSubmit}>
-          <div>
+          {/* Campos del centro */}
+          <div className={errorType === 'centerExists' ? 'error-field' : ''}>
             <label htmlFor="nombre">Nombre del Centro:</label>
             <input
               type="text"
@@ -74,6 +106,7 @@ const AñadirCentro = () => {
               required
             />
           </div>
+
           <div>
             <label htmlFor="correo">Correo Electrónico:</label>
             <input
@@ -85,6 +118,7 @@ const AñadirCentro = () => {
               required
             />
           </div>
+
           <div>
             <label htmlFor="telefono">Teléfono:</label>
             <input
@@ -97,9 +131,29 @@ const AñadirCentro = () => {
             />
           </div>
 
+          <div>
+            <label htmlFor="logo">Logo del Centro (máx. 5MB):</label>
+            <input
+              type="file"
+              id="logo"
+              name="logo"
+              accept="image/jpeg,image/png,image/gif"
+              onChange={handleLogoChange}
+            />
+            {formData.logoCentro && (
+              <div className="logo-preview">
+                <img 
+                  src={formData.logoCentro} 
+                  alt="Vista previa del logo" 
+                  style={{ maxWidth: '200px', marginTop: '1em' }}
+                />
+              </div>
+            )}
+          </div>
+
           <h2>Información del Usuario Admin</h2>
 
-          <div>
+          <div className={errorType === 'userExists' ? 'error-field' : ''}>
             <label htmlFor="emailUsrAdmin">Email del Admin:</label>
             <input
               type="email"
@@ -111,7 +165,7 @@ const AñadirCentro = () => {
             />
           </div>
 
-          <div>
+          <div className={errorType === 'userExists' ? 'error-field' : ''}>
             <label htmlFor="nomUsrAdmin">Nombre de Usuario del Admin:</label>
             <input
               type="text"
@@ -123,11 +177,8 @@ const AñadirCentro = () => {
             />
           </div>
 
-          <button type="submit" className="btn-login">
-            Crear Centro
-          </button>
-
-          {message && <p>{message}</p>}
+          <button type="submit" className="btn-login">Crear Centro</button>
+          {message && <p className={`message ${errorType}`}>{message}</p>}
         </form>
       </main>
     </div>

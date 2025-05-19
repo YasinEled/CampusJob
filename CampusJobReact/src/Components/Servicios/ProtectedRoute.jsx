@@ -12,7 +12,7 @@ export default function ProtectedRoute({ children, requiredRole }) {
   // Si NO está logueado → permite acceder a `/` (login)
   if (!idUsuario) {
     if (location.pathname === "/") return children;
-    return <Navigate to="/" replace />;
+    return <Navigate to="/login" replace />;
   }
 
   // Si requiere rol y no coincide → redirige a /unauthorized
