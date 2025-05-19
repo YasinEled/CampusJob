@@ -1,8 +1,8 @@
-import Menu from "./Components/MenuHome/Menu/menu";
+import Menu from "./Common/Menu/menu";
 import { Outlet } from "react-router-dom";  // Importa Outlet
 
-import NavHome from "./Components/MenuHome/Nav/NavHome";
-import './Components/ComponentsCSS/MenuHome/general.css';
+import NavHome from "./Common/Nav/NavHome";
+import './general.css';
 
 
 function MenuHome({userType} ) {

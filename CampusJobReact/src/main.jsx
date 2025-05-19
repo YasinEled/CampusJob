@@ -7,26 +7,26 @@ import i18next from "i18next";
 
 import App from "./App.jsx";
 import MenuHome from "./mainHome.jsx";
-import MainBusqueda from "./Components/MenuHome/MainBusqueda/MainBusqueda";
-import PerfilPropio from "./Components/Perfiles/PerfilAlumno.jsx";
-import FormOfertas from "./Components/createOfertas/createOfertas.jsx";
-import PerfilEmpresa from "./Components/Perfiles/PerfilEmpresa.jsx";
-import CreatorUsers from "./Components/CreadorUser/Page/CreatorUsers.js";
-import SeachUser from "./Components/BuscadorPerfil/SeachUser.js";
-import PrimerInicio from "./Components/PrimerInici/PrimerIniciUsuari.jsx";
-import MenuCentros from "./Components/Centros/MenuCentros.jsx";
-import AñadirUsuario from "./Components/AñadirUsuarios/AñadirUsuario.jsx";
-import MenuProfesor from "./Components/MenuProfesor/MenuProfesor.jsx";
-import MenuCursos from "./Components/Cursos/MenuCursos.jsx";
-import AñadirCentro from "./Components/Centros/AñadirCentro.jsx";
-import AñadirCurso from "./Components/creadorCursos/createCursos.js";
-import GestionarCursos from "./Components/Cursos/GestionCursos.jsx";
-import PrimerInicioProf from "./Components/PrimerInici/PrimerIniciProfesor.jsx";
-import PrimerInicioEmpresa from "./Components/PrimerInici/PrimerIniciEmpresa.jsx";
-import PerfilTeacher from "./Components/Perfiles/PerfilTeacher.jsx";
-import NotFound from "./NotFound.jsx";
+import MainBusqueda from "./Alumno/MainBusqueda/MainBusqueda.jsx";
+import PerfilPropio from "./Alumno/PerfilAlumno/PerfilAlumno.jsx";
+import FormOfertas from "./Profesor/createOfertas/createOfertas.jsx";
+import PerfilEmpresa from "./Empresa/PerfilEmpresa/PerfilEmpresa.jsx";
+import CreatorUsersAC from "./AdminCentro/CreadorUserAC/Page/CreatorUsers.js";
+import SeachUser from "./Common/BuscadorUser/SeachUser.js"; 
+import PrimerInicio from "./Common/PrimerIniciForm/PrimerIniciUsuari.jsx";
+import MenuCentros from "./AdminSupremo/Centros/MenuCentros.jsx";
+import AñadirUsuario from "./Others/AñadirUsuarios/AñadirUsuario.jsx";   // NO SE USA ?
+import MenuProfesor from "./Others/MenuProfesor/MenuProfesor.jsx";
+import MenuCursos from "./Profesor/Cursos/MenuCursos.jsx";
+import AñadirCentro from "./AdminSupremo/Centros/AñadirCentro.jsx";
+import AñadirCurso from "./AdminCentro/creadorCursos/createCursos.jsx";
+import GestionarCursos from "./Profesor/Cursos/GestionCursos.jsx";
+import PrimerInicioProf from "./Common/PrimerIniciForm/PrimerIniciProfesor.jsx";
+import PrimerInicioEmpresa from "./Common/PrimerIniciForm/PrimerIniciEmpresa.jsx";
+import PerfilTeacher from "./Profesor/PerfilProfesor/PerfilTeacher.jsx";
+import NotFound from "./Common/NotFound/NotFound.jsx";
 
-import ProtectedRoute from "./Components/Servicios/ProtectedRoute.jsx";
+import ProtectedRoute from "./Auth/Servicios/ProtectedRoute.jsx";
 
 // Translation files
 import global_es from "./TRADUCCIONES/es/global.json";
