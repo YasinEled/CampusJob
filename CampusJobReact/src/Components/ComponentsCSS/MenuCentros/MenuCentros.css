@@ -1,32 +1,46 @@
-/* MenuAdmin.css */
+/* MenuCentros.css */
 
 .MenuAdminContenedor {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 10.4em;
-  height: calc(100vh - 7em);
+  justify-content: center;
+  height: 100vh;
   padding: 2em;
-  overflow: hidden;
+  background-color: #0a2e2b; /* Fondo oscuro */
+  color: white;
+}
+
+.CentroList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 600px;
 }
 
 .CentroCard {
-  background-color: #042522;
-  color: white;
-  width: 60%;
-  border-radius: 15px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-  margin-bottom: 2em;
-  padding: 1.5em;
-  text-align: center;
   position: relative;
+  background-color: transparent;
+  border-radius: 15px;
+  overflow: hidden;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .CentroCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+  transform: scale(1.03);
+}
+
+.CentroInfo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5em;
+  background: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
+  backdrop-filter: blur(5px);
+  z-index: 1;
 }
 
 .CentroNombre {
@@ -34,17 +48,16 @@
   margin-bottom: 0.5em;
 }
 
-.CentroAdmin {
-  font-size: 1em;
-  margin-bottom: 1em;
+.CentroImagen {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: opacity 0.3s ease;
 }
 
-.CentroImagen {
-  width: 9em;
-  height: 9em;
-  border-radius: 20%;
-  border: 3px solid #16a085;
-  object-fit: cover;
+.CentroCard:hover .CentroImagen {
+  opacity: 0.5;
 }
 
 .BotonAñadirCentro {
@@ -57,9 +70,15 @@
   cursor: pointer;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 2em;
 }
 
 .BotonAñadirCentro:hover {
   background-color: #16a085;
   transform: scale(1.03);
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
 }

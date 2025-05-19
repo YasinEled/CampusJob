@@ -32,10 +32,27 @@ function App() {
         setMessage(data.message);
 
         if (data.success) {
-          localStorage.setItem('idUsuario', data.idUsuario);
-          localStorage.setItem('nivelUsuario', data.nivelUsuario);
-          navigate('mainHome/busqueda');
-      }
+          console.log(
+            "[Login] guardando en localStorage →",  
+            "idUsuario:", data.idUsuario,
+            "nivelUsuario:", data.nivelUsuario
+          );
+          localStorage.setItem("idUsuario", data.idUsuario);
+          localStorage.setItem("nivelUsuario", data.nivelUsuario);
+          console.log(
+            "[Login] valores en localStorage →",
+            "idUsuario:", localStorage.getItem("idUsuario"),
+            "nivelUsuario:", localStorage.getItem("nivelUsuario")
+          );
+          // Navega a la ruta donde toca que vaya cada usr.
+          if(data.nivelUsuario==0) {navigate("/Alumno/BusquedaOfertas");}
+          else if(data.nivelUsuario==1) {navigate("/");}
+          else if(data.nivelUsuario==2) {navigate("/Alumno/BusquedaOfertas");}
+          else if(data.nivelUsuario==3) {navigate("/Alumno/BusquedaOfertas");}
+          else if(data.nivelUsuario==4) {navigate("/AdminSupremo/homeAdmin");}
+
+
+        }
     } catch (error) {
         console.error('Error:', error);
         setMessage(t("login.connectionError"));

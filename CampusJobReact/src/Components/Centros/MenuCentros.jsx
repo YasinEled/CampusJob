@@ -1,33 +1,78 @@
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import fotoProfesor from "../../assets/Logo/CampusJob.png";
 import "../ComponentsCSS/MenuCentros/MenuCentros.css";
 
-export default function CrearUsuarios() {
-  const nombreCentro = "DAM";
-  const centroNombreAdmin = "Eric";
-  const imagenCentro = fotoProfesor;
 
+export default function MenuCentros() {
   const navigate = useNavigate();
+  const [centros, setCentros] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const handleAñadirCurso = () => {
-    navigate("/añadirCentro");
-  };
+  useEffect(() => {
+    const fetchCentros = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/api/centro/all');
+        const data = await response.json();
 
-  const handleVerInformacion = () => {
-    navigate("/MenuCursos");
+        if (data.success) {
+          setCentros(data.data);
+        } else {
+          setError(data.message || 'No se pudieron cargar los centros');
+        }
+      } catch (err) {
+        setError('Error al conectar con el servidor');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCentros();
+  }, []);
+
+  const handleVerInformacion = (id) => {
+    navigate(`/Admin/HomeCursos/${id}`);
   };
 
   return (
     <div className="MenuAdminContenedor">
-      <div className="CentroCard" onClick={handleVerInformacion}>
-        <h3 className="CentroNombre">{nombreCentro}</h3>
-        <p className="CentroAdmin">Administrador: {centroNombreAdmin}</p>
-        <img src={imagenCentro} alt="Imagen del centro" className="CentroImagen" />
-      </div>
+      <h1>Centros Disponibles</h1>
 
-      <button className="BotonAñadirCentro" onClick={handleAñadirCurso}>
-        Añadir Centro
-      </button>
+      {loading && <p>Cargando centros...</p>}
+      {error && <p className="error-message">{error}</p>}
+
+      <div className="CentroList">
+        {centros.map((centro) => (
+          <div 
+            key={centro.idcentro} 
+            className="CentroCard" 
+            onClick={() => handleVerInformacion(centro.idcentro)}
+          >
+            <div className="CentroInfo">
+              <h3 className="CentroNombre">{centro.nombreCentro}</h3>
+              <p>ID Admin: {centro.idUsrAdmin}</p>
+              <p>Usuario: {centro.adminNombre}</p>
+            </div>
+            {centro.logoCentro ? (
+              <img 
+                src={centro.logoCentro} 
+                alt="Logo del centro" 
+                className="CentroImagen"
+              />
+            ) : (
+              <div className="CentroImagenPlaceholder">Sin logo</div>
+            )}
+          </div>
+        ))}
+
+        {/* Botón de añadir centro */}
+        <button 
+          className="BotonAñadirCentro" 
+          onClick={() => navigate("/AdminSupremo/añadirCentro")}
+        >
+          Añadir Centro
+        </button>
+      </div>
     </div>
   );
 }
