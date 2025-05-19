@@ -10,11 +10,11 @@ export default function CrearUsuarios() {
   const navigate = useNavigate();
 
   const handleAñadirCurso = () => {
-    navigate("/añadirCentro");
+    navigate("/AdminSupremo/añadirCentro");
   };
 
   const handleVerInformacion = () => {
-    navigate("/MenuCursos");
+    navigate("/Admin/HomeCursos");
   };
 
   return (
