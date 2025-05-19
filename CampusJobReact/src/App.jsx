@@ -32,10 +32,21 @@ function App() {
         setMessage(data.message);
 
         if (data.success) {
-          localStorage.setItem('idUsuario', data.idUsuario);
-          localStorage.setItem('nivelUsuario', data.nivelUsuario);
-          navigate('mainHome/busqueda');
-      }
+          console.log(
+            "[Login] guardando en localStorage →",  
+            "idUsuario:", data.idUsuario,
+            "nivelUsuario:", data.nivelUsuario
+          );
+          localStorage.setItem("idUsuario", data.idUsuario);
+          localStorage.setItem("nivelUsuario", data.nivelUsuario);
+          console.log(
+            "[Login] valores en localStorage →",
+            "idUsuario:", localStorage.getItem("idUsuario"),
+            "nivelUsuario:", localStorage.getItem("nivelUsuario")
+          );
+          // Navega a la ruta adecuada (ver punto 2)
+          navigate("/Alumno/BusquedaOfertas");
+        }
     } catch (error) {
         console.error('Error:', error);
         setMessage(t("login.connectionError"));
