@@ -44,8 +44,14 @@ function App() {
             "idUsuario:", localStorage.getItem("idUsuario"),
             "nivelUsuario:", localStorage.getItem("nivelUsuario")
           );
-          // Navega a la ruta adecuada (ver punto 2)
-          navigate("/Alumno/BusquedaOfertas");
+          // Navega a la ruta donde toca que vaya cada usr.
+          if(data.nivelUsuario==0) {navigate("/Alumno/BusquedaOfertas");}
+          else if(data.nivelUsuario==1) {navigate("/");}
+          else if(data.nivelUsuario==2) {navigate("/Alumno/BusquedaOfertas");}
+          else if(data.nivelUsuario==3) {navigate("/Alumno/BusquedaOfertas");}
+          else if(data.nivelUsuario==4) {navigate("/AdminSupremo/homeAdmin");}
+
+
         }
     } catch (error) {
         console.error('Error:', error);
