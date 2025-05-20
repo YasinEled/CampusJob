@@ -41,7 +41,7 @@ const logoIconDark = new URL(
 const menuConfig = {
   AdminSupremo: [
     { path: `/AñadirCentro`, icon: <FormOutlined />, label: "AddCentro" },
-    { path: "/global", icon: <GlobalOutlined />, label: "Global" },
+    // { path: "/global", icon: <GlobalOutlined />, label: "Global" },
     { path: "/HomeAdmin", icon: <HomeOutlined />, label: "Home" },
   ],
   Admin: [
