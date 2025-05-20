@@ -1,65 +1,109 @@
-import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import fotoProfesor from "../../assets/Logo/CampusJob.png";
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import "./Style/MenuCursos.css";
 
 export default function MenuCursos() {
   const { centroId } = useParams(); // ✅ Recibe el centroId desde la URL
   const navigate = useNavigate();
-  const [nombreCurso, setNombreCurso] = useState("DAM");
-  const cursoNombreAdmin = "Eric";
-  const imagenCurso = fotoProfesor;
+  const [cursos, setCursos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [nuevoNombre, setNuevoNombre] = useState(nombreCurso);
+  const [nuevoNombre, setNuevoNombre] = useState("");
+
+  const nivelUsuario = localStorage.getItem("nivelUsuario");
+
+  useEffect(() => {
+    const fetchCursos = async () => {
+      if (!centroId) {
+        setError("ID del centro no encontrado");
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const response = await fetch(
+          `http://localhost:4000/api/centro/${centroId}/cursos`
+        );
+        const data = await response.json();
+
+        if (data.success) {
+          setCursos(data.data); // ✅ Ahora incluye `fotoCurso`
+        } else {
+          setError(data.message || "No se pudieron cargar los cursos");
+        }
+      } catch (err) {
+        setError("Error al conectar con el servidor");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCursos();
+  }, [centroId]);
+
+  const handleVerInformacion = (cursoId) => {
+    navigate(`/centro/${centroId}/curso/${cursoId}/BuscarOfertas`);
+  };
 
   const handleAñadirCurso = () => {
-    // ✅ Navega a la ruta con el centroId actual
     navigate(`/AdminCentro/centro/${centroId}/añadirCurso`);
   };
 
-  const handleVerInformacion = () => {
-    navigate(`/centro/${centroId}/curso/101/BuscarOfertas`);
-  };
-
-  const handleModificarCursoClick = (e) => {
+  const handleModificarCursoClick = (e, curso) => {
     e.stopPropagation();
-    setNuevoNombre(nombreCurso);
+    setNuevoNombre(curso.nomcurs);
     setIsModalOpen(true);
   };
 
   const handleCerrarModal = () => setIsModalOpen(false);
-
   const handleGuardarNombre = () => {
-    setNombreCurso(nuevoNombre);
     setIsModalOpen(false);
   };
 
   return (
-    <div>
-      {/* <NavHome userType="admin" /> */}
-      <div className="MenuAdminContenedor">
-        <div className="MenuAdminContainer">
-          <h1>Cursos Disponibles</h1>
-          <div className="MenuAdminContenido">
-            <div className="CentroList">
-              <div className="CentroCard" onClick={handleVerInformacion}>
-                <button
-                  className="BotonTresPuntos"
-                  onClick={handleModificarCursoClick}
-                  aria-label="Modificar curso"
-                >
-                  &#8942;
-                </button>
-                <div className="CentroInfo">
-                  <h3 className="CursoNombre">{nombreCurso}</h3>
-                  <p className="CursoAdmin">
-                    Administrador: {cursoNombreAdmin}
-                  </p>
-                </div>
+    <div className="MenuAdminContenedor">
 
-                <img src={imagenCurso} alt="Imagen del curso" className="" />
-              </div>
+      <h2>Cursos del Centro ID: {centroId}</h2>
+
+      {loading && <p>Cargando cursos...</p>}
+      {error && <p className="error-message">{error}</p>}
+          <div className="MenuAdminContainer">
+
+      {cursos.length > 0 ? (
+        <div className="CursosGrid">
+          {cursos.map((curso) => (
+            <div
+              key={curso.idcurso}
+              className="CursoCard"
+              onClick={() => handleVerInformacion(curso.idcurso)}
+            >
+              <button
+                className="BotonTresPuntos"
+                onClick={(e) => handleModificarCursoClick(e, curso)}
+                aria-label="Ver información"
+              >
+                &#8942;
+              </button>
+              <h3 className="CursoNombre">{curso.nomcurs}</h3>
+              <p className="CursoAdmin">Administrador: Eric</p>
+              {/* ✅ Muestra la foto del curso si existe */}
+              {curso.fotoCurso ? (
+                <img
+                  src={curso.fotoCurso}
+                  alt="Imagen del curso"
+                  className="CursoImagen"
+                />
+              ) : (
+                <div className="CursoImagenPlaceholder">Sin logo</div>
+              )}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p>No hay cursos disponibles</p>
+      )}
 
               <button className="BotonAñadirCentro" onClick={handleAñadirCurso}>
                 Añadir Curso

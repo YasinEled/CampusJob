@@ -3,35 +3,32 @@ import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 const CreaCurso = () => {
-  const { centroId } = useParams<{ centroId: string }>(); // Recibe el centroId desde la URL
+  const { centroId } = useParams<{ centroId: string }>();
   const navigate = useNavigate();
 
   const [curso, setCurso] = useState({
-    nombre: '',
-    descripcion: '',
-    foto: null as string | null
+    nombre: "",
+    descripcion: "",
+    foto: null as string | null,
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setCurso(prev => ({ ...prev, [name]: value }));
+    setCurso((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleFotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // Validar tipo de archivo
-    const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
-    if (!validTypes.includes(file.type)) {
-      alert('Solo se permiten imágenes (JPG, PNG, GIF)');
-      return;
-    }
-
-    // Convertir a base64
     const reader = new FileReader();
     reader.onload = (event) => {
-      setCurso(prev => ({ ...prev, foto: event.target?.result as string }));
+      setCurso((prev) => ({
+        ...prev,
+        foto: event.target?.result as string,
+      }));
     };
     reader.readAsDataURL(file);
   };
@@ -39,28 +36,52 @@ const CreaCurso = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (!centroId) {
+      alert("ID del centro no encontrado");
+      return;
+    }
+
+    const idUsuario = localStorage.getItem("idUsuario");
+    const nivelUsuario = localStorage.getItem("nivelUsuario");
+
+    if (!idUsuario || nivelUsuario === null) {
+      alert("Faltan datos del usuario");
+      return;
+    }
+
     try {
-      const response = await fetch(`http://localhost:4000/api/centro/${centroId}/curso`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          nombre: curso.nombre,
-          descripcion: curso.descripcion,
-          foto: curso.foto
-        })
-      });
+      const response = await fetch(
+        `http://localhost:4000/api/centro/${centroId}/curso`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            nombre: curso.nombre,
+            descripcion: curso.descripcion,
+            foto: curso.foto,
+            idUsuario,
+            nivelUsuario,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        alert(errorData.message || `Error ${response.status}: ${response.statusText}`);
+        return;
+      }
 
       const data = await response.json();
-
       if (data.success) {
-        alert('Curso creado exitosamente');
+        alert("Curso creado exitosamente");
         navigate(`/centro/${centroId}/elegirCurso`);
       } else {
-        alert(data.message || 'Error al crear el curso');
+        alert(data.message || "Error al crear el curso");
       }
+
     } catch (err) {
-      console.error('Error al enviar:', err);
-      alert('Hubo un problema al conectar con el servidor');
+      console.error("Error al enviar:", err);
+      alert("Hubo un problema al conectar con el servidor");
     }
   };
 
