@@ -45,9 +45,9 @@ const menuConfig = {
     { path: "/HomeAdmin", icon: <HomeOutlined />, label: "Home" },
   ],
   Admin: [
-    { path: "/GestionarCursosAlumnos", icon: <FormOutlined />, label: "AddCurso" },
-    { path: "/AñadirCentro", icon: <UserAddOutlined />, label: "AddUser" },
-    { path: "/AñadirCurso", icon: <AppstoreAddOutlined />, label: "Usuarios" },
+    { path: "GestionarCursosAlumnos", icon: <FormOutlined />, label: "AddCurso" },
+    { path: "centro/:centroId/CrearUsuario", icon: <UserAddOutlined />, label: "AddUser" },
+    { path: "centro/:centroId/añadirCurso", icon: <AppstoreAddOutlined />, label: "Usuarios" },
     // { path: "/global", icon: <GlobalOutlined />, label: "Global" },
     { path: "/HomeCursos", icon: <HomeOutlined />, label: "Home" },
   ],

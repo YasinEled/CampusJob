@@ -96,7 +96,7 @@ const AñadirCentro = () => {
 
   return (
     <div className="page-wrapperAñadirCentro">
-      <main className="main-wrapper">
+      <main className="main-wrapperCentro">
         <h1>Añadir Centro</h1>
         <form onSubmit={handleSubmit}>
           <div style={{ display: "flex", flexDirection: "row", gap: "1em" }}>

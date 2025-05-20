@@ -34,7 +34,7 @@ const CreatorUsersAC = () => {
                   style={{ display: "none" }}
                 />
                 <label
-                                  className="CreatorSelectorUser"
+                  className="CreatorSelectorUser"
 
                   htmlFor={opt.id}
                   onClick={() => handleLabelClick(opt.id)}
