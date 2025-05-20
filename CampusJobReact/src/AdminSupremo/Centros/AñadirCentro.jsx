@@ -82,7 +82,7 @@ const AñadirCentro = () => {
           nomUsrAdmin: "",
           logoCentro: "",
         });
-        setTimeout(() => navigate("/centros"), 2000);
+        setTimeout(() => navigate("/AdminSupremo/homeAdmin"), 2000);
       } else {
         setMessage(data.message);
         setErrorType(data.errorType);
