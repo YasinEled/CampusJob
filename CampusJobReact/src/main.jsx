@@ -74,7 +74,7 @@ root.render(
             </ProtectedRoute>
           }>
             <Route index element={<Navigate to="/centro/${localStorage.getItem('centroId')}/elegirCurso" replace />} />
-            <Route path="centro/:centroId/AñadirCurso" element={<ProtectedRoute requiredRole="3,4"><AñadirCurso /></ProtectedRoute>} />
+            <Route path="centro/:centroId/añadirCurso" element={<ProtectedRoute requiredRole="3,4"><AñadirCurso /></ProtectedRoute>} />
             <Route path="centro/:centroId/CrearUsuario" element={<ProtectedRoute requiredRole="3,4"><CreatorUsersAC /></ProtectedRoute>} />
           </Route>
 
@@ -85,7 +85,7 @@ root.render(
             </ProtectedRoute>
           }>
             <Route index element={<Navigate to="/centro/${localStorage.getItem('centroId')}/elegirCurso" replace />} />
-            <Route path="centro/:centroId/PerfilProfesor/:idUsrProfe" element={<ProtectedRoute requiredRole="2,3,4"><PerfilTeacher/></ProtectedRoute>} />
+            <Route path="centro/:centroId/PerfilProfesor/:idUsrProfe" element={<ProtectedRoute requiredRole="0,1,2,3,4"><PerfilTeacher/></ProtectedRoute>} />
           </Route>
 
           {/* 5) Empresa (rol 1,2,3,4) */}

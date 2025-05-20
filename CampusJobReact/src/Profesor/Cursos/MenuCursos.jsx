@@ -1,40 +1,38 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import fotoProfesor from "../../assets/Logo/CampusJob.png";
 import "./Style/MenuCursos.css";
 
-export default function CrearUsuarios() {
+export default function MenuCursos() {
+  const { centroId } = useParams(); // ✅ Recibe el centroId desde la URL
+  const navigate = useNavigate();
   const [nombreCurso, setNombreCurso] = useState("DAM");
   const cursoNombreAdmin = "Eric";
   const imagenCurso = fotoProfesor;
-
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [nuevoNombre, setNuevoNombre] = useState(nombreCurso);
 
-  const navigate = useNavigate();
-
   const handleAñadirCurso = () => {
-    navigate("/Admin/AñadirCurso");
+    // ✅ Navega a la ruta con el centroId actual
+    navigate(`/AdminCentro/centro/${centroId}/añadirCurso`);
   };
 
   const handleVerInformacion = () => {
-    navigate("/Admin/GestionarCursosAlumnos");
+    navigate(`/centro/${centroId}/curso/101/BuscarOfertas`);
   };
 
   const handleModificarCursoClick = (e) => {
-    e.stopPropagation(); 
+    e.stopPropagation();
     setNuevoNombre(nombreCurso);
     setIsModalOpen(true);
   };
 
-  const handleCerrarModal = () => {
-    setIsModalOpen(false);
-  };
+  const handleCerrarModal = () => setIsModalOpen(false);
 
   const handleGuardarNombre = () => {
     setNombreCurso(nuevoNombre);
     setIsModalOpen(false);
-    // Aquí podrías también actualizar el nombre en backend o contexto global si tienes
   };
 
   return (
@@ -58,7 +56,7 @@ export default function CrearUsuarios() {
 
       {isModalOpen && (
         <div className="ModalOverlay" onClick={handleCerrarModal}>
-          <div className="ModalContent" onClick={e => e.stopPropagation()}>
+          <div className="ModalContent" onClick={(e) => e.stopPropagation()}>
             <h2>Modificar nombre del curso</h2>
             <input
               type="text"
