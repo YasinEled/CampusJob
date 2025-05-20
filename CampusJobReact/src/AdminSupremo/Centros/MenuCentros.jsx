@@ -34,12 +34,20 @@ export default function MenuCentros() {
   };
 
   return (
-    <div className="MenuAdminContenedor">
+
+    <div className="MenuAdminSupremoContenedor">
       <div className="MenuAdminContainer">
-          <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
           <h1>Centros Disponibles</h1>
-            {loading && <p>Cargando centros...</p>}
-            {error && <p className="error-message">{error}</p>}
+          {loading && <p>Cargando centros...</p>}
+          {error && <p className="error-message">{error}</p>}
         </div>
 
         <div className="MenuAdminContenido">
@@ -66,7 +74,19 @@ export default function MenuCentros() {
                 )}
               </div>
             ))}
-  
+            <div
+              
+                className="CentroCard"
+                onClick={() => handleVerInformacion(centro.idcentro)}
+              >
+                <div className="CentroInfo">
+                  <h3 className="CentroNombre">Edcuem</h3>
+                  <p>ID Admin: 984</p>
+                  <p>Usuario: Yasin</p>
+                </div>
+                
+                  <div className="CentroImagenPlaceholder">Sin logo</div>
+              </div>
             <button
               className="BotonAñadirCentro"
               onClick={() => navigate("/AdminSupremo/añadirCentro")}

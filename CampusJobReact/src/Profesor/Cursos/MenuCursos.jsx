@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import fotoProfesor from "../../assets/Logo/CampusJob.png";
+import fotoProfesor from "../../assets/Logo/CampusJobBorderLogo.png";
 import "./Style/MenuCursos.css";
 
 export default function CrearUsuarios() {
@@ -22,7 +22,7 @@ export default function CrearUsuarios() {
   };
 
   const handleModificarCursoClick = (e) => {
-    e.stopPropagation(); 
+    e.stopPropagation();
     setNuevoNombre(nombreCurso);
     setIsModalOpen(true);
   };
@@ -39,39 +39,53 @@ export default function CrearUsuarios() {
 
   return (
     <div className="MenuAdminContenedor">
-      <div className="CursoCard" onClick={handleVerInformacion} style={{ position: "relative" }}>
-        <button
-          className="BotonTresPuntos"
-          onClick={handleModificarCursoClick}
-          aria-label="Modificar curso"
-        >
-          &#8942;
-        </button>
-        <h3 className="CursoNombre">{nombreCurso}</h3>
-        <p className="CursoAdmin">Administrador: {cursoNombreAdmin}</p>
-        <img src={imagenCurso} alt="Imagen del curso" className="CursoImagen" />
-      </div>
+      <div className="MenuAdminContainer">
+        <h1>Centros Disponibles</h1>
+        <div className="MenuAdminContenido">
+          <div className="CentroList">
+            <div className="CentroCard" onClick={handleVerInformacion}>
+              <button
+                className="BotonTresPuntos"
+                onClick={handleModificarCursoClick}
+                aria-label="Modificar curso"
+              >
+                &#8942;
+              </button>
+              <div className="CentroInfo">
+                <h3 className="CursoNombre">{nombreCurso}</h3>
+                <p className="CursoAdmin">Administrador: {cursoNombreAdmin}</p>
+              </div>
 
-      <button className="BotonAñadirCurso" onClick={handleAñadirCurso}>
-        Añadir Curso
-      </button>
-
-      {isModalOpen && (
-        <div className="ModalOverlay" onClick={handleCerrarModal}>
-          <div className="ModalContent" onClick={e => e.stopPropagation()}>
-            <h2>Modificar nombre del curso</h2>
-            <input
-              type="text"
-              value={nuevoNombre}
-              onChange={(e) => setNuevoNombre(e.target.value)}
-            />
-            <div className="ModalButtons">
-              <button onClick={handleGuardarNombre}>Guardar</button>
-              <button onClick={handleCerrarModal}>Cancelar</button>
+              <img
+                src={imagenCurso}
+                alt="Imagen del curso"
+                className=""
+              />
             </div>
+
+            <button className="BotonAñadirCentro" onClick={handleAñadirCurso}>
+              Añadir Curso
+            </button>
           </div>
         </div>
-      )}
+
+        {isModalOpen && (
+          <div className="ModalOverlay" onClick={handleCerrarModal}>
+            <div className="ModalContent" onClick={(e) => e.stopPropagation()}>
+              <h2>Modificar nombre del curso</h2>
+              <input
+                type="text"
+                value={nuevoNombre}
+                onChange={(e) => setNuevoNombre(e.target.value)}
+              />
+              <div className="ModalButtons">
+                <button onClick={handleGuardarNombre}>Guardar</button>
+                <button onClick={handleCerrarModal}>Cancelar</button>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
