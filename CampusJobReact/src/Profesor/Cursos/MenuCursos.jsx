@@ -40,7 +40,7 @@ export default function MenuCursos() {
       {/* <NavHome userType="admin" /> */}
       <div className="MenuAdminContenedor">
         <div className="MenuAdminContainer">
-          <h1>Centros Disponibles</h1>
+          <h1>Cursos Disponibles</h1>
           <div className="MenuAdminContenido">
             <div className="CentroList">
               <div className="CentroCard" onClick={handleVerInformacion}>

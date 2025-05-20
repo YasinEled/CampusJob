@@ -85,7 +85,6 @@ root.render(
             </ProtectedRoute>
           }>
             <Route index element={<Navigate to="/centro/${localStorage.getItem('centroId')}/elegirCurso" replace />} />
-            <Route path="centro/:centroId/PerfilProfesor/:idUsrProfe" element={<ProtectedRoute requiredRole="0,1,2,3,4"><PerfilTeacher/></ProtectedRoute>} />
           </Route>
 
           {/* 5) Empresa (rol 1,2,3,4) */}
@@ -95,8 +94,28 @@ root.render(
             </ProtectedRoute>
           }>
             <Route index element={<Navigate to="/centro/${localStorage.getItem('centroId')}/elegirCurso" replace />} />
-            <Route path="centro/:centroId/PerfilEmpresa/:idUsrEmpresa" element={<ProtectedRoute requiredRole="1,2,3,4"><PerfilEmpresa/></ProtectedRoute>} />
+            <Route path="centro/:centroId/añadirOferta" element={<ProtectedRoute requiredRole="1,2,3,4"><FormOfertas/></ProtectedRoute>} />
           </Route>
+          {/* NUEVA RUTA PRINCIPAL PARA PERFIL EMPRESA */}
+            <Route path="/PerfilEmpresa/:idUsrEmpresa" element={
+              <ProtectedRoute requiredRole="0,1,2,3,4">
+                <PerfilEmpresa />
+              </ProtectedRoute>
+            } />
+
+            {/* NUEVA RUTA PRINCIPAL PARA PERFIL EMPRESA */}
+            <Route path="/PerfilProfesor/:idUsrProfe" element={
+              <ProtectedRoute requiredRole="0,1,2,3,4">
+                <PerfilTeacher />
+              </ProtectedRoute>
+            } />
+
+            {/* NUEVA RUTA PRINCIPAL PARA PERFIL EMPRESA */}
+            <Route path="/PerfilAlumno/:idUsrAlumno" element={
+              <ProtectedRoute requiredRole="0,1,2,3,4">
+                <PerfilPropio />
+              </ProtectedRoute>
+            } />
 
           {/* 6) Alumno (rol 0,2,3,4) */}
           <Route path="/Alumno/*" element={
@@ -105,7 +124,6 @@ root.render(
             </ProtectedRoute>
           }>
             <Route index element={<Navigate to="/centro/${localStorage.getItem('centroId')}/elegirCurso" replace />} />
-            <Route path="centro/:centroId/PerfilAlumno/:idUsrAlumno" element={<ProtectedRoute requiredRole="0,2,3,4"><PerfilPropio/></ProtectedRoute>} />
           </Route>
 
           {/* 7) Centro general */}
@@ -113,9 +131,9 @@ root.render(
           <Route path="/centro/:centroId/curso/:cursoId/BuscarOfertas" element={<ProtectedRoute requiredRole="0,1,2,3,4"><MainBusqueda /></ProtectedRoute>} />
 
           {/* 8) Primer inicio */}
-          <Route path="/PrimerInicioAlumno" element={<ProtectedRoute requiredRole="0"><PrimerInicio /></ProtectedRoute>} />
-          <Route path="/PrimerInicioProfesor" element={<ProtectedRoute requiredRole="2"><PrimerInicioProf /></ProtectedRoute>} />
-          <Route path="/PrimerInicioEmpresa" element={<ProtectedRoute requiredRole="1"><PrimerInicioEmpresa /></ProtectedRoute>} />
+          <Route path="/PrimerInicioAlumno" element={<ProtectedRoute requiredRole="0,1,2,3,4"><PrimerInicio /></ProtectedRoute>} />
+          <Route path="/PrimerInicioProfesor" element={<ProtectedRoute requiredRole="0,1,2,3,4"><PrimerInicioProf /></ProtectedRoute>} />
+          <Route path="/PrimerInicioEmpresa" element={<ProtectedRoute requiredRole="0,1,2,3,4"><PrimerInicioEmpresa /></ProtectedRoute>} />
 
           {/* 9) Buscador Perfil */}
           <Route path="/BuscadorPerfil" element={<SeachUser />} />
