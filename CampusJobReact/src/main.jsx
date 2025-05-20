@@ -97,8 +97,10 @@ root.render(
             }
           >
             <Route index element={<NotFound />} />
-            <Route path="MenuProfesor" element={<MenuProfesor />} />
+            {/* <Route path="MenuProfesor" element={<MenuProfesor />} /> */}
             <Route path="PerfilProfesor" element={<PerfilTeacher />} />
+            <Route path="BusquedaOfertas" element={<MainBusqueda />} />
+            <Route path="BuscadorPerfil" element={<SeachUser />} />
           </Route>
 
           {/* Niveles 0,2,3,4: Alumno */}
@@ -126,6 +128,8 @@ root.render(
           >
             <Route index element={<NotFound />} />
             <Route path="PerfilEmpresa" element={<PerfilEmpresa />} />
+            <Route path="BusquedaOfertas" element={<MainBusqueda />} />
+
             <Route path="CrearOfertas" element={<FormOfertas />} />
           </Route>
 
