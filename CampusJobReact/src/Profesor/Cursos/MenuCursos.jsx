@@ -1,75 +1,85 @@
-import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import fotoProfesor from "../../assets/Logo/CampusJob.png";
-import "./Style/MenuCursos.css";
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
 export default function MenuCursos() {
-  const { centroId } = useParams(); // ✅ Recibe el centroId desde la URL
   const navigate = useNavigate();
-  const [nombreCurso, setNombreCurso] = useState("DAM");
-  const cursoNombreAdmin = "Eric";
-  const imagenCurso = fotoProfesor;
-  
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [nuevoNombre, setNuevoNombre] = useState(nombreCurso);
+  const { centroId } = useParams(); // ✅ Recibe el ID del centro desde la URL
+  const [cursos, setCursos] = useState([]); // ✅ Estado inicial vacío
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const handleAñadirCurso = () => {
-    // ✅ Navega a la ruta con el centroId actual
-    navigate(`/AdminCentro/centro/${centroId}/añadirCurso`);
-  };
+  // Validamos que el usuario tenga acceso
+  const nivelUsuario = localStorage.getItem("nivelUsuario");
 
-  const handleVerInformacion = () => {
-    navigate(`/centro/${centroId}/curso/101/BuscarOfertas`);
-  };
+  useEffect(() => {
+    const fetchCursos = async () => {
+      if (!centroId) {
+        setError("ID del centro no encontrado");
+        setLoading(false);
+        return;
+      }
 
-  const handleModificarCursoClick = (e) => {
-    e.stopPropagation();
-    setNuevoNombre(nombreCurso);
-    setIsModalOpen(true);
-  };
+      try {
+        const response = await fetch(`http://localhost:4000/api/centro/${centroId}/cursos`);
+        const data = await response.json();
 
-  const handleCerrarModal = () => setIsModalOpen(false);
+        if (data.success) {
+          setCursos(data.data); // ✅ Asume que el backend devuelve un array en `data`
+        } else {
+          throw new Error(data.message || "No se pudieron cargar los cursos");
+        }
+      } catch (err) {
+        setError("Error al conectar con el servidor");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const handleGuardarNombre = () => {
-    setNombreCurso(nuevoNombre);
-    setIsModalOpen(false);
+    fetchCursos();
+  }, [centroId]);
+
+  const handleVerInformacion = (id) => {
+    if (nivelUsuario === "4" || nivelUsuario === "3") {
+      // AdminSupremo o AdminCentro → navegan a gestión de alumnos
+      navigate(`/AdminCentro/centro/${centroId}/GestionarCursosAlumnos`);
+    } else {
+      navigate("/unauthorized");
+    }
   };
 
   return (
     <div className="MenuAdminContenedor">
-      <div className="CursoCard" onClick={handleVerInformacion} style={{ position: "relative" }}>
-        <button
-          className="BotonTresPuntos"
-          onClick={handleModificarCursoClick}
-          aria-label="Modificar curso"
-        >
-          &#8942;
-        </button>
-        <h3 className="CursoNombre">{nombreCurso}</h3>
-        <p className="CursoAdmin">Administrador: {cursoNombreAdmin}</p>
-        <img src={imagenCurso} alt="Imagen del curso" className="CursoImagen" />
-      </div>
+      <div className="MenuAdminContainer">
+        <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+          <h1>Cursos Disponibles</h1>
+          {loading && <p>Cargando cursos...</p>}
+          {error && <p className="error-message">{error}</p>}
+        </div>
 
-      <button className="BotonAñadirCurso" onClick={handleAñadirCurso}>
-        Añadir Curso
-      </button>
+        <div className="MenuAdminContenido">
+          <div className="CursoList">
+            {cursos.map((curso) => (
+              <div
+                key={curso.idcurso}
+                className="CursoCard"
+                onClick={() => handleVerInformacion(curso.idcurso)}
+              >
+                <div className="CursoInfo">
+                  <h3 className="CursoNombre">{curso.nomcurs}</h3>
+                  <p>Descripción: {curso.desccurs || "Sin descripción"}</p>
+                </div>
+              </div>
+            ))}
 
-      {isModalOpen && (
-        <div className="ModalOverlay" onClick={handleCerrarModal}>
-          <div className="ModalContent" onClick={(e) => e.stopPropagation()}>
-            <h2>Modificar nombre del curso</h2>
-            <input
-              type="text"
-              value={nuevoNombre}
-              onChange={(e) => setNuevoNombre(e.target.value)}
-            />
-            <div className="ModalButtons">
-              <button onClick={handleGuardarNombre}>Guardar</button>
-              <button onClick={handleCerrarModal}>Cancelar</button>
-            </div>
+            <button
+              className="BotonAñadirCurso"
+              onClick={() => navigate(`/AdminCentro/centro/${centroId}/añadirCurso`)}
+            >
+              Añadir Curso
+            </button>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }
