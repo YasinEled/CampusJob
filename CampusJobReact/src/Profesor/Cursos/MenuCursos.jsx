@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./Style/MenuCursos.css";
-
+import {
+  PlusOutlined,
+  LoadingOutlined,
+  UserOutlined,
+  CheckOutlined,
+  CloseOutlined,
+} from "@ant-design/icons";
+import { Spin } from "antd";
 export default function MenuCursos() {
   const { centroId } = useParams(); // ✅ Recibe el centroId desde la URL
   const navigate = useNavigate();
@@ -77,9 +84,22 @@ export default function MenuCursos() {
           }}
         >
           <h2>Cursos del Centro ID: {centroId}</h2>
-
-          {loading && <p>Cargando cursos...</p>}
+          {loading && (
+            <Spin
+              indicator={<LoadingOutlined spin />}
+              style={{ color: "white" }}
+              size="large"
+            />
+          )}{" "}
           {error && <p className="error-message">{error}</p>}
+          {!error && !loading && (
+            <button
+              className="BotonAñadirUserCurso"
+              onClick={handleAñadirUsuario}
+            >
+              Añadir usuario
+            </button>
+          )}
         </div>
         <div className="MenuAdminContenido">
           {cursos.length > 0 ? (
@@ -116,16 +136,16 @@ export default function MenuCursos() {
               ))}
             </div>
           ) : (
-            <p>No hay cursos disponibles</p>
+            <p></p>
           )}
 
           <button className="BotonAñadirCentro" onClick={handleAñadirCurso}>
-            
+            <div style={{ fontSize: "100px" }}>
+              <PlusOutlined />
+            </div>
             Añadir Curso
           </button>
         </div>
-        <button className="BotonAñadirCentro" onClick={handleAñadirUsuario}>Añadir usuario</button>
-
       </div>
 
       {isModalOpen && (
@@ -144,6 +164,77 @@ export default function MenuCursos() {
           </div>
         </div>
       )}
+      <div className="ContainerAdminSupremoUser">
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <UserOutlined style={{ fontSize: "65px", margin: "0em" }} />
+          <h2 style={{ margin: "0em" }}>ADMIN SUP</h2>
+        </div>
+        <div
+          style={{
+            fontSize: "30px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
+        >
+          <p style={{ margin: "0em" }}>Yasin El Edrissi</p>
+          <p style={{ margin: "0em" }}>Yasin@gmail.com</p>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <h1
+            style={{
+              margin: "0em",
+              width: "100%",
+              border: "1px solid #fff",
+              borderRadius: "50px",
+              textAlign: "center",
+            }}
+          >
+            STATUS
+          </h1>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100%",
+            borderRadius: "25px",
+            width: "100%",
+            backgroundColor: error ? "#ffe6e6" : "#c6ffd6",
+            border: error ? "2px solid red" : "2px solid green",
+          }}
+        >
+          {!loading &&
+            (error ? (
+              <CloseOutlined style={{ fontSize: "100px", color: "red" }} />
+            ) : (
+              <CheckOutlined style={{ fontSize: "100px", color: "green" }} />
+            ))}
+
+          {loading && (
+            <Spin
+              indicator={<LoadingOutlined style={{ fontSize: "100px" }} spin />}
+              style={{ color: "green" }}
+              size="large"
+            />
+          )}
+        </div>
+      </div>
     </div>
   );
 }

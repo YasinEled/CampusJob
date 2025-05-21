@@ -1,8 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  PlusOutlined,
+  LoadingOutlined,
+  UserOutlined,
+  CheckOutlined,
+  CloseOutlined,
+} from "@ant-design/icons";
+import { Spin } from "antd";
+
 import "./Style/AñadirCentro.css"; // Asegúrate de tener este archivo CSS
 
 const AñadirCentro = () => {
+  const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     nombre: "",
@@ -96,10 +107,10 @@ const AñadirCentro = () => {
 
   return (
     <div className="page-wrapperAñadirCentro">
-      <main className="main-wrapperCentro">
+      <div className="main-wrapperCentro">
         <h1>Añadir Centro</h1>
-        <form onSubmit={handleSubmit}>
-          <div style={{ display: "flex", flexDirection: "row", gap: "1em" }}>
+        <form style={{ display: "flex", flexDirection: "column" , height:"100%"}} onSubmit={handleSubmit}>
+          <div style={{ display: "flex", flexDirection: "row", gap: "1em" ,flex:"1" , height:"100%"}}>
             <div style={{ flex: 1 , display: "flex", flexDirection: "column", gridGap: "1em"}}>
               <h2>Información del Centro</h2>
 
@@ -142,27 +153,9 @@ const AñadirCentro = () => {
                 />
               </div>
 
-              <div className="ButtonSeleccionarLogoCrearCentro">
-                <label htmlFor="logo">Logo del Centro (máx. 5MB):</label>
-                <input
-                  type="file"
-                  id="logo"
-                  name="logo"
-                  accept="image/jpeg,image/png,image/gif"
-                  onChange={handleLogoChange}
-                />
-                {formData.logoCentro && (
-                  <div className="logo-preview">
-                    <img
-                      src={formData.logoCentro}
-                      alt="Vista previa del logo"
-                      style={{ maxWidth: "200px", marginTop: "1em" }}
-                    />
-                  </div>
-                )}
-              </div>
+              
             </div>
-            <div style={{ flex: 1 , display: "flex", flexDirection: "column", gridGap: "1em"}}>
+            <div style={{ flex: 1 , display: "flex", flexDirection: "column",heightÑ: "100%", gridGap: "1em"}}>
               <h2>Información del Usuario Admin</h2>
 
               <div className={errorType === "userExists" ? "error-field" : ""}>
@@ -190,7 +183,28 @@ const AñadirCentro = () => {
                   required
                 />
               </div>
+              <div className="ButtonSeleccionarLogoCrearCentro">
+                <label htmlFor="logo">Logo del Centro (máx. 5MB):</label>
+                <input
+                  type="file"
+                  id="logo"
+                  name="logo"
+                  accept="image/jpeg,image/png,image/gif"
+                  onChange={handleLogoChange}
+                />
+                
+              </div>
+              {formData.logoCentro && (
+                  <div className="logo-preview">
+                    <img
+                      src={formData.logoCentro}
+                      alt="Vista previa del logo"
+                      style={{ maxWidth: "200px", marginTop: "1em" }}
+                    />
+                  </div>
+                )}
             </div>
+            
           </div>
 
           <button type="submit" className="btn-login">
@@ -198,7 +212,78 @@ const AñadirCentro = () => {
           </button>
           {message && <p className={`message ${errorType}`}>{message}</p>}
         </form>
-      </main>
+      </div>
+      <div className="ContainerAdminSupremoUser">
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <UserOutlined style={{ fontSize: "65px", margin: "0em" }} />
+          <h2 style={{ margin: "0em" }}>ADMIN SUP</h2>
+        </div>
+        <div
+          style={{
+            fontSize: "30px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
+        >
+          <p style={{ margin: "0em" }}>Yasin El Edrissi</p>
+          <p style={{ margin: "0em" }}>Yasin@gmail.com</p>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <h1
+            style={{
+              margin: "0em",
+              width: "100%",
+              border: "1px solid #fff",
+              borderRadius: "50px",
+              textAlign: "center",
+            }}
+          >
+            STATUS
+          </h1>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100%",
+            borderRadius: "25px",
+            width: "100%",
+            backgroundColor: error ? "#ffe6e6" : "#c6ffd6",
+            border: error ? "2px solid red" : "2px solid green",
+          }}
+        >
+          {!loading &&
+            (error ? (
+              <CloseOutlined style={{ fontSize: "100px", color: "red" }} />
+            ) : (
+              <CheckOutlined style={{ fontSize: "100px", color: "green" }} />
+            ))}
+
+          {loading && (
+            <Spin
+              indicator={<LoadingOutlined style={{ fontSize: "100px" }} spin />}
+              style={{ color: "green" }}
+              size="large"
+            />
+          )}
+        </div>
+      </div>
     </div>
   );
 };

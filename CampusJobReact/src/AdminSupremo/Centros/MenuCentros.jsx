@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Style/MenuCentros.css";
+import {
+  PlusOutlined,
+  LoadingOutlined,
+  UserOutlined,
+  CheckOutlined,
+  CloseOutlined,
+} from "@ant-design/icons";
+import { Spin } from "antd";
 
 export default function MenuCentros() {
   const navigate = useNavigate();
@@ -42,12 +50,25 @@ export default function MenuCentros() {
   };
 
   return (
-
     <div className="MenuAdminSupremoContenedor">
       <div className="MenuAdminContainer">
-          <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            height: "5em",
+          }}
+        >
           <h1>Centros Disponibles</h1>
-          {loading && <p>Cargando centros...</p>}
+          {loading && (
+            <Spin
+              indicator={<LoadingOutlined spin />}
+              style={{ color: "white" }}
+              size="large"
+            />
+          )}
           {error && <p className="error-message">{error}</p>}
         </div>
 
@@ -75,14 +96,88 @@ export default function MenuCentros() {
                 )}
               </div>
             ))}
-  
+
             <button
               className="BotonAñadirCentro"
               onClick={() => navigate("/AdminSupremo/añadirCentro")}
             >
+              <div style={{ fontSize: "100px" }}>
+                <PlusOutlined />
+              </div>
               Añadir Centro
             </button>
           </div>
+        </div>
+      </div>
+      <div className="ContainerAdminSupremoUser">
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <UserOutlined style={{ fontSize: "65px", margin: "0em" }} />
+          <h2 style={{ margin: "0em" }}>ADMIN SUP</h2>
+        </div>
+        <div
+          style={{
+            fontSize: "30px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
+        >
+          <p style={{ margin: "0em" }}>Yasin El Edrissi</p>
+          <p style={{ margin: "0em" }}>Yasin@gmail.com</p>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <h1
+            style={{
+              margin: "0em",
+              width: "100%",
+              border: "1px solid #fff",
+              borderRadius: "50px",
+              textAlign: "center",
+            }}
+          >
+            STATUS
+          </h1>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100%",
+            borderRadius: "25px",
+            width: "100%",
+            backgroundColor: error ? "#ffe6e6" : "#c6ffd6",
+            border: error ? "2px solid red" : "2px solid green",
+          }}
+        >
+          {!loading &&
+            (error ? (
+              <CloseOutlined style={{ fontSize: "100px", color: "red" }} />
+            ) : (
+              <CheckOutlined style={{ fontSize: "100px", color: "green" }} />
+            ))}
+
+          {loading && (
+            <Spin
+              indicator={<LoadingOutlined style={{ fontSize: "100px" }} spin />}
+              style={{ color: "green" }}
+              size="large"
+            />
+          )}
         </div>
       </div>
     </div>
