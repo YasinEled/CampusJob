@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -85,9 +86,10 @@ const CreaCurso = () => {
   };
 
   return (
-    <div className="crear-curso-container">
+
+    <div className="crear-curso-container" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%" }}>
       <h2>Crear Curso en Centro ID: {centroId}</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", width: "15em" ,marginTop: "10em", border: "1px solid black", padding: "1em", borderRadius: "10px" }}>
         <div>
           <label>
             Nombre del Curso:

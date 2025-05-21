@@ -64,50 +64,64 @@ export default function MenuCursos() {
 
   return (
     <div className="MenuAdminContenedor">
-      <h2>Cursos del Centro ID: {centroId}</h2>
+      <div className="MenuAdminContainer">
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <h2>Cursos del Centro ID: {centroId}</h2>
 
-      {loading && <p>Cargando cursos...</p>}
-      {error && <p className="error-message">{error}</p>}
-
-      {cursos.length > 0 ? (
-        <div className="CursosGrid">
-          {cursos.map((curso) => (
-            <div
-              key={curso.idcurso}
-              className="CursoCard"
-              onClick={() => handleVerInformacion(curso.idcurso)}
-            >
-              <button
-                className="BotonTresPuntos"
-                onClick={(e) => handleModificarCursoClick(e, curso)}
-                aria-label="Ver información"
-              >
-                &#8942;
-              </button>
-              <h3 className="CursoNombre">{curso.nomcurs}</h3>
-              <p className="CursoAdmin">Administrador: Eric</p>
-              {/* ✅ Muestra la foto del curso si existe */}
-              {curso.fotoCurso ? (
-                <img
-                  src={curso.fotoCurso}
-                  alt="Imagen del curso"
-                  className="CursoImagen"
-                />
-              ) : (
-                <div className="CursoImagenPlaceholder">Sin logo</div>
-              )}
-            </div>
-          ))}
+          {loading && <p>Cargando cursos...</p>}
+          {error && <p className="error-message">{error}</p>}
         </div>
-      ) : (
-        <p>No hay cursos disponibles</p>
-      )}
+        <div className="MenuAdminContenido">
+          {cursos.length > 0 ? (
+            <div className="CentroList">
+              {cursos.map((curso) => (
+                <div
+                  key={curso.idcurso}
+                  className="CursoCard"
+                  onClick={() => handleVerInformacion(curso.idcurso)}
+                >
+                  <div className="CentroInfo">
+                    <button
+                      className="BotonTresPuntos"
+                      onClick={(e) => handleModificarCursoClick(e, curso)}
+                      aria-label="Ver información"
+                    >
+                      &#8942;
+                    </button>
+                    <h3 className="CursoNombre">{curso.nomcurs}</h3>
+                    <p className="CursoAdmin">Administrador: Eric</p>
+                  </div>
 
-      <button className="BotonAñadirCurso" onClick={handleAñadirCurso}>
-        Añadir Curso
-      </button>
+                  {/* ✅ Muestra la foto del curso si existe */}
+                  {curso.fotoCurso ? (
+                    <img
+                      src={curso.fotoCurso}
+                      alt="Imagen del curso"
+                      className="CentroImagen"
+                    />
+                  ) : (
+                    <div className="CentroImagenPlaceholder">Sin logo</div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>No hay cursos disponibles</p>
+          )}
 
-      {/* Modal para modificar nombre */}
+          <button className="BotonAñadirCentro" onClick={handleAñadirCurso}>
+            Añadir Curso
+          </button>
+        </div>
+      </div>
+
       {isModalOpen && (
         <div className="ModalOverlay" onClick={handleCerrarModal}>
           <div className="ModalContent" onClick={(e) => e.stopPropagation()}>

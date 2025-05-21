@@ -10,7 +10,7 @@
   height: 100%;
 }
 
-.main-wrapper {
+.main-wrapperCentro {
   background: #042522;
   border-radius: 15px;
   padding: 2.5em 2em 2em 2em;
@@ -18,7 +18,6 @@
   box-shadow: 0px 6px 24px rgba(0,0,0,0.25);
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .ButtonSeleccionarLogoCrearCentro {
@@ -54,23 +53,23 @@
   letter-spacing: 1px;
 }
 
-form {
+.page-wrapperAñadirCentro form {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1.2em;
 }
 
-form label {
+.page-wrapperAñadirCentro form label {
   font-weight: 500;
   margin-bottom: 0.3em;
   color: #fff;
   letter-spacing: 0.5px;
 }
 
-form input[type="text"],
-form input[type="email"],
-form input[type="tel"] {
+.page-wrapperAñadirCentro form input[type="text"],                        
+.page-wrapperAñadirCentro form input[type="email"],
+.page-wrapperAñadirCentro form input[type="tel"] {
   width: 100%;
   padding: 0.7em 1em;
   border-radius: 8px;
@@ -82,13 +81,13 @@ form input[type="tel"] {
   transition: border 0.2s;
 }
 
-form input[type="text"]:focus,
-form input[type="email"]:focus,
-form input[type="tel"]:focus {
+.page-wrapperAñadirCentro form input[type="text"]:focus,
+.page-wrapperAñadirCentro form input[type="email"]:focus,
+.page-wrapperAñadirCentro form input[type="tel"]:focus {
   border: 1.5px solid #16a085;
 }
 
-form input[type="file"] {
+.page-wrapperAñadirCentro form input[type="file"] {
   margin-top: 0.5em;
   color: #fff;
 }
@@ -129,7 +128,7 @@ form input[type="file"] {
   transform: scale(1.03);
 }
 
-.message {
+.page-wrapperAñadirCentro .message {
   margin-top: 1.2em;
   font-size: 1.05em;
   padding: 0.7em 1em;
@@ -138,12 +137,12 @@ form input[type="file"] {
   letter-spacing: 0.2px;
 }
 
-.message.logoTooBig,
-.message.invalidLogo,
-.message.readError,
-.message.serverError,
-.message.centerExists,
-.message.userExists {
+.page-wrapperAñadirCentro .message.logoTooBig,
+.page-wrapperAñadirCentro .message.invalidLogo,
+.page-wrapperAñadirCentro .message.readError,
+.page-wrapperAñadirCentro .message.serverError,
+.page-wrapperAñadirCentro .message.centerExists,
+.page-wrapperAñadirCentro .message.userExists {
   background: #ff4136;
   color: white;
   border: 1.5px solid #ff4136;

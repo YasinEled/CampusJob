@@ -42,9 +42,10 @@ export default function MenuCentros() {
   };
 
   return (
-    <div className="MenuAdminContenedor">
+
+    <div className="MenuAdminSupremoContenedor">
       <div className="MenuAdminContainer">
-        <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+          <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
           <h1>Centros Disponibles</h1>
           {loading && <p>Cargando centros...</p>}
           {error && <p className="error-message">{error}</p>}
@@ -74,7 +75,7 @@ export default function MenuCentros() {
                 )}
               </div>
             ))}
-
+  
             <button
               className="BotonAñadirCentro"
               onClick={() => navigate("/AdminSupremo/añadirCentro")}
