@@ -50,6 +50,10 @@ export default function MenuCursos() {
   const handleAñadirCurso = () => {
     navigate(`/AdminCentro/centro/${centroId}/añadirCurso`);
   };
+  const handleAñadirUsuario = () => {
+    localStorage.setItem("centroIDAux", centroId);
+    navigate(`/AdminCentro/centro/${centroId}/añadirCurso`);
+  };
 
   const handleModificarCursoClick = (e, curso) => {
     e.stopPropagation();
@@ -117,9 +121,12 @@ export default function MenuCursos() {
           )}
 
           <button className="BotonAñadirCentro" onClick={handleAñadirCurso}>
+            
             Añadir Curso
           </button>
         </div>
+        <button className="BotonAñadirCentro" onClick={handleAñadirUsuario}>Añadir usuario</button>
+
       </div>
 
       {isModalOpen && (

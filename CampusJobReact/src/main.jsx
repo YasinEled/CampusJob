@@ -129,11 +129,16 @@ root.render(
           {/* 7) Centro general */}
           <Route path="/centro/:centroId/elegirCurso" element={<ProtectedRoute requiredRole="0,1,2,3,4"><MenuCursos /></ProtectedRoute>} />
           <Route path="/centro/:centroId/curso/:cursoId/BuscarOfertas" element={<ProtectedRoute requiredRole="0,1,2,3,4"><MainBusqueda /></ProtectedRoute>} />
+          <Route path="/centro/:centroId/CrearUsuarios" element={<AñadirUsuario />} />
 
+
+          
           {/* 8) Primer inicio */}
           <Route path="/PrimerInicioAlumno" element={<ProtectedRoute requiredRole="0,1,2,3,4"><PrimerInicio /></ProtectedRoute>} />
           <Route path="/PrimerInicioProfesor" element={<ProtectedRoute requiredRole="0,1,2,3,4"><PrimerInicioProf /></ProtectedRoute>} />
           <Route path="/PrimerInicioEmpresa" element={<ProtectedRoute requiredRole="0,1,2,3,4"><PrimerInicioEmpresa /></ProtectedRoute>} />
+           
+
 
           {/* 9) Buscador Perfil */}
           <Route path="/BuscadorPerfil" element={<SeachUser />} />
