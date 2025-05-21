@@ -43,6 +43,8 @@ import global_cat from "./TRADUCCIONES/cat/global.json";
     resources: { es: { global: global_es }, en: { global: global_en }, cat: { global: global_cat } },
   });
 })();
+const nivelUsuario = localStorage.getItem("nivelUsuario");
+
 
 const root = createRoot(document.getElementById("root"));
 root.render(
@@ -58,7 +60,7 @@ root.render(
           {/* 2) AdminSupremo (rol 4) */}
           <Route path="/AdminSupremo/*" element={
             <ProtectedRoute requiredRole="4">
-              <MenuHome userType="AdminSupremo" />
+              <MenuHome userType={nivelUsuario} />
             </ProtectedRoute>
           }>
             <Route index element={<Navigate to="HomeAdmin" replace />} />
@@ -70,7 +72,7 @@ root.render(
           {/* 3) AdminCentro (rol 3,4) */}
           <Route path="/AdminCentro/*" element={
             <ProtectedRoute requiredRole="3,4">
-              <MenuHome userType="AdminCentro" />
+              <MenuHome userType={nivelUsuario} />
             </ProtectedRoute>
           }>
             
@@ -82,7 +84,7 @@ root.render(
           {/* 4) Profesor (rol 2,3,4) */}
           <Route path="/Profesor/*" element={
             <ProtectedRoute requiredRole="2,3,4">
-              <MenuHome userType="Profesor" />
+              <MenuHome userType={nivelUsuario} />
             </ProtectedRoute>
           }>
             <Route path="centro/:centroId/CrearUsuarios" element={<AñadirUsuario />} />
@@ -92,7 +94,7 @@ root.render(
           {/* 5) Empresa (rol 1,2,3,4) */}
           <Route path="/Empresa/*" element={
             <ProtectedRoute requiredRole="1,2,3,4">
-              <MenuHome userType="Empresa" />
+              <MenuHome userType={nivelUsuario} />
             </ProtectedRoute>
           }>
             <Route index element={<Navigate to="/centro/${localStorage.getItem('centroId')}/elegirCurso" replace />} />
@@ -122,15 +124,24 @@ root.render(
           {/* 6) Alumno (rol 0,2,3,4) */}
           <Route path="/Alumno/*" element={
             <ProtectedRoute requiredRole="0,2,3,4">
-              <MenuHome userType="Alumno" />
+              <MenuHome userType={nivelUsuario} />
             </ProtectedRoute>
           }>
             <Route index element={<Navigate to="/centro/${localStorage.getItem('centroId')}/elegirCurso" replace />} />
           </Route>
 
           {/* 7) Centro general */}
-          <Route path="/centro/:centroId/elegirCurso" element={<ProtectedRoute requiredRole="0,1,2,3,4"><MenuCursos /></ProtectedRoute>} />
-          <Route path="/centro/:centroId/curso/:cursoId/BuscarOfertas" element={<ProtectedRoute requiredRole="0,1,2,3,4"><MainBusqueda /></ProtectedRoute>} />
+          <Route path="/centro/:centroId/*" element={
+            <ProtectedRoute requiredRole="0,1,2,3,4">
+              <MenuHome userType={nivelUsuario} />
+            </ProtectedRoute>
+          }>
+            <Route path="elegirCurso" element={<MenuCursos />} />
+            <Route path="curso/:cursoId/BuscarOfertas" element={<MainBusqueda />} />
+          </Route>
+          
+          {/* <Route path="/centro/:centroId/elegirCurso" element={<ProtectedRoute requiredRole="0,1,2,3,4"><MenuCursos /></ProtectedRoute>} />
+          <Route path="/centro/:centroId/curso/:cursoId/BuscarOfertas" element={<ProtectedRoute requiredRole="0,1,2,3,4"><MainBusqueda /></ProtectedRoute>} /> */}
 
 
 
