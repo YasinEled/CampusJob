@@ -51,8 +51,7 @@ export default function MenuCursos() {
     navigate(`/AdminCentro/centro/${centroId}/añadirCurso`);
   };
   const handleAñadirUsuario = () => {
-    localStorage.setItem("centroIDAux", centroId);
-    navigate(`/AdminCentro/centro/${centroId}/añadirCurso`);
+    navigate(`/Profesor/centro/${centroId}/CrearUsuarios`);
   };
 
   const handleModificarCursoClick = (e, curso) => {

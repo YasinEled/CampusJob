@@ -73,6 +73,7 @@ root.render(
               <MenuHome userType="AdminCentro" />
             </ProtectedRoute>
           }>
+            
             <Route index element={<Navigate to="/centro/${localStorage.getItem('centroId')}/elegirCurso" replace />} />
             <Route path="centro/:centroId/añadirCurso" element={<ProtectedRoute requiredRole="3,4"><AñadirCurso /></ProtectedRoute>} />
             <Route path="centro/:centroId/CrearUsuario" element={<ProtectedRoute requiredRole="3,4"><CreatorUsersAC /></ProtectedRoute>} />
@@ -84,6 +85,7 @@ root.render(
               <MenuHome userType="Profesor" />
             </ProtectedRoute>
           }>
+            <Route path="centro/:centroId/CrearUsuarios" element={<AñadirUsuario />} />
             <Route index element={<Navigate to="/centro/${localStorage.getItem('centroId')}/elegirCurso" replace />} />
           </Route>
 
@@ -129,10 +131,9 @@ root.render(
           {/* 7) Centro general */}
           <Route path="/centro/:centroId/elegirCurso" element={<ProtectedRoute requiredRole="0,1,2,3,4"><MenuCursos /></ProtectedRoute>} />
           <Route path="/centro/:centroId/curso/:cursoId/BuscarOfertas" element={<ProtectedRoute requiredRole="0,1,2,3,4"><MainBusqueda /></ProtectedRoute>} />
-          <Route path="/centro/:centroId/CrearUsuarios" element={<AñadirUsuario />} />
 
 
-          
+
           {/* 8) Primer inicio */}
           <Route path="/PrimerInicioAlumno" element={<ProtectedRoute requiredRole="0,1,2,3,4"><PrimerInicio /></ProtectedRoute>} />
           <Route path="/PrimerInicioProfesor" element={<ProtectedRoute requiredRole="0,1,2,3,4"><PrimerInicioProf /></ProtectedRoute>} />
