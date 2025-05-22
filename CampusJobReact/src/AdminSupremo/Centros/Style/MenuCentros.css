@@ -97,7 +97,6 @@ grid-gap: 2em;
 
   width: 100%;
   padding: 1.5em;
-  background: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
   z-index: 1;
 }
 
@@ -152,4 +151,11 @@ grid-gap: 2em;
   border-radius: 1em;
   padding:1em;
   margin: 0;
+}
+
+.StatusAdminSupremoNO{
+    color: red ;
+}
+.StatusAdminSupremoSI{
+    color: green !important;
 }

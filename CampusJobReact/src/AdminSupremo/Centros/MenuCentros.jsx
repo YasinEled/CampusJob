@@ -140,7 +140,7 @@ export default function MenuCentros() {
             justifyContent: "center",
           }}
         >
-          <h1
+          <h1 className="MenuCentrosStatus"
             style={{
               margin: "0em",
               width: "100%",
@@ -166,9 +166,9 @@ export default function MenuCentros() {
         >
           {!loading &&
             (error ? (
-              <CloseOutlined style={{ fontSize: "100px", color: "red" }} />
+            <CloseOutlined className="StatusAdminSupremoNO" style={{ fontSize: "100px" }} />
             ) : (
-              <CheckOutlined style={{ fontSize: "100px", color: "green" }} />
+            <CheckOutlined className="StatusAdminSupremoSI" style={{ fontSize: "100px" }} />
             ))}
 
           {loading && (
