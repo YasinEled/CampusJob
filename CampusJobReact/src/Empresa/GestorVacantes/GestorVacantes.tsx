@@ -59,6 +59,7 @@ function GestorOferta() {
             width: "100%",
             height: "100%",
             fontSize: "1.2em",
+            
           }}
         >
           <button
@@ -94,14 +95,14 @@ function GestorOferta() {
         </div>
 
         {/* Sección condicional */}
-        <div
+        <div className="containerSelectorGestorOferta"
           style={{
             padding: "1em",
             borderTopRightRadius: "0px",
             borderTopLeftRadius: "0px",
             borderBottomRightRadius: "1em",
             borderBottomLeftRadius: "1em",
-            backgroundColor: "#16a085",
+            backgroundColor: "#045e56",
             height: "43em",
             overflowY: "auto",
           }}

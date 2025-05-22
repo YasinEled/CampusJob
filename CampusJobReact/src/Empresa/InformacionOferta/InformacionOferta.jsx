@@ -33,23 +33,35 @@ function InformacionOferta() {
           <img className="InformacionOferta-Logo" src={logoEmpresa} alt="Logo Empresa" />
         </div>
 
-    <div className="InformacionOferta-Detalle">
-    <h2 className="InformacionOferta-Titulo">{titulo}</h2>
-    <p className="InformacionOferta-Descripcion">{descripcion}</p>
+<div className="InformacionOferta-Detalle">
+  <h2 className="InformacionOferta-Titulo">{titulo}</h2>
+  <p className="InformacionOferta-Descripcion">{descripcion}</p>
 
-    <div className="InformacionOferta-Grid">
-    <div className="InformacionOferta-Campo"><ClockCircleOutlined /> {jornada}</div>
-    <div className="InformacionOferta-Campo"><HourglassOutlined /> {horasSemanales}</div>
-    <div className="InformacionOferta-Campo"><TeamOutlined /> {plazas} plazas vacantes</div>
-    <div className="InformacionOferta-Campo"><GlobalOutlined /> {modalidad}</div>
-    <div className="InformacionOferta-Campo"><EuroCircleOutlined /> {salario}</div>
-    <div className="InformacionOferta-Campo"><CalendarOutlined /> Publicación: {fechaPublicacion}</div>
-    <div className="InformacionOferta-Campo"><FileTextOutlined /> Finaliza: {fechaFinal}</div>
+  {/* Nuevo contenedor para separar en dos cajas */}
+  <div className="InformacionOferta-DobleCaja">
+    <div className="InformacionOferta-Box">
+      <div className="InformacionOferta-Grid">
+        <div className="InformacionOferta-Campo"><ClockCircleOutlined /> {jornada}</div>
+        <div className="InformacionOferta-Campo"><HourglassOutlined /> {horasSemanales}</div>
+        <div className="InformacionOferta-Campo"><TeamOutlined /> {plazas} plazas vacantes</div>
+        <div className="InformacionOferta-Campo"><GlobalOutlined /> {modalidad}</div>
+        <div className="InformacionOferta-Campo"><EuroCircleOutlined /> {salario}</div>
+        <div className="InformacionOferta-Campo"><CalendarOutlined /> Publicación: {fechaPublicacion}</div>
+        <div className="InformacionOferta-Campo"><FileTextOutlined /> Finaliza: {fechaFinal}</div>
+      </div>
+    </div>
+
+    <div className="InformacionOferta-Box">
+      <div className="InformacionOferta-Requisito">
+        <h3>Requisitos</h3>
+        <p>Experiencia mínima de 2 años trabajando con React y conocimientos sólidos en HTML, CSS y JavaScript.</p>
+      </div>
+    </div>
   </div>
 
   <button className="InformacionOferta-BotonCV">Enviar CV</button>
+</div>
 
-        </div>
       </div>
     </main>
   );

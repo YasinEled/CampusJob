@@ -6,6 +6,12 @@
   padding: 20px;
 }
 
+.InformacionOferta-Empresa{
+  background-color: #045e56;
+  padding : 1em;
+  border-radius: 1em;
+}
+
 .InformacionOferta-FondoImagen {
   width: 100%;
   height: 150px;
@@ -99,3 +105,33 @@
   font-size: 1.3em;
 }
 
+.InformacionOferta-Requisito {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
+}
+
+.InformacionOferta-Requisito h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.InformacionOferta-Requisito p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.InformacionOferta-DobleCaja {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.InformacionOferta-Box {
+  background-color: #033c38;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
