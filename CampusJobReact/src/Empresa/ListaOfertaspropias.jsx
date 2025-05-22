@@ -1,21 +1,44 @@
 import React, { useEffect, useState } from 'react';
 import './PerfilEmpresa/Style/ListaOfertaPropias.css';
-import campusJobFavicon from '../../../assets/Logo/CampusJob.png';
+import campusJobFavicon from '../assets/Logo/CampusJob.png'; // Asegúrate de que este import esté bien
 
 function ListaOfertasPropias() {
   const [ofertas, setOfertas] = useState([]);
 
-  // Cargar ofertas al montar el componente
+  // Simular datos para pruebas
   useEffect(() => {
-    fetch('http://10.0.11.133:4000/api/auth/ofertas')
-      .then((res) => res.json())
-      .then((data) => setOfertas(data))
-      .catch((err) => console.error('Error al cargar las ofertas:', err));
+    const datosDePrueba = [
+      {
+        id: 1,
+        titulo: "Desarrollador Frontend",
+        empresa: "Tech Solutions",
+        ubicacion: "Madrid, España",
+        jornada: "Remoto",
+        fecha: "2025-05-20",
+        descripcion: "Buscamos desarrollador frontend con experiencia en React.",
+        tipoContrato: "Indefinido",
+        tipoJornada: "Jornada completa",
+        salario: "30.000 - 40.000 €/año"
+      },
+      {
+        id: 2,
+        titulo: "Diseñador UX/UI",
+        empresa: "Creative Minds",
+        ubicacion: "Barcelona, España",
+        jornada: "Presencial",
+        fecha: "2025-05-18",
+        descripcion: "Diseñador con experiencia en Figma y Adobe XD.",
+        tipoContrato: "Temporal",
+        tipoJornada: "Media jornada",
+        salario: "20.000 - 25.000 €/año"
+      }
+    ];
+
+    setOfertas(datosDePrueba);
   }, []);
 
   return (
     <div className="ofertaPropia-ListaContainer">
-      {/* Si no hay ofertas, mostramos un mensaje */}
       {ofertas.length === 0 ? (
         <p>Cargando ofertas o no hay ofertas disponibles.</p>
       ) : (

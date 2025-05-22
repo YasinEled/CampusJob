@@ -403,5 +403,10 @@ body.light-mode .StatusAdminSupremoSI{
 
 body.light-mode .MenuCentrosStatus {
     background-color: #A1DAD2;
+    border: 3px solid #0d6b66;
     color: black;
+}
+
+body.light-mode .ButtonSeleccionarLogoCrearCentroTexto {
+    color: white !important;
 }

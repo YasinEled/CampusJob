@@ -30,6 +30,7 @@ import PrimerInicioProf from "./Common/PrimerIniciForm/PrimerIniciProfesor.jsx";
 import PrimerInicioEmpresa from "./Common/PrimerIniciForm/PrimerIniciEmpresa.jsx";
 import PerfilTeacher from "./Profesor/PerfilProfesor/PerfilTeacher.jsx";
 import Unauthorized from "./Auth/Unauthorized/Unauthorized.jsx";
+import InformacionOferta from "./Empresa/InformacionOferta/InformacionOferta.jsx";
 
 import NotFound from "./Common/NotFound/NotFound.jsx";
 
@@ -274,6 +275,15 @@ root.render(
               }
             />
           </Route>
+
+          <Route
+          path="/InformacionOferta/:idOferta"
+          element={
+          <ProtectedRoute requiredRole="0,1,2,3,4">
+          <InformacionOferta />
+          </ProtectedRoute>
+          }
+          />
 
           <Route
             path="/BuscadorPerfil"

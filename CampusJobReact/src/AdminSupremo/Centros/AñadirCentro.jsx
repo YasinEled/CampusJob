@@ -204,7 +204,7 @@ const AñadirCentro = () => {
                 />
               </div>
               <div className="ButtonSeleccionarLogoCrearCentro">
-                <label htmlFor="logo">Logo del Centro (máx. 5MB):</label>
+                <label  className ="ButtonSeleccionarLogoCrearCentroTexto"htmlFor="logo">Logo del Centro (máx. 5MB):</label>
                 <input
                   type="file"
                   id="logo"
@@ -290,9 +290,9 @@ const AñadirCentro = () => {
         >
           {!loading &&
             (error ? (
-              <CloseOutlined style={{ fontSize: "100px", color: "red" }} />
+              <CloseOutlined className="StatusAdminSupremoNO" style={{ fontSize: "100px" }} />
             ) : (
-              <CheckOutlined style={{ fontSize: "100px", color: "green" }} />
+              <CheckOutlined className="StatusAdminSupremoSI" style={{ fontSize: "100px"}} />
             ))}
 
           {loading && (

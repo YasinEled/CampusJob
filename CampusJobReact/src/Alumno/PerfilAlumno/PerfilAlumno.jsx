@@ -10,7 +10,9 @@ function PerfilPropio() {
   const [telefono, setTelefono] = useState("+34 632789372");
   const [email, setEmail] = useState("yeledrissi@educem.net");
   const [fechaNacimiento, setFechaNacimiento] = useState("12 / 08 / 2004");
-  const [descripcion, setDescripcion] = useState("Desarrollador Full Stack con 3 años de experiencia en la creación de aplicaciones web eficientes y escalables utilizando React y Node.js. Apasionado por resolver problemas complejos y aprender nuevas tecnologías.");
+  const [descripcion, setDescripcion] = useState(
+    "Desarrollador Full Stack con 3 años de experiencia en la creación de aplicaciones web eficientes y escalables utilizando React y Node.js. Apasionado por resolver problemas complejos y aprender nuevas tecnologías."
+  );
 
   const handleGuardar = () => {
     setMostrarPopup(false);
@@ -23,6 +25,7 @@ function PerfilPropio() {
           <img src={pfpFondo} alt="Fondo" />
           <img className="profile" src={pfp} alt="Perfil" />
         </div>
+
         <div className="InfoContainer">
           <div className="infoPerfil">
             <div className="InformacionPrincipalUsuario">
@@ -34,18 +37,22 @@ function PerfilPropio() {
               <p>{email}</p>
               <p>{fechaNacimiento}</p>
             </div>
-            <p>{descripcion}</p>
+              <p>{descripcion}</p>
             <button className="btnEditarPerfil" onClick={() => setMostrarPopup(true)}>Modificar perfil</button>
           </div>
           <div>
-            <img src="https://www.micole.net/imagenes/colegio/logo/20718/educem-ii_512.png?v=MjAyMi0wOC0zMSAwMDoyODoyOA==" alt="Imagen Centro" className="ImagenCentroPerfil" />
+            <img
+              src="https://www.micole.net/imagenes/colegio/logo/20718/educem-ii_512.png?v=MjAyMi0wOC0zMSAwMDoyODoyOA=="
+              alt="Imagen Centro"
+              className="ImagenCentroPerfil"
+            />
           </div>
         </div>
       </div>
 
       {mostrarPopup && (
-        <div className="popupOverlay">
-          <div className="popupContenido">
+        <div className="perfilAlumnopopup-Overlay">
+          <div className="perfilAlumnopopup-Contenido">
             <h3>Editar Perfil</h3>
             <input value={nombre} onChange={e => setNombre(e.target.value)} placeholder="Nombre" />
             <input value={ubicacion} onChange={e => setUbicacion(e.target.value)} placeholder="Ubicación" />
@@ -53,8 +60,39 @@ function PerfilPropio() {
             <input value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" />
             <input value={fechaNacimiento} onChange={e => setFechaNacimiento(e.target.value)} placeholder="Fecha de nacimiento" />
             <textarea value={descripcion} onChange={e => setDescripcion(e.target.value)} placeholder="Descripción" />
-            <button onClick={handleGuardar}>Guardar</button>
-            <button onClick={() => setMostrarPopup(false)}>Cancelar</button>
+
+            <label className="perfilAlumnopopup-btnSubirArchivo">
+              Añadir CV (PDF O PNG)
+              <input
+                type="file"
+                accept="application/pdf,image/*"
+                style={{ display: "none" }}
+                onChange={e => {
+                  const file = e.target.files[0];
+                  if (file) {
+                    alert(`Archivo seleccionado: ${file.name}`);
+                  }
+                }}
+              />
+            </label>
+
+            <label className="perfilAlumnopopup-btnSubirImagen">
+              Añadir foto Perfil
+              <input
+                type="file"
+                accept="image/*"
+                style={{ display: "none" }}
+                onChange={e => {
+                  const file = e.target.files[0];
+                  if (file) {
+                    alert(`Archivo seleccionado: ${file.name}`);
+                  }
+                }}
+              />
+            </label>
+
+            <button className="perfilAlumnopopup-btnGuardar" onClick={handleGuardar}>Guardar</button>
+            <button className="perfilAlumnopopup-btnCancelar" onClick={() => setMostrarPopup(false)}>Cancelar</button>
           </div>
         </div>
       )}

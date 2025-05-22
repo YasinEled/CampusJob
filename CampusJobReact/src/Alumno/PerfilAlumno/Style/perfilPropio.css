@@ -23,7 +23,7 @@
 
 /* Fondo */
 .fondo {
-    background: white;
+    background: rgb(255, 255, 255);
     width: 100%;
     height: 14em;
     border-radius: 12px 12px 0 0;
@@ -72,4 +72,106 @@
 
 .InformacionPrincipalUsuario{
     max-width: 20em;
+}
+
+/* Fondo oscuro que cubre toda la pantalla */
+.perfilAlumnopopup-Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Contenido del popup */
+.perfilAlumnopopup-Contenido {
+  background: #042522;
+  padding: 2em;
+  border-radius: 12px;
+  width: 32em;
+  max-width: 90%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+/* Título del popup */
+.perfilAlumnopopup-Contenido h3 {
+  margin-bottom: 0.5em;
+  font-size: 1.5em;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* Inputs y textarea */
+.perfilAlumnopopup-Contenido input,
+.perfilAlumnopopup-Contenido textarea {
+  padding: 0.6em 1em;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1em;
+  width: 100%;
+  resize: none;
+}
+
+/* Botones */
+.perfilAlumnopopup-Contenido button {
+  padding: 0.6em 1em;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+/* Botón Guardar */
+.perfilAlumnopopup-btnGuardar {
+  background-color: #00998E;
+  color: white;
+}
+
+
+
+/* Botón Cancelar */
+.perfilAlumnopopup-btnCancelar {
+  background-color: #ccc;
+  color: #333;
+}
+
+.perfilAlumnopopup-btnCancelar:hover {
+  background-color: #b2b2b2;
+}
+
+/* Botones tipo input file */
+.perfilAlumnopopup-btnSubirArchivo,
+.perfilAlumnopopup-btnSubirImagen {
+  background-color: rgba(255, 255, 255, 0.05); /* más sutil */
+  border: 1px dashed #00998E;
+  color: #00998E;
+  padding: 0.6em 1em;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.95em;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.perfilAlumnopopup-btnSubirArchivo:hover,
+.perfilAlumnopopup-btnSubirImagen:hover {
+  background-color: rgba(0, 153, 142, 0.1);
+}
+
+
+.perfilAlumnopopup-Contenido input, .perfilAlumnopopup-Contenido textarea {
+  background-color: #042522;
+  color: white;
+  border: 1px solid #00998E;
 }
