@@ -172,6 +172,10 @@
   color:red;
 }
 
+.ButtonSeleccionarLogoCrearCentroTexto{
+  color: white;
+}
+
 @media (max-width: 600px) {
   .main-wrapper {
     padding: 1.2em 0.5em;
