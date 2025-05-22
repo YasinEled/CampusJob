@@ -33,6 +33,30 @@ function ListaOfertasPropias() {
         tipoJornada: "Media jornada",
         salario: "20.000 - 25.000 €/año",
       },
+      {
+        id: 2,
+        titulo: "Diseñador UX/UI",
+        empresa: "Creative Minds",
+        ubicacion: "Barcelona, España",
+        jornada: "Presencial",
+        fecha: "2025-05-18",
+        descripcion: "Diseñador con experiencia en Figma y Adobe XD.",
+        tipoContrato: "Temporal",
+        tipoJornada: "Media jornada",
+        salario: "20.000 - 25.000 €/año",
+      },
+      {
+        id: 2,
+        titulo: "Diseñador UX/UI",
+        empresa: "Creative Minds",
+        ubicacion: "Barcelona, España",
+        jornada: "Presencial",
+        fecha: "2025-05-18",
+        descripcion: "Diseñador con experiencia en Figma y Adobe XD.",
+        tipoContrato: "Temporal",
+        tipoJornada: "Media jornada",
+        salario: "20.000 - 25.000 €/año",
+      },
     ];
 
     setOfertas(datosDePrueba);
@@ -78,7 +102,15 @@ function ListaOfertasPropias() {
                   <p> | </p>
                   <p className="ofertaPropia-Fecha">{oferta.fecha}</p>
                 </div>
-                <p className="ofertaPropia-Descripcion">{oferta.descripcion}</p>
+                <p className="ofertaPropia-Descripcion" style={{ maxWidth: "300px" }}>
+                  {oferta.descripcion.length > 250 ? (
+                    <>
+                      {oferta.descripcion.substring(0, 250)}...
+                    </>
+                  ) : (
+                    oferta.descripcion
+                  )}
+                </p>
                 <div className="ofertaPropia-InfoExtra">
                   <p className="ofertaPropia-TipoContrato">
                     {oferta.tipoContrato}

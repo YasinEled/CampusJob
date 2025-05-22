@@ -2,18 +2,19 @@
 .perfilContainer {
     display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: center;
   padding: 20px;
-grid-gap: 3em;
+  height: auto;
+grid-gap: 3em;  
+
 }
 
 .PerfilEmpresa {
     position: relative; /* Necesario para el posicionamiento del botón */
     background: #042522;
     width: 60%;
-    height: 100%;
     border-radius: 15px;
+    height: 40em;
     color: white;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
     overflow: hidden;
@@ -72,13 +73,16 @@ grid-gap: 3em;
 }
 
 .btnEditarPerfil {
-    margin-top: 1em;
     padding: 0.5em 1em;
     background-color: #1abc9c;
     color: white;
     border: none;
+    top: 18em;
+    right: 10px;
     border-radius: 5px;
+    position: absolute;
     cursor: pointer;
+    
   }
   
   .popupOverlay {
