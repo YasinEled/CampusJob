@@ -32,6 +32,7 @@ import PerfilTeacher from "./Profesor/PerfilProfesor/PerfilTeacher.jsx";
 import Unauthorized from "./Auth/Unauthorized/Unauthorized.jsx";
 import InformacionOferta from "./Empresa/InformacionOferta/InformacionOferta.jsx";
 import GestorOferta from "./Empresa/GestorVacantes/GestorVacantes.js";
+import ListaOfertasPropias from "./Empresa/ListaOfertaspropias.jsx";
 
 
 import NotFound from "./Common/NotFound/NotFound.jsx";
@@ -179,6 +180,14 @@ root.render(
                 </ProtectedRoute>
               }
             />
+            {/* <Route
+              path="ListaOfertasPropias/:idUsrEmpresa"
+              element={
+                <ProtectedRoute requiredRole="1,2,3,4">
+                  <ListaOfertasPropias />
+                </ProtectedRoute>
+              }
+            /> */}
              <Route
               path="gestioOferta/:idOferta"
               element={
@@ -210,14 +219,7 @@ root.render(
           
 
           {/* NUEVA RUTA PRINCIPAL PARA PERFIL EMPRESA */}
-          <Route
-            path="/PerfilAlumno/:idUsrAlumno"
-            element={
-              <ProtectedRoute requiredRole="0,1,2,3,4">
-                <PerfilPropio />
-              </ProtectedRoute>
-            }
-          />
+       
 
           {/* 6) Alumno (rol 0,2,3,4) */}
           <Route
@@ -235,6 +237,12 @@ root.render(
                   to="/centro/${localStorage.getItem('centroId')}/elegirCurso"
                   replace
                 />
+              }
+            />
+            <Route
+              path="PerfilAlumno/:idUsrAlumno"
+              element={
+                <PerfilPropio />
               }
             />
           </Route>

@@ -1,5 +1,5 @@
 .ofertaPropia-Container {
-    margin-top: 4em;
+    margin-top: 1em;
   display: flex;
   flex-direction: row;
   background-color: #042522;
@@ -8,6 +8,46 @@
   padding-right: 1em;
   padding-bottom: 1em;
 }
+.containerBusquedaOfertasPropias{
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buscador-containerOfertasPropias{
+    width: 100%;
+    display: flex;
+    color: #042522;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 1.8em;
+    padding-bottom: 0em;
+    margin-bottom: 0em;
+}
+.buscador-containerOfertasPropias label{
+  color: #042522;
+
+}
+.boton-buscarOfertaPropias{
+  color: #ffffff;
+  background-color: #042522;
+  border-radius: 5px;
+  padding: 5px 15px;
+  margin-right: 5px;
+}
+.buscador-containerOfertasPropias input[type="text"] {
+  color: #ffffff;
+  background-color: #042522;
+  border-radius: 5px;
+  padding: 5px;
+  margin-right: 5px;
+  width: 100%;
+}
+
 
 .ofertaPropia-TextContainer {
   margin-left: 1em;
