@@ -1,15 +1,25 @@
 /* MenuCursos.css */
 
 .MenuAdminContenedor {
-display: flex;
-  flex-direction: column;
+  display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 100%;
     padding: 2em;
-    width: 100%;
+    padding-bottom: 0;
 
   color: white;
+  border-radius: 15px;
+  grid-gap: 2em;
+  
+}
+.BotonAñadirUserCurso{
+  color: #ffffff;
+  font-weight: bold;
+  border: 2px solid #ffffff;
+  background-color: #16a085;
+  border-radius: 1em;
+  padding:1em;
 }
 
 .CursoCard {

@@ -12,8 +12,9 @@ function MenuHome({userType} ) {
     <main className="menuHome">
 
         <NavHome userType={userType} />
-        
-        <Outlet /> {/* Aquí se renderizarán las subrutas */}
+        <div >
+            <Outlet /> {/* Aquí se renderizarán las subrutas */}
+        </div>
 
     </main>
   );

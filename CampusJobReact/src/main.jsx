@@ -1,7 +1,12 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { I18nextProvider } from "react-i18next";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
 import i18next from "i18next";
 
@@ -12,10 +17,10 @@ import PerfilPropio from "./Alumno/PerfilAlumno/PerfilAlumno.jsx";
 import FormOfertas from "./Profesor/createOfertas/createOfertas.jsx";
 import PerfilEmpresa from "./Empresa/PerfilEmpresa/PerfilEmpresa.jsx";
 import CreatorUsersAC from "./AdminCentro/CreadorUserAC/Page/CreatorUsers.js";
-import SeachUser from "./Common/BuscadorUser/SeachUser.js"; 
+import SeachUser from "./Common/BuscadorUser/SeachUser.js";
 import PrimerInicio from "./Common/PrimerIniciForm/PrimerIniciUsuari.jsx";
 import MenuCentros from "./AdminSupremo/Centros/MenuCentros.jsx";
-import AñadirUsuario from "./Others/AñadirUsuarios/AñadirUsuario.jsx";   // NO SE USA ?
+import AñadirUsuario from "./Others/AñadirUsuarios/AñadirUsuario.jsx"; // NO SE USA ?
 import MenuProfesor from "./Others/MenuProfesor/MenuProfesor.jsx";
 import MenuCursos from "./Profesor/Cursos/MenuCursos.jsx";
 import AñadirCentro from "./AdminSupremo/Centros/AñadirCentro.jsx";
@@ -40,11 +45,14 @@ import global_cat from "./TRADUCCIONES/cat/global.json";
   await i18next.init({
     interpolation: { escapeValue: false },
     lng: "cat",
-    resources: { es: { global: global_es }, en: { global: global_en }, cat: { global: global_cat } },
+    resources: {
+      es: { global: global_es },
+      en: { global: global_en },
+      cat: { global: global_cat },
+    },
   });
 })();
 const nivelUsuario = localStorage.getItem("nivelUsuario");
-
 
 const root = createRoot(document.getElementById("root"));
 root.render(
@@ -54,109 +62,234 @@ root.render(
         <Routes>
           {/* 1) Públicas */}
           <Route path="/login" element={<App />} />
-          <Route path="/unauthorized" element={<Unauthorized />} />
-          {/*<Route path="/comercial" element={<Comercial />} />     Esta sera la pagina para vender el producto*/} 
+          <Route path="/" element={<App />} />
+
+
+          {/*<Route path="/comercial" element={<Comercial />} />     Esta sera la pagina para vender el producto*/}
 
           {/* 2) AdminSupremo (rol 4) */}
-          <Route path="/AdminSupremo/*" element={
-            <ProtectedRoute requiredRole="4">
-              <MenuHome userType={nivelUsuario} />
-            </ProtectedRoute>
-          }>
+          <Route
+            path="/AdminSupremo/*"
+            element={
+              <ProtectedRoute requiredRole="4">
+                <MenuHome userType={nivelUsuario} />
+              </ProtectedRoute>
+            }
+          >
             <Route index element={<Navigate to="HomeAdmin" replace />} />
             <Route path="HomeAdmin" element={<MenuCentros />} />
-            <Route path="AñadirCentro" element={<AñadirCentro />} /> 
+            <Route path="AñadirCentro" element={<AñadirCentro />} />
             {/* <Route path="CrearUsuarioAdmin" element={<AñadirUsuario />} /> Esto sera la pagina de Crear AdminSupremo */}
           </Route>
 
           {/* 3) AdminCentro (rol 3,4) */}
-          <Route path="/AdminCentro/*" element={
-            <ProtectedRoute requiredRole="3,4">
-              <MenuHome userType={nivelUsuario} />
-            </ProtectedRoute>
-          }>
-            
-            <Route index element={<Navigate to="/centro/${localStorage.getItem('centroId')}/elegirCurso" replace />} />
-            <Route path="centro/:centroId/añadirCurso" element={<ProtectedRoute requiredRole="3,4"><AñadirCurso /></ProtectedRoute>} />
-            <Route path="centro/:centroId/CrearUsuario" element={<ProtectedRoute requiredRole="3,4"><CreatorUsersAC /></ProtectedRoute>} />
+          <Route
+            path="/AdminCentro/*"
+            element={
+              <ProtectedRoute requiredRole="3,4">
+                <MenuHome userType={nivelUsuario} />
+              </ProtectedRoute>
+            }
+          >
+            <Route
+              index
+              element={
+                <Navigate
+                  to="/centro/${localStorage.getItem('centroId')}/elegirCurso"
+                  replace
+                />
+              }
+            />
+            <Route
+              path="centro/:centroId/añadirCurso"
+              element={
+                <ProtectedRoute requiredRole="3,4">
+                  <AñadirCurso />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="centro/:centroId/CrearUsuario"
+              element={
+                <ProtectedRoute requiredRole="3,4">
+                  <CreatorUsersAC />
+                </ProtectedRoute>
+              }
+            />
           </Route>
 
           {/* 4) Profesor (rol 2,3,4) */}
-          <Route path="/Profesor/*" element={
-            <ProtectedRoute requiredRole="2,3,4">
-              <MenuHome userType={nivelUsuario} />
-            </ProtectedRoute>
-          }>
-            <Route path="centro/:centroId/CrearUsuarios" element={<AñadirUsuario />} />
-            <Route index element={<Navigate to="/centro/${localStorage.getItem('centroId')}/elegirCurso" replace />} />
+          <Route
+            path="/Profesor/*"
+            element={
+              <ProtectedRoute requiredRole="2,3,4">
+                <MenuHome userType={nivelUsuario} />
+              </ProtectedRoute>
+            }
+          >
+            <Route
+              path="centro/:centroId/CrearUsuarios"
+              element={<AñadirUsuario />}
+            />
+            <Route
+              index
+              element={
+                <Navigate
+                  to="/centro/${localStorage.getItem('centroId')}/elegirCurso"
+                  replace
+                />
+              }
+            />
           </Route>
 
           {/* 5) Empresa (rol 1,2,3,4) */}
-          <Route path="/Empresa/*" element={
-            <ProtectedRoute requiredRole="1,2,3,4">
-              <MenuHome userType={nivelUsuario} />
-            </ProtectedRoute>
-          }>
-            <Route index element={<Navigate to="/centro/${localStorage.getItem('centroId')}/elegirCurso" replace />} />
-            <Route path="centro/:centroId/añadirOferta" element={<ProtectedRoute requiredRole="1,2,3,4"><FormOfertas/></ProtectedRoute>} />
+          <Route
+            path="/Empresa/*"
+            element={
+              <ProtectedRoute requiredRole="1,2,3,4">
+                <MenuHome userType={nivelUsuario} />
+              </ProtectedRoute>
+            }
+          >
+            <Route
+              index
+              element={
+                <Navigate
+                  to="/centro/${localStorage.getItem('centroId')}/elegirCurso"
+                  replace
+                />
+              }
+            />
+            <Route
+              path="centro/:centroId/añadirOferta"
+              element={
+                <ProtectedRoute requiredRole="1,2,3,4">
+                  <FormOfertas />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="PerfilEmpresa/:idUsrEmpresa"
+              element={
+                <ProtectedRoute requiredRole="1,2,3,4">
+                  <PerfilEmpresa />
+                </ProtectedRoute>
+              }
+            />
           </Route>
           {/* NUEVA RUTA PRINCIPAL PARA PERFIL EMPRESA */}
-            <Route path="/PerfilEmpresa/:idUsrEmpresa" element={
-              <ProtectedRoute requiredRole="0,1,2,3,4">
-                <PerfilEmpresa />
-              </ProtectedRoute>
-            } />
 
-            {/* NUEVA RUTA PRINCIPAL PARA PERFIL EMPRESA */}
-            <Route path="/PerfilProfesor/:idUsrProfe" element={
+          {/* NUEVA RUTA PRINCIPAL PARA PERFIL EMPRESA */}
+          <Route
+            path="/PerfilProfesor/:idUsrProfe"
+            element={
               <ProtectedRoute requiredRole="0,1,2,3,4">
                 <PerfilTeacher />
               </ProtectedRoute>
-            } />
+            }
+          />
 
-            {/* NUEVA RUTA PRINCIPAL PARA PERFIL EMPRESA */}
-            <Route path="/PerfilAlumno/:idUsrAlumno" element={
+          {/* NUEVA RUTA PRINCIPAL PARA PERFIL EMPRESA */}
+          <Route
+            path="/PerfilAlumno/:idUsrAlumno"
+            element={
               <ProtectedRoute requiredRole="0,1,2,3,4">
                 <PerfilPropio />
               </ProtectedRoute>
-            } />
+            }
+          />
 
           {/* 6) Alumno (rol 0,2,3,4) */}
-          <Route path="/Alumno/*" element={
-            <ProtectedRoute requiredRole="0,2,3,4">
-              <MenuHome userType={nivelUsuario} />
-            </ProtectedRoute>
-          }>
-            <Route index element={<Navigate to="/centro/${localStorage.getItem('centroId')}/elegirCurso" replace />} />
+          <Route
+            path="/Alumno/*"
+            element={
+              <ProtectedRoute requiredRole="0,2,3,4">
+                <MenuHome userType={nivelUsuario} />
+              </ProtectedRoute>
+            }
+          >
+            <Route
+              index
+              element={
+                <Navigate
+                  to="/centro/${localStorage.getItem('centroId')}/elegirCurso"
+                  replace
+                />
+              }
+            />
           </Route>
 
           {/* 7) Centro general */}
-          <Route path="/centro/:centroId/*" element={
-            <ProtectedRoute requiredRole="0,1,2,3,4">
-              <MenuHome userType={nivelUsuario} />
-            </ProtectedRoute>
-          }>
+          <Route
+            path="/centro/:centroId/*"
+            element={
+              <ProtectedRoute requiredRole="0,1,2,3,4">
+                <MenuHome userType={nivelUsuario} />
+              </ProtectedRoute>
+            }
+          >
             <Route path="elegirCurso" element={<MenuCursos />} />
-            <Route path="curso/:cursoId/BuscarOfertas" element={<MainBusqueda />} />
+            <Route
+              path="curso/:cursoId/BuscarOfertas"
+              element={<MainBusqueda />}
+            />
           </Route>
-          
+
           {/* <Route path="/centro/:centroId/elegirCurso" element={<ProtectedRoute requiredRole="0,1,2,3,4"><MenuCursos /></ProtectedRoute>} />
           <Route path="/centro/:centroId/curso/:cursoId/BuscarOfertas" element={<ProtectedRoute requiredRole="0,1,2,3,4"><MainBusqueda /></ProtectedRoute>} /> */}
 
-
-
           {/* 8) Primer inicio */}
-          <Route path="/PrimerInicioAlumno" element={<ProtectedRoute requiredRole="0,1,2,3,4"><PrimerInicio /></ProtectedRoute>} />
-          <Route path="/PrimerInicioProfesor" element={<ProtectedRoute requiredRole="0,1,2,3,4"><PrimerInicioProf /></ProtectedRoute>} />
-          <Route path="/PrimerInicioEmpresa" element={<ProtectedRoute requiredRole="0,1,2,3,4"><PrimerInicioEmpresa /></ProtectedRoute>} />
-           
 
+          <Route
+            path="/PrimerInicio/*"
+            element={
+              <ProtectedRoute requiredRole="0,1,2,3,4">
+                <MenuHome userType={nivelUsuario} />
+              </ProtectedRoute>
+            }
+          >
+            <Route
+              path="Empresa"
+              element={
+                <ProtectedRoute requiredRole="0,1,2,3,4">
+                  <PrimerInicioEmpresa />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="Alumno"
+              element={
+                <ProtectedRoute requiredRole="0,1,2,3,4">
+                  <PrimerInicio />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="Profesor"
+              element={
+                <ProtectedRoute requiredRole="0,1,2,3,4">
+                  <PrimerInicioProf />
+                </ProtectedRoute>
+              }
+            />
+          </Route>
 
-          {/* 9) Buscador Perfil */}
-          <Route path="/BuscadorPerfil" element={<SeachUser />} />
+          <Route
+            path="/BuscadorPerfil"
+            element={
+              <ProtectedRoute requiredRole="0,1,2,3,4">
+                <MenuHome userType={nivelUsuario} />
+              </ProtectedRoute>
+            }
+          >
+            <Route path="" element={<SeachUser />} />
+          </Route>
+
+          <Route path="*" element={<MenuHome userType={nivelUsuario} />}>
+            <Route path="*" element={<NotFound />} />
+          </Route>
 
           {/* Fallback */}
-          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </I18nextProvider>
@@ -209,5 +342,3 @@ root.render(
   10) Fallback
      GET  /*                             → NotFound.jsx
 */
-
- 
