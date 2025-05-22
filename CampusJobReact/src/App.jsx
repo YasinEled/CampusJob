@@ -6,7 +6,7 @@ import "./index.css";
 function App() {
   const { t, i18n } = useTranslation("global");
   const [showLangOptions, setShowLangOptions] = useState(false);
-  const [username, setUsername] = useState('');
+  const [usernameOrEmail, setUsernameOrEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
@@ -20,50 +20,52 @@ function App() {
     event.preventDefault();
 
     try {
-        const response = await fetch('http://localhost:4000/api/auth/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ username, password }),
-        });
+      const response = await fetch('http://localhost:4000/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ usernameOrEmail, password }),
+      });
 
-        const data = await response.json();
-        setMessage(data.message);
+      const data = await response.json();
+      setMessage(data.message);
 
-        if (data.success) {
-          console.log(
-            "[Login] guardando en localStorage →",  
-            "idUsuario:", data.idUsuario,
-            "nivelUsuario:", data.nivelUsuario
-          );
+      if (data.success) {
+        console.log("[Login] guardando en localStorage →", data);
+
+        
+
+        // Redirigir según nivel y si es primer inicio
+        if (data.firstLogin && [0, 1, 2].includes(parseInt(data.nivelUsuario))) {
+          if (data.nivelUsuario == 0) {
+            localStorage.setItem("idUsuarioAux", data.idUsuario);
+            navigate("/PrimerInicio/Alumno");
+          } else if (data.nivelUsuario == 1) {
+            navigate("/PrimerInicio/Empresa");
+          } else if (data.nivelUsuario == 2) {
+            navigate("/PrimerInicio/Profesor");
+          }
+        } else {
           localStorage.setItem("idUsuario", data.idUsuario);
           localStorage.setItem("nivelUsuario", data.nivelUsuario);
-          console.log(
-            "[Login] valores en localStorage →",
-            "idUsuario:", localStorage.getItem("idUsuario"),
-            "nivelUsuario:", localStorage.getItem("nivelUsuario")
-          );
-          // Navega a la ruta donde toca que vaya cada usr.
-          if(data.nivelUsuario==0) {navigate("/Alumno/BusquedaOfertas");}
-          else if(data.nivelUsuario==1) {navigate("/");}
-          else if(data.nivelUsuario==2) {navigate("/Alumno/BusquedaOfertas");}
-          else if(data.nivelUsuario==3) {navigate("/Alumno/BusquedaOfertas");}
-          else if(data.nivelUsuario==4) {navigate("/AdminSupremo/homeAdmin");}
-
-
+          if (data.nivelUsuario == 0) {
+            navigate("/Alumno/BusquedaOfertas");
+          } else if (data.nivelUsuario == 1) {
+            navigate("/empresa/dashboard");
+          } else if (data.nivelUsuario == 2) {
+            navigate("/profesor/dashboard");
+          } else if (data.nivelUsuario == 3) {
+            navigate("/admin/centro");
+          } else if (data.nivelUsuario == 4) {
+            navigate("/AdminSupremo/homeAdmin");
+          }
         }
-        else{
-          localStorage.setItem("idUsuario", 1);
-          localStorage.setItem("nivelUsuario",4);
-          navigate("/AdminSupremo/homeAdmin");
-        }
+
+      } else {
+        setMessage(data.message || "Credenciales incorrectas");
+      }
     } catch (error) {
-      localStorage.setItem("idUsuario", 1);
-          localStorage.setItem("nivelUsuario",4);
-          navigate("/AdminSupremo/homeAdmin");
-        console.error('Error:', error);
-        setMessage(t("login.connectionError"));
+      console.error("Error en login:", error);
+      setMessage(t("login.connectionError"));
     }
   };
 
@@ -73,11 +75,7 @@ function App() {
         <div className="marginHeader">
           <div className="language-selector">
             <button className="transparent-button" onClick={() => setShowLangOptions(!showLangOptions)}>
-              {showLangOptions ? (
-                <span>lang&nbsp;&nbsp;&nbsp;&nbsp;▲&nbsp;&nbsp;</span>
-              ) : (
-                <span>lang&nbsp;&nbsp;&nbsp;&nbsp;▼&nbsp;&nbsp;</span>
-              )}
+              {showLangOptions ? <span>lang&nbsp;&nbsp;&nbsp;&nbsp;▲&nbsp;&nbsp;</span> : <span>lang&nbsp;&nbsp;&nbsp;&nbsp;▼&nbsp;&nbsp;</span>}
             </button>
             {showLangOptions && (
               <div className="lang-options">
@@ -99,21 +97,19 @@ function App() {
                   <input
                     type="text"
                     className="form-control"
-                    id="exampleInputUsername1"
-                    name="username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    placeholder="Username"
+                    name="usernameOrEmail"
+                    value={usernameOrEmail}
+                    onChange={(e) => setUsernameOrEmail(e.target.value)}
+                    placeholder="Nombre de usuario o email"
                     required
                   />
                   <input
                     type="password"
                     className="form-control"
-                    id="exampleInputPassword1"
                     name="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Password"
+                    placeholder="Contraseña"
                     required
                   />
                 </div>
