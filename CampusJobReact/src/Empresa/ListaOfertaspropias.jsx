@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./PerfilEmpresa/Style/ListaOfertaPropias.css";
 import campusJobFavicon from "../assets/Logo/CampusJob.png"; // Asegúrate de que este import esté bien
+import   {Navigate} from "react-router-dom";
 
 function ListaOfertasPropias() {
   const [ofertas, setOfertas] = useState([]);
@@ -86,10 +87,13 @@ function ListaOfertasPropias() {
           <p>Cargando ofertas o no hay ofertas disponibles.</p>
         ) : (
           ofertas.map((oferta) => (
-            <div key={oferta.id} className="ofertaPropia-Container" onClick={() => {<Navigate
-                              to="/centro/${localStorage.getItem('centroId')}/elegirCurso"
-                              replace
-                            />}}>
+            <div
+              key={oferta.id}
+              className="ofertaPropia-Container"
+              onClick={() => {
+                window.location.href = "/Empresa/InformacionOferta/3";
+              }}
+            >
               <img
                 className="ofertaPropia-ImagenEmpresa"
                 src={campusJobFavicon}
@@ -105,11 +109,12 @@ function ListaOfertasPropias() {
                   <p> | </p>
                   <p className="ofertaPropia-Fecha">{oferta.fecha}</p>
                 </div>
-                <p className="ofertaPropia-Descripcion" style={{ maxWidth: "300px" }}>
+                <p
+                  className="ofertaPropia-Descripcion"
+                  style={{ maxWidth: "300px" }}
+                >
                   {oferta.descripcion.length > 250 ? (
-                    <>
-                      {oferta.descripcion.substring(0, 250)}...
-                    </>
+                    <>{oferta.descripcion.substring(0, 250)}...</>
                   ) : (
                     oferta.descripcion
                   )}
