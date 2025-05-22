@@ -39,32 +39,32 @@ const logoIconDark = new URL(
 
 // Configuración de menús por tipo de usuario
 const menuConfig = {
-  AdminSupremo: [
+  4: [
     { path: `/AñadirCentro`, icon: <FormOutlined />, label: "AddCentro" },
     // { path: "/global", icon: <GlobalOutlined />, label: "Global" },
     { path: "/HomeAdmin", icon: <HomeOutlined />, label: "Home" },
   ],
-  Admin: [
+  3: [
     { path: "GestionarCursosAlumnos", icon: <FormOutlined />, label: "AddCurso" },
     { path: "centro/:centroId/CrearUsuario", icon: <UserAddOutlined />, label: "AddUser" },
     { path: "centro/:centroId/añadirCurso", icon: <AppstoreAddOutlined />, label: "Usuarios" },
     // { path: "/global", icon: <GlobalOutlined />, label: "Global" },
     { path: "/HomeCursos", icon: <HomeOutlined />, label: "Home" },
   ],
-  Profesor: [
+  2: [
     { path: "/courses", icon: <BookOutlined />, label: "Cursos" },
     { path: "/AñadirCentro", icon: <UserAddOutlined />, label: "AddUser" },
     // { path: "/inbox", icon: <InboxOutlined />, label: "Mensajes" },
     { path: "/BusquedaOfertas", icon: <HomeOutlined />, label: "Home" },
     { path: "/PerfilProfesor", icon: <UserOutlined />, label: "Perfil" },
   ],
-  Alumno: [
+  0: [
     // { path: "/favorites", icon: <HeartOutlined />, label: "Favoritos" },
     // { path: "/inbox", icon: <InboxOutlined />, label: "Mensajes" },
     { path: "/BusquedaOfertas", icon: <HomeOutlined />, label: "Home" },
     { path: "/PerfilAlumno", icon: <UserOutlined />, label: "Perfil" },
   ],
-  Empresa: [
+  1: [
     { path: "/CrearOfertas", icon: <ShopOutlined />, label: "Publicar" },
     // { path: "/favorites", icon: <HeartOutlined />, label: "Favoritos" },
     { path: "/BusquedaOfertas", icon: <HomeOutlined />, label: "Home" },
