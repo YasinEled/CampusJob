@@ -173,7 +173,7 @@ function NotFound() {
           </defs>
         </svg>
       </div>
-      <Menu />
+      {/* <Menu /> */}
       <Outlet />
       <div className="container404">
         <div className="Texto404">

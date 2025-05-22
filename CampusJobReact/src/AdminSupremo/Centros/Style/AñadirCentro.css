@@ -168,6 +168,10 @@
   background: #2c1b1b;
 }
 
+.StatusAdminSupremo{
+  color:red;
+}
+
 @media (max-width: 600px) {
   .main-wrapper {
     padding: 1.2em 0.5em;
