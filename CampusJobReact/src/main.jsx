@@ -30,6 +30,7 @@ import PrimerInicioProf from "./Common/PrimerIniciForm/PrimerIniciProfesor.jsx";
 import PrimerInicioEmpresa from "./Common/PrimerIniciForm/PrimerIniciEmpresa.jsx";
 import PerfilTeacher from "./Profesor/PerfilProfesor/PerfilTeacher.jsx";
 import Unauthorized from "./Auth/Unauthorized/Unauthorized.jsx";
+import InformacionOferta from "./Empresa/InformacionOferta/InformacionOferta.jsx";
 
 import NotFound from "./Common/NotFound/NotFound.jsx";
 
@@ -69,10 +70,10 @@ root.render(
 
           {/* 2) AdminSupremo (rol 4) */}
           <Route
-            path="/AdminSupremo/*"
+            path="/AdminSupremo/*"               //OKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
             element={
               <ProtectedRoute requiredRole="4">
-                <MenuHome userType={nivelUsuario} />
+                <MenuHome userType={4} />
               </ProtectedRoute>
             }
           >
@@ -87,7 +88,7 @@ root.render(
             path="/AdminCentro/*"
             element={
               <ProtectedRoute requiredRole="3,4">
-                <MenuHome userType={nivelUsuario} />
+                <MenuHome userType={3} />
               </ProtectedRoute>
             }
           >
@@ -123,7 +124,7 @@ root.render(
             path="/Profesor/*"
             element={
               <ProtectedRoute requiredRole="2,3,4">
-                <MenuHome userType={nivelUsuario} />
+                <MenuHome userType={2} />
               </ProtectedRoute>
             }
           >
@@ -140,6 +141,14 @@ root.render(
                 />
               }
             />
+            <Route
+            path="PerfilProfesor/:idUsrProfe"
+            element={
+              <ProtectedRoute requiredRole="0,1,2,3,4">
+                <PerfilTeacher />
+              </ProtectedRoute>
+            }
+          />
           </Route>
 
           {/* 5) Empresa (rol 1,2,3,4) */}
@@ -147,7 +156,7 @@ root.render(
             path="/Empresa/*"
             element={
               <ProtectedRoute requiredRole="1,2,3,4">
-                <MenuHome userType={nivelUsuario} />
+                <MenuHome userType={1} />
               </ProtectedRoute>
             }
           >
@@ -180,14 +189,7 @@ root.render(
           {/* NUEVA RUTA PRINCIPAL PARA PERFIL EMPRESA */}
 
           {/* NUEVA RUTA PRINCIPAL PARA PERFIL EMPRESA */}
-          <Route
-            path="/PerfilProfesor/:idUsrProfe"
-            element={
-              <ProtectedRoute requiredRole="0,1,2,3,4">
-                <PerfilTeacher />
-              </ProtectedRoute>
-            }
-          />
+          
 
           {/* NUEVA RUTA PRINCIPAL PARA PERFIL EMPRESA */}
           <Route
@@ -204,7 +206,7 @@ root.render(
             path="/Alumno/*"
             element={
               <ProtectedRoute requiredRole="0,2,3,4">
-                <MenuHome userType={nivelUsuario} />
+                <MenuHome userType={0} />
               </ProtectedRoute>
             }
           >
@@ -244,7 +246,7 @@ root.render(
             path="/PrimerInicio/*"
             element={
               <ProtectedRoute requiredRole="0,1,2,3,4">
-                <MenuHome userType={nivelUsuario} />
+                <MenuHome userType={-1} />
               </ProtectedRoute>
             }
           >
@@ -273,6 +275,15 @@ root.render(
               }
             />
           </Route>
+
+          <Route
+          path="/InformacionOferta/:idOferta"
+          element={
+          <ProtectedRoute requiredRole="0,1,2,3,4">
+          <InformacionOferta />
+          </ProtectedRoute>
+          }
+          />
 
           <Route
             path="/BuscadorPerfil"

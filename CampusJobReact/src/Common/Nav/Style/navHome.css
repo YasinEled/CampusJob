@@ -20,6 +20,24 @@
     
 }
 
+.theme-toggle{
+    outline: none;
+}
+
+.theme-toggle:focus{
+    scale: 1.2;
+        outline: none;
+
+}
+
+.theme-toggle:hover{
+    scale: 1.2;
+    color: rgb(255, 255, 255);
+        outline: none;
+
+}
+
+
 .selectorsNav a{
     color: white;
 }
@@ -30,6 +48,7 @@
 .selectorsNav li:hover{
     color: rgb(255, 255, 255);
     scale: 1.2;
+    
 }
 
 .logoLetrasNav{
@@ -231,8 +250,7 @@ body.light-mode .BotonTresPuntos {
 }
 
 body.light-mode .BotonAñadirCentro {
-  background-color: #0d6b66;
-  color: white;
+  color: black;
 }
 
 body.light-mode .BotonAñadirCentro:hover {
@@ -274,9 +292,8 @@ body.light-mode h3 {
 
 /* AÑADIR CENTROS */
 
-//* === MODO CLARO === */
+/* === MODO CLARO === */
 body.light-mode .page-wrapperAñadirCentro {
-  background-color: #f4f4f4;
   color: black;
 }
 
@@ -288,7 +305,7 @@ body.light-mode .main-wrapperCentro {
 
 body.light-mode .ButtonSeleccionarLogoCrearCentro {
   background: #0d6b66;
-  color: white;
+  color: white !important;
 }
 
 body.light-mode .ButtonSeleccionarLogoCrearCentro:hover {
@@ -304,7 +321,7 @@ body.light-mode .main-wrapperCentro h2 {
 }
 
 body.light-mode .page-wrapperAñadirCentro form label {
-  color: #333;
+  color: #ffffff;
 }
 
 body.light-mode .page-wrapperAñadirCentro form input[type="text"],
@@ -322,7 +339,7 @@ body.light-mode .page-wrapperAñadirCentro form input[type="tel"]:focus {
 }
 
 body.light-mode .page-wrapperAñadirCentro form input[type="file"] {
-  color: black;
+  color: white;
 }
 
 body.light-mode .logo-preview img {
@@ -365,4 +382,31 @@ body.light-mode .error-field input {
   border: 2px solid #b30000 !important;
   background: #ffeaea;
   color: black;
+}
+
+
+body.light-mode .ContainerAdminSupremoUser {
+  background-color: azure;
+}
+
+body.light-mode .error-message{
+  color: #b30000 !important;
+  border: 3px solid #b30000 !important;
+}
+
+body.light-mode .StatusAdminSupremoNO{
+    color: red !important;
+}
+body.light-mode .StatusAdminSupremoSI{
+    color: green !important;
+}
+
+body.light-mode .MenuCentrosStatus {
+    background-color: #A1DAD2;
+    border: 3px solid #0d6b66;
+    color: black;
+}
+
+body.light-mode .ButtonSeleccionarLogoCrearCentroTexto {
+    color: white !important;
 }

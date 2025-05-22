@@ -2,6 +2,7 @@ import "./Style/perfilEmpresa.css";
 import logoEmpresa from '../../assets/yasin.jpg';
 import fondoEmpresa from '../../assets/yasinfondo.jpg';
 import { useState } from "react";
+import ListaOfertasPropias from "../ListaOfertaspropias";
 
 function PerfilEmpresa() {
   const [mostrarPopup, setMostrarPopup] = useState(false);

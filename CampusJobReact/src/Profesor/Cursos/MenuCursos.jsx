@@ -102,9 +102,9 @@ export default function MenuCursos() {
           )}
         </div>
         <div className="MenuAdminContenido">
-          {cursos.length > 0 ? (
-            <div className="CentroList">
-              {cursos.map((curso) => (
+          <div className="CentroList">
+            {cursos.length > 0 ? (
+              cursos.map((curso) => (
                 <div
                   key={curso.idcurso}
                   className="CursoCard"
@@ -133,18 +133,17 @@ export default function MenuCursos() {
                     <div className="CentroImagenPlaceholder">Sin logo</div>
                   )}
                 </div>
-              ))}
-            </div>
-          ) : (
-            <p></p>
-          )}
-
-          <button className="BotonAñadirCentro" onClick={handleAñadirCurso}>
-            <div style={{ fontSize: "100px" }}>
-              <PlusOutlined />
-            </div>
-            Añadir Curso
-          </button>
+              ))
+            ) : (
+              <p></p>
+            )}
+            <button className="BotonAñadirCentro" onClick={handleAñadirCurso}>
+              <div style={{ fontSize: "100px" }}>
+                <PlusOutlined />
+              </div>
+              Añadir Curso
+            </button>
+          </div>
         </div>
       </div>
 
