@@ -1,48 +1,44 @@
-/* .perfilContainer: Aseguramos que el contenedor principal ocupe todo el espacio disponible, 
-   excluyendo el espacio del header (ajustar 60px según el tamaño real del header) */
+
    .perfilContainer {
     display: flex;
     margin-left: 10.4em;
-    height: calc(100vh - 7em); /* Restamos la altura del header (ajustar 60px a la altura real del header) */
+    height: calc(100vh - 7em); 
     flex-direction: column;
     justify-content: flex-start;
-    overflow: hidden; /* Evita que haya barras de desplazamiento */
+    overflow: hidden; 
 }
 
-/* .PerfilUsuario: Este es el contenedor del perfil */
 .PerfilUsuario {
     background: #042522;
     width: 60%;
-    height: 100%; /* Hace que el perfil ocupe toda la altura disponible dentro de .perfilContainer */
+    height: 100%; 
     border-radius: 15px;
     color: white;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
     position: relative;
-    overflow: hidden; /* Evita que haya barras de desplazamiento dentro del perfil */
+    overflow: hidden;
 }
 
-/* Fondo */
 .fondo {
     background: rgb(255, 255, 255);
     width: 100%;
     height: 14em;
     border-radius: 12px 12px 0 0;
-    position: relative; /* Para que los elementos hijos con posición absoluta se ubiquen en relación con este contenedor */
+    position: relative; 
     display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente (si es necesario) */
+    justify-content: center; 
+    align-items: center; 
 }
 
-/* Imagen de perfil */
 .profile {
     width: 9em;
     height: 9em;
     border-radius: 50%;
     border: 3px solid #042522;
-    position: absolute; /* Permite colocar la imagen sobre el fondo */
-    bottom: -4.5em; /* Ajusta la posición para que sobresalga la mitad */
-    left: 8em; /* Coloca la imagen en el centro */
-    transform: translateX(-50%); /* Ajuste fino para centrarla correctamente */
+    position: absolute; 
+    bottom: -4.5em; 
+    left: 8em; 
+    transform: translateX(-50%); 
 }
 
 
@@ -53,7 +49,6 @@
     max-width: 70%;
 }
 
-/* Información en el perfil */
 .InfoContainer {
     display: flex;
     justify-content: space-between;
@@ -61,7 +56,6 @@
     padding-left: 2em;
 }
 
-/* Imagen de centro en el perfil */
 .ImagenCentroPerfil {
     width: 6em;
     height: 6em;
@@ -74,7 +68,6 @@
     max-width: 20em;
 }
 
-/* Fondo oscuro que cubre toda la pantalla */
 .perfilAlumnopopup-Overlay {
   position: fixed;
   top: 0;
@@ -88,7 +81,6 @@
   z-index: 1000;
 }
 
-/* Contenido del popup */
 .perfilAlumnopopup-Contenido {
   background: #042522;
   padding: 2em;
@@ -101,7 +93,6 @@
   gap: 1em;
 }
 
-/* Título del popup */
 .perfilAlumnopopup-Contenido h3 {
   margin-bottom: 0.5em;
   font-size: 1.5em;
@@ -109,7 +100,6 @@
   text-align: center;
 }
 
-/* Inputs y textarea */
 .perfilAlumnopopup-Contenido input,
 .perfilAlumnopopup-Contenido textarea {
   padding: 0.6em 1em;
@@ -120,7 +110,6 @@
   resize: none;
 }
 
-/* Botones */
 .perfilAlumnopopup-Contenido button {
   padding: 0.6em 1em;
   border: none;
@@ -131,15 +120,12 @@
   transition: background 0.2s ease;
 }
 
-/* Botón Guardar */
 .perfilAlumnopopup-btnGuardar {
   background-color: #00998E;
   color: white;
 }
 
 
-
-/* Botón Cancelar */
 .perfilAlumnopopup-btnCancelar {
   background-color: #ccc;
   color: #333;
@@ -149,10 +135,9 @@
   background-color: #b2b2b2;
 }
 
-/* Botones tipo input file */
 .perfilAlumnopopup-btnSubirArchivo,
 .perfilAlumnopopup-btnSubirImagen {
-  background-color: rgba(255, 255, 255, 0.05); /* más sutil */
+  background-color: rgba(255, 255, 255, 0.05); 
   border: 1px dashed #00998E;
   color: #00998E;
   padding: 0.6em 1em;

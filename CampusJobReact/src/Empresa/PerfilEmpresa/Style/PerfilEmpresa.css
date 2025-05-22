@@ -1,5 +1,4 @@
-
-.perfilContainer {
+.PerfilEmpresaContainer {
     display: flex;
   flex-direction: row;
   justify-content: center;
@@ -9,7 +8,7 @@ grid-gap: 3em;
 
 }
 
-.PerfilEmpresa {
+.PerfilEmpresaMain {
     position: relative; /* Necesario para el posicionamiento del botón */
     background: #042522;
     width: 60%;
@@ -21,7 +20,7 @@ grid-gap: 3em;
   }
 
 /* Fondo */
-.fondo {
+.PerfilEmpresaFondo {
     position: relative;
     background: white;
     width: 100%;
@@ -32,7 +31,7 @@ grid-gap: 3em;
     align-items: center;
   }
 /* Imagen de perfil */
-.logoEmpresa {
+.PerfilEmpresaLogo {
     width: 9em;
     height: 9em;
     border-radius: 20%;
@@ -43,7 +42,7 @@ grid-gap: 3em;
     transform: translateX(-50%);
   }
 
-.infoPerfil {
+.PerfilEmpresaInfoPerfil {
     font-size: 14px;
     padding-left: 2em;
     padding-top: 7em;
@@ -51,7 +50,7 @@ grid-gap: 3em;
 }
 
 /* Información en el perfil */
-.InfoContainer {
+.PerfilEmpresaInfoContainer {
     display: flex;
     justify-content: space-between;
     padding-right: 2em;
@@ -59,7 +58,7 @@ grid-gap: 3em;
 }
 
 /* Imagen de centro en el perfil */
-.ImagenCentroPerfil {
+.PerfilEmpresaImagenCentroPerfil {
     width: 6em;
     height: 6em;
     border-radius: 20%;
@@ -68,11 +67,11 @@ grid-gap: 3em;
     margin-top:3em;
 }
 
-.InformacionPrincipalUsuario{
+.PerfilEmpresaInformacionPrincipalUsuario{
     max-width: 20em;
 }
 
-.btnEditarPerfil {
+.PerfilEmpresaBtnEditarPerfil {
     padding: 0.5em 1em;
     background-color: #1abc9c;
     color: white;
@@ -85,7 +84,7 @@ grid-gap: 3em;
     
   }
   
-  .popupOverlay {
+  .PerfilEmpresaPopupOverlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -98,7 +97,7 @@ grid-gap: 3em;
     z-index: 1000;
   }
   
-  .popupContenido {
+  .PerfilEmpresaPopupContenido {
     background: #042522;
     padding: 2em;
     border-radius: 16px;
@@ -110,8 +109,8 @@ grid-gap: 3em;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
   }
   
-  .popupContenido input,
-  .popupContenido textarea {
+  .PerfilEmpresaPopupContenido input,
+  .PerfilEmpresaPopupContenido textarea {
     width: 100%;
     padding: 0.75em 1em;
     font-size: 14px;
@@ -123,34 +122,38 @@ grid-gap: 3em;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
   }
   
-  .popupContenido input::placeholder,
-  .popupContenido textarea::placeholder {
+  .PerfilEmpresaPopupContenido input::placeholder,
+  .PerfilEmpresaPopupContenido textarea::placeholder {
     color: #b0d1cd;
   }
   
-  .popupContenido input:focus,
-  .popupContenido textarea:focus {
+  .PerfilEmpresaPopupContenido input:focus,
+  .PerfilEmpresaPopupContenido textarea:focus {
     outline: none;
     border-color: #1abc9c;
     background-color: #144440;
     box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.3);
   }
   
-  .popupContenido textarea {
+  .PerfilEmpresaPopupContenido textarea {
     min-height: 6em;
     resize: vertical;
   }
-  
-  .popupContenido button {
-    padding: 0.5em;
-    border: none;
-    background-color: #042522;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-  }
 
-  .popupContenido button {
+    .PerfilEmpresaBtnCambiarFoto{
+    background-color: rgba(255, 255, 255, 0.05) !important; 
+  border: 1px dashed #00998E !important;
+  color: #00998E !important;
+  padding: 0.6em 1em;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.95em;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  }
+  
+  .PerfilEmpresaPopupContenido button {
     padding: 0.75em;
     border: none;
     background-color: #1abc9c;
@@ -161,17 +164,17 @@ grid-gap: 3em;
     transition: background-color 0.3s ease, transform 0.2s ease;
   }
   
-  .popupContenido button:hover {
+  .PerfilEmpresaPopupContenido button:hover {
     background-color: #17a589;
     transform: scale(1.05);
   }
   
-  .popupContenido button:active {
+  .PerfilEmpresaPopupContenido button:active {
     transform: scale(0.97);
   }
   
 
-  .btnMensaje {
+  .PerfilEmpresaBtnMensaje {
     position: absolute;
     top: 10px; /* Lo coloca en la parte superior del contenedor */
     right: 10px; /* Alineado a la derecha */
@@ -188,7 +191,8 @@ grid-gap: 3em;
     z-index: 10; /* Asegura que el botón esté por encima del contenido */
   }
   
-  .btnMensaje:hover {
+  .PerfilEmpresaBtnMensaje:hover {
     background-color: #0e8a6f;
     transform: scale(1.03);
   }
+
