@@ -31,6 +31,8 @@ import PrimerInicioEmpresa from "./Common/PrimerIniciForm/PrimerIniciEmpresa.jsx
 import PerfilTeacher from "./Profesor/PerfilProfesor/PerfilTeacher.jsx";
 import Unauthorized from "./Auth/Unauthorized/Unauthorized.jsx";
 import InformacionOferta from "./Empresa/InformacionOferta/InformacionOferta.jsx";
+import GestorOferta from "./Empresa/GestorVacantes/GestorVacantes.js";
+
 
 import NotFound from "./Common/NotFound/NotFound.jsx";
 
@@ -167,6 +169,15 @@ root.render(
                   to="/centro/${localStorage.getItem('centroId')}/elegirCurso"
                   replace
                 />
+              }
+            />
+            
+             <Route
+              path="gestioOferta/:idOferta"
+              element={
+                <ProtectedRoute requiredRole="1,2,3,4">
+                  <GestorOferta />
+                </ProtectedRoute>
               }
             />
             <Route
