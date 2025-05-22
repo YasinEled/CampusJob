@@ -32,6 +32,7 @@ import PerfilTeacher from "./Profesor/PerfilProfesor/PerfilTeacher.jsx";
 import Unauthorized from "./Auth/Unauthorized/Unauthorized.jsx";
 import InformacionOferta from "./Empresa/InformacionOferta/InformacionOferta.jsx";
 import GestorOferta from "./Empresa/GestorVacantes/GestorVacantes.js";
+import ListaOfertasPropias from "./Empresa/ListaOfertaspropias.jsx";
 
 
 import NotFound from "./Common/NotFound/NotFound.jsx";
@@ -179,6 +180,14 @@ root.render(
                 </ProtectedRoute>
               }
             />
+            {/* <Route
+              path="ListaOfertasPropias/:idUsrEmpresa"
+              element={
+                <ProtectedRoute requiredRole="1,2,3,4">
+                  <ListaOfertasPropias />
+                </ProtectedRoute>
+              }
+            /> */}
              <Route
               path="gestioOferta/:idOferta"
               element={

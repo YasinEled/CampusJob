@@ -1,11 +1,11 @@
 
 .perfilContainer {
     display: flex;
-    margin-left: 10.4em;
-    height: calc(100vh - 7em);
-    flex-direction: column;
-    justify-content: flex-start;
-    overflow: hidden; 
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+grid-gap: 3em;
 }
 
 .PerfilEmpresa {
