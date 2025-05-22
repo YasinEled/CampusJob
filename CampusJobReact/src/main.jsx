@@ -171,7 +171,14 @@ root.render(
                 />
               }
             />
-            
+            <Route
+              path="InformacionOferta/:idOferta"
+              element={
+                <ProtectedRoute requiredRole="1,2,3,4">
+                  <InformacionOferta />
+                </ProtectedRoute>
+              }
+            />
              <Route
               path="gestioOferta/:idOferta"
               element={
@@ -287,14 +294,7 @@ root.render(
             />
           </Route>
 
-          <Route
-          path="/InformacionOferta/:idOferta"
-          element={
-          <ProtectedRoute requiredRole="0,1,2,3,4">
-          <InformacionOferta />
-          </ProtectedRoute>
-          }
-          />
+          
 
           <Route
             path="/BuscadorPerfil"
