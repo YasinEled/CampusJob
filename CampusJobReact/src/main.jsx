@@ -72,7 +72,7 @@ root.render(
             path="/AdminSupremo/*"
             element={
               <ProtectedRoute requiredRole="4">
-                <MenuHome userType={nivelUsuario} />
+                <MenuHome userType={4} />
               </ProtectedRoute>
             }
           >
@@ -87,7 +87,7 @@ root.render(
             path="/AdminCentro/*"
             element={
               <ProtectedRoute requiredRole="3,4">
-                <MenuHome userType={nivelUsuario} />
+                <MenuHome userType={3} />
               </ProtectedRoute>
             }
           >
@@ -123,7 +123,7 @@ root.render(
             path="/Profesor/*"
             element={
               <ProtectedRoute requiredRole="2,3,4">
-                <MenuHome userType={nivelUsuario} />
+                <MenuHome userType={2} />
               </ProtectedRoute>
             }
           >
@@ -147,7 +147,7 @@ root.render(
             path="/Empresa/*"
             element={
               <ProtectedRoute requiredRole="1,2,3,4">
-                <MenuHome userType={nivelUsuario} />
+                <MenuHome userType={1} />
               </ProtectedRoute>
             }
           >
@@ -204,7 +204,7 @@ root.render(
             path="/Alumno/*"
             element={
               <ProtectedRoute requiredRole="0,2,3,4">
-                <MenuHome userType={nivelUsuario} />
+                <MenuHome userType={0} />
               </ProtectedRoute>
             }
           >
@@ -244,7 +244,7 @@ root.render(
             path="/PrimerInicio/*"
             element={
               <ProtectedRoute requiredRole="0,1,2,3,4">
-                <MenuHome userType={nivelUsuario} />
+                <MenuHome userType={-1} />
               </ProtectedRoute>
             }
           >

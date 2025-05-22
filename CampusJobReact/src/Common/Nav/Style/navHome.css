@@ -20,6 +20,24 @@
     
 }
 
+.theme-toggle{
+    outline: none;
+}
+
+.theme-toggle:focus{
+    scale: 1.2;
+        outline: none;
+
+}
+
+.theme-toggle:hover{
+    scale: 1.2;
+    color: rgb(255, 255, 255);
+        outline: none;
+
+}
+
+
 .selectorsNav a{
     color: white;
 }
@@ -30,6 +48,7 @@
 .selectorsNav li:hover{
     color: rgb(255, 255, 255);
     scale: 1.2;
+    
 }
 
 .logoLetrasNav{
