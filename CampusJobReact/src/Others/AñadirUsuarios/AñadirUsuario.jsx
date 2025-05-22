@@ -7,6 +7,7 @@ import {
   UserOutlined,
   CheckOutlined,
   CloseOutlined,
+  LeftOutlined
 } from "@ant-design/icons";
 import { Spin } from "antd";
 
@@ -161,9 +162,8 @@ export default function AñadirUsuario() {
           )}
           {error && <p className="error-message">{error}</p>}
         </div>
-        
-        
-        <form onSubmit={handleSubmit} >
+
+        <form onSubmit={handleSubmit}>
           <div>
             <label>Email:</label>
             <input
@@ -175,64 +175,70 @@ export default function AñadirUsuario() {
               required
             />
           </div>
-
-          <div className="roles">
-            <label>Selecciona el rol:</label>
-            {roles.map((rol) => (
-              <label key={rol.value}>
-                <input
-                  type="radio"
-                  name="nivell" // ✅ Mismo nombre para todos los radio buttons
-                  value={rol.value}
-                  checked={formData.nivell === rol.value} // ✅ Actualiza según el estado
-                  onChange={handleChange}
-                />
-                {rol.label}
-              </label>
-            ))}
-          </div>
-
-          <div className="seleccion-cursos">
-            <label>Cursos Disponibles</label>
-            <div className="listbox">
-              {cursosDisponibles.map((curso) => (
-                <div
-                  key={curso.idcurso}
-                  className="curso-item"
-                  onDoubleClick={() => moverCurso(curso.idcurso, true)}
-                >
-                  {curso.nomcurs}
+          <div className="roles-containerAddUser">
+            <div className="roles">
+              <div>
+                <label>Selecciona el rol:</label>
+                <div style={{ display: "flex", gap: "1em" }}>
+                  {roles.map((rol) => (
+                    <label key={rol.value} className="custom-radio">
+                      <input
+                        type="radio"
+                        name="nivell"
+                        value={rol.value}
+                        checked={Number(formData.nivell) === rol.value}
+                        onChange={handleChange}
+                      />
+                      <span className="custom-radio-box">{rol.label}</span>
+                    </label>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="seleccion-cursos">
-            <label>Cursos Asignados</label>
-            <div className="listbox">
-              {cursosSeleccionados.map((curso) => (
-                <div
-                  key={curso.idcurso}
-                  className="curso-item"
-                  onDoubleClick={() => moverCurso(curso.idcurso, false)}
+              </div>
+              <div className="acciones">
+                <button
+                  type="button"
+                  onClick={() => navigate(-1)}
+                  className="BotonVolverAtras"
                 >
-                  {curso.nomcurs}
-                </div>
-              ))}
+                  <LeftOutlined />
+                </button>
+                <button type="submit" className="BotonAñadirUsuario">
+                  Crear
+                </button>
+                
+              </div>
             </div>
-          </div>
+            <div className="cursos-containerSelectorAddUser">
+              <div className="seleccion-cursos">
+                <label>Cursos Disponibles</label>
+                <div className="listbox">
+                  {cursosDisponibles.map((curso) => (
+                    <div
+                      key={curso.idcurso}
+                      className="curso-item"
+                      onDoubleClick={() => moverCurso(curso.idcurso, true)}
+                    >
+                      {curso.nomcurs}
+                    </div>
+                  ))}
+                </div>
+              </div>
 
-          <div className="acciones">
-            <button type="submit" className="BotonAñadirUsuario">
-              Crear
-            </button>
-            <button
-              type="button"
-              onClick={() => navigate(-1)}
-              className="BotonVolverAtras"
-            >
-              Volver
-            </button>
+              <div className="seleccion-cursos">
+                <label>Cursos Asignados</label>
+                <div className="listbox">
+                  {cursosSeleccionados.map((curso) => (
+                    <div
+                      key={curso.idcurso}
+                      className="curso-item"
+                      onDoubleClick={() => moverCurso(curso.idcurso, false)}
+                    >
+                      {curso.nomcurs}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </form>
       </div>
