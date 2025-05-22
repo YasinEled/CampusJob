@@ -13,18 +13,17 @@
 .activaSelectorGestorOferta{
   color: #ffffff;
   font-weight: bold;
-  background-color: #16a085;
+  background-color: #045e56;
   border-radius: 1em;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-
   padding:1em;
   width: 100%;
 }
 
 
 .buttonSelectorGestorOferta{
-  color: #16a085;
+  color: #045e56;
   font-weight: bold;
   background-color: #ffffff;
   border-radius: 1em;
