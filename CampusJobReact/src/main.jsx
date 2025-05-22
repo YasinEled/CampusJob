@@ -219,14 +219,7 @@ root.render(
           
 
           {/* NUEVA RUTA PRINCIPAL PARA PERFIL EMPRESA */}
-          <Route
-            path="/PerfilAlumno/:idUsrAlumno"
-            element={
-              <ProtectedRoute requiredRole="0,1,2,3,4">
-                <PerfilPropio />
-              </ProtectedRoute>
-            }
-          />
+       
 
           {/* 6) Alumno (rol 0,2,3,4) */}
           <Route
@@ -244,6 +237,12 @@ root.render(
                   to="/centro/${localStorage.getItem('centroId')}/elegirCurso"
                   replace
                 />
+              }
+            />
+            <Route
+              path="PerfilAlumno/:idUsrAlumno"
+              element={
+                <PerfilPropio />
               }
             />
           </Route>

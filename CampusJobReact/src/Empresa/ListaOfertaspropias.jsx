@@ -86,7 +86,10 @@ function ListaOfertasPropias() {
           <p>Cargando ofertas o no hay ofertas disponibles.</p>
         ) : (
           ofertas.map((oferta) => (
-            <div key={oferta.id} className="ofertaPropia-Container">
+            <div key={oferta.id} className="ofertaPropia-Container" onClick={() => {<Navigate
+                              to="/centro/${localStorage.getItem('centroId')}/elegirCurso"
+                              replace
+                            />}}>
               <img
                 className="ofertaPropia-ImagenEmpresa"
                 src={campusJobFavicon}
