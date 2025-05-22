@@ -25,9 +25,9 @@ function SelectorOferta({
         margin: "1em 0",
         backgroundColor: "#042522",
         boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
-        
         color: "#fff",
-        alignItems: "center",
+        alignItems: "center", // Importante para que los hijos ocupen todo el alto
+        minHeight: "120px",
       }}
     >
       {/* Sección izquierda - Información básica */}
@@ -36,8 +36,8 @@ function SelectorOferta({
           flex: 1,
           display: "flex",
           alignItems: "center",
+
           gap: "1.5em",
-          height: "100%",
         }}
       >
         {candidato.fotoPerfil ? (
@@ -81,16 +81,15 @@ function SelectorOferta({
         </div>
       </div>
 
-      {/* Sección derecha - Botones */}
+      {/* Sección derecha - Botones en fila */}
       <div
         style={{
           display: "flex",
           flexDirection: "row",
           gap: "1em",
-          alignItems: "center",
+          alignItems: "center", // Hace que los botones ocupen todo el alto
           justifyContent: "center",
           height: "100%",
-          
         }}
       >
         {/* Botón Descargar CV */}
@@ -99,18 +98,17 @@ function SelectorOferta({
           style={{
             display: "flex",
             flexDirection: "row",
-            
             alignItems: "center",
             gap: "0.5em",
-            
             padding: "0.5em 1.2em",
             backgroundColor: "#e8e8e8",
-            height: "100%",
             border: "none",
             borderRadius: "4px",
             cursor: "pointer",
             fontWeight: "bold",
             color: "#042522",
+            height: "100%",
+            minWidth: "80px",
           }}
         >
           <DownloadOutlined />
@@ -127,11 +125,14 @@ function SelectorOferta({
                 backgroundColor: "#4CAF50",
                 color: "white",
                 border: "none",
-                height: "100%",
-
                 borderRadius: "4px",
                 cursor: "pointer",
                 fontSize: "1.3em",
+                height: "100%",
+                minWidth: "60px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
               }}
               title="Aceptar"
             >
@@ -144,10 +145,14 @@ function SelectorOferta({
                 backgroundColor: "#f44336",
                 color: "white",
                 border: "none",
-                height: "100%",
                 borderRadius: "4px",
                 cursor: "pointer",
                 fontSize: "1.3em",
+                height: "100%",
+                minWidth: "60px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
               }}
               title="Rechazar"
             >
@@ -163,7 +168,9 @@ function SelectorOferta({
               fontSize: "2em",
               display: "flex",
               alignItems: "center",
-              gap: "0.4em",
+              justifyContent: "center",
+              height: "100%",
+              minWidth: "60px",
             }}
           >
             <CheckOutlined />
@@ -177,7 +184,9 @@ function SelectorOferta({
               fontSize: "2em",
               display: "flex",
               alignItems: "center",
-              gap: "0.4em",
+              justifyContent: "center",
+              height: "100%",
+              minWidth: "60px",
             }}
           >
             <CloseOutlined />

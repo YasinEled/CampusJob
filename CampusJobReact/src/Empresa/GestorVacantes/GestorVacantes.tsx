@@ -116,6 +116,15 @@ function GestorOferta() {
               onDescargarCV={descargarCV}
             />
           )}
+          {mostrarCandidato && (
+            <SelectorOferta
+              candidato={candidato}
+              estado={candidato.estado}
+              onAceptar={aceptarCandidato}
+              onRechazar={rechazarCandidato}
+              onDescargarCV={descargarCV}
+            />
+          )}
         </div>
       </div>
     </div>

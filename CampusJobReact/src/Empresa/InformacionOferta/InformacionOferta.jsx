@@ -1,22 +1,24 @@
 import "./InformacionOferta.css";
-import logoEmpresa from '../../assets/Logo/CampusJob.png';
-import fondoEmpresa from '../../assets/Logo/CampusJob.png';
+import logoEmpresa from "../../assets/Logo/CampusJob.png";
+import fondoEmpresa from "../../assets/Logo/CampusJob.png";
 import { useState } from "react";
 
 // Importación de íconos de Ant Design
-import { 
-  ClockCircleOutlined, 
-  CalendarOutlined, 
-  TeamOutlined, 
-  GlobalOutlined, 
-  EuroCircleOutlined, 
-  FileTextOutlined, 
-  HourglassOutlined 
-} from '@ant-design/icons';
+import {
+  ClockCircleOutlined,
+  CalendarOutlined,
+  TeamOutlined,
+  GlobalOutlined,
+  EuroCircleOutlined,
+  FileTextOutlined,
+  HourglassOutlined,
+} from "@ant-design/icons";
 
 function InformacionOferta() {
   const [titulo] = useState("Desarrollador Frontend");
-  const [descripcion] = useState("Buscamos un desarrollador frontend con experiencia en React para unirse a nuestro equipo de innovación.");
+  const [descripcion] = useState(
+    "Buscamos un desarrollador frontend con experiencia en React para unirse a nuestro equipo de innovación."
+  );
   const [jornada] = useState("Jornada completa");
   const [horasSemanales] = useState("40 horas");
   const [plazas] = useState(3);
@@ -29,39 +31,48 @@ function InformacionOferta() {
     <main className="InformacionOferta-Container">
       <div className="InformacionOferta-Empresa">
         <div className="InformacionOferta-Fondo">
-          <img src={fondoEmpresa} alt="Fondo Empresa" className="InformacionOferta-FondoImagen" />
-          <img className="InformacionOferta-Logo" src={logoEmpresa} alt="Logo Empresa" />
+          <img
+            src={fondoEmpresa}
+            alt="Fondo Empresa"
+            className="InformacionOferta-FondoImagen"
+          />
+          <img
+            className="InformacionOferta-Logo"
+            src={logoEmpresa}
+            alt="Logo Empresa"
+          />
         </div>
 
-<div className="InformacionOferta-Detalle">
-  <h2 className="InformacionOferta-Titulo">{titulo}</h2>
-  <p className="InformacionOferta-Descripcion">{descripcion}</p>
+        <div className="InformacionOferta-Detalle">
+          <h2 className="InformacionOferta-Titulo">{titulo}</h2>
+          <p className="InformacionOferta-Descripcion">{descripcion}</p>
 
-  {/* Nuevo contenedor para separar en dos cajas */}
-  <div className="InformacionOferta-DobleCaja">
-    <div className="InformacionOferta-Box">
-      <div className="InformacionOferta-Grid">
-        <div className="InformacionOferta-Campo"><ClockCircleOutlined /> {jornada}</div>
-        <div className="InformacionOferta-Campo"><HourglassOutlined /> {horasSemanales}</div>
-        <div className="InformacionOferta-Campo"><TeamOutlined /> {plazas} plazas vacantes</div>
-        <div className="InformacionOferta-Campo"><GlobalOutlined /> {modalidad}</div>
-        <div className="InformacionOferta-Campo"><EuroCircleOutlined /> {salario}</div>
-        <div className="InformacionOferta-Campo"><CalendarOutlined /> Publicación: {fechaPublicacion}</div>
-        <div className="InformacionOferta-Campo"><FileTextOutlined /> Finaliza: {fechaFinal}</div>
-      </div>
-    </div>
+          <div className="InformacionOferta-Grid">
+            <div className="InformacionOferta-Campo">
+              <ClockCircleOutlined /> {jornada}
+            </div>
+            <div className="InformacionOferta-Campo">
+              <HourglassOutlined /> {horasSemanales}
+            </div>
+            <div className="InformacionOferta-Campo">
+              <TeamOutlined /> {plazas} plazas vacantes
+            </div>
+            <div className="InformacionOferta-Campo">
+              <GlobalOutlined /> {modalidad}
+            </div>
+            <div className="InformacionOferta-Campo">
+              <EuroCircleOutlined /> {salario}
+            </div>
+            <div className="InformacionOferta-Campo">
+              <CalendarOutlined /> Publicación: {fechaPublicacion}
+            </div>
+            <div className="InformacionOferta-Campo">
+              <FileTextOutlined /> Finaliza: {fechaFinal}
+            </div>
+          </div>
 
-    <div className="InformacionOferta-Box">
-      <div className="InformacionOferta-Requisito">
-        <h3>Requisitos</h3>
-        <p>Experiencia mínima de 2 años trabajando con React y conocimientos sólidos en HTML, CSS y JavaScript.</p>
-      </div>
-    </div>
-  </div>
-
-  <button className="InformacionOferta-BotonCV">Enviar CV</button>
-</div>
-
+          <button className="InformacionOferta-BotonCV">Enviar CV</button>
+        </div>
       </div>
     </main>
   );
