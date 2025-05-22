@@ -109,9 +109,9 @@ const CreaCurso = () => {
             height: "5em",
           }}
         >
-          <h2>Crear Curso en Centro ID: {centroId}</h2>
+        <h2>Crear Curso en Centro ID: {centroId}</h2>
         </div>
-        <form onSubmit={handleSubmit}>
+        <form className="crear-curso-form" onSubmit={handleSubmit}>
           <div>
             <label>
               Nombre del Curso:
@@ -132,16 +132,28 @@ const CreaCurso = () => {
                 value={curso.descripcion}
                 onChange={handleChange}
                 required
+                rows={4}
+              style={{ resize: "none" }}
+            
               />
             </label>
           </div>
           <div>
-            <label>
+            <label className="ButtonSeleccionarLogoCrearCentro">
               Logo del Curso:
               <input type="file" accept="image/*" onChange={handleFotoChange} />
             </label>
           </div>
-          <button type="submit">Crear Curso</button>
+          {curso.foto && (
+            <div className="logo-preview">
+              <img
+                src={curso.foto}
+                alt="Vista previa del logo"
+                style={{ maxWidth: "200px", marginTop: "1em" }}
+              />
+            </div>
+          )}
+          <button className="btn-login" type="submit">Crear Curso</button>
         </form>
       </div>
       <div className="ContainerAdminSupremoUser">

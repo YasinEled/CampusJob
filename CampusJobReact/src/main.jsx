@@ -140,6 +140,14 @@ root.render(
                 />
               }
             />
+            <Route
+            path="PerfilProfesor/:idUsrProfe"
+            element={
+              <ProtectedRoute requiredRole="0,1,2,3,4">
+                <PerfilTeacher />
+              </ProtectedRoute>
+            }
+          />
           </Route>
 
           {/* 5) Empresa (rol 1,2,3,4) */}
@@ -180,14 +188,7 @@ root.render(
           {/* NUEVA RUTA PRINCIPAL PARA PERFIL EMPRESA */}
 
           {/* NUEVA RUTA PRINCIPAL PARA PERFIL EMPRESA */}
-          <Route
-            path="/PerfilProfesor/:idUsrProfe"
-            element={
-              <ProtectedRoute requiredRole="0,1,2,3,4">
-                <PerfilTeacher />
-              </ProtectedRoute>
-            }
-          />
+          
 
           {/* NUEVA RUTA PRINCIPAL PARA PERFIL EMPRESA */}
           <Route

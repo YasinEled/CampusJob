@@ -10,3 +10,50 @@
   border-radius: 15px;
   grid-gap: 2em;
 }
+
+
+
+
+.crear-curso-container form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.2em;
+  height: 100%;
+}
+
+.crear-curso-container form label {
+  font-weight: 500;
+  width: 100%;
+  margin-bottom: 0.3em;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+
+.crear-curso-container form input[type="text"],                        
+.crear-curso-container form input[type="email"],
+.crear-curso-container form input[type="tel"],
+.crear-curso-container form textarea {
+  width: 100%;
+  padding: 0.7em 1em;
+  border-radius: 8px;
+  border: 1px solid #1abc9c;
+  background: #021815;
+  color: white;
+  font-size: 1em;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.crear-curso-container form input[type="text"]:focus,
+.crear-curso-container form input[type="email"]:focus,
+.crear-curso-container form input[type="tel"]:focus {
+  border: 1.5px solid #16a085;
+}
+
+.crear-curso-container form input[type="file"] {
+  margin-top: 0.5em;
+  color: #fff;
+}

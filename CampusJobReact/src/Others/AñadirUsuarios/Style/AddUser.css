@@ -1,0 +1,61 @@
+.FormularioAñadirUsuario{
+      display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+    padding: 2em;
+    padding-bottom: 0;
+
+  color: white;
+  border-radius: 15px;
+  grid-gap: 2em;
+}
+
+.FormAddUserContainer{
+      display: flex;
+    box-shadow: 0px 6px 24px rgba(0,0,0,0.25);
+    height: 80dvh;
+      /* border: 4px solid #dfdddd; */
+  flex: 5;
+
+  flex-direction: column;
+  background: #045e56;
+  border-radius: 40px;
+  padding: 2em;
+}
+
+.FormularioAñadirUsuario form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.2em;
+  height: 100%;
+}
+
+
+.FormularioAñadirUsuario form input[type="text"],                        
+.FormularioAñadirUsuario form input[type="email"],
+.FormularioAñadirUsuario form input[type="tel"],
+.FormularioAñadirUsuario form textarea {
+  width: 100%;
+  padding: 0.7em 1em;
+  border-radius: 8px;
+  border: 1px solid #1abc9c;
+  background: #021815;
+  color: white;
+  font-size: 1em;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.FormularioAñadirUsuario form input[type="text"]:focus,
+.FormularioAñadirUsuario form input[type="email"]:focus,
+.FormularioAñadirUsuario form input[type="tel"]:focus {
+  border: 1.5px solid #16a085;
+}
+
+.FormularioAñadirUsuario form input[type="file"] {
+  margin-top: 0.5em;
+  color: #fff;
+}
