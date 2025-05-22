@@ -1,0 +1,12 @@
+.crear-curso-container{
+      display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+    padding: 2em;
+    padding-bottom: 0;
+
+  color: white;
+  border-radius: 15px;
+  grid-gap: 2em;
+}

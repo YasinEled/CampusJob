@@ -69,7 +69,7 @@ root.render(
 
           {/* 2) AdminSupremo (rol 4) */}
           <Route
-            path="/AdminSupremo/*"
+            path="/AdminSupremo/*"               //OKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
             element={
               <ProtectedRoute requiredRole="4">
                 <MenuHome userType={4} />
