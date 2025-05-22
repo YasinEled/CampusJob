@@ -36,7 +36,7 @@ export default function MenuCursos() {
         const data = await response.json();
 
         if (data.success) {
-          setCursos(data.data); // ✅ Ahora incluye `fotoCurso`
+          setCursos(data.data);
         } else {
           setError(data.message || "No se pudieron cargar los cursos");
         }

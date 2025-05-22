@@ -80,6 +80,7 @@ function PerfilEmpresa() {
           </div>
         </div>
       )}
+      <ListaOfertasPropias />
     </main>
   );
 }
