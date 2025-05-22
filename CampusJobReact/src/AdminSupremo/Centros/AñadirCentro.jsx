@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   PlusOutlined,
@@ -23,6 +23,26 @@ const AñadirCentro = () => {
     nomUsrAdmin: "",
     logoCentro: null,
   });
+  useEffect(() => {
+      const fetchCentros = async () => {
+        try {
+          const response = await fetch("http://localhost:4000/api/centro/all");
+          const data = await response.json();
+  
+          if (data.success) {
+            setCentros(data.data);
+          } else {
+            setError(data.message || "No se pudieron cargar los centros");
+          }
+        } catch (err) {
+          setError("Error al conectar con el servidor");
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchCentros();
+    }, []);
 
   const [message, setMessage] = useState("");
   const [errorType, setErrorType] = useState("");
