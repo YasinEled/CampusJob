@@ -1,7 +1,7 @@
 import "./Style/perfilEmpresa.css";
 import logoEmpresa from "../../assets/yasin.jpg";
 import fondoEmpresa from "../../assets/yasinfondo.jpg";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import ListaOfertasPropias from "../ListaOfertaspropias";
 
 function PerfilEmpresa() {
@@ -19,6 +19,8 @@ function PerfilEmpresa() {
     "Empresa dedicada a soluciones tecnológicas innovadoras con foco en eficiencia, escalabilidad y experiencia de usuario."
   );
 
+  const fileInputRef = useRef(null);
+
   const handleGuardar = () => {
     setMostrarPopup(false);
   };
@@ -29,39 +31,39 @@ function PerfilEmpresa() {
     setMostrarMensaje(false);
   };
 
+  const handleCambiarFoto = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      console.log("Nueva foto seleccionada:", file.name);
+      // Aquí podrías actualizar la imagen del logo si guardas la ruta temporal, por ejemplo con URL.createObjectURL(file)
+    }
+  };
+
   return (
-    <main className="perfilContainer">
-      <div className="PerfilEmpresa">
-        <div className="fondo">
+    <main className="PerfilEmpresaContainer">
+      <div className="PerfilEmpresaMain">
+        <div className="PerfilEmpresaFondo">
           <img src={fondoEmpresa} alt="Fondo Empresa" />
-          <img className="logoEmpresa" src={logoEmpresa} alt="Logo Empresa" />
+          <img className="PerfilEmpresaLogo" src={logoEmpresa} alt="Logo Empresa" />
         </div>
-        <div className="InfoContainer">
-          <div className="infoPerfil">
+        <div className="PerfilEmpresaInfoContainer">
+          <div className="PerfilEmpresaInfoPerfil">
             <h2>{nombre}</h2>
             <p>{ubicacion}</p>
-            <p>
-              <strong>Sector:</strong> {sector}
-            </p>
-            <p>
-              <strong>Fundación:</strong> {fundacion}
-            </p>
-            <p>
-              <strong>Teléfono:</strong> {telefono}
-            </p>
-            <p>
-              <strong>Email:</strong> {email}
-            </p>
+            <p><strong>Sector:</strong> {sector}</p>
+            <p><strong>Fundación:</strong> {fundacion}</p>
+            <p><strong>Teléfono:</strong> {telefono}</p>
+            <p><strong>Email:</strong> {email}</p>
             <p>{descripcion}</p>
 
             <button
-              className="btnEditarPerfil"
+              className="PerfilEmpresaBtnEditarPerfil"
               onClick={() => setMostrarPopup(true)}
             >
               Modificar perfil
             </button>
             <button
-              className="btnMensaje"
+              className="PerfilEmpresaBtnMensaje"
               onClick={() => setMostrarMensaje(true)}
             >
               Enviar mensaje
@@ -71,8 +73,8 @@ function PerfilEmpresa() {
       </div>
 
       {mostrarPopup && (
-        <div className="popupOverlay">
-          <div className="popupContenido">
+        <div className="PerfilEmpresaPopupOverlay">
+          <div className="PerfilEmpresaPopupContenido">
             <h3>Editar Perfil Empresa</h3>
             <input
               value={nombre}
@@ -109,6 +111,21 @@ function PerfilEmpresa() {
               onChange={(e) => setDescripcion(e.target.value)}
               placeholder="Descripción"
             />
+
+            <button
+              className="PerfilEmpresaBtnCambiarFoto"
+              onClick={() => fileInputRef.current.click()}
+            >
+              Cambiar foto de perfil
+            </button>
+            <input
+              type="file"
+              accept="image/*"
+              ref={fileInputRef}
+              onChange={handleCambiarFoto}
+              style={{ display: "none" }}
+            />
+
             <button onClick={handleGuardar}>Guardar</button>
             <button onClick={() => setMostrarPopup(false)}>Cancelar</button>
           </div>
@@ -116,8 +133,8 @@ function PerfilEmpresa() {
       )}
 
       {mostrarMensaje && (
-        <div className="popupOverlay">
-          <div className="popupContenido">
+        <div className="PerfilEmpresaPopupOverlay">
+          <div className="PerfilEmpresaPopupContenido">
             <h3>Enviar mensaje a la empresa</h3>
             <textarea
               placeholder="Escribe tu mensaje aquí..."
@@ -129,6 +146,7 @@ function PerfilEmpresa() {
           </div>
         </div>
       )}
+
       <ListaOfertasPropias />
     </main>
   );
