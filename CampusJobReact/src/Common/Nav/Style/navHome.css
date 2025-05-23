@@ -629,3 +629,14 @@ body.light-mode .FormAddUserContainer {
   background-color: #ffffff;
   color: black;
 }
+
+body.light-mode .FormAddUserContainer form div input {
+  background-color: #ffffff;
+  color: black;
+  border: 1px solid #0d6b66;
+}
+
+body.light-mode .cursos-containerSelectorAddUser {
+    background-color: #ffffff;
+  border: 1.5px solid #117a72;
+}
