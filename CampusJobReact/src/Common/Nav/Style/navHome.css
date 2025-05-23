@@ -647,7 +647,19 @@ body.light-mode .FormAddUserContainer form div input {
   border: 1px solid #0d6b66;
 }
 
-body.light-mode .cursos-containerSelectorAddUser {
+body.light-mode .seleccion-cursos {
     background-color: #ffffff;
   border: 1.5px solid #117a72;
+}
+
+body.light-mode .custom-radio input[type="radio"]:checked + .custom-radio-box {
+  background-color: #ffffff;
+}
+
+body.light-mode .custom-radio-box {
+  background-color: #A1DAD2;
+}
+
+body.light-mode .BotonAñadirUsuario{
+  color: black;
 }
