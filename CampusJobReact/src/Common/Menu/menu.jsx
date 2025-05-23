@@ -1,44 +1,43 @@
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 import {
+  UserOutlined,
   HomeOutlined,
+  UserAddOutlined,
+  FormOutlined,
+  GlobalOutlined,
+  HeartOutlined,
+  InboxOutlined,
+  SunOutlined,
   SettingOutlined,
-  DollarOutlined,
-  FundProjectionScreenOutlined,
   TeamOutlined,
   BookOutlined,
-  HeartOutlined,
   ShopOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
+  AppstoreAddOutlined,
+} from "@ant-design/icons";
 import './Style/menu.css';
 
 const menuConfig = {
-  AdminSupremo: [
-    { path: '/dashboard', icon: <TeamOutlined />, label: 'Panel' },
-    { path: '/settings', icon: <SettingOutlined />, label: 'Ajustes' },
-    { path: '/finance', icon: <DollarOutlined />, label: 'Finanzas' },
-    { path: '/reports', icon: <FundProjectionScreenOutlined />, label: 'Informes' },
+  4: [
+    { path: '/AdminSupremo/homeAdmin', icon: <SettingOutlined />, label: 'HomeAdmin' },
+    { path: '/AdminSupremo/AñadirCentro', icon: <AppstoreAddOutlined />, label: 'AñadirCentro' },
   ],
-  Admin: [
+  3: [
     { path: '/dashboard', icon: <TeamOutlined />, label: 'Panel' },
     { path: '/users', icon: <UserOutlined />, label: 'Usuarios' },
     { path: '/settings', icon: <SettingOutlined />, label: 'Ajustes' },
   ],
-  Profesor: [
+  2: [
     { path: '/courses', icon: <BookOutlined />, label: 'Cursos' },
-    { path: '/messages', icon: <FundProjectionScreenOutlined />, label: 'Mensajes' },
     { path: '/profile', icon: <UserOutlined />, label: 'Perfil' },
   ],
-  Alumno: [
+  0: [
     { path: '/home', icon: <HomeOutlined />, label: 'Inicio' },
-    { path: '/search', icon: <FundProjectionScreenOutlined />, label: 'Buscar' },
     { path: '/favorites', icon: <HeartOutlined />, label: 'Favoritos' },
   ],
-  Empresa: [
+  1: [
     { path: '/home', icon: <HomeOutlined />, label: 'Inicio' },
     { path: '/post-job', icon: <ShopOutlined />, label: 'Publicar' },
-    { path: '/finance', icon: <DollarOutlined />, label: 'Finanzas' },
   ],
 };
 
