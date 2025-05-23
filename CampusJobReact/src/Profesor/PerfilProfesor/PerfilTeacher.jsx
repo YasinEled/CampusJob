@@ -60,6 +60,20 @@ function PerfilTeacher() {
             <input value={telefono} onChange={e => setTelefono(e.target.value)} placeholder="Teléfono" />
             <input value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" />
             <textarea value={biografia} onChange={e => setBiografia(e.target.value)} placeholder="Biografía" />
+              <label className="perfilAlumnopopup-btnSubirImagen">
+              Añadir foto Perfil
+              <input
+                type="file"
+                accept="image/*"
+                style={{ display: "none" }}
+                onChange={e => {
+                  const file = e.target.files[0];
+                  if (file) {
+                    alert(`Archivo seleccionado: ${file.name}`);
+                  }
+                }}
+              />
+            </label>
             <button onClick={handleGuardar}>Guardar</button>
             <button onClick={() => setMostrarPopup(false)}>Cancelar</button>
           </div>

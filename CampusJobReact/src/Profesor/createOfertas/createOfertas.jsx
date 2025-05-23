@@ -216,7 +216,7 @@ function FormOfertas() {
               style={{ width: "100%", marginTop: "2.9em" }}
               // onClick={() => fileInputRef.current.click()}
             >
-              Cambiar foto de perfil
+              Subir foto de oferta
             </button>
             <input
               type="file"
