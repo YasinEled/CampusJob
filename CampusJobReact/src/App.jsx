@@ -10,6 +10,10 @@ function App() {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
+  localStorage.removeItem("idUsuario");
+  localStorage.removeItem("nivelUsuario");
+  localStorage.removeItem("idUsuarioAux");
+  localStorage.removeItem("nivelUsuarioAux");
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -38,7 +42,6 @@ function App() {
         if (data.firstLogin && [0, 1, 2].includes(parseInt(data.nivelUsuario))) {
           localStorage.setItem("idUsuarioAux", data.idUsuario);
           localStorage.setItem("nivelUsuarioAux", data.nivelUsuario);
-          alert("Se ha guardado el nivel usuario");
           if (data.nivelUsuario == 0) {
             navigate("/PrimerInicio/Alumno");
           } else if (data.nivelUsuario == 1) {

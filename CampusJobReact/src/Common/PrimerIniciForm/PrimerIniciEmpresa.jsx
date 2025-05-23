@@ -5,6 +5,10 @@ export default function FormularioRegistro() {
   const navigate = useNavigate();
   const idUsuario = localStorage.getItem("idUsuarioAux");
   const nivelUsuario = localStorage.getItem("nivelUsuarioAux");
+  if (!idUsuario || !nivelUsuario) {
+    navigate("/"); // 👈 Cambia a tu ruta de login real
+    return null; // 👈 Salir del componente si no están
+  }
 
   const [formData, setFormData] = useState({
     nomEmpresa: '',
@@ -26,18 +30,22 @@ export default function FormularioRegistro() {
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
+        // ✅ Guarda todo el base64 incluyendo el prefijo
+        setFormData({ ...formData, fotoPerfil: reader.result });
         setPreviewImage(reader.result);
       };
+      reader.onerror = () => {
+        setError("Error al leer el archivo");
+      };
       reader.readAsDataURL(file);
-      setFormData({ ...formData, fotoPerfil: file });
     } else {
       setPreviewImage(null);
     }
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
