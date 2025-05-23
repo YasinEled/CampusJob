@@ -10,6 +10,11 @@ function App() {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
+  localStorage.removeItem("idUsuario");
+  localStorage.removeItem("nivelUsuario");
+  localStorage.removeItem("idUsuarioAux");
+  localStorage.removeItem("nivelUsuarioAux");
+  localStorage.removeItem("idCentro"); // ✅ Limpiar idCentro
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -32,12 +37,14 @@ function App() {
       if (data.success) {
         console.log("[Login] guardando en localStorage →", data);
 
-        
+        // Guardar idCentro en localStorage
+        localStorage.setItem("idCentro", data.idCentro); // ✅ Nuevo campo
 
         // Redirigir según nivel y si es primer inicio
         if (data.firstLogin && [0, 1, 2].includes(parseInt(data.nivelUsuario))) {
+          localStorage.setItem("idUsuarioAux", data.idUsuario);
+          localStorage.setItem("nivelUsuarioAux", data.nivelUsuario);
           if (data.nivelUsuario == 0) {
-            localStorage.setItem("idUsuarioAux", data.idUsuario);
             navigate("/PrimerInicio/Alumno");
           } else if (data.nivelUsuario == 1) {
             navigate("/PrimerInicio/Empresa");
@@ -47,14 +54,16 @@ function App() {
         } else {
           localStorage.setItem("idUsuario", data.idUsuario);
           localStorage.setItem("nivelUsuario", data.nivelUsuario);
+          localStorage.setItem("idCentro", data.idCentro); // ✅ Nuevo campo
+
           if (data.nivelUsuario == 0) {
-            navigate("/Alumno/BusquedaOfertas");
+            navigate(`/Alumno/`);
           } else if (data.nivelUsuario == 1) {
-            navigate("/empresa/dashboard");
+            navigate(`/empresa/`);
           } else if (data.nivelUsuario == 2) {
-            navigate("/profesor/dashboard");
+            navigate(`/profesor`);
           } else if (data.nivelUsuario == 3) {
-            navigate("/admin/centro");
+            navigate("/adminCentro/");
           } else if (data.nivelUsuario == 4) {
             navigate("/AdminSupremo/homeAdmin");
           }

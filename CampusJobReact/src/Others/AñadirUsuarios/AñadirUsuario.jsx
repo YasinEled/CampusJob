@@ -216,7 +216,7 @@ export default function AñadirUsuario() {
                     <div
                       key={curso.idcurso}
                       className="curso-item"
-                      onDoubleClick={() => moverCurso(curso.idcurso, true)}
+                      onClick={() => moverCurso(curso.idcurso, true)}
                     >
                       {curso.nomcurs}
                     </div>
@@ -231,7 +231,7 @@ export default function AñadirUsuario() {
                     <div
                       key={curso.idcurso}
                       className="curso-item"
-                      onDoubleClick={() => moverCurso(curso.idcurso, false)}
+                      onClick={() => moverCurso(curso.idcurso, false)}
                     >
                       {curso.nomcurs}
                     </div>

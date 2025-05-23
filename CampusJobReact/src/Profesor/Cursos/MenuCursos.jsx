@@ -18,11 +18,18 @@ export default function MenuCursos() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [nuevoNombre, setNuevoNombre] = useState("");
+  const idCentro = localStorage.getItem("idCentro");
 
   const nivelUsuario = localStorage.getItem("nivelUsuario");
 
+  if(centroId!=idCentro)
+    { 
+      navigate('/');
+    }  
+
   useEffect(() => {
     const fetchCursos = async () => {
+      
       if (!centroId) {
         setError("ID del centro no encontrado");
         setLoading(false);

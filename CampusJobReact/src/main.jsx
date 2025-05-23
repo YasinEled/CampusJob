@@ -57,6 +57,8 @@ import global_cat from "./TRADUCCIONES/cat/global.json";
   });
 })();
 const nivelUsuario = localStorage.getItem("nivelUsuario");
+const centroId = localStorage.getItem('idCentro');
+
 
 const root = createRoot(document.getElementById("root"));
 root.render(
@@ -99,7 +101,7 @@ root.render(
               index
               element={
                 <Navigate
-                  to="/centro/${localStorage.getItem('centroId')}/elegirCurso"
+                  to={`/centro/${centroId}/elegirCurso`}
                   replace
                 />
               }
@@ -139,7 +141,7 @@ root.render(
               index
               element={
                 <Navigate
-                  to="/centro/${localStorage.getItem('centroId')}/elegirCurso"
+                  to={`/centro/${centroId}/elegirCurso`}
                   replace
                 />
               }
@@ -167,7 +169,7 @@ root.render(
               index
               element={
                 <Navigate
-                  to="/centro/${localStorage.getItem('centroId')}/elegirCurso"
+                  to={`/centro/${centroId}/elegirCurso`}
                   replace
                 />
               }
@@ -234,7 +236,7 @@ root.render(
               index
               element={
                 <Navigate
-                  to="/centro/${localStorage.getItem('centroId')}/elegirCurso"
+                  to={`/centro/${centroId}/elegirCurso`}
                   replace
                 />
               }
