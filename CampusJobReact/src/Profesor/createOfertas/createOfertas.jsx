@@ -51,9 +51,8 @@ function FormOfertas() {
   return (
     <div className="ContainerFormOfertas">
       <h1 className="tituloOfertas">AÑADIR OFERTA DE TRABAJO</h1>
-      <div className="lineageneralFormOfertas"></div>
       <div className="continerformOfertasCentral">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} style={{ display: 'flex', gap: '2em', width: '100%' }}>
           <div className="formOfertasLeft">
             <label htmlFor="titulo">Título de puesto *</label>
             <input
