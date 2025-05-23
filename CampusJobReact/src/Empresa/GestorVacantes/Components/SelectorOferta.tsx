@@ -8,6 +8,7 @@ import {
   MailOutlined,
   HomeOutlined,
 } from "@ant-design/icons";
+import { Popconfirm } from "antd";
 
 function SelectorOferta({
   candidato,
@@ -26,7 +27,7 @@ function SelectorOferta({
         backgroundColor: "#042522",
         boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
         color: "#fff",
-        alignItems: "center", // Importante para que los hijos ocupen todo el alto
+        alignItems: "center",
         minHeight: "120px",
       }}
     >
@@ -36,7 +37,6 @@ function SelectorOferta({
           flex: 1,
           display: "flex",
           alignItems: "center",
-
           gap: "1.5em",
         }}
       >
@@ -62,22 +62,20 @@ function SelectorOferta({
           <p style={{ margin: "0.3em 0 0.7em 0", color: "#b2dfdb" }}>
             {candidato.escuela}
           </p>
-          {estado === "aprobado" && (
-            <div style={{ marginTop: "0.7em", color: "#e0f2f1" }}>
-              <p style={{ margin: "0.2em 0" }}>
-                <PhoneOutlined style={{ marginRight: "0.5em" }} />
-                {candidato.telefono}
-              </p>
-              <p style={{ margin: "0.2em 0" }}>
-                <MailOutlined style={{ marginRight: "0.5em" }} />
-                {candidato.email}
-              </p>
-              <p style={{ margin: "0.2em 0" }}>
-                <HomeOutlined style={{ marginRight: "0.5em" }} />
-                {candidato.direccion}
-              </p>
-            </div>
-          )}
+          <div style={{ marginTop: "0.7em", color: "#e0f2f1" }}>
+            <p style={{ margin: "0.2em 0" }}>
+              <PhoneOutlined style={{ marginRight: "0.5em" }} />
+              {candidato.telefono}
+            </p>
+            <p style={{ margin: "0.2em 0" }}>
+              <MailOutlined style={{ marginRight: "0.5em" }} />
+              {candidato.email}
+            </p>
+            <p style={{ margin: "0.2em 0" }}>
+              <HomeOutlined style={{ marginRight: "0.5em" }} />
+              {candidato.direccion}
+            </p>
+          </div>
         </div>
       </div>
 
@@ -87,7 +85,7 @@ function SelectorOferta({
           display: "flex",
           flexDirection: "row",
           gap: "1em",
-          alignItems: "center", // Hace que los botones ocupen todo el alto
+          alignItems: "center",
           justifyContent: "center",
           height: "100%",
         }}
@@ -138,26 +136,33 @@ function SelectorOferta({
             >
               <CheckOutlined />
             </button>
-            <button
-              onClick={onRechazar}
-              style={{
-                padding: "0.5em",
-                backgroundColor: "#f44336",
-                color: "white",
-                border: "none",
-                borderRadius: "4px",
-                cursor: "pointer",
-                fontSize: "1.3em",
-                height: "100%",
-                minWidth: "60px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-              title="Rechazar"
+            {/* Botón de rechazar con confirmación */}
+            <Popconfirm
+              title="¿Seguro que quieres rechazar este candidato?"
+              onConfirm={onRechazar}
+              okText="Sí"
+              cancelText="No"
             >
-              <CloseOutlined />
-            </button>
+              <button
+                style={{
+                  padding: "0.5em",
+                  backgroundColor: "#f44336",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  fontSize: "1.3em",
+                  height: "100%",
+                  minWidth: "60px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+                title="Rechazar"
+              >
+                <CloseOutlined />
+              </button>
+            </Popconfirm>
           </div>
         )}
         {estado === "aprobado" && (
