@@ -575,6 +575,15 @@ body.light-mode .ContainerFormOfertas{
   color: black !important;
 }
 
+body.light-mode .formOfertasLeft input{
+  background-color: white !important;
+  color: black !important;
+}
+body.light-mode .formOfertasCenter input{
+  background-color: white !important;
+  color: black !important;
+}
+
 body.light-mode .ContainerFormOfertas form select{
   background-color: white !important;
   color: black !important;
@@ -629,5 +638,28 @@ body.light-mode .InformacionOferta-Isleta li{
 
 body.light-mode .FormAddUserContainer {
   background-color: #ffffff;
+  color: black;
+}
+
+body.light-mode .FormAddUserContainer form div input {
+  background-color: #ffffff;
+  color: black;
+  border: 1px solid #0d6b66;
+}
+
+body.light-mode .seleccion-cursos {
+    background-color: #ffffff;
+  border: 1.5px solid #117a72;
+}
+
+body.light-mode .custom-radio input[type="radio"]:checked + .custom-radio-box {
+  background-color: #ffffff;
+}
+
+body.light-mode .custom-radio-box {
+  background-color: #A1DAD2;
+}
+
+body.light-mode .BotonAñadirUsuario{
   color: black;
 }
