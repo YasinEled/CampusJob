@@ -11,6 +11,7 @@ import {
   InboxOutlined,
   SunOutlined,
   SettingOutlined,
+  SearchOutlined,
   TeamOutlined,
   BookOutlined,
   ShopOutlined,
@@ -41,6 +42,8 @@ const logoIconDark = new URL(
 const menuConfig = {
   4: [
     { path: `/AdminSupremo/AñadirCentro`, icon: <AppstoreAddOutlined />, label: "Añadir Centro" },
+    { path: "/BuscadorPerfil", icon: <TeamOutlined />, label: "Fitrado Usuario" },
+
     { path: "/AdminSupremo/HomeAdmin", icon: <HomeOutlined />, label: "Home Admin" },
   ],
   3: [
@@ -48,6 +51,8 @@ const menuConfig = {
     { path: "/Profesor/centro/11/CrearUsuarios", icon: <UserAddOutlined />, label: "AddUser" },
     { path: "centro/:centroId/añadirCurso", icon: <BookOutlined />, label: "Usuarios" },
     // { path: "/global", icon: <GlobalOutlined />, label: "Global" },
+        { path: "/BuscadorPerfil", icon: <TeamOutlined />, label: "Fitrado Usuario" },
+
     { path: "/centro/${localStorage.getItem('centroId')}/elegirCurso", icon: <HomeOutlined />, label: "Home" },
   ],
   2: [
@@ -55,19 +60,24 @@ const menuConfig = {
     { path: "/AñadirCentro", icon: <UserAddOutlined />, label: "AddUser" },
     // { path: "/inbox", icon: <InboxOutlined />, label: "Mensajes" },
     { path: "/BusquedaOfertas", icon: <HomeOutlined />, label: "Home" },
+        { path: "/BuscadorPerfil", icon: <TeamOutlined />, label: "Fitrado Usuario" },
+
     { path: "/PerfilProfesor", icon: <UserOutlined />, label: "Perfil" },
   ],
   0: [
     // { path: "/favorites", icon: <HeartOutlined />, label: "Favoritos" },
     // { path: "/inbox", icon: <InboxOutlined />, label: "Mensajes" },
     { path: "/BusquedaOfertas", icon: <HomeOutlined />, label: "Home" },
+        { path: "/BuscadorPerfil", icon: <TeamOutlined />, label: "Fitrado Usuario" },
+
     { path: "/PerfilAlumno", icon: <UserOutlined />, label: "Perfil" },
   ],
   1: [
-    { path: "/CrearOfertas", icon: <ShopOutlined />, label: "Publicar" },
-    // { path: "/favorites", icon: <HeartOutlined />, label: "Favoritos" },
-    { path: "/BusquedaOfertas", icon: <HomeOutlined />, label: "Home" },
-    { path: "/PerfilEmpresa", icon: <UserOutlined />, label: "Perfil" },
+    { path: "/Empresa/añadirOferta", icon: <ShopOutlined />, label: "Publicar Oferta" },
+    { path: "/BuscadorPerfil", icon: <TeamOutlined />, label: "Fitrado Usuario" },
+    { path: "/centro/:centroId/curso/:cursoId/BuscarOfertas", icon: <SearchOutlined />, label: "Filtrador Oferta" },
+    { path: "/centro/${localStorage.getItem('centroId')}/elegirCurso", icon: <HomeOutlined />, label: "Filtrador Oferta" },
+    { path: "/Empresa/PerfilEmpresa/:idUsrEmpresa", icon: <UserOutlined />, label: "Perfil" },
   ],
 };
 

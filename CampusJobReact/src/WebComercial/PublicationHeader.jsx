@@ -9,7 +9,7 @@ import "./Style/publicationGeneral.css"
 function PublicationHeader() {
 
   return (
-    <header  className="">
+    <header  className="PublicidadServicio">
       
       <div className="absolute fondo w-full h-250 z-0">
         <HeaderBg />

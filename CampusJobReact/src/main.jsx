@@ -34,7 +34,7 @@ import InformacionOferta from "./Empresa/InformacionOferta/InformacionOferta.jsx
 import GestorOferta from "./Empresa/GestorVacantes/GestorVacantes.js";
 import ListaOfertasPropias from "./Empresa/ListaOfertaspropias.jsx";
 import Logout from "./logout.jsx";
-
+// import PublicationHeader from "./WebComercial/PublicationHeader.jsx";
 
 import NotFound from "./Common/NotFound/NotFound.jsx";
 
@@ -303,7 +303,12 @@ root.render(
               }
             />
           </Route>
-
+          {/* <Route
+            path="/Comercial"
+            element={
+              <PublicationHeader />
+            }
+          /> */}
           
 
           <Route
