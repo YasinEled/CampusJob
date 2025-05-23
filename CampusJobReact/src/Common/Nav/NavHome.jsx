@@ -40,14 +40,13 @@ const logoIconDark = new URL(
 // Configuración de menús por tipo de usuario
 const menuConfig = {
   4: [
-    { path: `/AdminSupremo/AñadirCentro`, icon: <FormOutlined />, label: "AddCentro" },
-    // { path: "/global", icon: <GlobalOutlined />, label: "Global" },
-    { path: "/AdminSupremo/HomeAdmin", icon: <HomeOutlined />, label: "Home" },
+    { path: `/AdminSupremo/AñadirCentro`, icon: <AppstoreAddOutlined />, label: "Añadir Centro" },
+    { path: "/AdminSupremo/HomeAdmin", icon: <HomeOutlined />, label: "Home Admin" },
   ],
   3: [
     { path: "GestionarCursosAlumnos", icon: <FormOutlined />, label: "AddCurso" },
     { path: "/Profesor/centro/11/CrearUsuarios", icon: <UserAddOutlined />, label: "AddUser" },
-    { path: "centro/:centroId/añadirCurso", icon: <AppstoreAddOutlined />, label: "Usuarios" },
+    { path: "centro/:centroId/añadirCurso", icon: <BookOutlined />, label: "Usuarios" },
     // { path: "/global", icon: <GlobalOutlined />, label: "Global" },
     { path: "/centro/${localStorage.getItem('centroId')}/elegirCurso", icon: <HomeOutlined />, label: "Home" },
   ],

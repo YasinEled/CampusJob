@@ -7,6 +7,7 @@
     display: flex;
     align-self: center;
     justify-content: center;
+    z-index: 2;
 }
 
 .selectorsNav{
@@ -73,6 +74,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1;
 }
 
 /* Estilos generales */
@@ -554,10 +556,6 @@ body.light-mode .PerfilEmpresaPopupContenido textarea{
   color: black !important;
 }
 
-body.light-mode .ContainerFormOfertas{
-  background-color: white !important;
-  color: white !important;
-}
 
 body.light-mode .ContainerFormOfertas input{
   background-color: white !important;
@@ -568,4 +566,100 @@ body.light-mode .ContainerFormOfertas input{
 body.light-mode .containerGestioOferta{
   background-color: #045e56 !important;
   color: white !important;
+}
+
+/*Crear Ofertas */
+
+body.light-mode .ContainerFormOfertas{
+  background-color: white !important;
+  color: black !important;
+}
+
+body.light-mode .formOfertasLeft input{
+  background-color: white !important;
+  color: black !important;
+}
+body.light-mode .formOfertasCenter input{
+  background-color: white !important;
+  color: black !important;
+}
+
+body.light-mode .ContainerFormOfertas form select{
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid #0d6b66 !important;
+}
+
+body.light-mode .ContainerFormOfertas form textarea{
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid #0d6b66 !important;
+}
+
+body.light-mode .ContainerFormOfertas button{
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid #0d6b66 !important;
+}
+
+body.light-mode .botoneBorrador button{
+  background-color: #f00 !important;
+  color: #750000 !important;
+}
+
+/* Informacion Oferta */
+
+body.light-mode .InformacionOferta-Empresa{
+  background-color: #ffffff !important;
+  color: black !important;
+}
+
+body.light-mode .InformacionOferta-BotonCV{
+  background-color: #0a514d !important;
+  color: white !important;
+}
+
+body.light-mode .InformacionOferta-Campo{
+  background-color: #0d6b66 !important;
+  color: white !important;
+}
+
+body.light-mode .InformacionOferta-Isleta{
+  background-color: #ffffff !important;
+  color: black !important;
+}
+
+body.light-mode .InformacionOferta-Isleta li{
+  background-color: #ffffff !important;
+  color: black !important;
+}
+
+/*Añadir Usuarios */
+
+body.light-mode .FormAddUserContainer {
+  background-color: #ffffff;
+  color: black;
+}
+
+body.light-mode .FormAddUserContainer form div input {
+  background-color: #ffffff;
+  color: black;
+  border: 1px solid #0d6b66;
+}
+
+body.light-mode .seleccion-cursos {
+    background-color: #ffffff;
+  border: 1.5px solid #117a72;
+}
+
+body.light-mode .custom-radio input[type="radio"]:checked + .custom-radio-box {
+  background-color: #ffffff;
+}
+
+body.light-mode .custom-radio-box {
+  background-color: #A1DAD2;
+}
+
+body.light-mode .BotonAñadirUsuario{
+  color: black;
 }
