@@ -663,3 +663,39 @@ body.light-mode .custom-radio-box {
 body.light-mode .BotonAñadirUsuario{
   color: black;
 }
+
+/* Perfil Alumno*/
+
+body.light-mode .PerfilUsuario {
+  background-color: #ffffff;
+  color: black;
+}
+
+body.light-mode .perfilAlumnopopup-Contenido {
+  background-color: #ffffff;
+  color: #0d6b66;
+}
+
+body.light-mode .perfilAlumnopopup-Contenido input{
+  background-color: #ffffff;
+  color: black;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+body.light-mode .perfilAlumnopopup-Contenido textarea{
+  background-color: #ffffff;
+  color: black;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+body.light-mode .perfilAlumnopopup-btnSubirImagen{
+  color: #00998E !important
+}
+
+body.light-mode .perfilAlumnopopup-btnCancelar{
+    background-color: #00998E !important;
+    color:white !important;
+}
+
+body.light-mode .perfilAlumnopopup-btnSubirArchivo{
+    color:#00998E !important;
+}
