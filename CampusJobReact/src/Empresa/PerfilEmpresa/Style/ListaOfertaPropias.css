@@ -20,7 +20,7 @@
     display: flex;
     color: #042522;
     flex-direction: column;
-    background-color: #ffffff;
+    background-color: white;
     border-radius: 15px;
     padding-left: 1em;
     padding-right: 1em;
@@ -29,19 +29,19 @@
     margin-bottom: 0em;
 }
 .buscador-containerOfertasPropias label{
-  color: #042522;
+  color: #042522;	
 
 }
 .boton-buscarOfertaPropias{
   color: #ffffff;
-  background-color: #042522;
+  background-color: #16A085;
   border-radius: 5px;
   padding: 5px 15px;
   margin-right: 5px;
 }
 .buscador-containerOfertasPropias input[type="text"] {
   color: #ffffff;
-  background-color: #042522;
+  background-color: black;
   border-radius: 5px;
   padding: 5px;
   margin-right: 5px;
