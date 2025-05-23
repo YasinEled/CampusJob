@@ -254,7 +254,7 @@ root.render(
             path="/centro/:centroId/*"
             element={
               <ProtectedRoute requiredRole="0,1,2,3,4">
-                <MenuHome userType={nivelUsuario} />
+                <MenuHome userType={nivelUsuario} pagina={nivelUsuario} />
               </ProtectedRoute>
             }
           >

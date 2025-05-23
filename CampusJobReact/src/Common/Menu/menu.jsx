@@ -19,8 +19,9 @@ import './Style/menu.css';
 
 const menuConfig = {
   4: [
-    { path: '/AdminSupremo/homeAdmin', icon: <SettingOutlined />, label: 'HomeAdmin' },
-    { path: '/AdminSupremo/AñadirCentro', icon: <AppstoreAddOutlined />, label: 'AñadirCentro' },
+    { path: '/AdminSupremo/homeAdmin', icon: <SettingOutlined />, label: 'Home Admin' },
+    { path: '/AdminSupremo/AñadirCentro', icon: <AppstoreAddOutlined />, label: 'Añadir Centro' },
+
   ],
   3: [
     { path: '/dashboard', icon: <TeamOutlined />, label: 'Panel' },
