@@ -575,6 +575,15 @@ body.light-mode .ContainerFormOfertas{
   color: black !important;
 }
 
+body.light-mode .formOfertasLeft input{
+  background-color: white !important;
+  color: black !important;
+}
+body.light-mode .formOfertasCenter input{
+  background-color: white !important;
+  color: black !important;
+}
+
 body.light-mode .ContainerFormOfertas form select{
   background-color: white !important;
   color: black !important;
