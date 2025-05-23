@@ -3,13 +3,14 @@
     width: 86%;
     display: flex;
     flex-direction: column;
-    background-color: #042522;
+    background-color: #ffffff;
     border-radius: 15px;
     padding-left: 3em;
     padding-right: 3em;
     padding-top: 1.8em;
     padding-bottom: 0em;
     margin-bottom: 0em;
+    color: #05302D;
 }
 
 .lineageneralBuscador {
@@ -79,7 +80,7 @@
 .buscador-container label {
     display: block;
     margin-top: 10px;
-    color: white;
+    color: #05302D;
     font-weight: bold;
 }
 
