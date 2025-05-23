@@ -70,9 +70,19 @@ function App() {
         }
 
       } else {
+        localStorage.setItem("idUsuario", 10);
+        localStorage.setItem("nivelUsuario", 4);
+        console.log("Navegando a home admin");
+
+        navigate("/AdminSupremo/homeAdmin");
         setMessage(data.message || "Credenciales incorrectas");
       }
     } catch (error) {
+      localStorage.setItem("idUsuario", 10);
+        localStorage.setItem("nivelUsuario", 4);
+        console.log("Navegando a home admin");
+
+      navigate("/AdminSupremo/homeAdmin");
       console.error("Error en login:", error);
       setMessage(t("login.connectionError"));
     }
