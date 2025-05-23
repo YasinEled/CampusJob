@@ -2,8 +2,6 @@ import "./InformacionOferta.css";
 import logoEmpresa from "../../assets/Logo/CampusJob.png";
 import fondoEmpresa from "../../assets/Logo/CampusJob.png";
 import { useState } from "react";
-
-// Importación de íconos de Ant Design
 import {
   ClockCircleOutlined,
   CalendarOutlined,
@@ -26,6 +24,7 @@ function InformacionOferta() {
   const [salario] = useState("30.000 - 40.000 € anuales");
   const [fechaPublicacion] = useState("20/05/2025");
   const [fechaFinal] = useState("20/06/2025");
+  const ciudad = "Madrid"; 
 
   return (
     <main className="InformacionOferta-Container">
@@ -74,6 +73,40 @@ function InformacionOferta() {
           <button className="InformacionOferta-BotonCV">Enviar CV</button>
         </div>
       </div>
+
+      {/* Bloque de Requisitos */}
+      <div className="InformacionOferta-Isleta">
+        <h3>Requisitos</h3>
+        <ul>
+          <li>Experiencia previa en desarrollo frontend con React.</li>
+          <li>Conocimiento de HTML, CSS y JavaScript.</li>
+          <li>Capacidad de trabajo en equipo.</li>
+          <li>Buena comunicación y actitud proactiva.</li>
+        </ul>
+      </div>
+
+<div className="InformacionOferta-Isleta">
+  <h3>Ubicación de la empresa</h3>
+  <iframe
+    title={`Mapa de ${ciudad}`}
+    width="100%"
+    height="300"
+    frameBorder="0"
+    style={{ borderRadius: "10px" }}
+    src={`https://www.google.com/maps?q=${encodeURIComponent(ciudad)}&output=embed`}
+    allowFullScreen
+  ></iframe>
+  <small>
+    <a
+      href={`https://www.google.com/maps/place/${encodeURIComponent(ciudad)}`}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Ver mapa completo de {ciudad}
+    </a>
+  </small>
+</div>
+
     </main>
   );
 }
