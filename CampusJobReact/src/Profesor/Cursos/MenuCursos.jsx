@@ -22,7 +22,7 @@ export default function MenuCursos() {
 
   const nivelUsuario = localStorage.getItem("nivelUsuario");
 
-  if(centroId!=idCentro)
+  if(nivelUsuario!=4 && centroId!=idCentro)
     { 
       navigate('/');
     }  

@@ -78,7 +78,7 @@ root.render(
             path="/AdminSupremo/*"               //OKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
             element={
               <ProtectedRoute requiredRole="4">
-                <MenuHome userType={4} />
+                <MenuHome userType={nivelUsuario} pagina="4" />
               </ProtectedRoute>
             }
           >
@@ -93,7 +93,7 @@ root.render(
             path="/AdminCentro/*"
             element={
               <ProtectedRoute requiredRole="3,4">
-                <MenuHome userType={3} />
+                <MenuHome userType={nivelUsuario} pagina="3" />
               </ProtectedRoute>
             }
           >
@@ -114,14 +114,14 @@ root.render(
                 </ProtectedRoute>
               }
             />
-            <Route
+            {/* <Route
               path="centro/:centroId/CrearUsuario"
               element={
                 <ProtectedRoute requiredRole="3,4">
                   <CreatorUsersAC />
                 </ProtectedRoute>
               }
-            />
+            /> */}
           </Route>
 
           {/* 4) Profesor (rol 2,3,4) */}
@@ -129,7 +129,7 @@ root.render(
             path="/Profesor/*"
             element={
               <ProtectedRoute requiredRole="2,3,4">
-                <MenuHome userType={2} />
+                <MenuHome userType={nivelUsuario} pagina="2" />
               </ProtectedRoute>
             }
           >
@@ -161,7 +161,7 @@ root.render(
             path="/Empresa/*"
             element={
               <ProtectedRoute requiredRole="1,2,3,4">
-                <MenuHome userType={1} />
+                <MenuHome userType={nivelUsuario} pagina="1" />
               </ProtectedRoute>
             }
           >
@@ -228,7 +228,7 @@ root.render(
             path="/Alumno/*"
             element={
               <ProtectedRoute requiredRole="0,2,3,4">
-                <MenuHome userType={0} />
+                <MenuHome userType={nivelUsuario} pagina="0" />
               </ProtectedRoute>
             }
           >
@@ -254,7 +254,7 @@ root.render(
             path="/centro/:centroId/*"
             element={
               <ProtectedRoute requiredRole="0,1,2,3,4">
-                <MenuHome userType={nivelUsuario} />
+                <MenuHome userType={nivelUsuario} pagina={nivelUsuario} />
               </ProtectedRoute>
             }
           >
