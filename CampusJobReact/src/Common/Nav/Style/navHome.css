@@ -410,3 +410,91 @@ body.light-mode .MenuCentrosStatus {
 body.light-mode .ButtonSeleccionarLogoCrearCentroTexto {
     color: white !important;
 }
+
+body.light-mode .main-wrapperCentro h1 h2{
+    color:black ;
+}
+
+/* AÑADIR CURSO */
+
+body.light-mode .crear-curso-form label input{
+  background-color: #ffffff;
+  color: black;
+}
+body.light-mode .crear-curso-form label textarea{
+  background-color: #ffffff;
+  color: black;
+}
+body.light-mode .ButtonSeleccionarLogoCrearCentro input{
+  background-color: #0d6b66 !important;
+  color: #ffffff !important;
+}
+body.light-mode .ButtonSeleccionarLogoCrearCentro input:hover{
+  background-color: #0a514d !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-mode .ContainerAdminSupremoUser h1{
+color: black !important;
+border: 3px solid black !important;
+}
+
+/*Gestion vacantes*/
+
+body.light-mode .containerGestioOferta {
+  color: #1a1a1a;
+  border: 2px solid #d3e0dd; 
+}
+
+body.light-mode .activaSelectorGestorOferta {
+  background-color: #c2f0eb; 
+  color: #003e3a; 
+  font-weight: bold;
+  border-radius: 1em;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  padding: 1em;
+  width: 100%;
+  border: 1px solid #045e56;
+}
+
+body.light-mode .buttonSelectorGestorOferta {
+  background-color: #ffffff;
+  color: #045e56;
+  font-weight: bold;
+  border-radius: 1em;
+  padding: 1em;
+  width: 100%;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-mode .buttonSelectorGestorOferta:hover {
+  background-color: #e6f7f5;
+}
+
+body.light-mode .containerSelectorGestorOferta {
+  background-color: #ffffff !important;
+  color: #1a1a1a;
+}
+
+body.light-mode .containerSelectorGestorOferta div{
+background-color: #0d6b66 !important;
+}
+
+body.light-mode .containerGestioOferta div p {
+  color: white !important;
+}
+
+body.light-mode .containerGestioOferta div svg {
+  color: white !important;
+}
+
+body.light-mode .containerGestioOferta div button svg {
+  color: #030303 !important;
+}
+
+button:hover,
+button:focus {
+  outline: none;
+}
+
