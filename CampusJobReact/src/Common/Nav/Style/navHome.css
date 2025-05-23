@@ -596,7 +596,7 @@ body.light-mode .ContainerFormOfertas form textarea{
   border: 1px solid #0d6b66 !important;
 }
 
-body.light-mode .ContainerFormOfertas button{
+body.light-mode .botonesOfertas button{
   background-color: white !important;
   color: black !important;
   border: 1px solid #0d6b66 !important;
@@ -606,6 +606,9 @@ body.light-mode .botoneBorrador button{
   background-color: #f00 !important;
   color: #750000 !important;
 }
+
+
+
 
 /* Informacion Oferta */
 
@@ -698,4 +701,26 @@ body.light-mode .perfilAlumnopopup-btnCancelar{
 
 body.light-mode .perfilAlumnopopup-btnSubirArchivo{
     color:#00998E !important;
+}
+
+body.light-mode .PerfilTeacher{
+    background-color: white !important;
+    color:black !important;
+}
+
+/* Perfil Profe*/
+
+body.light-mode .popupContenido{
+    background-color: white !important;
+    color:black !important;
+}
+
+body.light-mode .popupContenido input{
+    background-color: white !important;
+    color:black !important;
+}
+
+body.light-mode .popupContenido textarea{
+    background-color: white !important;
+    color:black !important;
 }
