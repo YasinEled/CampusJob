@@ -165,11 +165,6 @@ function FormOfertas() {
                 CANCELAR
               </button>
             </div>
-            <div className="botoneBorrador">
-              <button type="button" className="botonBorrador">
-                BORRADORES
-              </button>
-            </div>
           </div>
         </form>
       </div>

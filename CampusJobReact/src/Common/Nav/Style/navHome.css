@@ -95,6 +95,11 @@ body.light-mode .navHome {
     background-image: linear-gradient(to bottom, #0f857f, transparent, 3em);
 }
 
+body.light-mode .busquedaContainer {
+    background-color: #ffffff;
+    background-image: none;
+}
+
 body.light-mode .selectorsNav a {
     color: black;
 }
@@ -449,7 +454,7 @@ body.light-mode .containerGestioOferta {
 }
 
 body.light-mode .activaSelectorGestorOferta {
-  background-color: #c2f0eb; 
+  background-color: #Ffffff; 
   color: #003e3a; 
   font-weight: bold;
   border-radius: 1em;
@@ -457,21 +462,15 @@ body.light-mode .activaSelectorGestorOferta {
   border-bottom-right-radius: 0;
   padding: 1em;
   width: 100%;
-  border: 1px solid #045e56;
 }
 
 body.light-mode .buttonSelectorGestorOferta {
-  background-color: #ffffff;
-  color: #045e56;
+  background-color: #045e56;
+  color: #ffffff ;
   font-weight: bold;
   border-radius: 1em;
   padding: 1em;
   width: 100%;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-body.light-mode .buttonSelectorGestorOferta:hover {
-  background-color: #e6f7f5;
 }
 
 body.light-mode .containerSelectorGestorOferta {
@@ -502,3 +501,133 @@ button:focus {
 
 /*Perfil Empresa */
 
+body.light-mode .PerfilEmpresaInfoContainer {
+  background-color: #ffffff !important;
+  color: black;
+}
+
+body.light-mode .PerfilEmpresaMain {
+    background-color: #ffffff !important;
+}
+
+body.light-mode .ofertaPropia-Container{
+    background-color: #ffffff !important;
+}
+body.light-mode .ofertaPropia-TextContainer{
+    background-color: #ffffff !important;
+}
+
+body.light-mode .ofertaPropia-TextContainer h5{
+    color: #0d6b66 !important;
+}
+body.light-mode .buscador-containerOfertasPropias{
+  background-color: #003e3a !important;
+  color: white !important;
+}
+body.light-mode .buscador-containerOfertasPropias div input{
+  background-color: #ffffff !important;
+  border: 1px solid #0d6b66 !important;
+  color: black !important;
+}
+
+body.light-mode .buscador-containerOfertasPropias h2{
+  color: white !important;
+}
+body.light-mode .buscador-containerOfertasPropias label{
+  color: white !important;
+}
+
+body.light-mode .buscador-containerOfertasPropias div button{
+  background-color: #0d6b66 !important;
+  color: white !important;
+}
+
+body.light-mode .PerfilEmpresaPopupContenido{
+  background-color: #ffffff !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+body.light-mode .PerfilEmpresaPopupContenido input{
+  background-color: #ffffff !important;
+  color: black !important;
+}
+
+body.light-mode .PerfilEmpresaPopupContenido textarea{
+  background-color: #ffffff !important;
+  color: black !important;
+}
+
+
+body.light-mode .ContainerFormOfertas input{
+  background-color: white !important;
+  color: white !important;
+  border: 1px solid #0d6b66 !important;
+}
+
+body.light-mode .containerGestioOferta{
+  background-color: #045e56 !important;
+  color: white !important;
+}
+
+/*Crear Ofertas */
+
+body.light-mode .ContainerFormOfertas{
+  background-color: white !important;
+  color: black !important;
+}
+
+body.light-mode .ContainerFormOfertas form select{
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid #0d6b66 !important;
+}
+
+body.light-mode .ContainerFormOfertas form textarea{
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid #0d6b66 !important;
+}
+
+body.light-mode .ContainerFormOfertas button{
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid #0d6b66 !important;
+}
+
+body.light-mode .botoneBorrador button{
+  background-color: #f00 !important;
+  color: #750000 !important;
+}
+
+/* Informacion Oferta */
+
+body.light-mode .InformacionOferta-Empresa{
+  background-color: #ffffff !important;
+  color: black !important;
+}
+
+body.light-mode .InformacionOferta-BotonCV{
+  background-color: #0a514d !important;
+  color: white !important;
+}
+
+body.light-mode .InformacionOferta-Campo{
+  background-color: #0d6b66 !important;
+  color: white !important;
+}
+
+body.light-mode .InformacionOferta-Isleta{
+  background-color: #ffffff !important;
+  color: black !important;
+}
+
+body.light-mode .InformacionOferta-Isleta li{
+  background-color: #ffffff !important;
+  color: black !important;
+}
+
+/*Añadir Usuarios */
+
+body.light-mode .FormAddUserContainer {
+  background-color: #ffffff;
+  color: black;
+}
