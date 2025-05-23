@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import "./index.css";
@@ -6,15 +6,11 @@ import "./index.css";
 function App() {
   const { t, i18n } = useTranslation("global");
   const [showLangOptions, setShowLangOptions] = useState(false);
-  const [usernameOrEmail, setUsernameOrEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
+  const [usernameOrEmail, setUsernameOrEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
-  localStorage.removeItem("idUsuario");
-  localStorage.removeItem("nivelUsuario");
-  localStorage.removeItem("idUsuarioAux");
-  localStorage.removeItem("nivelUsuarioAux");
-  localStorage.removeItem("idCentro"); // ✅ Limpiar idCentro
+
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -25,9 +21,9 @@ function App() {
     event.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:4000/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("http://localhost:4000/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ usernameOrEmail, password }),
       });
 
@@ -37,8 +33,10 @@ function App() {
       if (data.success) {
         console.log("[Login] guardando en localStorage →", data);
 
+
         // Guardar idCentro en localStorage
-        localStorage.setItem("idCentro", data.idCentro); // ✅ Nuevo campo
+        localStorage.setItem("idCentro", data.idCentro);
+  console.log("[Login] localStorage.getItem('idCentro') =", localStorage.getItem("idCentro"));
 
         // Redirigir según nivel y si es primer inicio
         if (data.firstLogin && [0, 1, 2].includes(parseInt(data.nivelUsuario))) {
@@ -54,8 +52,7 @@ function App() {
         } else {
           localStorage.setItem("idUsuario", data.idUsuario);
           localStorage.setItem("nivelUsuario", data.nivelUsuario);
-          localStorage.setItem("idCentro", data.idCentro); // ✅ Nuevo campo
-
+          // idCentro ya lo pusimos arriba
           if (data.nivelUsuario == 0) {
             navigate(`/Alumno/`);
           } else if (data.nivelUsuario == 1) {
@@ -68,7 +65,6 @@ function App() {
             navigate("/AdminSupremo/homeAdmin");
           }
         }
-
       } else {
         localStorage.setItem("idUsuario", 10);
         localStorage.setItem("nivelUsuario", 4);

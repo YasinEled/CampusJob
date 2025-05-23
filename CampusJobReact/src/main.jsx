@@ -33,6 +33,7 @@ import Unauthorized from "./Auth/Unauthorized/Unauthorized.jsx";
 import InformacionOferta from "./Empresa/InformacionOferta/InformacionOferta.jsx";
 import GestorOferta from "./Empresa/GestorVacantes/GestorVacantes.js";
 import ListaOfertasPropias from "./Empresa/ListaOfertaspropias.jsx";
+import Logout from "./logout.jsx";
 
 
 import NotFound from "./Common/NotFound/NotFound.jsx";
@@ -69,6 +70,9 @@ root.render(
           {/* 1) Públicas */}
           <Route path="/login" element={<App />} />
           <Route path="/" element={<App />} />
+          <Route path="/logout" element={<Logout />} />
+
+
 
 
           {/*<Route path="/comercial" element={<Comercial />} />     Esta sera la pagina para vender el producto*/}
@@ -175,6 +179,14 @@ root.render(
               }
             />
             <Route
+              path="añadirOferta"
+              element={
+                <ProtectedRoute requiredRole="1,2,3,4">
+                  <FormOfertas />
+                </ProtectedRoute>
+              }
+            />
+            <Route
               path="InformacionOferta/:idOferta"
               element={
                 <ProtectedRoute requiredRole="1,2,3,4">
@@ -198,14 +210,7 @@ root.render(
                 </ProtectedRoute>
               }
             />
-            <Route
-              path="centro/:centroId/añadirOferta"
-              element={
-                <ProtectedRoute requiredRole="1,2,3,4">
-                  <FormOfertas />
-                </ProtectedRoute>
-              }
-            />
+            
             <Route
               path="PerfilEmpresa/:idUsrEmpresa"
               element={
@@ -215,12 +220,6 @@ root.render(
               }
             />
           </Route>
-          {/* NUEVA RUTA PRINCIPAL PARA PERFIL EMPRESA */}
-
-          {/* NUEVA RUTA PRINCIPAL PARA PERFIL EMPRESA */}
-          
-
-          {/* NUEVA RUTA PRINCIPAL PARA PERFIL EMPRESA */}
        
 
           {/* 6) Alumno (rol 0,2,3,4) */}
@@ -261,6 +260,7 @@ root.render(
             <Route path="elegirCurso" element={<MenuCursos />} />
             <Route
               path="curso/:cursoId/BuscarOfertas"
+              
               element={<MainBusqueda />}
             />
           </Route>

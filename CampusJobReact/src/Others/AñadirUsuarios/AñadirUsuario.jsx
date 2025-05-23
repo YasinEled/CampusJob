@@ -7,25 +7,26 @@ import {
   UserOutlined,
   CheckOutlined,
   CloseOutlined,
-  LeftOutlined
+  LeftOutlined,
 } from "@ant-design/icons";
 import { Spin } from "antd";
 
 export default function AñadirUsuario() {
   const navigate = useNavigate();
-  const { centroId } = useParams(); // ✅ Recibe el centroId desde la URL
+  const { centroId } = useParams();
+  const idUsuario = localStorage.getItem("idUsuario");
   const nivelUsuario = localStorage.getItem("nivelUsuario");
 
   const [formData, setFormData] = useState({
     email: "",
-    nivell: 0, // 0 = Alumno por defecto
+    nivell: 0,
   });
   const [cursosDisponibles, setCursosDisponibles] = useState([]);
   const [cursosSeleccionados, setCursosSeleccionados] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
+  const [success, setSuccess] = useState(false);
 
-  // Roles disponibles (Profesor se oculta si el admin es Profesor)
   const roles = [
     { value: 0, label: "Alumno" },
     { value: 1, label: "Empresa" },
@@ -34,8 +35,6 @@ export default function AñadirUsuario() {
     roles.push({ value: 2, label: "Profesor" });
   }
 
-  // Cargar cursos del centro desde `/api/centro/:centroId/cursos`
-  // AñadirUsuario.jsx
   useEffect(() => {
     const fetchCursos = async () => {
       if (!centroId) {
@@ -45,15 +44,15 @@ export default function AñadirUsuario() {
       }
 
       try {
-        const response = await fetch(
-          `http://localhost:4000/api/centro/${centroId}/cursos`
-        );
+        const url = new URL(`http://localhost:4000/api/centro/${centroId}/cursos`);
+        url.searchParams.set("idUsuario", idUsuario);
+        url.searchParams.set("nivelUsuario", nivelUsuario);
 
-        // ✅ Verifica que la respuesta sea JSON
+        const response = await fetch(url.toString());
+
         const contentType = response.headers.get("content-type");
         if (!contentType || !contentType.includes("application/json")) {
-          const text = await response.text(); // Captura la respuesta como texto
-          console.error("Respuesta no es JSON:", text);
+          const text = await response.text();
           throw new Error("Respuesta inválida del servidor");
         }
 
@@ -71,15 +70,14 @@ export default function AñadirUsuario() {
     };
 
     fetchCursos();
-  }, [centroId]);
+  }, [centroId, idUsuario, nivelUsuario]);
 
-  // Manejar cambios en el formulario
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    setError(""); // Limpiar errores al modificar
   };
 
-  // Mover curso entre listas con doble clic
   const moverCurso = (cursoId, desdeDisponibles) => {
     const curso = desdeDisponibles
       ? cursosDisponibles.find((c) => c.idcurso === cursoId)
@@ -98,7 +96,6 @@ export default function AñadirUsuario() {
     }
   };
 
-  // Validar y enviar formulario
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -121,7 +118,6 @@ export default function AñadirUsuario() {
         }
       );
 
-      // ✅ Validar que la respuesta es JSON
       const contentType = response.headers.get("content-type");
       if (!contentType || !contentType.includes("application/json")) {
         const text = await response.text();
@@ -130,8 +126,10 @@ export default function AñadirUsuario() {
 
       const data = await response.json();
       if (data.success) {
-        alert("Usuario creado exitosamente");
-        navigate(-1); // Volver a la página anterior
+        setSuccess(true);
+        setTimeout(() => {
+          navigate(-1);
+        }, 2000);
       } else {
         setError(data.message || "Error al crear el usuario");
       }
@@ -161,86 +159,93 @@ export default function AñadirUsuario() {
             />
           )}
           {error && <p className="error-message">{error}</p>}
+          {success && (
+            <div style={{ color: "green", fontSize: "1.2em" }}>
+              <CheckOutlined /> Usuario creado con éxito
+            </div>
+          )}
         </div>
 
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Email:</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="ejemplo@correo.com"
-              required
-            />
-          </div>
-          <div className="roles-containerAddUser">
-            <div className="roles">
-              <div>
-                <label>Selecciona el rol:</label>
-                <div style={{ display: "flex", gap: "1em" }}>
-                  {roles.map((rol) => (
-                    <label key={rol.value} className="custom-radio">
-                      <input
-                        type="radio"
-                        name="nivell"
-                        value={rol.value}
-                        checked={Number(formData.nivell) === rol.value}
-                        onChange={handleChange}
-                      />
-                      <span className="custom-radio-box">{rol.label}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-              <div className="acciones">
-                <button
-                  type="button"
-                  onClick={() => navigate(-1)}
-                  className="BotonVolverAtras"
-                >
-                  <LeftOutlined />
-                </button>
-                <button type="submit" className="BotonAñadirUsuario">
-                  Crear
-                </button>
-                
-              </div>
+        {!success && (
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label>Email:</label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="ejemplo@correo.com"
+                required
+              />
             </div>
-            <div className="cursos-containerSelectorAddUser">
-              <div className="seleccion-cursos">
-                <label>Cursos Disponibles</label>
-                <div className="listbox">
-                  {cursosDisponibles.map((curso) => (
-                    <div
-                      key={curso.idcurso}
-                      className="curso-item"
-                      onClick={() => moverCurso(curso.idcurso, true)}
-                    >
-                      {curso.nomcurs}
-                    </div>
-                  ))}
+            <div className="roles-containerAddUser">
+              <div className="roles">
+                <div>
+                  <label>Selecciona el rol:</label>
+                  <div style={{ display: "flex", gap: "1em" }}>
+                    {roles.map((rol) => (
+                      <label key={rol.value} className="custom-radio">
+                        <input
+                          type="radio"
+                          name="nivell"
+                          value={rol.value}
+                          checked={Number(formData.nivell) === rol.value}
+                          onChange={handleChange}
+                        />
+                        <span className="custom-radio-box">{rol.label}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+                <div className="acciones">
+                  <button
+                    type="button"
+                    onClick={() => navigate(-1)}
+                    className="BotonVolverAtras"
+                  >
+                    <LeftOutlined />
+                  </button>
+                  <button type="submit" className="BotonAñadirUsuario">
+                    Crear
+                  </button>
                 </div>
               </div>
 
-              <div className="seleccion-cursos">
-                <label>Cursos Asignados</label>
-                <div className="listbox">
-                  {cursosSeleccionados.map((curso) => (
-                    <div
-                      key={curso.idcurso}
-                      className="curso-item"
-                      onClick={() => moverCurso(curso.idcurso, false)}
-                    >
-                      {curso.nomcurs}
-                    </div>
-                  ))}
+              <div className="cursos-containerSelectorAddUser">
+                <div className="seleccion-cursos">
+                  <label>Cursos Disponibles</label>
+                  <div className="listbox">
+                    {cursosDisponibles.map((curso) => (
+                      <div
+                        key={curso.idcurso}
+                        className="curso-item"
+                        onClick={() => moverCurso(curso.idcurso, true)}
+                      >
+                        {curso.nomcurs}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="seleccion-cursos">
+                  <label>Cursos Asignados</label>
+                  <div className="listbox">
+                    {cursosSeleccionados.map((curso) => (
+                      <div
+                        key={curso.idcurso}
+                        className="curso-item"
+                        onClick={() => moverCurso(curso.idcurso, false)}
+                      >
+                        {curso.nomcurs}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </form>
+          </form>
+        )}
       </div>
     </div>
   );
