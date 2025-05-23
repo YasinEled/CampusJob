@@ -179,6 +179,14 @@ root.render(
               }
             />
             <Route
+              path="añadirOferta"
+              element={
+                <ProtectedRoute requiredRole="1,2,3,4">
+                  <FormOfertas />
+                </ProtectedRoute>
+              }
+            />
+            <Route
               path="InformacionOferta/:idOferta"
               element={
                 <ProtectedRoute requiredRole="1,2,3,4">
@@ -202,14 +210,7 @@ root.render(
                 </ProtectedRoute>
               }
             />
-            <Route
-              path="centro/:centroId/añadirOferta"
-              element={
-                <ProtectedRoute requiredRole="1,2,3,4">
-                  <FormOfertas />
-                </ProtectedRoute>
-              }
-            />
+            
             <Route
               path="PerfilEmpresa/:idUsrEmpresa"
               element={
