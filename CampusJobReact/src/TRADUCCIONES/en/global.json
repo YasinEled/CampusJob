@@ -1,34 +1,35 @@
 {
-    "header": {
-        "title": "Campus Jobs",
-        "login": "Log In",
-        "contact": "Contact",
-        "company": "¿  Are you a company ?"
-    },
-    "footer": {
-        "information": "Information",
-        "help": "Help",
-        "cookies": "Cookies policy",
-        "privacyPolicy": "Privacy Policy",
-        "accessibility": "Accessibility",
-        "termsOfService": "Terms of Service"
-    },
-    "GestionUsuarios": {
-        "available_users": "Available users",
-        "add": "Add",
-        "new_user_placeholder": "New user",
-        "add_user": "Add user",
-        "added_users": "Users added",
-        "remove": "Remove",
-        "save": "Save",
-        "users_saved": "Users saved successfully"
-    },
-    
+  "header": {
+    "title": "Campus Jobs",
+    "login": "Log In",
+    "contact": "Contact",
+    "company": "Are you a company?"
+  },
+  "footer": {
+    "information": "Information",
+    "help": "Help",
+    "cookies": "Cookies Policy",
+    "privacyPolicy": "Privacy Policy",
+    "accessibility": "Accessibility",
+    "termsOfService": "Terms of Service"
+  },
+  "login": {
+    "connectionError": "There was a problem connecting to the server"
+  },
+  "GestionUsuarios": {
+    "available_users": "Available users",
+    "add": "Add",
+    "new_user_placeholder": "New user",
+    "add_user": "Add user",
+    "added_users": "Added users",
+    "remove": "Remove",
+    "save": "Save",
+    "users_saved": "Users saved successfully"
+  },
   "perfil": {
-    "descripcion_default": "Full Stack Developer with 3 years of experience building efficient and scalable web applications using React and Node.js. Passionate about solving complex problems and learning new technologies.",
     "fondo_alt": "Background",
     "perfil_alt": "Profile",
-    "modificar_perfil": "Edit Profile",
+    "modificar_perfil": "Edit profile",
     "imagen_centro_alt": "Center Image",
     "editar_perfil": "Edit Profile",
     "nombre": "Name",
@@ -43,17 +44,43 @@
     "guardar": "Save",
     "cancelar": "Cancel"
   },
-  
   "ofertaPropia": {
     "buscarSolicitudes": "Search your applications",
     "introduceBusqueda": "Enter your job search:",
     "placeholderBusqueda": "Type here...",
     "buscar": "Search",
-    "cargandoOFertas": "Loading jobs or no jobs available.",
+    "cargandoOFertas": "Loading offers or no offers available.",
     "logoCampusJob": "CampusJob Logo"
+  },
+  "informacionOferta": {
+    "fondo_alt": "Company Background",
+    "logo_alt": "Company Logo",
+    "titulo": "{{titulo}}",
+    "descripcion": "{{descripcion}}",
+    "jornada": "{{jornada}}",
+    "horasSemanales": "{{horas}}",
+    "plazas": "{{count}} vacancies",
+    "modalidad": "{{modalidad}}",
+    "salario": "{{salario}}",
+    "fechaPublicacion": "Published on: {{fecha}}",
+    "fechaFinal": "Ends on: {{fecha}}",
+    "estado": {
+      "aceptado": "Accepted",
+      "rechazado": "Rejected",
+      "enEspera": "Pending"
+    },
+    "botonEnviarCV": "Send CV",
+    "requisitos": {
+      "titulo": "Requirements",
+      "experiencia": "Previous experience in frontend development with React.",
+      "conocimiento": "Knowledge of HTML, CSS and JavaScript.",
+      "trabajoEquipo": "Ability to work in a team.",
+      "comunicacion": "Good communication and proactive attitude."
+    },
+    "ubicacion": {
+      "titulo": "Company Location",
+      "mapaTitulo": "Map of {{ciudad}}",
+      "verMapaCompleto": "View full map of {{ciudad}}"
+    }
   }
 }
-
-
-
-

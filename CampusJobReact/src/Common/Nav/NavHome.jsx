@@ -160,6 +160,7 @@ function NavHome({ userType }) {
         { key: "ca", label: "Català" },
         { key: "es", label: "Español" },
         { key: "en", label: "English" },
+        { key: "fr", label: "Français" },
       ]}
     />
   );

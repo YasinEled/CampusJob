@@ -42,6 +42,7 @@ import ProtectedRoute from "./Auth/Servicios/ProtectedRoute.jsx";
 import global_es from "./TRADUCCIONES/es/global.json";
 import global_en from "./TRADUCCIONES/en/global.json";
 import global_cat from "./TRADUCCIONES/cat/global.json";
+import global_fr from "./TRADUCCIONES/fr/global.json";
 
 // Configuración correcta de i18next
 i18next
@@ -54,11 +55,14 @@ i18next
       en: {
         translation: global_en
       },
-      cat: {
+      ca: {
         translation: global_cat
+      },
+      fr : {
+        translation: global_fr
       }
     },
-    lng: "cat", // idioma por defecto
+    lng: "es", // idioma por defecto
     fallbackLng: "en", // idioma de respaldo
     debug: true, // activar para ver logs en consola (quitar en producción)
     

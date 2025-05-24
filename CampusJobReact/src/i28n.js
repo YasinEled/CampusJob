@@ -7,7 +7,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import enTranslations from './TRADUCCIONES/en/global.json';
 import esTranslations from './TRADUCCIONES/es/global.json';
 import catTranslations from './TRADUCCIONES/cat/global.json';
-
+import frTranslations from './TRADUCCIONES/fr/global.json';
 // OPCIÓN 1: Importación directa (recomendada para tu caso)
 i18n
   .use(initReactI18next)
@@ -20,12 +20,16 @@ i18n
       es: {
         translation: esTranslations
       },
-      cat: {
+      ca: {
         translation: catTranslations
+      },
+      fr : {
+        translation: frTranslations 
       }
+      
     },
-    lng: 'en', // idioma por defecto
-    fallbackLng: 'en',
+    lng: 'es', // idioma por defecto
+    fallbackLng: 'ca',
     debug: true, // activar para debugging
     
     interpolation: {

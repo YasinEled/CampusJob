@@ -1,58 +1,86 @@
 {
-    "header": {
-        "title": "Campus Jobs",
-        "login": "Inicia la sessio",
-        "contact": "Contacta",
-        "company": "¿ Ets una empresa ?"
-    },
-    "footer": {
-        "information": "Informacio",
-        "help": "Ajuda",
-        "cookies": "Politica de galetes",
-        "privacyPolicy": "Politica de privadesa",
-        "accessibility": "Accessibilitat",
-        "termsOfService": "Condicions d'ús"
-    },
-    "GestionUsuarios": {
-  "available_users": "Usuaris disponibles",
-  "add": "Afegir",
-  "new_user_placeholder": "Usuari nou",
-  "add_user": "Afegir usuari",
-  "added_users": "Usuaris afegits",
-  "remove": "Treure",
-  "save": "Desar",
-  "users_saved": "Usuaris desats correctament"
-    },
-    
+  "header": {
+    "title": "Campus Jobs",
+    "login": "Inicia sessió",
+    "contact": "Contacte",
+    "company": "Ets una empresa?"
+  },
+  "footer": {
+    "information": "Informació",
+    "help": "Ajuda",
+    "cookies": "Política de galetes",
+    "privacyPolicy": "Política de privacitat",
+    "accessibility": "Accessibilitat",
+    "termsOfService": "Termes del servei"
+  },
+  "login": {
+    "connectionError": "Hi ha hagut un problema de connexió amb el servidor"
+  },
+  "GestionUsuarios": {
+    "available_users": "Usuaris disponibles",
+    "add": "Afegir",
+    "new_user_placeholder": "Nou usuari",
+    "add_user": "Afegir usuari",
+    "added_users": "Usuaris afegits",
+    "remove": "Eliminar",
+    "save": "Desar",
+    "users_saved": "Usuaris desats correctament"
+  },
   "perfil": {
-    "descripcion_default": "Desenvolupador Full Stack amb 3 anys d'experiència en la creació d'aplicacions web eficients i escalables utilitzant React i Node.js. Apassionat per resoldre problemes complexos i aprendre noves tecnologies.",
     "fondo_alt": "Fons",
     "perfil_alt": "Perfil",
     "modificar_perfil": "Modificar perfil",
-    "imagen_centro_alt": "Imatge del centre",
+    "imagen_centro_alt": "Imatge central",
     "editar_perfil": "Editar perfil",
     "nombre": "Nom",
     "ubicacion": "Ubicació",
     "telefono": "Telèfon",
-    "email": "Correu electrònic",
+    "email": "Email",
     "fecha_nacimiento": "Data de naixement",
     "descripcion": "Descripció",
     "aniadir_cv": "Afegir CV (PDF o PNG)",
     "aniadir_foto": "Afegir foto de perfil",
-    "archivo_seleccionado": "Arxiu seleccionat",
+    "archivo_seleccionado": "Fitxer seleccionat",
     "guardar": "Desar",
     "cancelar": "Cancel·lar"
   },
-  
   "ofertaPropia": {
     "buscarSolicitudes": "Cerca les teves sol·licituds",
-    "introduceBusqueda": "Introdueix la teva cerca d'oferta:",
+    "introduceBusqueda": "Introdueix la teva cerca de feina:",
     "placeholderBusqueda": "Escriu aquí...",
-    "buscar": "Cerca",
-    "cargandoOFertas": "Carregant ofertes o no hi ha ofertes disponibles.",
-    "logoCampusJob": "Logotip CampusJob"
+    "buscar": "Cercar",
+    "cargandoOFertas": "S'estan carregant les ofertes o no hi ha ofertes disponibles.",
+    "logoCampusJob": "Logo de CampusJob"
+  },
+  "informacionOferta": {
+    "fondo_alt": "Fons de l'empresa",
+    "logo_alt": "Logotip de l'empresa",
+    "titulo": "{{titulo}}",
+    "descripcion": "{{descripcion}}",
+    "jornada": "{{jornada}}",
+    "horasSemanales": "{{horas}}",
+    "plazas": "{{count}} places disponibles",
+    "modalidad": "{{modalidad}}",
+    "salario": "{{salario}}",
+    "fechaPublicacion": "Publicació: {{fecha}}",
+    "fechaFinal": "Finalitza: {{fecha}}",
+    "estado": {
+      "aceptado": "Acceptat",
+      "rechazado": "Rebutjat",
+      "enEspera": "En espera"
+    },
+    "botonEnviarCV": "Enviar CV",
+    "requisitos": {
+      "titulo": "Requisits",
+      "experiencia": "Experiència prèvia en desenvolupament frontend amb React.",
+      "conocimiento": "Coneixement d'HTML, CSS i JavaScript.",
+      "trabajoEquipo": "Capacitat de treballar en equip.",
+      "comunicacion": "Bona comunicació i actitud proactiva."
+    },
+    "ubicacion": {
+      "titulo": "Ubicació de l'empresa",
+      "mapaTitulo": "Mapa de {{ciudad}}",
+      "verMapaCompleto": "Veure mapa complet de {{ciudad}}"
+    }
   }
 }
-
-
-
