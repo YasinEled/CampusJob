@@ -1,17 +1,111 @@
 {
-    "header": {
-        "title": "Campus Jobs",
-        "login": "Inicia la sessio",
-        "contact": "Contacta",
-        "company": "¿ Ets una empresa ?"
+  "header": {
+    "title": "Campus Jobs",
+    "login": "Inicia sessió",
+    "contact": "Contacte",
+    "company": "Ets una empresa?"
+  },
+  "footer": {
+    "information": "Informació",
+    "help": "Ajuda",
+    "cookies": "Política de galetes",
+    "privacyPolicy": "Política de privacitat",
+    "accessibility": "Accessibilitat",
+    "termsOfService": "Termes del servei"
+  },
+  "login": {
+    "connectionError": "Hi ha hagut un problema connectant amb el servidor"
+  },
+  "GestionUsuarios": {
+    "available_users": "Usuaris disponibles",
+    "add": "Afegir",
+    "new_user_placeholder": "Nou usuari",
+    "add_user": "Afegir usuari",
+    "added_users": "Usuaris afegits",
+    "remove": "Eliminar",
+    "save": "Desar",
+    "users_saved": "Usuaris desats correctament"
+  },
+  "perfil": {
+    "fondo_alt": "Fons",
+    "perfil_alt": "Perfil",
+    "modificar_perfil": "Modificar perfil",
+    "imagen_centro_alt": "Imatge del centre",
+    "editar_perfil": "Editar perfil",
+    "nombre": "Nom",
+    "ubicacion": "Ubicació",
+    "telefono": "Telèfon",
+    "email": "Correu electrònic",
+    "fecha_nacimiento": "Data de naixement",
+    "descripcion": "Descripció",
+    "aniadir_cv": "Afegir CV (PDF o PNG)",
+    "aniadir_foto": "Afegir foto de perfil",
+    "archivo_seleccionado": "Fitxer seleccionat",
+    "guardar": "Desar",
+    "cancelar": "Cancel·lar"
+  },
+  "ofertaPropia": {
+    "buscarSolicitudes": "Cerca les teves sol·licituds",
+    "introduceBusqueda": "Introdueix la teva cerca de l'oferta:",
+    "placeholderBusqueda": "Escriu aquí...",
+    "buscar": "Cercar",
+    "cargandoOFertas": "S'estan carregant les ofertes o no n'hi ha de disponibles.",
+    "logoCampusJob": "Logotip CampusJob"
+  },
+  "informacionOferta": {
+    "fondo_alt": "Fons de l'empresa",
+    "logo_alt": "Logotip de l'empresa",
+    "titulo": "{{titulo}}",
+    "descripcion": "{{descripcion}}",
+    "jornada": "{{jornada}}",
+    "horasSemanales": "{{horas}}",
+    "plazas": "{{count}} places vacants",
+    "modalidad": "{{modalidad}}",
+    "salario": "{{salario}}",
+    "fechaPublicacion": "Publicació: {{fecha}}",
+    "fechaFinal": "Finalitza: {{fecha}}",
+    "estado": {
+      "aceptado": "Acceptat",
+      "rechazado": "Rebutjat",
+      "enEspera": "En espera"
     },
-    "footer": {
-        "information": "Informacio",
-        "help": "Ajuda",
-        "cookies": "Politica de galetes",
-        "privacyPolicy": "Politica de privadesa",
-        "accessibility": "Accessibilitat",
-        "termsOfService": "Condicions d'ús"
+    "botonEnviarCV": "Enviar CV",
+    "requisitos": {
+      "titulo": "Requisits",
+      "experiencia": "Experiència prèvia en desenvolupament frontend amb React.",
+      "conocimiento": "Coneixements d'HTML, CSS i JavaScript.",
+      "trabajoEquipo": "Capacitat per treballar en equip.",
+      "comunicacion": "Bona comunicació i actitud proactiva."
+    },
+    "ubicacion": {
+      "titulo": "Ubicació de l'empresa",
+      "mapaTitulo": "Mapa de {{ciudad}}",
+      "verMapaCompleto": "Veure el mapa complet de {{ciudad}}"
     }
+  },
+  "perfilEmpresa": {
+    "altFondo": "Fons de l'empresa",
+    "altLogo": "Logotip de l'empresa",
+    "sector": "Sector",
+    "fundacion": "Fundació",
+    "telefono": "Telèfon",
+    "email": "Correu electrònic",
+    "modificarPerfil": "Modificar perfil",
+    "enviarMensaje": "Enviar missatge",
+    "editarPerfil": "Editar perfil de l'empresa",
+    "nombreEmpresa": "Nom de l'empresa",
+    "ubicacion": "Ubicació",
+    "anoFundacion": "Any de fundació",
+    "descripcion": "Descripció",
+    "cambiarFoto": "Canviar foto de perfil",
+    "enviarMensajeEmpresa": "Enviar missatge a l'empresa",
+    "placeholderMensaje": "Escriu el teu missatge aquí...",
+    "logMensajeEnviado": "Missatge enviat:",
+    "msgNuevaFoto": "Nova foto seleccionada: {{name}}"
+  },
+  "common": {
+    "guardar": "Desar",
+    "cancelar": "Cancel·lar",
+    "enviar": "Enviar"
+  }
 }
-

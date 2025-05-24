@@ -1,9 +1,14 @@
 import React from "react";
+import "../../Style/CardSearch.css";
 
-
-const CardSearch = ({name, user}: {name: string, user: string}) => {
+const CardSearch = ({ name, user }: { name: string; user: string }) => {
   return (
-    <div className="cardSearch" style={{ display: "flex", flexDirection: "row", gap: "20px",justifyContent: "center", alignItems: "center", width: "100%", padding: "10px", borderRadius: "10px" }}>
+    <div className="cardSearch">
+      <img
+        src="https://randomuser.me/api/portraits/men/75.jpg"
+        alt="profile"
+        className="cardSearch__avatar"
+      />
       <div className="cardSearch__info">
         <p className="cardSearch__name">{name}</p>
         <p className="cardSearch__job">{user}</p>
@@ -12,8 +17,7 @@ const CardSearch = ({name, user}: {name: string, user: string}) => {
         <button className="button">Chat</button>
       </div>
     </div>
-  )
-}
-
+  );
+};
 
 export default CardSearch;

@@ -2,9 +2,12 @@ import "./Style/perfilEmpresa.css";
 import logoEmpresa from "../../assets/yasin.jpg";
 import fondoEmpresa from "../../assets/yasinfondo.jpg";
 import { useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import ListaOfertasPropias from "../ListaOfertaspropias";
 
 function PerfilEmpresa() {
+  const { t } = useTranslation();
+
   const [mostrarPopup, setMostrarPopup] = useState(false);
   const [mostrarMensaje, setMostrarMensaje] = useState(false);
   const [mensaje, setMensaje] = useState("");
@@ -19,6 +22,7 @@ function PerfilEmpresa() {
     "Empresa dedicada a soluciones tecnológicas innovadoras con foco en eficiencia, escalabilidad y experiencia de usuario."
   );
 
+  const nivelUsuario = localStorage.getItem("nivelUsuario");
   const fileInputRef = useRef(null);
 
   const handleGuardar = () => {
@@ -26,7 +30,7 @@ function PerfilEmpresa() {
   };
 
   const handleEnviarMensaje = () => {
-    console.log("Mensaje enviado:", mensaje);
+    console.log(t("perfilEmpresa.logMensajeEnviado"), mensaje);
     setMensaje("");
     setMostrarMensaje(false);
   };
@@ -34,8 +38,8 @@ function PerfilEmpresa() {
   const handleCambiarFoto = (event) => {
     const file = event.target.files[0];
     if (file) {
-      console.log("Nueva foto seleccionada:", file.name);
-      // Aquí podrías actualizar la imagen del logo si guardas la ruta temporal, por ejemplo con URL.createObjectURL(file)
+      console.log(t("perfilEmpresa.msgNuevaFoto", { name: file.name }));
+      // Implementa la lógica para actualizar la foto
     }
   };
 
@@ -43,30 +47,44 @@ function PerfilEmpresa() {
     <main className="PerfilEmpresaContainer">
       <div className="PerfilEmpresaMain">
         <div className="PerfilEmpresaFondo">
-          <img src={fondoEmpresa} alt="Fondo Empresa" />
-          <img className="PerfilEmpresaLogo" src={logoEmpresa} alt="Logo Empresa" />
+          <img src={fondoEmpresa} alt={t("perfilEmpresa.altFondo") || "Fondo"} />
+          <img
+            className="PerfilEmpresaLogo"
+            src={logoEmpresa}
+            alt={t("perfilEmpresa.altLogo") || "Logo"}
+          />
         </div>
         <div className="PerfilEmpresaInfoContainer">
           <div className="PerfilEmpresaInfoPerfil">
             <h2>{nombre}</h2>
             <p>{ubicacion}</p>
-            <p><strong>Sector:</strong> {sector}</p>
-            <p><strong>Fundación:</strong> {fundacion}</p>
-            <p><strong>Teléfono:</strong> {telefono}</p>
-            <p><strong>Email:</strong> {email}</p>
+            <p>
+              <strong>{t("perfilEmpresa.sector")}:</strong> {sector}
+            </p>
+            <p>
+              <strong>{t("perfilEmpresa.fundacion")}:</strong> {fundacion}
+            </p>
+            <p>
+              <strong>{t("perfilEmpresa.telefono")}:</strong> {telefono}
+            </p>
+            <p>
+              <strong>{t("perfilEmpresa.email")}:</strong> {email}
+            </p>
             <p>{descripcion}</p>
+            {nivelUsuario == "1" && (
+              <button
+                className="PerfilEmpresaBtnEditarPerfil"
+                onClick={() => setMostrarPopup(true)}
+              >
+                {t("perfilEmpresa.modificarPerfil")}
+              </button>
+            )}
 
-            <button
-              className="PerfilEmpresaBtnEditarPerfil"
-              onClick={() => setMostrarPopup(true)}
-            >
-              Modificar perfil
-            </button>
             <button
               className="PerfilEmpresaBtnMensaje"
               onClick={() => setMostrarMensaje(true)}
             >
-              Enviar mensaje
+              {t("perfilEmpresa.enviarMensaje")}
             </button>
           </div>
         </div>
@@ -75,48 +93,48 @@ function PerfilEmpresa() {
       {mostrarPopup && (
         <div className="PerfilEmpresaPopupOverlay">
           <div className="PerfilEmpresaPopupContenido">
-            <h3>Editar Perfil Empresa</h3>
+            <h3>{t("perfilEmpresa.editarPerfil")}</h3>
             <input
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
-              placeholder="Nombre Empresa"
+              placeholder={t("perfilEmpresa.nombreEmpresa")}
             />
             <input
               value={ubicacion}
               onChange={(e) => setUbicacion(e.target.value)}
-              placeholder="Ubicación"
+              placeholder={t("perfilEmpresa.ubicacion")}
             />
             <input
               value={sector}
               onChange={(e) => setSector(e.target.value)}
-              placeholder="Sector"
+              placeholder={t("perfilEmpresa.sector")}
             />
             <input
               value={fundacion}
               onChange={(e) => setFundacion(e.target.value)}
-              placeholder="Año de Fundación"
+              placeholder={t("perfilEmpresa.anoFundacion")}
             />
             <input
               value={telefono}
               onChange={(e) => setTelefono(e.target.value)}
-              placeholder="Teléfono"
+              placeholder={t("perfilEmpresa.telefono")}
             />
             <input
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
+              placeholder={t("perfilEmpresa.email")}
             />
             <textarea
               value={descripcion}
               onChange={(e) => setDescripcion(e.target.value)}
-              placeholder="Descripción"
+              placeholder={t("perfilEmpresa.descripcion")}
             />
 
             <button
               className="PerfilEmpresaBtnCambiarFoto"
               onClick={() => fileInputRef.current.click()}
             >
-              Cambiar foto de perfil
+              {t("perfilEmpresa.cambiarFoto")}
             </button>
             <input
               type="file"
@@ -126,8 +144,8 @@ function PerfilEmpresa() {
               style={{ display: "none" }}
             />
 
-            <button onClick={handleGuardar}>Guardar</button>
-            <button onClick={() => setMostrarPopup(false)}>Cancelar</button>
+            <button onClick={handleGuardar}>{t("common.guardar")}</button>
+            <button onClick={() => setMostrarPopup(false)}>{t("common.cancelar")}</button>
           </div>
         </div>
       )}
@@ -135,14 +153,14 @@ function PerfilEmpresa() {
       {mostrarMensaje && (
         <div className="PerfilEmpresaPopupOverlay">
           <div className="PerfilEmpresaPopupContenido">
-            <h3>Enviar mensaje a la empresa</h3>
+            <h3>{t("perfilEmpresa.enviarMensajeEmpresa")}</h3>
             <textarea
-              placeholder="Escribe tu mensaje aquí..."
+              placeholder={t("perfilEmpresa.placeholderMensaje")}
               value={mensaje}
               onChange={(e) => setMensaje(e.target.value)}
             />
-            <button onClick={handleEnviarMensaje}>Enviar</button>
-            <button onClick={() => setMostrarMensaje(false)}>Cancelar</button>
+            <button onClick={handleEnviarMensaje}>{t("common.enviar")}</button>
+            <button onClick={() => setMostrarMensaje(false)}>{t("common.cancelar")}</button>
           </div>
         </div>
       )}

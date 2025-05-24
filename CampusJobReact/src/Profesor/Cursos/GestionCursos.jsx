@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import './Style/GestionarCursos.css';
 
 const UserManager = () => {
+  const { t } = useTranslation();
+
   const [availableUsers, setAvailableUsers] = useState([
     { id: 1, name: 'Eric' },
     { id: 2, name: 'Yasin' },
@@ -31,13 +34,13 @@ const UserManager = () => {
 
   const guardarUsuarios = () => {
     console.log('Usuarios guardados:', addedUsers);
-    alert('Usuarios guardados correctamente');
+    alert(t('users_saved'));
   };
 
   return (
     <div className="añadirusuariocurso-container">
       <div className="añadirusuariocurso-panel">
-        <h3 className="añadirusuariocurso-title">Usuarios disponibles</h3>
+        <h3 className="añadirusuariocurso-title">{t('available_users')}</h3>
         <ul className="añadirusuariocurso-list">
           {availableUsers.map(user => (
             <li key={user.id} className="añadirusuariocurso-item">
@@ -46,7 +49,7 @@ const UserManager = () => {
                 className="añadirusuariocurso-button"
                 onClick={() => afegirUser(user)}
               >
-                ➕ Añadir
+                ➕ {t('add')}
               </button>
             </li>
           ))}
@@ -57,16 +60,16 @@ const UserManager = () => {
             type="text"
             value={newUserName}
             onChange={(e) => setNewUserName(e.target.value)}
-            placeholder="Nuevo usuario"
+            placeholder={t('new_user_placeholder')}
           />
           <button className="añadirusuariocurso-button" onClick={handleAddNewUser}>
-            ➕ Añadir usuario
+            ➕ {t('add_user')}
           </button>
         </div>
       </div>
 
       <div className="añadirusuariocurso-panel">
-        <h3 className="añadirusuariocurso-title">Usuarios añadidos</h3>
+        <h3 className="añadirusuariocurso-title">{t('added_users')}</h3>
         <ul className="añadirusuariocurso-list">
           {addedUsers.map(user => (
             <li key={user.id} className="añadirusuariocurso-item">
@@ -75,7 +78,7 @@ const UserManager = () => {
                 className="añadirusuariocurso-button"
                 onClick={() => treureUser(user)}
               >
-                ➖ Quitar
+                ➖ {t('remove')}
               </button>
             </li>
           ))}
@@ -84,7 +87,7 @@ const UserManager = () => {
 
       <div className="añadirusuariocurso-footer">
         <button className="añadirusuariocurso-button" onClick={guardarUsuarios}>
-          💾 Guardar
+          💾 {t('save')}
         </button>
       </div>
     </div>
