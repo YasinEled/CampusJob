@@ -182,6 +182,15 @@ function NavHome({ userType }) {
           >
             <SunOutlined />
           </button>
+          
+        </li>
+        <li>
+          <button
+            onClick={() => {}}
+            className="CambiarLeng"
+          >
+            <GlobalOutlined />
+          </button>
         </li>
 
         {menuItems.map((item) => (

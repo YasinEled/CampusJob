@@ -10,7 +10,10 @@ import {
   EuroCircleOutlined,
   FileTextOutlined,
   HourglassOutlined,
+  CheckCircleOutlined,
+  CloseCircleOutlined
 } from "@ant-design/icons";
+import { div } from "framer-motion/client";
 
 function InformacionOferta() {
   const [titulo] = useState("Desarrollador Frontend");
@@ -24,7 +27,8 @@ function InformacionOferta() {
   const [salario] = useState("30.000 - 40.000 € anuales");
   const [fechaPublicacion] = useState("20/05/2025");
   const [fechaFinal] = useState("20/06/2025");
-  const ciudad = "Madrid"; 
+  const ciudad = "Madrid";
+  const estado = "aceptado";
 
   return (
     <main className="InformacionOferta-Container">
@@ -70,7 +74,24 @@ function InformacionOferta() {
             </div>
           </div>
 
-          <button className="InformacionOferta-BotonCV">Enviar CV</button>
+          {estado === "aceptado" ? (
+            <span className="InformacionOferta-BotonCV">
+              <CheckCircleOutlined style={{ pointerEvents: "none", fontSize: "40px" }} />
+              {estado}
+            </span>
+          ) : estado === "rechazado" ? (
+            <span className="InformacionOferta-BotonCV">
+              <CloseCircleOutlined style={{ pointerEvents: "none", fontSize: "40px" }} />
+              {estado}
+            </span>
+          ) : estado === "en espera" ? (
+            <span className="InformacionOferta-BotonCV">
+              <HourglassOutlined style={{ pointerEvents: "none", fontSize: "40px" }} />
+              {estado}
+            </span>
+          ) : (
+            <button className="InformacionOferta-BotonCV">Enviar CV</button>
+          )}
         </div>
       </div>
 
@@ -85,28 +106,31 @@ function InformacionOferta() {
         </ul>
       </div>
 
-<div className="InformacionOferta-Isleta">
-  <h3>Ubicación de la empresa</h3>
-  <iframe
-    title={`Mapa de ${ciudad}`}
-    width="100%"
-    height="300"
-    frameBorder="0"
-    style={{ borderRadius: "10px" }}
-    src={`https://www.google.com/maps?q=${encodeURIComponent(ciudad)}&output=embed`}
-    allowFullScreen
-  ></iframe>
-  <small>
-    <a
-      href={`https://www.google.com/maps/place/${encodeURIComponent(ciudad)}`}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Ver mapa completo de {ciudad}
-    </a>
-  </small>
-</div>
-
+      <div className="InformacionOferta-Isleta">
+        <h3>Ubicación de la empresa</h3>
+        <iframe
+          title={`Mapa de ${ciudad}`}
+          width="100%"
+          height="300"
+          frameBorder="0"
+          style={{ borderRadius: "10px" }}
+          src={`https://www.google.com/maps?q=${encodeURIComponent(
+            ciudad
+          )}&output=embed`}
+          allowFullScreen
+        ></iframe>
+        <small>
+          <a
+            href={`https://www.google.com/maps/place/${encodeURIComponent(
+              ciudad
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ver mapa completo de {ciudad}
+          </a>
+        </small>
+      </div>
     </main>
   );
 }
