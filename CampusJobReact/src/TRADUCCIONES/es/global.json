@@ -54,5 +54,38 @@
     "buscar": "Buscar",
     "cargandoOFertas": "Cargando ofertas o no hay ofertas disponibles.",
     "logoCampusJob": "Logo CampusJob"
+  },
+
+  
+  "informacionOferta": {
+    "fondo_alt": "Fondo Empresa",
+    "logo_alt": "Logo Empresa",
+    "titulo": "{{titulo}}",
+    "descripcion": "{{descripcion}}",
+    "jornada": "{{jornada}}",
+    "horasSemanales": "{{horas}}",
+    "plazas": "{{count}} plazas vacantes",
+    "modalidad": "{{modalidad}}",
+    "salario": "{{salario}}",
+    "fechaPublicacion": "Publicación: {{fecha}}",
+    "fechaFinal": "Finaliza: {{fecha}}",
+    "estado": {
+      "aceptado": "Aceptado",
+      "rechazado": "Rechazado",
+      "enEspera": "En espera"
+    },
+    "botonEnviarCV": "Enviar CV",
+    "requisitos": {
+      "titulo": "Requisitos",
+      "experiencia": "Experiencia previa en desarrollo frontend con React.",
+      "conocimiento": "Conocimiento de HTML, CSS y JavaScript.",
+      "trabajoEquipo": "Capacidad de trabajo en equipo.",
+      "comunicacion": "Buena comunicación y actitud proactiva."
+    },
+    "ubicacion": {
+      "titulo": "Ubicación de la empresa",
+      "mapaTitulo": "Mapa de {{ciudad}}",
+      "verMapaCompleto": "Ver mapa completo de {{ciudad}}"
+    }
   }
 }
