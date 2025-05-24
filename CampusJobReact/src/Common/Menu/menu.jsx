@@ -1,61 +1,103 @@
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
-import {
-  UserOutlined,
-  HomeOutlined,
-  UserAddOutlined,
-  FormOutlined,
-  GlobalOutlined,
-  HeartOutlined,
-  InboxOutlined,
-  SunOutlined,
-  SettingOutlined,
-  TeamOutlined,
-  BookOutlined,
-  ShopOutlined,
-  AppstoreAddOutlined,
-} from "@ant-design/icons";
+import { UserOutlined,ShopOutlined, HomeOutlined, BookOutlined,HeartOutlined,TeamOutlined,SettingOutlined,AppstoreAddOutlined/* ... otros iconos ... */ } from "@ant-design/icons";
+import { canSee } from '../utils/permissions'; // Ajusta la ruta
 import './Style/menu.css';
 
 const menuConfig = {
   4: [
-    { path: '/AdminSupremo/homeAdmin', icon: <SettingOutlined />, label: 'Home Admin' },
-    { path: '/AdminSupremo/AñadirCentro', icon: <AppstoreAddOutlined />, label: 'Añadir Centro' },
-
+    { 
+      path: '/AdminSupremo/homeAdmin', 
+      icon: <SettingOutlined />, 
+      label: 'Home Admin',
+      allowedTypes: [4] // Solo AdminSupremo
+    },
+    { 
+      path: '/AdminSupremo/AñadirCentro', 
+      icon: <AppstoreAddOutlined />, 
+      label: 'Añadir Centro',
+      allowedTypes: [4]
+    },
   ],
   3: [
-    { path: '/dashboard', icon: <TeamOutlined />, label: 'Panel' },
-    { path: '/users', icon: <UserOutlined />, label: 'Usuarios' },
-    { path: '/settings', icon: <SettingOutlined />, label: 'Ajustes' },
+     { 
+      path: '/centro/${centroId}/elegirCurso', 
+      icon: <HomeOutlined />, 
+      label: 'Inicio',
+      allowedTypes: [3] // Alumno + admins
+    },
+    { 
+      path: '/Profesor/centro/:centroId/CrearUsuarios', 
+      icon: <BookOutlined />, 
+      label: 'Crear Usuarios',
+      allowedTypes: [3] // Profesor + admins
+    },
   ],
   2: [
-    { path: '/courses', icon: <BookOutlined />, label: 'Cursos' },
-    { path: '/profile', icon: <UserOutlined />, label: 'Perfil' },
+     { 
+      path: '/centro/${centroId}/elegirCurso', 
+      icon: <HomeOutlined />, 
+      label: 'Inicio',
+      allowedTypes: [2,3,4] // Alumno + admins
+    },
+    { 
+      path: '/Profesor/centro/:centroId/CrearUsuarios', 
+      icon: <BookOutlined />, 
+      label: 'Crear Usuarios',
+      allowedTypes: [2,3,4] // Profesor + admins
+    },
   ],
   0: [
-    { path: '/centro/${centroId}/elegirCurso', icon: <HomeOutlined />, label: 'Inicio' },
-    { path: '/favorites', icon: <HeartOutlined />, label: 'Favoritos' },
+    { 
+      path: '/centro/${centroId}/elegirCurso', 
+      icon: <HomeOutlined />, 
+      label: 'Inicio',
+      allowedTypes: [0,3,4] // Alumno + admins
+    },
+    { 
+      path: '/favorites', 
+      icon: <HeartOutlined />, 
+      label: 'Favoritos',
+      allowedTypes: [0,3,4]
+    },
   ],
   1: [
-    { path: '/home', icon: <HomeOutlined />, label: 'Inicio' },
-    { path: '/post-job', icon: <ShopOutlined />, label: 'Publicar' },
+    { 
+      path: '/centro/${centroId}/elegirCurso', 
+      icon: <HomeOutlined />, 
+      label: 'Inicio',
+      allowedTypes: [1,3,4] // Empresa + admins
+    },
+    { 
+      path: '/Empresa/AñadirOferta', 
+      icon: <ShopOutlined />, 
+      label: 'Publicar',
+      allowedTypes: [1,3,4]
+    },
   ],
 };
 
 function Menu({ userType }) {
-  const menuItems = menuConfig[userType] || [];
+  // Convertir a número si viene como string
+  const userTypeNum = typeof userType === 'string' 
+    ? parseInt(userType.replace(/\D/g, ''), 10) 
+    : userType;
+
+  const menuItems = menuConfig[userTypeNum] || [];
 
   return (
     <main className="MeuIzq">
       <nav className="MenuIzqNav">
         <ul>
-          {menuItems.map(item => (
-            <li key={item.path} className="limenuizq">
-              <Link to={item.path} className="inici" title={item.label}>
-                {item.icon}
-              </Link>
-            </li>
-          ))}
+          {menuItems
+            .filter(item => canSee(userTypeNum, item.allowedTypes))
+            .map(item => (
+              <li key={item.path} className="limenuizq">
+                <Link to={item.path} className="inici" title={item.label}>
+                  {item.icon}
+                </Link>
+              </li>
+            ))}
         </ul>
       </nav>
     </main>
@@ -63,7 +105,11 @@ function Menu({ userType }) {
 }
 
 Menu.propTypes = {
-  userType: PropTypes.oneOf(["AdminSupremo", "Admin", "Profesor", "Alumno", "Empresa"]).isRequired,
+  userType: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.oneOf(["AdminSupremo", "Admin", "Profesor", "Alumno", "Empresa"])
+  ]).isRequired,
 };
+
 
 export default Menu;

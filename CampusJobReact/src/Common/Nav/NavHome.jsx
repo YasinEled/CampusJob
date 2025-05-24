@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { canSee } from "../utils/permissions";
 import { useTranslation } from "react-i18next";
 import {
   UserOutlined,
@@ -14,6 +15,7 @@ import {
   SearchOutlined,
   TeamOutlined,
   BookOutlined,
+  CheckSquareOutlined,
   ShopOutlined,
   AppstoreAddOutlined,
 } from "@ant-design/icons";
@@ -46,6 +48,7 @@ const menuConfig = {
       path: `/AdminSupremo/AñadirCentro`,
       icon: <AppstoreAddOutlined />,
       label: "Añadir Centro",
+      allowedTypes: [4],
     },
     {
       path: "/BuscadorPerfil",
@@ -63,81 +66,63 @@ const menuConfig = {
       path: "GestionarCursosAlumnos",
       icon: <FormOutlined />,
       label: "AddCurso",
-    },
-    {
-      path: "/Profesor/centro/11/CrearUsuarios",
-      icon: <UserAddOutlined />,
-      label: "AddUser",
-    },
-    {
-      path: "centro/:centroId/añadirCurso",
-      icon: <BookOutlined />,
-      label: "Usuarios",
+      allowedTypes: [3, 4],
+
     },
     {
       path: "/BuscadorPerfil",
       icon: <TeamOutlined />,
       label: "Fitrado Usuario",
+      allowedTypes: [0,1,2,3, 4],
+
     },
-    {
-      path: "/centro/${localStorage.getItem('centroId')}/elegirCurso",
-      icon: <HomeOutlined />,
-      label: "Home",
-    },
+
   ],
   2: [
-    { path: "/courses", icon: <BookOutlined />, label: "Cursos" },
-    { path: "/AñadirCentro", icon: <UserAddOutlined />, label: "AddUser" },
-    { path: "/BusquedaOfertas", icon: <HomeOutlined />, label: "Home" },
     {
       path: "/BuscadorPerfil",
       icon: <TeamOutlined />,
       label: "Fitrado Usuario",
+      allowedTypes: [0,1,2, 3, 4],
     },
-    { path: "/PerfilProfesor", icon: <UserOutlined />, label: "Perfil" },
+    { path: "/Profesor/PerfilProfesor/:id", 
+      icon: <UserOutlined />, 
+      label: "Perfil",
+      allowedTypes: [2]
+    }
   ],
   0: [
     {
       path: "/BuscadorPerfil",
       icon: <TeamOutlined />,
       label: "Fitrado Usuario",
+      allowedTypes: [0,1,2, 3, 4],
     },
     {
       path: "/Alumno/PerfilAlumno/:idUsrAlumno",
       icon: <UserOutlined />,
       label: "Perfil",
-    },
-    {
-      path: "/centro/${centroId}/elegirCurso",
-      icon: <HomeOutlined />,
-      label: "Home",
+      allowedTypes: [0],
     },
   ],
   1: [
     {
-      path: "/Empresa/añadirOferta",
-      icon: <ShopOutlined />,
+      path: "/Empresa/gestioOferta/:idOferta",
+      icon: <CheckSquareOutlined />,
       label: "Publicar Oferta",
+      allowedTypes: [1],
     },
     {
       path: "/BuscadorPerfil",
       icon: <TeamOutlined />,
       label: "Fitrado Usuario",
-    },
-    {
-      path: "/centro/:centroId/curso/:cursoId/BuscarOfertas",
-      icon: <SearchOutlined />,
-      label: "Filtrador Oferta",
-    },
-    {
-      path: "/centro/${localStorage.getItem('centroId')}/elegirCurso",
-      icon: <HomeOutlined />,
-      label: "Filtrador Oferta",
+      allowedTypes: [0,1,2, 3, 4],
     },
     {
       path: "/Empresa/PerfilEmpresa/:idUsrEmpresa",
       icon: <UserOutlined />,
       label: "Perfil",
+      allowedTypes: [1],
     },
   ],
 };
@@ -176,26 +161,41 @@ function NavHome({ userType }) {
 
   const logoLetras = isLightMode ? logoLetrasLight : logoLetrasDark;
   const logoIcon = isLightMode ? logoIconLight : logoIconDark;
+  const userTypeNum =
+    typeof userType === "string"
+      ? parseInt(userType.replace(/\D/g, ""), 10)
+      : userType;
 
-  const menuItems = menuConfig[userType] || [];
+  const menuItems = menuConfig[userTypeNum] || [];
 
   return (
     <nav className="navHome">
       <div className="logoNavSelector">
         <img className="logoNav" src={logoIcon} alt="CampusJob Icon" />
-        <img className="logoLetrasNav" src={logoLetras} alt="CampusJob Letras" />
+        <img
+          className="logoLetrasNav"
+          src={logoLetras}
+          alt="CampusJob Letras"
+        />
       </div>
       <ul className="selectorsNav">
         {/* Botón de cambio de tema */}
         <li>
-          <button onClick={() => setIsLightMode(!isLightMode)} className="theme-toggle">
+          <button
+            onClick={() => setIsLightMode(!isLightMode)}
+            className="theme-toggle"
+          >
             <SunOutlined />
           </button>
         </li>
 
         {/* Menú desplegable de idiomas */}
         <li>
-          <Dropdown overlay={languageMenu} placement="bottomRight" trigger={['click']}>
+          <Dropdown
+            overlay={languageMenu}
+            placement="bottomRight"
+            trigger={["click"]}
+          >
             <button className="CambiarLeng">
               <GlobalOutlined />
             </button>
@@ -203,13 +203,15 @@ function NavHome({ userType }) {
         </li>
 
         {/* Menú dinámico según tipo de usuario */}
-        {menuItems.map((item) => (
-          <li key={item.path}>
-            <Link to={`${item.path}`} title={item.label} className="selector-item">
-              {item.icon}
-            </Link>
-          </li>
-        ))}
+        {menuItems
+          .filter((item) => canSee(userTypeNum, item?.allowedTypes))
+          .map((item) => (
+            <li key={item.path}>
+              <Link to={item.path} title={item.label} className="selector-item">
+                {item.icon}
+              </Link>
+            </li>
+          ))}
       </ul>
     </nav>
   );
