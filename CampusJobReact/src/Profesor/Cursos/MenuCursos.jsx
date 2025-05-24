@@ -8,6 +8,7 @@ import {
   CheckOutlined,
   CloseOutlined,
 } from "@ant-design/icons";
+
 import { Spin } from "antd";
 export default function MenuCursos() {
   const { centroId } = useParams(); // ✅ Recibe el centroId desde la URL
@@ -143,14 +144,15 @@ export default function MenuCursos() {
             ) : (
               <p></p>
             )}
-            {nivelUsuario == 4 || nivelUsuario == 3 && (
+            {(nivelUsuario == 4 || nivelUsuario == 3) && (
               <button className="BotonAñadirCentro" onClick={handleAñadirCurso}>
                 <div style={{ fontSize: "100px" }}>
                   <PlusOutlined />
                 </div>
                 Añadir Curso
-              </button>
+              </button> 
             )}
+            
           </div>
         </div>
       </div>

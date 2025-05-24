@@ -67,7 +67,7 @@ function App() {
         }
       } else {
         localStorage.setItem("idUsuario", 10);
-        localStorage.setItem("nivelUsuario", 3);
+        localStorage.setItem("nivelUsuario", 4);
           //localStorage.setItem("idCentro", 10); // ✅ Nuevo campo
 
         console.log("Navegando a home admin");
@@ -78,7 +78,7 @@ function App() {
     } catch (error) {
           //localStorage.setItem("idCentro", 10); // ✅ Nuevo campo
       localStorage.setItem("idUsuario", 10);
-        localStorage.setItem("nivelUsuario", 3);
+        localStorage.setItem("nivelUsuario", 4);
         console.log("Navegando a home admin");
 
       navigate("/AdminSupremo/homeAdmin");

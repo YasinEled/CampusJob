@@ -82,5 +82,23 @@
       "mapaTitulo": "Mapa de {{ciudad}}",
       "verMapaCompleto": "Veure mapa complet de {{ciudad}}"
     }
-  }
+  },"crearCurso": {
+  "crear_en": "Crear Curs al Centre ID: {{id}}",
+  "nombre": "Nom del Curs",
+  "descripcion": "Descripció",
+  "logo": "Logo del Curs",
+  "vista_previa_logo": "Previsualització del logo",
+  "crear": "Crear Curs",
+  "id_centro_no_encontrado": "ID del centre no trobat",
+  "faltan_datos_usuario": "Falten dades de l'usuari",
+  "curso_creado_exito": "Curs creat amb èxit",
+  "error_crear": "Error en crear el curs",
+  "error_conexion": "Hi ha hagut un problema en connectar amb el servidor"
+},
+"adminSup": {
+  "nombre": "Yasin El Edrissi",
+  "email": "Yasin@gmail.com",
+  "status": "ESTAT"
+}
+
 }

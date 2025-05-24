@@ -87,5 +87,23 @@
       "mapaTitulo": "Mapa de {{ciudad}}",
       "verMapaCompleto": "Ver mapa completo de {{ciudad}}"
     }
-  }
+  },
+  "crearCurso": {
+  "crear_en": "Crear Curso en Centro ID: {{id}}",
+  "nombre": "Nombre del Curso",
+  "descripcion": "Descripción",
+  "logo": "Logo del Curso",
+  "vista_previa_logo": "Vista previa del logo",
+  "crear": "Crear Curso",
+  "id_centro_no_encontrado": "ID del centro no encontrado",
+  "faltan_datos_usuario": "Faltan datos del usuario",
+  "curso_creado_exito": "Curso creado exitosamente",
+  "error_crear": "Error al crear el curso",
+  "error_conexion": "Hubo un problema al conectar con el servidor"
+},
+"adminSup": {
+  "nombre": "Yasin El Edrissi",
+  "email": "Yasin@gmail.com",
+  "status": "STATUS"
+}
 }

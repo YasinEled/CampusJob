@@ -8,46 +8,46 @@ import {
   CloseOutlined,
 } from "@ant-design/icons";
 import { Spin } from "antd";
+import { useTranslation } from "react-i18next";
 import "./Style/createCurso.css"
 
 const CreaCurso = () => {
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { centroId } = useParams<{ centroId: string }>();
+  const { centroId } = useParams();
   const navigate = useNavigate();
 
   const [curso, setCurso] = useState({
     nombre: "",
     descripcion: "",
-    foto: null as string | null,
+    foto: null,
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setCurso((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleFotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+  // const handleFotoChange = (e) => {
+  //   const file = e.target.files?.[0];
+  //   if (!file) return;
 
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      setCurso((prev) => ({
-        ...prev,
-        foto: event.target?.result as string,
-      }));
-    };
-    reader.readAsDataURL(file);
-  };
+  //   const reader = new FileReader();
+  //   reader.onload = (event) => {
+  //     setCurso((prev) => ({
+  //       ...prev,
+  //       foto: event.target?.result,
+  //     }));
+  //   };
+  //   reader.readAsDataURL(file);
+  // };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!centroId) {
-      alert("ID del centro no encontrado");
+      alert(t("crearCurso.id_centro_no_encontrado"));
       return;
     }
 
@@ -55,7 +55,7 @@ const CreaCurso = () => {
     const nivelUsuario = localStorage.getItem("nivelUsuario");
 
     if (!idUsuario || nivelUsuario === null) {
-      alert("Faltan datos del usuario");
+      alert(t("crearCurso.faltan_datos_usuario"));
       return;
     }
 
@@ -86,14 +86,14 @@ const CreaCurso = () => {
 
       const data = await response.json();
       if (data.success) {
-        alert("Curso creado exitosamente");
+        alert(t("crearCurso.curso_creado_exito"));
         navigate(`/centro/${centroId}/elegirCurso`);
       } else {
-        alert(data.message || "Error al crear el curso");
+        alert(data.message || t("crearCurso.error_crear"));
       }
     } catch (err) {
       console.error("Error al enviar:", err);
-      alert("Hubo un problema al conectar con el servidor");
+      alert(t("crearCurso.error_conexion"));
     }
   };
 
@@ -109,12 +109,12 @@ const CreaCurso = () => {
             height: "5em",
           }}
         >
-        <h2>Crear Curso en Centro ID: {centroId}</h2>
+          <h2>{t("crearCurso.crear_en", { id: centroId })}</h2>
         </div>
         <form className="crear-curso-form" onSubmit={handleSubmit}>
           <div>
             <label>
-              Nombre del Curso:
+              {t("crearCurso.nombre")}:
               <input
                 type="text"
                 name="nombre"
@@ -126,34 +126,33 @@ const CreaCurso = () => {
           </div>
           <div>
             <label>
-              Descripción:
+              {t("crearCurso.descripcion")}:
               <textarea
                 name="descripcion"
                 value={curso.descripcion}
                 onChange={handleChange}
                 required
                 rows={4}
-              style={{ resize: "none" }}
-            
+                style={{ resize: "none" }}
               />
             </label>
           </div>
           <div>
             <label className="ButtonSeleccionarLogoCrearCentro">
-              Logo del Curso:
-              <input type="file" accept="image/*" onChange={handleFotoChange} />
+              {t("crearCurso.logo")}:
+              {/* <input type="file" accept="image/*" onChange={handleFotoChange} /> */}
             </label>
           </div>
           {curso.foto && (
             <div className="logo-preview">
               <img
                 src={curso.foto}
-                alt="Vista previa del logo"
+                alt={t("crearCurso.vista_previa_logo")}
                 style={{ maxWidth: "200px", marginTop: "1em" }}
               />
             </div>
           )}
-          <button className="btn-login" type="submit">Crear Curso</button>
+          <button className="btn-login" type="submit">{t("crearCurso.crear")}</button>
         </form>
       </div>
       <div className="ContainerAdminSupremoUser">
@@ -176,8 +175,8 @@ const CreaCurso = () => {
             justifyContent: "space-between",
           }}
         >
-          <p style={{ margin: "0em" }}>Yasin El Edrissi</p>
-          <p style={{ margin: "0em" }}>Yasin@gmail.com</p>
+          <p style={{ margin: "0em" }}>{t("adminSup.nombre")}</p>
+          <p style={{ margin: "0em" }}>{t("adminSup.email")}</p>
         </div>
         <div
           style={{
@@ -196,7 +195,7 @@ const CreaCurso = () => {
               textAlign: "center",
             }}
           >
-            STATUS
+            {t("adminSup.status")}
           </h1>
         </div>
         <div
@@ -232,3 +231,4 @@ const CreaCurso = () => {
 };
 
 export default CreaCurso;
+
