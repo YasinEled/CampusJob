@@ -1,6 +1,7 @@
 import React from "react";
 import BuscadorPerfil from "./Components/buscadorPerfil/BuscadorPerfil";
 import CardSearch from "./Components/componentCard/CardSeach";
+import "./Style/BuscadorPerfil.css";
 
 const SeachUser = () => (
   <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>

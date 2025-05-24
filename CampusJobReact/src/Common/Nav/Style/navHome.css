@@ -596,7 +596,7 @@ body.light-mode .ContainerFormOfertas form textarea{
   border: 1px solid #0d6b66 !important;
 }
 
-body.light-mode .ContainerFormOfertas button{
+body.light-mode .botonesOfertas button{
   background-color: white !important;
   color: black !important;
   border: 1px solid #0d6b66 !important;
@@ -606,6 +606,9 @@ body.light-mode .botoneBorrador button{
   background-color: #f00 !important;
   color: #750000 !important;
 }
+
+
+
 
 /* Informacion Oferta */
 
@@ -662,4 +665,63 @@ body.light-mode .custom-radio-box {
 
 body.light-mode .BotonAñadirUsuario{
   color: black;
+}
+
+/* Perfil Alumno*/
+
+body.light-mode .PerfilUsuario {
+  background-color: #ffffff;
+  color: black;
+}
+
+body.light-mode .perfilAlumnopopup-Contenido {
+  background-color: #ffffff;
+  color: #0d6b66;
+}
+
+body.light-mode .perfilAlumnopopup-Contenido input{
+  background-color: #ffffff;
+  color: black;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+body.light-mode .perfilAlumnopopup-Contenido textarea{
+  background-color: #ffffff;
+  color: black;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+body.light-mode .perfilAlumnopopup-btnSubirImagen{
+  color: #00998E !important
+}
+
+body.light-mode .perfilAlumnopopup-btnCancelar{
+    background-color: #00998E !important;
+    color:white !important;
+}
+
+body.light-mode .perfilAlumnopopup-btnSubirArchivo{
+    color:#00998E !important;
+}
+
+body.light-mode .PerfilTeacher{
+    background-color: white !important;
+    color:black !important;
+}
+
+/* Perfil Profe*/
+
+body.light-mode .popupContenido{
+    background-color: white !important;
+    color:black !important;
+}
+
+body.light-mode .popupContenido input{
+    background-color: white !important;
+    color:black !important;
+}
+
+body.light-mode .popupContenido textarea{
+    background-color: white !important;
+    color:black !important;
+    
 }

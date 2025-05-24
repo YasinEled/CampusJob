@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&slant=0..1&display=swap");
 @import "tailwindcss";
 
-.top_description{
+.PublicidadServicio .top_description{
     top: 190px
 }
 
-.description-header {
+.PublicidadServicio .description-header {
     max-width: 750px;
     display: flex;
     align-items: center;
@@ -16,25 +16,25 @@
     margin-right: 8px;
 }
   
-.quote-left, .quote-right {
+.PublicidadServicio .quote-left, .quote-right {
     font-size: 4rem; /* Ajusta el tamaño de la comilla */
 
 }
-.quote-left h1, .quote-right h1 {
+.PublicidadServicio .quote-left h1, .quote-right h1 {
     margin: 0; /* Elimina el margen de las comillas */
     font-size: 60px;
 }
 
 
-.quote-left{
+.PublicidadServicio .quote-left{
     padding-bottom: 30px;
     padding-right: 10px;
 }
-.quote-right{
+.PublicidadServicio .quote-right{
     padding-top: 67px;
 }
   
-.description-center {
+.PublicidadServicio .description-center {
     flex: 1; /* Permite que la descripción ocupe el espacio intermedio */
     margin:0; /* Espaciado entre la comilla y la descripción */
     text-align: center; /* Centra el texto si lo deseas */
@@ -42,11 +42,11 @@
 }
   
 @media (min-width: 360px) {
-    .top_description{
+    .PublicidadServicio .top_description{
         top: 48vw;
     }
     
-    .description-header {
+    .PublicidadServicio .description-header {
         max-width: 750px;
         display: flex;
         align-items: center;
@@ -58,10 +58,10 @@
 }
 
 @media (min-width: 560px) {
-    .top_description{
+    .PublicidadServicio .top_description{
         top: 37vw;
     }
-    .description-header {
+    .PublicidadServicio .description-header {
         max-width: 500px;
         display: flex;
         align-items: center;
@@ -72,24 +72,24 @@
         margin-right: 0;
 
     }
-    .description-center {
+    .PublicidadServicio .description-center {
         flex: 1; /* Permite que la descripción ocupe el espacio intermedio */
         margin:0; /* Espaciado entre la comilla y la descripción */
         text-align: center; /* Centra el texto si lo deseas */
         font-size: 1em;
     }
-    .quote-left{
+    .PublicidadServicio .quote-left{
         padding-bottom: 60px;
     }
-    .quote-right{
+    .PublicidadServicio .quote-right{
         padding-top: 67px;
     }
 }
 @media (min-width: 768px) {
-    .top_description{
+    .PublicidadServicio .top_description{
         top: 12em;
     }
-    .description-header {
+    .PublicidadServicio .description-header {
         max-width: 750px;
         display: flex;
         align-items: center;
@@ -98,7 +98,7 @@
         padding: 20px; /* Ajusta según necesites */
         font-family: "Inter", sans-serif;
     }
-    .description-center {
+    .PublicidadServicio .description-center {
         flex: 1; /* Permite que la descripción ocupe el espacio intermedio */
         margin:0; /* Espaciado entre la comilla y la descripción */
         text-align: center; /* Centra el texto si lo deseas */
@@ -108,10 +108,10 @@
 
 
 @media (min-width: 1090px) {
-    .top_description{
+    .PublicidadServicio .top_description{
         top: 10em;
     }
-    .description-header {
+    .PublicidadServicio .description-header {
         max-width: 650px;
         display: flex;
         align-items: center;
@@ -120,7 +120,7 @@
         padding: 20px; /* Ajusta según necesites */
         font-family: "Inter", sans-serif;
     }
-    .description-center {
+    .PublicidadServicio .description-center {
         flex: 1; /* Permite que la descripción ocupe el espacio intermedio */
         margin:0; /* Espaciado entre la comilla y la descripción */
         text-align: center; /* Centra el texto si lo deseas */
@@ -131,10 +131,10 @@
 
 
 @media (min-width: 1550px) {
-    .top_description{
+    .PublicidadServicio .top_description{
         top: 16em;
     }
-    .description-header {
+    .PublicidadServicio .description-header {
         max-width: 750px;
         display: flex;
         align-items: center;
@@ -143,7 +143,7 @@
         padding: 20px; /* Ajusta según necesites */
         font-family: "Inter", sans-serif;  
     }
-    .description-center {
+    .PublicidadServicio .description-center {
         flex: 1; /* Permite que la descripción ocupe el espacio intermedio */
         margin:0; /* Espaciado entre la comilla y la descripción */
         text-align: center; /* Centra el texto si lo deseas */
