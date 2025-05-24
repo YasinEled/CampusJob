@@ -143,12 +143,14 @@ export default function MenuCursos() {
             ) : (
               <p></p>
             )}
-            <button className="BotonAñadirCentro" onClick={handleAñadirCurso}>
-              <div style={{ fontSize: "100px" }}>
-                <PlusOutlined />
-              </div>
-              Añadir Curso
-            </button>
+            {nivelUsuario == 4 || nivelUsuario == 3 && (
+              <button className="BotonAñadirCentro" onClick={handleAñadirCurso}>
+                <div style={{ fontSize: "100px" }}>
+                  <PlusOutlined />
+                </div>
+                Añadir Curso
+              </button>
+            )}
           </div>
         </div>
       </div>
