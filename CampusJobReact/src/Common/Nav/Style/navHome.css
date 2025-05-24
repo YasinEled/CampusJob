@@ -260,9 +260,6 @@ body.light-mode .BotonAñadirCentro {
   color: black;
 }
 
-body.light-mode .BotonAñadirCentro:hover {
-  background-color: #0a514d;
-}
 
 body.light-mode .ModalOverlay {
   background-color: rgba(0, 0, 0, 0.4);
@@ -724,4 +721,33 @@ body.light-mode .popupContenido textarea{
     background-color: white !important;
     color:black !important;
     
+}
+
+/*Buscador Usuarios*/
+
+body.light-mode .buscador-container {
+  background-color: #003e3a;
+  color: white;
+}
+
+body.light-mode .buscador-container h2{
+  background-color: #003e3a;
+  color: white;
+}
+body.light-mode .buscador-container label {
+  color: white !important;
+}
+
+body.light-mode .buscador-container input {
+  background-color: #ffffff !important;
+  color: black !important;
+}
+
+body.light-mode .buscador-container button {
+  background-color: #0d6b66 !important;
+  color: white !important;
+}
+
+body.light-mode .cardSearch{
+background-color: #ffffff;
 }
