@@ -50,14 +50,34 @@ function InformacionOferta() {
       fetchOferta();
     }
   }, [idOferta]);
-
+  const handleDescargarDocumento = () => {
+    if (!oferta.documentadjunto) {
+      alert("No hay documento adjunto disponible");
+      return;
+    }
+  
+    // ✅ Si es base64 con prefijo MIME (ej: "data:application/pdf;base64,JVBERi0xLjQ..."), convierte a blob y descarga
+    const byteCharacters = atob(oferta.documentadjunto.split(",")[1]); // Elimina el prefijo y decodifica
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+      byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    const blob = new Blob([byteArray], { type: "application/pdf" }); // Cambia según el tipo de archivo
+  
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "documento_adjunto.pdf"; // Cambiar a .docx, .txt si es necesario
+    link.click();
+    URL.revokeObjectURL(link.href); // Limpia el objeto URL
+  };
   const handleEnviarCV = async () => {
     if (!idUsuario || !idOferta) {
       alert("Datos incompletos");
       return;
     }
 
-    try {
+    try { 
       const response = await fetch(
         `http://localhost:4000/api/centro/curso/${idOferta}/enviarCvOferta`,
         {
@@ -153,6 +173,16 @@ function InformacionOferta() {
               })}
             </div>
           </div>
+          {oferta.documentadjunto && (
+            <button
+              className="InformacionOferta-BotonDescargar"
+              onClick={handleDescargarDocumento}
+              type="button"
+            >
+              <FileTextOutlined /> Descargar Documentación
+            </button>
+          )}
+
 
           {nivelUsuario === "0" && (
             <button
