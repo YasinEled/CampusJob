@@ -19,11 +19,8 @@ function ResultadoOfertas({ ofertas }) {
           >
             <img
               className="ImagenOfertaEmpresa"
-              src={
-                oferta.imgoferte
-                  ? `data:image/webp;base64,${oferta.imgoferte}`
-                  : campusJobFavicon
-              }
+              src={oferta.imgoferte || campusJobFavicon}
+
               alt="Logo Empresa"
             />
             <div className="OfertaTextContainer">
