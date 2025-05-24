@@ -149,14 +149,7 @@ root.render(
                 />
               }
             />
-            <Route
-              path="PerfilProfesor/:idUsrProfe"
-              element={
-                <ProtectedRoute requiredRole="0,1,2,3,4">
-                  <PerfilTeacher />
-                </ProtectedRoute>
-              }
-            />
+            
           </Route>
 
           {/* 5) Empresa (rol 1,2,3,4) */}
@@ -235,6 +228,14 @@ root.render(
                 <PerfilPropio />
               }
             />
+            <Route
+              path="PerfilProfesor/:idUsrProfe"
+              element={
+                <ProtectedRoute requiredRole="0,1,2,3,4">
+                  <PerfilTeacher />
+                </ProtectedRoute>
+              }
+            />
           </Route>
 
           {/* 7) Centro general */}
@@ -287,6 +288,7 @@ root.render(
               }
             />
           </Route>
+          
 
           <Route
             path="/BuscadorPerfil"

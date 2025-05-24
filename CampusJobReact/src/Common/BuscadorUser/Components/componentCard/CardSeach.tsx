@@ -14,7 +14,7 @@ const CardSearch = ({ name, user }: { name: string; user: string }) => {
         <p className="cardSearch__job">{user}</p>
       </div>
       <div className="cardSearch__button">
-        <button className="button">Chat</button>
+        <button className="button">Ver Perfil</button>
       </div>
     </div>
   );
