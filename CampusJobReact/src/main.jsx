@@ -181,7 +181,7 @@ root.render(
             <Route
               path="añadirOferta"
               element={
-                <ProtectedRoute requiredRole="1,2,3,4">
+                <ProtectedRoute requiredRole="1">
                   <FormOfertas />
                 </ProtectedRoute>
               }

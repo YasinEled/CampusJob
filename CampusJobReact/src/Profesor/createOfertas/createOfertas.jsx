@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+
 import "./Style/CreateOfertas.css";
 
 function FormOfertas() {
@@ -11,37 +13,42 @@ function FormOfertas() {
     presencial: true,
     salariesperat: "",
     fechafin: "",
-    imgoferte: "", // opcional
-    documentadjunto: "", // opcional
-    idusrpublica: 1, // este valor deberías obtenerlo del login
+    idusrpublica: localStorage.getItem("idUsuario"),
+    requisitos: [], // ✅ Nuevo estado para requisitos
   });
+  const [requirementsInput, setRequirementsInput] = useState("");
+  const { centroId } = useParams(); // ✅ Si viene del centro
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleAddRequirement = (e) => {
+    if (e.key === "Enter" && requirementsInput.trim()) {
+      setFormData({
+        ...formData,
+        requisitos: [...formData.requisitos, requirementsInput.trim()],
+      });
+      setRequirementsInput("");
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const idCurso = localStorage.getItem("cursoId") || 1; // ✅ Si no hay curso en URL, usar uno por defecto
 
     try {
-      const response = await fetch(
-        "https://campusjobbackend.onrender.com/api/crearOferta",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
-
+      const response = await fetch(`http://localhost:4000/api/centro/${centroId}/curso/${idCurso}/oferta`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
       const data = await response.json();
       if (data.success) {
-        alert("Oferta creada con éxito");
+        alert("Oferta creada exitosamente");
+        navigate(`/centro/${centroId}/curso/${idCurso}/BuscarOfertas`);
       } else {
         alert("Error al crear la oferta: " + data.message);
       }
@@ -164,15 +171,36 @@ function FormOfertas() {
               value={formData.salariesperat}
               onChange={handleChange}
             />
-            <label htmlFor="requisitos">Requisitos</label>
-            <input
-              type="text"
-              id="requisitos"
-              name="requisitos"
-              value={formData.requisitos}
-              onChange={handleChange}
-              required
-            />
+            <div className="requisitos-container">
+              <label htmlFor="requisitos">Requisitos (Presiona Enter para añadir)</label>
+              <input
+                type="text"
+                id="requisitos"
+                value={requirementsInput}
+                onChange={(e) => setRequirementsInput(e.target.value)}
+                onKeyDown={handleAddRequirement}
+                placeholder="Escribe un requisito y presiona Enter"
+                required
+              />
+              <div className="requisitos-list">
+                {formData.requisitos.map((req, index) => (
+                  <div key={index} className="requisito-item">
+                    {req}
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setFormData({
+                          ...formData,
+                          requisitos: formData.requisitos.filter((_, i) => i !== index),
+                        })
+                      }
+                    >
+                      ×
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
             <div style={{ display: "flex", justifyContent: "space-between",alignContent:"center",justifyItems:"center" }}>
               <div style={{ width: "75%" }}>
                 <label htmlFor="extras">Num plaçes vacants</label>
