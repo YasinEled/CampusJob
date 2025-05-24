@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import {
   UserOutlined,
   HomeOutlined,
@@ -16,6 +17,7 @@ import {
   ShopOutlined,
   AppstoreAddOutlined,
 } from "@ant-design/icons";
+import { Dropdown, Menu } from "antd";
 import PropTypes from "prop-types";
 import "./Style/navHome.css";
 
@@ -50,7 +52,6 @@ const menuConfig = {
       icon: <TeamOutlined />,
       label: "Fitrado Usuario",
     },
-
     {
       path: "/AdminSupremo/HomeAdmin",
       icon: <HomeOutlined />,
@@ -73,13 +74,11 @@ const menuConfig = {
       icon: <BookOutlined />,
       label: "Usuarios",
     },
-    // { path: "/global", icon: <GlobalOutlined />, label: "Global" },
     {
       path: "/BuscadorPerfil",
       icon: <TeamOutlined />,
       label: "Fitrado Usuario",
     },
-
     {
       path: "/centro/${localStorage.getItem('centroId')}/elegirCurso",
       icon: <HomeOutlined />,
@@ -89,14 +88,12 @@ const menuConfig = {
   2: [
     { path: "/courses", icon: <BookOutlined />, label: "Cursos" },
     { path: "/AñadirCentro", icon: <UserAddOutlined />, label: "AddUser" },
-    // { path: "/inbox", icon: <InboxOutlined />, label: "Mensajes" },
     { path: "/BusquedaOfertas", icon: <HomeOutlined />, label: "Home" },
     {
       path: "/BuscadorPerfil",
       icon: <TeamOutlined />,
       label: "Fitrado Usuario",
     },
-
     { path: "/PerfilProfesor", icon: <UserOutlined />, label: "Perfil" },
   ],
   0: [
@@ -110,7 +107,11 @@ const menuConfig = {
       icon: <UserOutlined />,
       label: "Perfil",
     },
-    { path: "/centro/${centroId}/elegirCurso", icon: <HomeOutlined />, label: "Home" },
+    {
+      path: "/centro/${centroId}/elegirCurso",
+      icon: <HomeOutlined />,
+      label: "Home",
+    },
   ],
   1: [
     {
@@ -146,6 +147,23 @@ function NavHome({ userType }) {
     return localStorage.getItem("theme") === "light";
   });
 
+  const { i18n } = useTranslation();
+
+  const handleLanguageChange = ({ key }) => {
+    i18n.changeLanguage(key);
+  };
+
+  const languageMenu = (
+    <Menu
+      onClick={handleLanguageChange}
+      items={[
+        { key: "ca", label: "Català" },
+        { key: "es", label: "Español" },
+        { key: "en", label: "English" },
+      ]}
+    />
+  );
+
   useEffect(() => {
     if (isLightMode) {
       document.body.classList.add("light-mode");
@@ -156,50 +174,38 @@ function NavHome({ userType }) {
     }
   }, [isLightMode]);
 
-  // Seleccionar imágenes según el modo actual
   const logoLetras = isLightMode ? logoLetrasLight : logoLetrasDark;
   const logoIcon = isLightMode ? logoIconLight : logoIconDark;
 
-  // Obtener menú para el tipo de usuario, o un menú vacío si no existe
   const menuItems = menuConfig[userType] || [];
 
   return (
     <nav className="navHome">
       <div className="logoNavSelector">
         <img className="logoNav" src={logoIcon} alt="CampusJob Icon" />
-        <img
-          className="logoLetrasNav"
-          src={logoLetras}
-          alt="CampusJob Letras"
-        />
+        <img className="logoLetrasNav" src={logoLetras} alt="CampusJob Letras" />
       </div>
       <ul className="selectorsNav">
         {/* Botón de cambio de tema */}
         <li>
-          <button
-            onClick={() => setIsLightMode(!isLightMode)}
-            className="theme-toggle"
-          >
+          <button onClick={() => setIsLightMode(!isLightMode)} className="theme-toggle">
             <SunOutlined />
-          </button>
-          
-        </li>
-        <li>
-          <button
-            onClick={() => {}}
-            className="CambiarLeng"
-          >
-            <GlobalOutlined />
           </button>
         </li>
 
+        {/* Menú desplegable de idiomas */}
+        <li>
+          <Dropdown overlay={languageMenu} placement="bottomRight" trigger={['click']}>
+            <button className="CambiarLeng">
+              <GlobalOutlined />
+            </button>
+          </Dropdown>
+        </li>
+
+        {/* Menú dinámico según tipo de usuario */}
         {menuItems.map((item) => (
           <li key={item.path}>
-            <Link
-              to={`${item.path}`}
-              title={item.label}
-              className="selector-item"
-            >
+            <Link to={`${item.path}`} title={item.label} className="selector-item">
               {item.icon}
             </Link>
           </li>
@@ -210,13 +216,7 @@ function NavHome({ userType }) {
 }
 
 NavHome.propTypes = {
-  userType: PropTypes.oneOf([
-    "AdminSupremo",
-    "Admin",
-    "Profesor",
-    "Alumno",
-    "Empresa",
-  ]).isRequired,
+  userType: PropTypes.oneOf([0, 1, 2, 3, 4]).isRequired,
 };
 
 export default NavHome;

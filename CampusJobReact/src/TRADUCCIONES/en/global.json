@@ -12,5 +12,48 @@
         "privacyPolicy": "Privacy Policy",
         "accessibility": "Accessibility",
         "termsOfService": "Terms of Service"
-    }
+    },
+    "GestionUsuarios": {
+        "available_users": "Available users",
+        "add": "Add",
+        "new_user_placeholder": "New user",
+        "add_user": "Add user",
+        "added_users": "Users added",
+        "remove": "Remove",
+        "save": "Save",
+        "users_saved": "Users saved successfully"
+    },
+    
+  "perfil": {
+    "descripcion_default": "Full Stack Developer with 3 years of experience building efficient and scalable web applications using React and Node.js. Passionate about solving complex problems and learning new technologies.",
+    "fondo_alt": "Background",
+    "perfil_alt": "Profile",
+    "modificar_perfil": "Edit Profile",
+    "imagen_centro_alt": "Center Image",
+    "editar_perfil": "Edit Profile",
+    "nombre": "Name",
+    "ubicacion": "Location",
+    "telefono": "Phone",
+    "email": "Email",
+    "fecha_nacimiento": "Date of Birth",
+    "descripcion": "Description",
+    "aniadir_cv": "Add CV (PDF or PNG)",
+    "aniadir_foto": "Add Profile Photo",
+    "archivo_seleccionado": "Selected file",
+    "guardar": "Save",
+    "cancelar": "Cancel"
+  },
+  
+  "ofertaPropia": {
+    "buscarSolicitudes": "Search your applications",
+    "introduceBusqueda": "Enter your job search:",
+    "placeholderBusqueda": "Type here...",
+    "buscar": "Search",
+    "cargandoOFertas": "Loading jobs or no jobs available.",
+    "logoCampusJob": "CampusJob Logo"
+  }
 }
+
+
+
+
