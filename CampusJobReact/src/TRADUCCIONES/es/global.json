@@ -15,6 +15,44 @@
     },
     "login": {
         "connectionError": "Hubo un problema conectando con el servidor"
-      }
-}
+      },
+    "GestionUsuarios": {
+        "available_users": "Usuarios disponibles",
+        "add": "Añadir",
+        "new_user_placeholder": "Nuevo usuario",
+        "add_user": "Añadir usuario",
+        "added_users": "Usuarios añadidos",
+        "remove": "Quitar",
+        "save": "Guardar",
+        "users_saved": "Usuarios guardados correctamente"
+    },
 
+  "perfil": {
+    "fondo_alt": "Fondo",
+    "perfil_alt": "Perfil",
+    "modificar_perfil": "Modificar perfil",
+    "imagen_centro_alt": "Imagen Centro",
+    "editar_perfil": "Editar Perfil",
+    "nombre": "Nombre",
+    "ubicacion": "Ubicación",
+    "telefono": "Teléfono",
+    "email": "Email",
+    "fecha_nacimiento": "Fecha de nacimiento",
+    "descripcion": "Descripción",
+    "aniadir_cv": "Añadir CV (PDF O PNG)",
+    "aniadir_foto": "Añadir foto Perfil",
+    "archivo_seleccionado": "Archivo seleccionado",
+    "guardar": "Guardar",
+    "cancelar": "Cancelar"
+  },
+
+  
+  "ofertaPropia": {
+    "buscarSolicitudes": "Buscar tus solicitudes",
+    "introduceBusqueda": "Introduce tu búsqueda de la oferta :",
+    "placeholderBusqueda": "Escribe aquí...",
+    "buscar": "Buscar",
+    "cargandoOFertas": "Cargando ofertas o no hay ofertas disponibles.",
+    "logoCampusJob": "Logo CampusJob"
+  }
+}
