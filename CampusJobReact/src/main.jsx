@@ -179,7 +179,7 @@ root.render(
               }
             />
             <Route
-              path="añadirOferta"
+              path="añadirOferta/:cursoId"
               element={
                 <ProtectedRoute requiredRole="1">
                   <FormOfertas />
