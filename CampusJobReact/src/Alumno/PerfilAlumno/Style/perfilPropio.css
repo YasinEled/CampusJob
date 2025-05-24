@@ -1,21 +1,21 @@
 
    .perfilContainer {
     display: flex;
-    margin-left: 10.4em;
-    height: calc(100vh - 7em); 
-    flex-direction: column;
-    justify-content: flex-start;
-    overflow: hidden; 
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px;
+  height: auto;
+grid-gap: 3em;  
 }
 
 .PerfilUsuario {
+    position: relative; /* Necesario para el posicionamiento del botón */
     background: #042522;
     width: 60%;
-    height: 100%; 
     border-radius: 15px;
+    height: 50em;
     color: white;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    position: relative;
     overflow: hidden;
 }
 

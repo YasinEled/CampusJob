@@ -1,6 +1,7 @@
 import "./Style/perfilPropio.css";
 import pfp from '../../assets/yasin.jpg';
 import pfpFondo from '../../assets/yasinfondo.jpg';
+import ListaOfertasSolicitadas from "../llistaOfertasEstado";
 import { useState } from "react";
 
 function PerfilPropio() {
@@ -96,6 +97,7 @@ function PerfilPropio() {
           </div>
         </div>
       )}
+      <ListaOfertasSolicitadas/>
     </main>
   );
 }

@@ -18,6 +18,7 @@ function PerfilEmpresa() {
   const [descripcion, setDescripcion] = useState(
     "Empresa dedicada a soluciones tecnológicas innovadoras con foco en eficiencia, escalabilidad y experiencia de usuario."
   );
+  const nivelUsuario = localStorage.getItem("nivelUsuario");
 
   const fileInputRef = useRef(null);
 
@@ -44,24 +45,38 @@ function PerfilEmpresa() {
       <div className="PerfilEmpresaMain">
         <div className="PerfilEmpresaFondo">
           <img src={fondoEmpresa} alt="Fondo Empresa" />
-          <img className="PerfilEmpresaLogo" src={logoEmpresa} alt="Logo Empresa" />
+          <img
+            className="PerfilEmpresaLogo"
+            src={logoEmpresa}
+            alt="Logo Empresa"
+          />
         </div>
         <div className="PerfilEmpresaInfoContainer">
           <div className="PerfilEmpresaInfoPerfil">
             <h2>{nombre}</h2>
             <p>{ubicacion}</p>
-            <p><strong>Sector:</strong> {sector}</p>
-            <p><strong>Fundación:</strong> {fundacion}</p>
-            <p><strong>Teléfono:</strong> {telefono}</p>
-            <p><strong>Email:</strong> {email}</p>
+            <p>
+              <strong>Sector:</strong> {sector}
+            </p>
+            <p>
+              <strong>Fundación:</strong> {fundacion}
+            </p>
+            <p>
+              <strong>Teléfono:</strong> {telefono}
+            </p>
+            <p>
+              <strong>Email:</strong> {email}
+            </p>
             <p>{descripcion}</p>
+            {nivelUsuario == "1" && (
+              <button
+                className="PerfilEmpresaBtnEditarPerfil"
+                onClick={() => setMostrarPopup(true)}
+              >
+                Modificar perfil
+              </button>
+            )}
 
-            <button
-              className="PerfilEmpresaBtnEditarPerfil"
-              onClick={() => setMostrarPopup(true)}
-            >
-              Modificar perfil
-            </button>
             <button
               className="PerfilEmpresaBtnMensaje"
               onClick={() => setMostrarMensaje(true)}

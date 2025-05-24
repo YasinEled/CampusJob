@@ -33,7 +33,7 @@ const menuConfig = {
     { path: '/profile', icon: <UserOutlined />, label: 'Perfil' },
   ],
   0: [
-    { path: '/home', icon: <HomeOutlined />, label: 'Inicio' },
+    { path: '/centro/${centroId}/elegirCurso', icon: <HomeOutlined />, label: 'Inicio' },
     { path: '/favorites', icon: <HeartOutlined />, label: 'Favoritos' },
   ],
   1: [

@@ -22,14 +22,13 @@ export default function MenuCursos() {
 
   const nivelUsuario = localStorage.getItem("nivelUsuario");
 
-  if(nivelUsuario!=4 && centroId!=idCentro)
-    { 
-      navigate('/');
-    }  
+  // if(nivelUsuario!=4 && centroId!=idCentro)
+  //   {
+  //     navigate('/');
+  //   }
 
   useEffect(() => {
     const fetchCursos = async () => {
-      
       if (!centroId) {
         setError("ID del centro no encontrado");
         setLoading(false);
@@ -99,7 +98,7 @@ export default function MenuCursos() {
             />
           )}{" "}
           {error && <p className="error-message">{error}</p>}
-          {!error && !loading && (
+          {nivelUsuario == 4 && nivelUsuario == 3 && !error && !loading && (
             <button
               className="BotonAñadirUserCurso"
               onClick={handleAñadirUsuario}
@@ -170,77 +169,81 @@ export default function MenuCursos() {
           </div>
         </div>
       )}
-      <div className="ContainerAdminSupremoUser">
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <UserOutlined style={{ fontSize: "65px", margin: "0em" }} />
-          <h2 style={{ margin: "0em" }}>ADMIN SUP</h2>
-        </div>
-        <div
-          style={{
-            fontSize: "30px",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-          }}
-        >
-          <p style={{ margin: "0em" }}>Yasin El Edrissi</p>
-          <p style={{ margin: "0em" }}>Yasin@gmail.com</p>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <h1
+      {nivelUsuario == 4 && nivelUsuario == 3 && (
+        <div className="ContainerAdminSupremoUser">
+          <div
             style={{
-              margin: "0em",
-              width: "100%",
-              border: "1px solid #fff",
-              borderRadius: "50px",
-              textAlign: "center",
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
             }}
           >
-            STATUS
-          </h1>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            height: "100%",
-            borderRadius: "25px",
-            width: "100%",
-            backgroundColor: error ? "#ffe6e6" : "#c6ffd6",
-            border: error ? "2px solid red" : "2px solid green",
-          }}
-        >
-          {!loading &&
-            (error ? (
-              <CloseOutlined style={{ fontSize: "100px", color: "red" }} />
-            ) : (
-              <CheckOutlined style={{ fontSize: "100px", color: "green" }} />
-            ))}
+            <UserOutlined style={{ fontSize: "65px", margin: "0em" }} />
+            <h2 style={{ margin: "0em" }}>ADMIN SUP</h2>
+          </div>
+          <div
+            style={{
+              fontSize: "30px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            <p style={{ margin: "0em" }}>Yasin El Edrissi</p>
+            <p style={{ margin: "0em" }}>Yasin@gmail.com</p>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <h1
+              style={{
+                margin: "0em",
+                width: "100%",
+                border: "1px solid #fff",
+                borderRadius: "50px",
+                textAlign: "center",
+              }}
+            >
+              STATUS
+            </h1>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "100%",
+              borderRadius: "25px",
+              width: "100%",
+              backgroundColor: error ? "#ffe6e6" : "#c6ffd6",
+              border: error ? "2px solid red" : "2px solid green",
+            }}
+          >
+            {!loading &&
+              (error ? (
+                <CloseOutlined style={{ fontSize: "100px", color: "red" }} />
+              ) : (
+                <CheckOutlined style={{ fontSize: "100px", color: "green" }} />
+              ))}
 
-          {loading && (
-            <Spin
-              indicator={<LoadingOutlined style={{ fontSize: "100px" }} spin />}
-              style={{ color: "green" }}
-              size="large"
-            />
-          )}
+            {loading && (
+              <Spin
+                indicator={
+                  <LoadingOutlined style={{ fontSize: "100px" }} spin />
+                }
+                style={{ color: "green" }}
+                size="large"
+              />
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

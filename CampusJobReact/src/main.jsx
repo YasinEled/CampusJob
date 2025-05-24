@@ -164,7 +164,7 @@ root.render(
           <Route
             path="/Empresa/*"
             element={
-              <ProtectedRoute requiredRole="1,2,3,4">
+              <ProtectedRoute requiredRole="0,1,2,3,4">
                 <MenuHome userType={nivelUsuario} pagina="1" />
               </ProtectedRoute>
             }
@@ -189,7 +189,7 @@ root.render(
             <Route
               path="InformacionOferta/:idOferta"
               element={
-                <ProtectedRoute requiredRole="1,2,3,4">
+                <ProtectedRoute requiredRole="0,1,2,3,4">
                   <InformacionOferta />
                 </ProtectedRoute>
               }
@@ -214,7 +214,7 @@ root.render(
             <Route
               path="PerfilEmpresa/:idUsrEmpresa"
               element={
-                <ProtectedRoute requiredRole="1,2,3,4">
+                <ProtectedRoute requiredRole="0,1,2,3,4">
                   <PerfilEmpresa />
                 </ProtectedRoute>
               }
@@ -315,7 +315,7 @@ root.render(
             path="/BuscadorPerfil"
             element={
               <ProtectedRoute requiredRole="0,1,2,3,4">
-                <MenuHome userType={nivelUsuario} />
+                <MenuHome userType={nivelUsuario} pagina={nivelUsuario} />
               </ProtectedRoute>
             }
           >
