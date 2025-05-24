@@ -1,4 +1,4 @@
-import Menu from "./Common/Menu/menu";
+import Menu from "./Common/Menu/menu.jsx";
 import { Outlet } from "react-router-dom";  // Importa Outlet
 
 import NavHome from "./Common/Nav/NavHome";

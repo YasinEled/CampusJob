@@ -1,14 +1,14 @@
 {
   "header": {
     "title": "Campus Jobs",
-    "login": "Log in",
+    "login": "Log In",
     "contact": "Contact",
     "company": "Are you a company?"
   },
   "footer": {
     "information": "Information",
     "help": "Help",
-    "cookies": "Cookie Policy",
+    "cookies": "Cookies Policy",
     "privacyPolicy": "Privacy Policy",
     "accessibility": "Accessibility",
     "termsOfService": "Terms of Service"
@@ -30,16 +30,16 @@
     "fondo_alt": "Background",
     "perfil_alt": "Profile",
     "modificar_perfil": "Edit profile",
-    "imagen_centro_alt": "Center image",
-    "editar_perfil": "Edit profile",
+    "imagen_centro_alt": "Center Image",
+    "editar_perfil": "Edit Profile",
     "nombre": "Name",
     "ubicacion": "Location",
     "telefono": "Phone",
     "email": "Email",
-    "fecha_nacimiento": "Date of birth",
+    "fecha_nacimiento": "Date of Birth",
     "descripcion": "Description",
     "aniadir_cv": "Add CV (PDF or PNG)",
-    "aniadir_foto": "Add profile picture",
+    "aniadir_foto": "Add Profile Photo",
     "archivo_seleccionado": "Selected file",
     "guardar": "Save",
     "cancelar": "Cancel"
@@ -47,23 +47,23 @@
   "ofertaPropia": {
     "buscarSolicitudes": "Search your applications",
     "introduceBusqueda": "Enter your job search:",
-    "placeholderBusqueda": "Write here...",
+    "placeholderBusqueda": "Type here...",
     "buscar": "Search",
     "cargandoOFertas": "Loading offers or no offers available.",
     "logoCampusJob": "CampusJob Logo"
   },
   "informacionOferta": {
-    "fondo_alt": "Company background",
-    "logo_alt": "Company logo",
+    "fondo_alt": "Company Background",
+    "logo_alt": "Company Logo",
     "titulo": "{{titulo}}",
     "descripcion": "{{descripcion}}",
     "jornada": "{{jornada}}",
     "horasSemanales": "{{horas}}",
-    "plazas": "{{count}} vacant positions",
+    "plazas": "{{count}} vacancies",
     "modalidad": "{{modalidad}}",
     "salario": "{{salario}}",
-    "fechaPublicacion": "Posted: {{fecha}}",
-    "fechaFinal": "Ends: {{fecha}}",
+    "fechaPublicacion": "Published on: {{fecha}}",
+    "fechaFinal": "Ends on: {{fecha}}",
     "estado": {
       "aceptado": "Accepted",
       "rechazado": "Rejected",
@@ -73,39 +73,34 @@
     "requisitos": {
       "titulo": "Requirements",
       "experiencia": "Previous experience in frontend development with React.",
-      "conocimiento": "Knowledge of HTML, CSS, and JavaScript.",
-      "trabajoEquipo": "Teamwork skills.",
+      "conocimiento": "Knowledge of HTML, CSS and JavaScript.",
+      "trabajoEquipo": "Ability to work in a team.",
       "comunicacion": "Good communication and proactive attitude."
     },
     "ubicacion": {
-      "titulo": "Company location",
+      "titulo": "Company Location",
       "mapaTitulo": "Map of {{ciudad}}",
       "verMapaCompleto": "View full map of {{ciudad}}"
     }
   },
-  "perfilEmpresa": {
-    "altFondo": "Company background",
-    "altLogo": "Company logo",
-    "sector": "Sector",
-    "fundacion": "Founded",
-    "telefono": "Phone",
-    "email": "Email",
-    "modificarPerfil": "Edit profile",
-    "enviarMensaje": "Send message",
-    "editarPerfil": "Edit Company Profile",
-    "nombreEmpresa": "Company Name",
-    "ubicacion": "Location",
-    "anoFundacion": "Year Founded",
-    "descripcion": "Description",
-    "cambiarFoto": "Change profile picture",
-    "enviarMensajeEmpresa": "Send message to the company",
-    "placeholderMensaje": "Write your message here...",
-    "logMensajeEnviado": "Message sent:",
-    "msgNuevaFoto": "New photo selected: {{name}}"
-  },
-  "common": {
-    "guardar": "Save",
-    "cancelar": "Cancel",
-    "enviar": "Send"
-  }
+  "crearCurso": {
+  "crear_en": "Create Course in Center ID: {{id}}",
+  "nombre": "Course Name",
+  "descripcion": "Description",
+  "logo": "Course Logo",
+  "vista_previa_logo": "Logo preview",
+  "crear": "Create Course",
+  "id_centro_no_encontrado": "Center ID not found",
+  "faltan_datos_usuario": "User data missing",
+  "curso_creado_exito": "Course created successfully",
+  "error_crear": "Error creating the course",
+  "error_conexion": "There was a problem connecting to the server"
+},
+"adminSup": {
+  "nombre": "Yasin El Edrissi",
+  "email": "Yasin@gmail.com",
+  "status": "STATUS"
+}
+
+
 }

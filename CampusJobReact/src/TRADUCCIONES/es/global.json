@@ -1,31 +1,32 @@
 {
-  "header": {
-    "title": "Campus Jobs",
-    "login": "Iniciar sesión",
-    "contact": "Contacto",
-    "company": "¿Eres una empresa?"
-  },
-  "footer": {
-    "information": "Información",
-    "help": "Ayuda",
-    "cookies": "Política de cookies",
-    "privacyPolicy": "Política de privacidad",
-    "accessibility": "Accesibilidad",
-    "termsOfService": "Términos de servicio"
-  },
-  "login": {
-    "connectionError": "Hubo un problema conectando con el servidor"
-  },
-  "GestionUsuarios": {
-    "available_users": "Usuarios disponibles",
-    "add": "Añadir",
-    "new_user_placeholder": "Nuevo usuario",
-    "add_user": "Añadir usuario",
-    "added_users": "Usuarios añadidos",
-    "remove": "Quitar",
-    "save": "Guardar",
-    "users_saved": "Usuarios guardados correctamente"
-  },
+    "header": {
+        "title": "Campus Jobs",
+        "login": "Iniciar sesion",
+        "contact": "Contacto",
+        "company": "¿ Eres una empresa ?"
+    },
+    "footer": {
+        "information": "Informacion",
+        "help": "Ayuda",
+        "cookies": "Politica de cookies",
+        "privacyPolicy": "Polotica de privacidad",
+        "accessibility": "Accesibilidad",
+        "termsOfService": "Terminos de servicio"
+    },
+    "login": {
+        "connectionError": "Hubo un problema conectando con el servidor"
+      },
+    "GestionUsuarios": {
+        "available_users": "Usuarios disponibles",
+        "add": "Añadir",
+        "new_user_placeholder": "Nuevo usuario",
+        "add_user": "Añadir usuario",
+        "added_users": "Usuarios añadidos",
+        "remove": "Quitar",
+        "save": "Guardar",
+        "users_saved": "Usuarios guardados correctamente"
+    },
+
   "perfil": {
     "fondo_alt": "Fondo",
     "perfil_alt": "Perfil",
@@ -44,6 +45,8 @@
     "guardar": "Guardar",
     "cancelar": "Cancelar"
   },
+
+  
   "ofertaPropia": {
     "buscarSolicitudes": "Buscar tus solicitudes",
     "introduceBusqueda": "Introduce tu búsqueda de la oferta :",
@@ -52,6 +55,8 @@
     "cargandoOFertas": "Cargando ofertas o no hay ofertas disponibles.",
     "logoCampusJob": "Logo CampusJob"
   },
+
+  
   "informacionOferta": {
     "fondo_alt": "Fondo Empresa",
     "logo_alt": "Logo Empresa",
@@ -83,29 +88,22 @@
       "verMapaCompleto": "Ver mapa completo de {{ciudad}}"
     }
   },
-  "perfilEmpresa": {
-    "altFondo": "Fondo de la empresa",
-    "altLogo": "Logo de la empresa",
-    "sector": "Sector",
-    "fundacion": "Fundación",
-    "telefono": "Teléfono",
-    "email": "Email",
-    "modificarPerfil": "Modificar perfil",
-    "enviarMensaje": "Enviar mensaje",
-    "editarPerfil": "Editar Perfil Empresa",
-    "nombreEmpresa": "Nombre Empresa",
-    "ubicacion": "Ubicación",
-    "anoFundacion": "Año de Fundación",
-    "descripcion": "Descripción",
-    "cambiarFoto": "Cambiar foto de perfil",
-    "enviarMensajeEmpresa": "Enviar mensaje a la empresa",
-    "placeholderMensaje": "Escribe tu mensaje aquí...",
-    "logMensajeEnviado": "Mensaje enviado:",
-    "msgNuevaFoto": "Nueva foto seleccionada: {{name}}"
-  },
-  "common": {
-    "guardar": "Guardar",
-    "cancelar": "Cancelar",
-    "enviar": "Enviar"
-  }
+  "crearCurso": {
+  "crear_en": "Crear Curso en Centro ID: {{id}}",
+  "nombre": "Nombre del Curso",
+  "descripcion": "Descripción",
+  "logo": "Logo del Curso",
+  "vista_previa_logo": "Vista previa del logo",
+  "crear": "Crear Curso",
+  "id_centro_no_encontrado": "ID del centro no encontrado",
+  "faltan_datos_usuario": "Faltan datos del usuario",
+  "curso_creado_exito": "Curso creado exitosamente",
+  "error_crear": "Error al crear el curso",
+  "error_conexion": "Hubo un problema al conectar con el servidor"
+},
+"adminSup": {
+  "nombre": "Yasin El Edrissi",
+  "email": "Yasin@gmail.com",
+  "status": "STATUS"
+}
 }

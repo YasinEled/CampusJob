@@ -307,3 +307,51 @@ root.render(
     </I18nextProvider>
   </StrictMode>
 );
+
+
+/*
+  RUTAS DISPONIBLES
+
+  1) Públicas
+     GET  /login                          → App.jsx
+     GET  /unauthorized                   → Unauthorized.jsx
+     GET  /comercial                      → Comercial.jsx
+
+  2) AdminSupremo (rol 4)
+     GET  /AdminSupremo                   → redirige a /AdminSupremo/HomeAdmin
+     GET  /AdminSupremo/HomeAdmin         → MenuCentros.jsx
+     GET  /AdminSupremo/AñadirCentro      → AñadirCentro.jsx
+     GET  /AdminSupremo/CrearUsuario      → (pendiente AñadirUsuario.jsx)
+
+  3) AdminCentro (rol 3,4)
+     GET  /AdminCentro                    → redirige a /centro/{centroId}/elegirCurso
+     GET  /AdminCentro/centro/:centroId/AñadirCurso     → AñadirCurso.jsx
+     GET  /AdminCentro/centro/:centroId/CrearUsuario    → CreatorUsersAC.js
+
+  4) Profesor (rol 2,3,4)
+     GET  /Profesor                       → redirige a /centro/{centroId}/elegirCurso
+     GET  /Profesor/centro/:centroId/PerfilProfesor/:idUsrProfe  → PerfilTeacher.jsx
+
+  5) Empresa (rol 1,2,3,4)
+     GET  /Empresa                        → redirige a /centro/{centroId}/elegirCurso
+     GET  /Empresa/centro/:centroId/PerfilEmpresa/:idUsrEmpresa → PerfilEmpresa.jsx
+
+  6) Alumno (rol 0,2,3,4)
+     GET  /Alumno                         → redirige a /centro/{centroId}/elegirCurso
+     GET  /Alumno/centro/:centroId/PerfilAlumno/:idUsrAlumno   → PerfilPropio.jsx
+
+  7) Centro general (todos los roles)
+     GET  /centro/:centroId/elegirCurso   → MenuCursos.jsx
+     GET  /centro/:centroId/curso/:cursoId/BuscarOfertas → MainBusqueda.jsx
+
+  8) Primer inicio
+     GET  /PrimerInicioAlumno             → PrimerInicioUsuari.jsx
+     GET  /PrimerInicioProfesor           → PrimerInicioProfesor.jsx
+     GET  /PrimerInicioEmpresa            → PrimerInicioEmpresa.jsx
+
+  9) Buscador de perfil
+     GET  /BuscadorPerfil                 → SeachUser.js
+
+  10) Fallback
+     GET  /*                             → NotFound.jsx
+*/

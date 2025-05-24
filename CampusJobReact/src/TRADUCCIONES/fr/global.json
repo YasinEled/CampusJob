@@ -1,9 +1,9 @@
 {
   "header": {
     "title": "Campus Jobs",
-    "login": "Se connecter",
+    "login": "Connexion",
     "contact": "Contact",
-    "company": "Êtes-vous une entreprise ?"
+    "company": "Vous êtes une entreprise ?"
   },
   "footer": {
     "information": "Informations",
@@ -20,20 +20,20 @@
     "available_users": "Utilisateurs disponibles",
     "add": "Ajouter",
     "new_user_placeholder": "Nouvel utilisateur",
-    "add_user": "Ajouter un utilisateur",
+    "add_user": "Ajouter utilisateur",
     "added_users": "Utilisateurs ajoutés",
     "remove": "Supprimer",
     "save": "Enregistrer",
     "users_saved": "Utilisateurs enregistrés avec succès"
   },
   "perfil": {
-    "fondo_alt": "Fond",
+    "fondo_alt": "Arrière-plan",
     "perfil_alt": "Profil",
     "modificar_perfil": "Modifier le profil",
-    "imagen_centro_alt": "Image du centre",
-    "editar_perfil": "Éditer le profil",
+    "imagen_centro_alt": "Image centrale",
+    "editar_perfil": "Modifier le profil",
     "nombre": "Nom",
-    "ubicacion": "Emplacement",
+    "ubicacion": "Localisation",
     "telefono": "Téléphone",
     "email": "Email",
     "fecha_nacimiento": "Date de naissance",
@@ -46,14 +46,14 @@
   },
   "ofertaPropia": {
     "buscarSolicitudes": "Rechercher vos candidatures",
-    "introduceBusqueda": "Entrez votre recherche d'offre :",
+    "introduceBusqueda": "Entrez votre recherche d’offre :",
     "placeholderBusqueda": "Écrivez ici...",
     "buscar": "Rechercher",
     "cargandoOFertas": "Chargement des offres ou aucune offre disponible.",
     "logoCampusJob": "Logo CampusJob"
   },
   "informacionOferta": {
-    "fondo_alt": "Fond de l'entreprise",
+    "fondo_alt": "Image de fond de l'entreprise",
     "logo_alt": "Logo de l'entreprise",
     "titulo": "{{titulo}}",
     "descripcion": "{{descripcion}}",
@@ -62,50 +62,44 @@
     "plazas": "{{count}} postes vacants",
     "modalidad": "{{modalidad}}",
     "salario": "{{salario}}",
-    "fechaPublicacion": "Publication : {{fecha}}",
-    "fechaFinal": "Se termine : {{fecha}}",
+    "fechaPublicacion": "Publié le : {{fecha}}",
+    "fechaFinal": "Se termine le : {{fecha}}",
     "estado": {
       "aceptado": "Accepté",
       "rechazado": "Rejeté",
       "enEspera": "En attente"
     },
-    "botonEnviarCV": "Envoyer le CV",
+    "botonEnviarCV": "Envoyer CV",
     "requisitos": {
       "titulo": "Exigences",
       "experiencia": "Expérience préalable en développement frontend avec React.",
-      "conocimiento": "Connaissance de HTML, CSS et JavaScript.",
+      "conocimiento": "Connaissances en HTML, CSS et JavaScript.",
       "trabajoEquipo": "Capacité à travailler en équipe.",
       "comunicacion": "Bonne communication et attitude proactive."
     },
     "ubicacion": {
-      "titulo": "Emplacement de l'entreprise",
+      "titulo": "Localisation de l'entreprise",
       "mapaTitulo": "Carte de {{ciudad}}",
       "verMapaCompleto": "Voir la carte complète de {{ciudad}}"
     }
   },
-  "perfilEmpresa": {
-    "altFondo": "Fond de l'entreprise",
-    "altLogo": "Logo de l'entreprise",
-    "sector": "Secteur",
-    "fundacion": "Fondation",
-    "telefono": "Téléphone",
-    "email": "Email",
-    "modificarPerfil": "Modifier le profil",
-    "enviarMensaje": "Envoyer un message",
-    "editarPerfil": "Éditer le profil de l'entreprise",
-    "nombreEmpresa": "Nom de l'entreprise",
-    "ubicacion": "Emplacement",
-    "anoFundacion": "Année de fondation",
-    "descripcion": "Description",
-    "cambiarFoto": "Changer la photo de profil",
-    "enviarMensajeEmpresa": "Envoyer un message à l'entreprise",
-    "placeholderMensaje": "Écrivez votre message ici...",
-    "logMensajeEnviado": "Message envoyé :",
-    "msgNuevaFoto": "Nouvelle photo sélectionnée : {{name}}"
-  },
-  "common": {
-    "guardar": "Enregistrer",
-    "cancelar": "Annuler",
-    "enviar": "Envoyer"
-  }
+  "crearCurso": {
+  "crear_en": "Créer un cours dans le centre ID : {{id}}",
+  "nombre": "Nom du cours",
+  "descripcion": "Description",
+  "logo": "Logo du cours",
+  "vista_previa_logo": "Aperçu du logo",
+  "crear": "Créer le cours",
+  "id_centro_no_encontrado": "ID du centre introuvable",
+  "faltan_datos_usuario": "Données utilisateur manquantes",
+  "curso_creado_exito": "Cours créé avec succès",
+  "error_crear": "Erreur lors de la création du cours",
+  "error_conexion": "Un problème est survenu lors de la connexion au serveur"
+},
+"adminSup": {
+  "nombre": "Yasin El Edrissi",
+  "email": "Yasin@gmail.com",
+  "status": "STATUT"
+}
+
 }
