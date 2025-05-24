@@ -14,6 +14,7 @@ import {
   CloseCircleOutlined
 } from "@ant-design/icons";
 import { div } from "framer-motion/client";
+import { use } from "react";
 
 function InformacionOferta() {
   const [titulo] = useState("Desarrollador Frontend");
@@ -28,7 +29,7 @@ function InformacionOferta() {
   const [fechaPublicacion] = useState("20/05/2025");
   const [fechaFinal] = useState("20/06/2025");
   const ciudad = "Madrid";
-  const estado = "aceptado";
+  const [estado, setCandidato] =useState("");
 
   return (
     <main className="InformacionOferta-Container">
@@ -74,23 +75,30 @@ function InformacionOferta() {
             </div>
           </div>
 
-          {estado === "aceptado" ? (
+          {estado === "aceptado" && window.localStorage.getItem("nivelUsuario") === "0" ? (
             <span className="InformacionOferta-BotonCV">
               <CheckCircleOutlined style={{ pointerEvents: "none", fontSize: "40px" }} />
               {estado}
             </span>
-          ) : estado === "rechazado" ? (
+          ) : estado === "rechazado" && window.localStorage.getItem("nivelUsuario") === "0" ? (
             <span className="InformacionOferta-BotonCV">
               <CloseCircleOutlined style={{ pointerEvents: "none", fontSize: "40px" }} />
               {estado}
             </span>
-          ) : estado === "en espera" ? (
+          ) : estado === "en espera" && window.localStorage.getItem("nivelUsuario") === "0" ? (
             <span className="InformacionOferta-BotonCV">
               <HourglassOutlined style={{ pointerEvents: "none", fontSize: "40px" }} />
               {estado}
             </span>
+          ) : window.localStorage.getItem("nivelUsuario") === "0" ? (
+            <button
+              className="InformacionOferta-BotonCV"
+              onClick={() => setCandidato(("en espera"))}
+            >
+              Enviar CV
+            </button>
           ) : (
-            <button className="InformacionOferta-BotonCV">Enviar CV</button>
+            ""
           )}
         </div>
       </div>
