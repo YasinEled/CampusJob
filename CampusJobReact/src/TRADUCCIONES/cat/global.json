@@ -14,7 +14,7 @@
     "termsOfService": "Termes del servei"
   },
   "login": {
-    "connectionError": "Hi ha hagut un problema de connexió amb el servidor"
+    "connectionError": "Hi ha hagut un problema connectant amb el servidor"
   },
   "GestionUsuarios": {
     "available_users": "Usuaris disponibles",
@@ -30,12 +30,12 @@
     "fondo_alt": "Fons",
     "perfil_alt": "Perfil",
     "modificar_perfil": "Modificar perfil",
-    "imagen_centro_alt": "Imatge central",
+    "imagen_centro_alt": "Imatge del centre",
     "editar_perfil": "Editar perfil",
     "nombre": "Nom",
     "ubicacion": "Ubicació",
     "telefono": "Telèfon",
-    "email": "Email",
+    "email": "Correu electrònic",
     "fecha_nacimiento": "Data de naixement",
     "descripcion": "Descripció",
     "aniadir_cv": "Afegir CV (PDF o PNG)",
@@ -46,11 +46,11 @@
   },
   "ofertaPropia": {
     "buscarSolicitudes": "Cerca les teves sol·licituds",
-    "introduceBusqueda": "Introdueix la teva cerca de feina:",
+    "introduceBusqueda": "Introdueix la teva cerca de l'oferta:",
     "placeholderBusqueda": "Escriu aquí...",
     "buscar": "Cercar",
-    "cargandoOFertas": "S'estan carregant les ofertes o no hi ha ofertes disponibles.",
-    "logoCampusJob": "Logo de CampusJob"
+    "cargandoOFertas": "S'estan carregant les ofertes o no n'hi ha de disponibles.",
+    "logoCampusJob": "Logotip CampusJob"
   },
   "informacionOferta": {
     "fondo_alt": "Fons de l'empresa",
@@ -59,7 +59,7 @@
     "descripcion": "{{descripcion}}",
     "jornada": "{{jornada}}",
     "horasSemanales": "{{horas}}",
-    "plazas": "{{count}} places disponibles",
+    "plazas": "{{count}} places vacants",
     "modalidad": "{{modalidad}}",
     "salario": "{{salario}}",
     "fechaPublicacion": "Publicació: {{fecha}}",
@@ -73,14 +73,39 @@
     "requisitos": {
       "titulo": "Requisits",
       "experiencia": "Experiència prèvia en desenvolupament frontend amb React.",
-      "conocimiento": "Coneixement d'HTML, CSS i JavaScript.",
-      "trabajoEquipo": "Capacitat de treballar en equip.",
+      "conocimiento": "Coneixements d'HTML, CSS i JavaScript.",
+      "trabajoEquipo": "Capacitat per treballar en equip.",
       "comunicacion": "Bona comunicació i actitud proactiva."
     },
     "ubicacion": {
       "titulo": "Ubicació de l'empresa",
       "mapaTitulo": "Mapa de {{ciudad}}",
-      "verMapaCompleto": "Veure mapa complet de {{ciudad}}"
+      "verMapaCompleto": "Veure el mapa complet de {{ciudad}}"
     }
+  },
+  "perfilEmpresa": {
+    "altFondo": "Fons de l'empresa",
+    "altLogo": "Logotip de l'empresa",
+    "sector": "Sector",
+    "fundacion": "Fundació",
+    "telefono": "Telèfon",
+    "email": "Correu electrònic",
+    "modificarPerfil": "Modificar perfil",
+    "enviarMensaje": "Enviar missatge",
+    "editarPerfil": "Editar perfil de l'empresa",
+    "nombreEmpresa": "Nom de l'empresa",
+    "ubicacion": "Ubicació",
+    "anoFundacion": "Any de fundació",
+    "descripcion": "Descripció",
+    "cambiarFoto": "Canviar foto de perfil",
+    "enviarMensajeEmpresa": "Enviar missatge a l'empresa",
+    "placeholderMensaje": "Escriu el teu missatge aquí...",
+    "logMensajeEnviado": "Missatge enviat:",
+    "msgNuevaFoto": "Nova foto seleccionada: {{name}}"
+  },
+  "common": {
+    "guardar": "Desar",
+    "cancelar": "Cancel·lar",
+    "enviar": "Enviar"
   }
 }

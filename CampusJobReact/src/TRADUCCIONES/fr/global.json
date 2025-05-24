@@ -1,9 +1,9 @@
 {
   "header": {
     "title": "Campus Jobs",
-    "login": "Connexion",
+    "login": "Se connecter",
     "contact": "Contact",
-    "company": "Vous êtes une entreprise ?"
+    "company": "Êtes-vous une entreprise ?"
   },
   "footer": {
     "information": "Informations",
@@ -20,20 +20,20 @@
     "available_users": "Utilisateurs disponibles",
     "add": "Ajouter",
     "new_user_placeholder": "Nouvel utilisateur",
-    "add_user": "Ajouter utilisateur",
+    "add_user": "Ajouter un utilisateur",
     "added_users": "Utilisateurs ajoutés",
     "remove": "Supprimer",
     "save": "Enregistrer",
     "users_saved": "Utilisateurs enregistrés avec succès"
   },
   "perfil": {
-    "fondo_alt": "Arrière-plan",
+    "fondo_alt": "Fond",
     "perfil_alt": "Profil",
     "modificar_perfil": "Modifier le profil",
-    "imagen_centro_alt": "Image centrale",
-    "editar_perfil": "Modifier le profil",
+    "imagen_centro_alt": "Image du centre",
+    "editar_perfil": "Éditer le profil",
     "nombre": "Nom",
-    "ubicacion": "Localisation",
+    "ubicacion": "Emplacement",
     "telefono": "Téléphone",
     "email": "Email",
     "fecha_nacimiento": "Date de naissance",
@@ -46,14 +46,14 @@
   },
   "ofertaPropia": {
     "buscarSolicitudes": "Rechercher vos candidatures",
-    "introduceBusqueda": "Entrez votre recherche d’offre :",
+    "introduceBusqueda": "Entrez votre recherche d'offre :",
     "placeholderBusqueda": "Écrivez ici...",
     "buscar": "Rechercher",
     "cargandoOFertas": "Chargement des offres ou aucune offre disponible.",
     "logoCampusJob": "Logo CampusJob"
   },
   "informacionOferta": {
-    "fondo_alt": "Image de fond de l'entreprise",
+    "fondo_alt": "Fond de l'entreprise",
     "logo_alt": "Logo de l'entreprise",
     "titulo": "{{titulo}}",
     "descripcion": "{{descripcion}}",
@@ -62,25 +62,50 @@
     "plazas": "{{count}} postes vacants",
     "modalidad": "{{modalidad}}",
     "salario": "{{salario}}",
-    "fechaPublicacion": "Publié le : {{fecha}}",
-    "fechaFinal": "Se termine le : {{fecha}}",
+    "fechaPublicacion": "Publication : {{fecha}}",
+    "fechaFinal": "Se termine : {{fecha}}",
     "estado": {
       "aceptado": "Accepté",
       "rechazado": "Rejeté",
       "enEspera": "En attente"
     },
-    "botonEnviarCV": "Envoyer CV",
+    "botonEnviarCV": "Envoyer le CV",
     "requisitos": {
       "titulo": "Exigences",
       "experiencia": "Expérience préalable en développement frontend avec React.",
-      "conocimiento": "Connaissances en HTML, CSS et JavaScript.",
+      "conocimiento": "Connaissance de HTML, CSS et JavaScript.",
       "trabajoEquipo": "Capacité à travailler en équipe.",
       "comunicacion": "Bonne communication et attitude proactive."
     },
     "ubicacion": {
-      "titulo": "Localisation de l'entreprise",
+      "titulo": "Emplacement de l'entreprise",
       "mapaTitulo": "Carte de {{ciudad}}",
       "verMapaCompleto": "Voir la carte complète de {{ciudad}}"
     }
+  },
+  "perfilEmpresa": {
+    "altFondo": "Fond de l'entreprise",
+    "altLogo": "Logo de l'entreprise",
+    "sector": "Secteur",
+    "fundacion": "Fondation",
+    "telefono": "Téléphone",
+    "email": "Email",
+    "modificarPerfil": "Modifier le profil",
+    "enviarMensaje": "Envoyer un message",
+    "editarPerfil": "Éditer le profil de l'entreprise",
+    "nombreEmpresa": "Nom de l'entreprise",
+    "ubicacion": "Emplacement",
+    "anoFundacion": "Année de fondation",
+    "descripcion": "Description",
+    "cambiarFoto": "Changer la photo de profil",
+    "enviarMensajeEmpresa": "Envoyer un message à l'entreprise",
+    "placeholderMensaje": "Écrivez votre message ici...",
+    "logMensajeEnviado": "Message envoyé :",
+    "msgNuevaFoto": "Nouvelle photo sélectionnée : {{name}}"
+  },
+  "common": {
+    "guardar": "Enregistrer",
+    "cancelar": "Annuler",
+    "enviar": "Envoyer"
   }
 }

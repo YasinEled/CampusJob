@@ -1,14 +1,14 @@
 {
   "header": {
     "title": "Campus Jobs",
-    "login": "Log In",
+    "login": "Log in",
     "contact": "Contact",
     "company": "Are you a company?"
   },
   "footer": {
     "information": "Information",
     "help": "Help",
-    "cookies": "Cookies Policy",
+    "cookies": "Cookie Policy",
     "privacyPolicy": "Privacy Policy",
     "accessibility": "Accessibility",
     "termsOfService": "Terms of Service"
@@ -30,16 +30,16 @@
     "fondo_alt": "Background",
     "perfil_alt": "Profile",
     "modificar_perfil": "Edit profile",
-    "imagen_centro_alt": "Center Image",
-    "editar_perfil": "Edit Profile",
+    "imagen_centro_alt": "Center image",
+    "editar_perfil": "Edit profile",
     "nombre": "Name",
     "ubicacion": "Location",
     "telefono": "Phone",
     "email": "Email",
-    "fecha_nacimiento": "Date of Birth",
+    "fecha_nacimiento": "Date of birth",
     "descripcion": "Description",
     "aniadir_cv": "Add CV (PDF or PNG)",
-    "aniadir_foto": "Add Profile Photo",
+    "aniadir_foto": "Add profile picture",
     "archivo_seleccionado": "Selected file",
     "guardar": "Save",
     "cancelar": "Cancel"
@@ -47,23 +47,23 @@
   "ofertaPropia": {
     "buscarSolicitudes": "Search your applications",
     "introduceBusqueda": "Enter your job search:",
-    "placeholderBusqueda": "Type here...",
+    "placeholderBusqueda": "Write here...",
     "buscar": "Search",
     "cargandoOFertas": "Loading offers or no offers available.",
     "logoCampusJob": "CampusJob Logo"
   },
   "informacionOferta": {
-    "fondo_alt": "Company Background",
-    "logo_alt": "Company Logo",
+    "fondo_alt": "Company background",
+    "logo_alt": "Company logo",
     "titulo": "{{titulo}}",
     "descripcion": "{{descripcion}}",
     "jornada": "{{jornada}}",
     "horasSemanales": "{{horas}}",
-    "plazas": "{{count}} vacancies",
+    "plazas": "{{count}} vacant positions",
     "modalidad": "{{modalidad}}",
     "salario": "{{salario}}",
-    "fechaPublicacion": "Published on: {{fecha}}",
-    "fechaFinal": "Ends on: {{fecha}}",
+    "fechaPublicacion": "Posted: {{fecha}}",
+    "fechaFinal": "Ends: {{fecha}}",
     "estado": {
       "aceptado": "Accepted",
       "rechazado": "Rejected",
@@ -73,14 +73,39 @@
     "requisitos": {
       "titulo": "Requirements",
       "experiencia": "Previous experience in frontend development with React.",
-      "conocimiento": "Knowledge of HTML, CSS and JavaScript.",
-      "trabajoEquipo": "Ability to work in a team.",
+      "conocimiento": "Knowledge of HTML, CSS, and JavaScript.",
+      "trabajoEquipo": "Teamwork skills.",
       "comunicacion": "Good communication and proactive attitude."
     },
     "ubicacion": {
-      "titulo": "Company Location",
+      "titulo": "Company location",
       "mapaTitulo": "Map of {{ciudad}}",
       "verMapaCompleto": "View full map of {{ciudad}}"
     }
+  },
+  "perfilEmpresa": {
+    "altFondo": "Company background",
+    "altLogo": "Company logo",
+    "sector": "Sector",
+    "fundacion": "Founded",
+    "telefono": "Phone",
+    "email": "Email",
+    "modificarPerfil": "Edit profile",
+    "enviarMensaje": "Send message",
+    "editarPerfil": "Edit Company Profile",
+    "nombreEmpresa": "Company Name",
+    "ubicacion": "Location",
+    "anoFundacion": "Year Founded",
+    "descripcion": "Description",
+    "cambiarFoto": "Change profile picture",
+    "enviarMensajeEmpresa": "Send message to the company",
+    "placeholderMensaje": "Write your message here...",
+    "logMensajeEnviado": "Message sent:",
+    "msgNuevaFoto": "New photo selected: {{name}}"
+  },
+  "common": {
+    "guardar": "Save",
+    "cancelar": "Cancel",
+    "enviar": "Send"
   }
 }
