@@ -1,7 +1,14 @@
 import React, { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import "./Style/CreateOfertas.css";
 
 function FormOfertas() {
+  const navigate = useNavigate();
+  const { cursoId } = useParams();
+  const centroId = localStorage.getItem("idCentro"); // ✅ Corregido: sin `const { centroId }`
+  const idUsuario = localStorage.getItem("idUsuario");
+  const nivelUsuario = localStorage.getItem("nivelUsuario");
+
   const [formData, setFormData] = useState({
     titoloferta: "",
     descripciooferta: "",
@@ -11,244 +18,255 @@ function FormOfertas() {
     presencial: true,
     salariesperat: "",
     fechafin: "",
-    imgoferte: "", // opcional
-    documentadjunto: "", // opcional
-    idusrpublica: 1, // este valor deberías obtenerlo del login
+    idusrpublica: idUsuario,
+    requisitos: [],
+    imgoferte: null,
+    documentadjunto: null
   });
+  const [requirementsInput, setRequirementsInput] = useState("");
+  const [previewImg, setPreviewImg] = useState(null);
+  const [previewDoc, setPreviewDoc] = useState(null);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value
+    }));
+  };
+
+  const handleAddRequirement = (e) => {
+    if (e.key === "Enter" && requirementsInput.trim()) {
+      setFormData((prev) => ({
+        ...prev,
+        requisitos: [...prev.requisitos, requirementsInput.trim()]
+      }));
+      setRequirementsInput("");
+    }
+  };
+
+  const handleFileChange = (e) => {
+    const { name, files } = e.target;
+    if (!files || !files[0]) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const base64 = event.target.result;
+      setFormData((prev) => ({ ...prev, [name]: base64 }));
+      if (name === "imgoferte") setPreviewImg(base64);
+      if (name === "documentadjunto") setPreviewDoc(base64.split(",")[1]);
+    };
+    reader.onerror = () => alert("Error al leer el archivo");
+    reader.readAsDataURL(files[0]);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!centroId || !cursoId) {
+      alert("ID del centro o curso no encontrado");
+      return;
+    }
+
     try {
       const response = await fetch(
-        "https://campusjobbackend.onrender.com/api/crearOferta",
+        `http://localhost:4000/api/centro/curso/${cursoId}/crearOferta`,
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData)
         }
       );
 
       const data = await response.json();
       if (data.success) {
-        alert("Oferta creada con éxito");
+        alert("Oferta creada exitosamente");
+        navigate(`/Empresa/`);
       } else {
-        alert("Error al crear la oferta: " + data.message);
+        alert("Error al crear la oferta: " + (data.message || "Desconocido"));
       }
     } catch (error) {
       console.error("Error al enviar la oferta:", error);
-      alert("Hubo un error al enviar la oferta.");
+      alert("Hubo un problema al conectar con el servidor");
     }
   };
-
   return (
     <div className="ContainerFormOfertas">
       <h1 className="tituloOfertas">AÑADIR OFERTA DE TRABAJO</h1>
       <div className="continerformOfertasCentral">
-        <form
-          onSubmit={handleSubmit}
-          style={{ display: "flex", gap: "2em", width: "100%" }}
-        >
+        <form onSubmit={handleSubmit} encType="multipart/form-data" style={{ display: "flex", gap: "2em", width: "100%" }}>
+          {/* IZQUIERDA: campos originales */}
           <div className="formOfertasLeft">
-            <label htmlFor="titulo">Título de puesto *</label>
+            <label htmlFor="titoloferta">Título de puesto *</label>
             <input
               type="text"
-              id="titulo"
-              name="titulo"
-              value={formData.titulo}
+              id="titoloferta"
+              name="titoloferta"
+              value={formData.titoloferta}
               onChange={handleChange}
               required
             />
 
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <div style={{ width: "44%" }}>
-                <label htmlFor="telefono">Teléfono de contacto *</label>
-                <input
-                  type="text"
-                  id="telefono"
-                  name="telefono"
-                  value={formData.telefono}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div style={{ width: "44%" }}>
-                <label htmlFor="ubicacion">Ubicación *</label>
-                <input
-                  type="text"
-                  id="ubicacion"
-                  name="ubicacion"
-                  value={formData.ubicacion}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                width: "100%",
-                justifyContent: "space-between",
-              }}
-            >
-              <div style={{ width: "44%" }}>
-                <label htmlFor="sector">Jornada *</label>
-                <select
-                  id="sector"
-                  name="sector"
-                  value={formData.sector}
-                  onChange={handleChange}
-                  required
-                >
-                  <option value="">Tipus jornada</option>
-                  <option value="completa">completa</option>
-                  <option value="completa">Mitjana</option>
-                  <option value="Nocturno">Nocturno</option>
-                </select>
-              </div>
-              <div style={{ width: "44%" }}>
-                <label htmlFor="telefono">Hores Setmanals *</label>
-                <input
-                  type="number"
-                  id="telefono"
-                  name="telefono"
-                  value={formData.telefono}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-
-            <label htmlFor="descripcion">Descripción de la oferta *</label>
+            <label htmlFor="descripciooferta">Descripción *</label>
             <textarea
-              id="descripcion"
-              name="descripcion"
-              value={formData.descripcion}
+              id="descripciooferta"
+              name="descripciooferta"
+              value={formData.descripciooferta}
               onChange={handleChange}
               required
-              style={{ resize: "none", height: "227px" }}
-            ></textarea>
+              style={{ resize: "none", height: "150px" }}
+            />
 
-            <label htmlFor="experiencia">Experiencia mínima</label>
+            <label htmlFor="tipusjornada">Jornada *</label>
+            <select
+              id="tipusjornada"
+              name="tipusjornada"
+              value={formData.tipusjornada}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Selecciona jornada</option>
+              <option value="completa">Completa</option>
+              <option value="parcial">Parcial</option>
+              <option value="nocturna">Nocturna</option>
+            </select>
+
+            <label htmlFor="horessetmanals">Horas semanales *</label>
+            <input
+              type="number"
+              id="horessetmanals"
+              name="horessetmanals"
+              value={formData.horessetmanals}
+              onChange={handleChange}
+              required
+            />
+
+            <label>
+              Experiencia mínima: {formData.experiencia || 0}
+            </label>
             <input
               type="range"
               id="experiencia"
               name="experiencia"
               min="0"
-              max="50"
+              max="20"
               step="1"
-              value={formData.experiencia}
+              value={formData.experiencia || 0}
               onChange={handleChange}
             />
           </div>
 
+          {/* CENTRO: requisitos y archivos */}
           <div className="formOfertasCenter">
-            <label htmlFor="Salario">Salario</label>
-            <input
-              type="range"
-              id="Salario"
-              name="Salario"
-              min="0"
-              max="50"
-              step="1"
-              value={formData.salariesperat}
-              onChange={handleChange}
-            />
-            <label htmlFor="requisitos">Requisitos</label>
+            <label>Requisitos (presiona Enter para añadir)</label>
             <input
               type="text"
-              id="requisitos"
-              name="requisitos"
-              value={formData.requisitos}
-              onChange={handleChange}
-              required
+              value={requirementsInput}
+              onChange={(e) => setRequirementsInput(e.target.value)}
+              onKeyDown={handleAddRequirement}
+              placeholder="Escribe un requisito"
             />
-            <div style={{ display: "flex", justifyContent: "space-between",alignContent:"center",justifyItems:"center" }}>
-              <div style={{ width: "75%" }}>
-                <label htmlFor="extras">Num plaçes vacants</label>
-                <input
-                  type="number"
-                  id="extras"
-                  name="extras"
-                  value={formData.extras}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div style={{ alignContent:"end",justifyItems:"end" }}>
-                <div style={{ display: "flex", alignItems: "center" }}>
-                  <input
-                    style={{transform: "scale(3)"}}
-                    type="checkbox"
-                    id="precencial"
-                    name="precencial"
-                    checked={formData.precencial}
-                    onChange={handleChange}
-                  />
-                  <label htmlFor="precencial" style={{ marginLeft: "0.5em" }}>
-                    Precencial
-                  </label>
+            <div className="requisitos-list">
+              {formData.requisitos.map((req, index) => (
+                <div key={index} className="requisito-item">
+                  {req}{" "}
+                  <button type="button" onClick={() => handleRemoveRequirement(index)}>
+                    ×
+                  </button>
                 </div>
-              </div>
+              ))}
             </div>
 
-            <label htmlFor="fechaLimite">Fecha Límite para Postularse</label>
-            <input
-              type="date"
-              id="fechaLimite"
-              name="fechaLimite"
-              value={formData.fechaLimite}
-              onChange={handleChange}
-              required
-            />
             <button
+              type="button"
               className="PerfilEmpresaBtnCambiarFoto"
-              style={{ width: "100%", marginTop: "2.9em" }}
-              // onClick={() => fileInputRef.current.click()}
+              onClick={() => document.getElementById("imgoferte").click()}
             >
               Subir foto de oferta
             </button>
+            {formData.imgoferte && <p className="file-name">{formData.imgoferte.name}</p>}
             <input
               type="file"
+              id="imgoferte"
+              name="imgoferte"
               accept="image/*"
-              // ref={fileInputRef}
-              // onChange={handleCambiarFoto}
               style={{ display: "none" }}
+              onChange={handleFileChange}
             />
+            {previewImg && <img src={previewImg} alt="Vista previa" />}
 
             <button
+              type="button"
               className="PerfilEmpresaBtnCambiarFoto"
-              style={{ width: "100%", marginTop: "1em" }}
-              onClick={() =>
-                document.getElementById("documentacionInput").click()
-              }
+              onClick={() => document.getElementById("documentadjunto").click()}
             >
               Subir documentación
             </button>
+            {formData.documentadjunto && <p className="file-name">{formData.documentadjunto.name}</p>}
             <input
               type="file"
+              id="documentadjunto"
+              name="documentadjunto"
               accept=".pdf,.doc,.docx,.txt"
-              id="documentacionInput"
-              name="documentacion"
-              onChange={handleChange}
               style={{ display: "none" }}
+              onChange={handleFileChange}
             />
+            {previewDoc && <p>Documento adjunto (base64)</p>}
           </div>
 
+          {/* DERECHA: num plazas, presencial y fecha */}
           <div className="formOfertesRight">
+            <label htmlFor="numplacesvacants">Num plazas vacantes *</label>
+            <input
+              type="number"
+              id="numplacesvacants"
+              name="numplacesvacants"
+              value={formData.numplacesvacants}
+              onChange={handleChange}
+              required
+            />
+
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <input
+                style={{ transform: "scale(3)" }}
+                type="checkbox"
+                id="presencial"
+                name="presencial"
+                checked={formData.presencial}
+                onChange={handleChange}
+              />
+              <label htmlFor="presencial" style={{ marginLeft: "0.5em" }}>
+                Presencial
+              </label>
+            </div>
+
+            <label htmlFor="salariesperat">
+              Salario esperado: {formData.salariesperat || 0}
+            </label>
+            <input
+              type="range"
+              id="salariesperat"
+              name="salariesperat"
+              min="0"
+              max="100000"
+              step="500"
+              value={formData.salariesperat}
+              onChange={handleChange}
+            />
+
+            <label htmlFor="fechafin">Fecha límite *</label>
+            <input
+              type="date"
+              id="fechafin"
+              name="fechafin"
+              value={formData.fechafin}
+              onChange={handleChange}
+              required
+            />
+
             <div className="botonesOfertas">
               <button type="submit">CREAR OFERTA</button>
-              <button type="button" onClick={() => alert("Cancelar acción")}>
+              <button type="button" onClick={() => navigate(-1)}>
                 CANCELAR
               </button>
             </div>

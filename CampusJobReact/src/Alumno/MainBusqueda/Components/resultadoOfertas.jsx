@@ -13,32 +13,33 @@ function ResultadoOfertas({ ofertas }) {
       ) : (
         ofertas.map((oferta) => (
           <div 
-            key={oferta.idoferta} 
+            key={oferta.id} 
             className="OfertasContainer"
-            onClick={() => navigate(`/Empresa/InformacionOferta/${oferta.idoferta}`)}
+            onClick={() => navigate(`/Empresa/InformacionOferta/${oferta.id}`)}
           >
             <img
               className="ImagenOfertaEmpresa"
-              src={campusJobFavicon}
-              alt="CampusJob Logo"
+              src={oferta.imgoferte || campusJobFavicon}
+
+              alt="Logo Empresa"
             />
             <div className="OfertaTextContainer">
-              <h3 className="TituloOfertaEmpresa">{oferta.titoloferta}</h3>
-              <h5 className="NomOfertaEmpresa">Empresa</h5> {/* ✅ Reemplazar con nombre real */}
+              <h3 className="TituloOfertaEmpresa">{oferta.titulo}</h3>
+              <h5 className="NomOfertaEmpresa">{oferta.empresa}</h5>
               <div className="OfertaInfoPrincipalContainer">
                 <p className="OfertaUbicacion">{oferta.ubicacion}</p>
                 <p> | </p>
-                <p className="OfertaTipoModalidad">{oferta.tipusjornada}</p>
+                <p className="OfertaTipoModalidad">{oferta.jornada}</p>
                 <p> | </p>
-                <p className="OfertaFecha">{oferta.fechapubli}</p>
+                <p className="OfertaFecha">{new Date(oferta.fechaPublicacion).toLocaleDateString()}</p>
               </div>
-              <p className="OfertaDescripcion">{oferta.descripciooferta}</p>
+              <p className="OfertaDescripcion">{oferta.descripcion}</p>
               <div className="OfertaInfoContainer">
-                <p className="OfertaTipoContrato">{oferta.tipoContrato}</p>
+                <p className="OfertaTipoContrato">{oferta.presencial === 1 ? "Presencial" : "Remoto"}</p>
                 <p> | </p>
-                <p className="OfertaTipoJornada">{oferta.tipoJornada}</p>
+                <p className="OfertaTipoJornada">{oferta.horasSemanales ? `${oferta.horasSemanales} h/sem` : "N/D"}</p>
                 <p> | </p>
-                <p className="OfertaSalario">{oferta.salariesperat}</p>
+                <p className="OfertaSalario">{oferta.salario ? `${oferta.salario} €` : "Salario no indicado"}</p>
               </div>
             </div>
           </div>

@@ -15,7 +15,31 @@
     padding-bottom: 0em;
     margin-bottom: 0em;
 }
+.requisitos-container {
+  margin-top: 1em;
+}
 
+.requisitos-list {
+  border: 1px solid #ccc;
+  padding: 10px;
+  height: 150px;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.requisito-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
 .lineageneralFormOfertas{
     width: 100%;
     height: 0.2em;

@@ -1,25 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import "../../Style/BuscadorPerfil.css";
 
-const BuscadorPerfil = () => {
+const BuscadorPerfil = ({ onSearch }) => {
+  const [query, setQuery] = useState("");
+
+  const handleSearch = () => {
+    const centroId = localStorage.getItem("idCentro");
+    if (!centroId) {
+      alert("Falta el ID del centro");
+      return;
+    }
+
+    onSearch(query); // ✅ Enviar vacío para cargar todos los usuarios del centro
+  };
 
   return (
     <div className="buscador-container">
       <h2>Buscar Usuario o Empresa</h2>
-
-      <label htmlFor="busqueda">Introduce tu búsqueda:</label>
       <input
         type="text"
-        id="busqueda"
         placeholder="Escribe aquí..."
-        className="input-busqueda"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
       />
-
-      <button className="boton-buscar">
+      <button className="boton-buscar" onClick={handleSearch}>
         Buscar
       </button>
-
-      <p id="resultado" className="resultado"></p>
     </div>
   );
 };

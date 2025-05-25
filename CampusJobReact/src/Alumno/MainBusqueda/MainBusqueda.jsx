@@ -6,18 +6,22 @@ import ResultadoOfertas from './Components/resultadoOfertas';
 import { useParams } from "react-router-dom";
 
 function MainBusqueda() {
-  const { cursoId } = useParams(); // ✅ Obtener cursoId desde la URL
+  const { cursoId } = useParams();
   const [ofertas, setOfertas] = useState([]);
 
   useEffect(() => {
     const fetchOfertas = async () => {
+      if (!cursoId) {
+        console.error("cursoId no definido");
+        return;
+      }
       try {
-        const response = await fetch(`http://localhost:4000/api/ofertas/${cursoId}/ofertas`);
+        const response = await fetch(`http://localhost:4000/api/centro/curso/${cursoId}/ofertas`);
         const data = await response.json();
-        if (data.success) {
+        if (response.ok && data.success) {
           setOfertas(data.data);
         } else {
-          console.error("Error al cargar ofertas:", data.message);
+          console.error("Error al cargar ofertas:", data.message || "Respuesta incorrecta del servidor");
         }
       } catch (err) {
         console.error("Error al conectar con el servidor:", err);
@@ -33,7 +37,7 @@ function MainBusqueda() {
           <Busqueda />
         </div>
         <div className="mainCenter">
-          <ResultadoOfertas ofertas={ofertas} /> {/* ✅ Pasar ofertas como prop */}
+          <ResultadoOfertas ofertas={ofertas} />
         </div>
       </div>
       <div className="mainFilter">
