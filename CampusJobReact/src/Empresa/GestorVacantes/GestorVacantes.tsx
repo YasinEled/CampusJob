@@ -64,6 +64,7 @@ function GestorOferta() {
       alert("Hubo un problema al conectar con el servidor");
     }
   };
+  
 
   // ✅ Filtrar aplicaciones por estado
   const aplicacionesFiltradas = aplicaciones.filter((app) => {
