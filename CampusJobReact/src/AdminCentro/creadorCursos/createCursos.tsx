@@ -9,16 +9,20 @@ import {
 } from "@ant-design/icons";
 import { Spin } from "antd";
 import { useTranslation } from "react-i18next";
-import "./Style/createCurso.css"
+import "./Style/createCurso.css";
 
 const CreaCurso = () => {
   const { t } = useTranslation();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { centroId } = useParams();
   const navigate = useNavigate();
 
-  const [curso, setCurso] = useState({
+  const [curso, setCurso] = useState<{
+    nombre: string;
+    descripcion: string;
+    foto: string | null; // ✅ Permitir string o null
+  }>({
     nombre: "",
     descripcion: "",
     foto: null,
@@ -29,25 +33,49 @@ const CreaCurso = () => {
     setCurso((prev) => ({ ...prev, [name]: value }));
   };
 
-  // const handleFotoChange = (e) => {
-  //   const file = e.target.files?.[0];
-  //   if (!file) return;
-
-  //   const reader = new FileReader();
-  //   reader.onload = (event) => {
-  //     setCurso((prev) => ({
-  //       ...prev,
-  //       foto: event.target?.result,
-  //     }));
-  //   };
-  //   reader.readAsDataURL(file);
-  // };
+  // ✅ Función reactivada para procesar la imagen
+  const handleFotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+  
+    // ✅ Validar tipo de archivo
+    if (!file.type.startsWith("image/")) {
+      setCurso(prev => ({ ...prev, foto: null }));
+      return;
+    }
+  
+    // ✅ Validar tamaño (máximo 5MB)
+    const maxSize = 5 * 1024 * 1024; // 5MB
+    if (file.size > maxSize) {
+      setCurso(prev => ({ ...prev, foto: null }));
+      return;
+    }
+  
+    // ✅ Resetear error si todo está bien
+    setError(null);
+  
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      // ✅ Asignar base64 al estado
+      setCurso(prev => ({
+        ...prev,
+        foto: event.target?.result as string, // ✅ Forzar tipo string
+      }));
+    };
+    reader.onerror = () => {
+      reader.abort();
+    };
+    reader.readAsDataURL(file);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError(null);
 
     if (!centroId) {
       alert(t("crearCurso.id_centro_no_encontrado"));
+      setLoading(false);
       return;
     }
 
@@ -56,6 +84,7 @@ const CreaCurso = () => {
 
     if (!idUsuario || nivelUsuario === null) {
       alert(t("crearCurso.faltan_datos_usuario"));
+      setLoading(false);
       return;
     }
 
@@ -68,7 +97,7 @@ const CreaCurso = () => {
           body: JSON.stringify({
             nombre: curso.nombre,
             descripcion: curso.descripcion,
-            foto: curso.foto,
+            foto: curso.foto, // ✅ Enviar imagen en base64
             idUsuario,
             nivelUsuario,
           }),
@@ -77,11 +106,9 @@ const CreaCurso = () => {
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        alert(
-          errorData.message ||
-            `Error ${response.status}: ${response.statusText}`
+        throw new Error(
+          errorData.message || `Error ${response.status}: ${response.statusText}`
         );
-        return;
       }
 
       const data = await response.json();
@@ -92,8 +119,11 @@ const CreaCurso = () => {
         alert(data.message || t("crearCurso.error_crear"));
       }
     } catch (err) {
-      console.error("Error al enviar:", err);
+      console.error("Error al crear el curso:", err);
+      setError(err.message || t("crearCurso.error_conexion"));
       alert(t("crearCurso.error_conexion"));
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -138,11 +168,23 @@ const CreaCurso = () => {
             </label>
           </div>
           <div>
-            <label className="ButtonSeleccionarLogoCrearCentro">
+            {/* ✅ Reactivado para seleccionar imagen */}
+            <label
+              className="ButtonSeleccionarLogoCrearCentro"
+              htmlFor="logoInput"
+            >
               {t("crearCurso.logo")}:
-              {/* <input type="file" accept="image/*" onChange={handleFotoChange} /> */}
             </label>
+            <input
+              id="logoInput"
+              type="file"
+              accept="image/*"
+              onChange={handleFotoChange}
+              style={{ display: "none" }}
+            />
           </div>
+
+          {/* ✅ Mostrar previsualización */}
           {curso.foto && (
             <div className="logo-preview">
               <img
@@ -152,7 +194,23 @@ const CreaCurso = () => {
               />
             </div>
           )}
-          <button className="btn-login" type="submit">{t("crearCurso.crear")}</button>
+
+          {/* ✅ Mostrar mensaje de error */}
+          {error && <p className="error-message">{error}</p>}
+
+          <button
+            className="btn-login"
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? (
+              <Spin
+                indicator={<LoadingOutlined style={{ fontSize: 24 }} spin />}
+              />
+            ) : (
+              t("crearCurso.crear")
+            )}
+          </button>
         </form>
       </div>
       <div className="ContainerAdminSupremoUser">
@@ -216,7 +274,6 @@ const CreaCurso = () => {
             ) : (
               <CheckOutlined style={{ fontSize: "100px", color: "green" }} />
             ))}
-
           {loading && (
             <Spin
               indicator={<LoadingOutlined style={{ fontSize: "100px" }} spin />}
@@ -231,4 +288,3 @@ const CreaCurso = () => {
 };
 
 export default CreaCurso;
-
