@@ -78,6 +78,7 @@ function App() {
     } catch (error) {
           //localStorage.setItem("idCentro", 10); // ✅ Nuevo campo
       localStorage.setItem("idUsuario", 10);
+      
         localStorage.setItem("nivelUsuario", 4);
         console.log("Navegando a home admin");
 
@@ -131,7 +132,7 @@ function App() {
                     required
                   />
                 </div>
-                <button type="submit" className="btn-login">{t("header.login")}</button>
+                <button type="submit" className="btn-login">{t("Login")}</button>
               </form>
               {message && <h4>{message}</h4>}
             </div>

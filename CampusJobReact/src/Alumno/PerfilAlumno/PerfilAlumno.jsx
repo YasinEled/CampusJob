@@ -1,30 +1,30 @@
 import React, { useState, useEffect } from "react";
-import "./Style/perfilPropio.css"; // ✅ Usar mismo estilo que PerfilEmpresa
+import "./Style/perfilPropio.css"; // ✅ Usar mismo estilo que Empresa
 import pfp from "../../assets/yasin.jpg";
 import pfpFondo from "../../assets/yasinfondo.jpg";
 import ListaOfertasSolicitadas from "../llistaOfertasEstado";
 import { useParams } from "react-router-dom";
 
-
 function PerfilPropio() {
   const { idUsrAlumno } = useParams();
-
   const [userData, setUserData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     nombre: "",
-    ubicacion: "",
-    telefono: "",
-    email: "",
-    fechaNacimiento: "",
-    descripcion: ""
+    apellido: "",
+    descripcion: "",
+    fotoPerfil: ""
   });
+
+  const userId = localStorage.getItem("idUsuario");
+  const esPropietario = idUsrAlumno ? idUsrAlumno === userId : true;
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
+        const idToFetch = idUsrAlumno || userId;
         const response = await fetch(
-          `http://localhost:4000/api/buscausr/perfil/${idUsrAlumno}`
+          `http://localhost:4000/api/buscausr/perfil/${idToFetch}`
         );
         const data = await response.json();
 
@@ -32,11 +32,9 @@ function PerfilPropio() {
           setUserData(data.data);
           setFormData({
             nombre: data.data.nombre || "",
-            ubicacion: data.data.ubicacion || "",
-            telefono: data.data.telefono || "",
-            email: data.data.email || "",
-            fechaNacimiento: data.data.fechaNacimiento || "",
-            descripcion: data.data.descripcion || ""
+            apellido: data.data.cognoms || "",
+            descripcion: data.data.descripcion || "",
+            fotoPerfil: data.data.fotoperfil || ""
           });
         }
       } catch (err) {
@@ -45,7 +43,7 @@ function PerfilPropio() {
     };
 
     fetchUserData();
-  }, []);
+  }, [idUsrAlumno, userId]);
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -54,14 +52,39 @@ function PerfilPropio() {
     }));
   };
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setFormData((prev) => ({ ...prev, fotoPerfil: event.target.result }));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleSave = async () => {
     try {
+      const updateData = {
+        nombre: formData.nombre,
+        apellido: formData.apellido, 
+        descripcion: formData.descripcion
+      };
+
+      // ✅ Solo incluir foto si se selecciona una nueva
+      if (formData.fotoPerfil) {
+        updateData.fotoPerfil = formData.fotoPerfil;
+      }
+
       const response = await fetch(
-        `http://localhost:4000/api/buscausr/perfil/${idUsrAlumno}/editar`,
+        `http://localhost:4000/api/buscausr/perfil/${userId}/editar`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData)
+          body: JSON.stringify({
+            ...updateData,
+            nivel: localStorage.getItem("nivelUsuario")
+          })
         }
       );
 
@@ -83,12 +106,8 @@ function PerfilPropio() {
     return <div>Cargando...</div>;
   }
 
-  // ✅ Verificar si es el propietario del perfil
-  const esPropietario = idUsrAlumno === parseInt(localStorage.getItem("idUsuario"), 10);
-
-
   return (
-    <main className="PerfilEmpresaContainer"> {/* ✅ Usar misma clase que PerfilEmpresa */}
+    <main className="PerfilEmpresaContainer">
       <div className="PerfilEmpresaMain">
         <div className="PerfilEmpresaFondo">
           <img src={pfpFondo} alt="Fondo" />
@@ -101,14 +120,11 @@ function PerfilPropio() {
         <div className="PerfilEmpresaInfoContainer">
           <div className="PerfilEmpresaInfoPerfil">
             <h1>{userData.nombre} {userData.cognoms}</h1>
-            <p>{userData.nomusuari}</p>
-
-            <p>Granollers</p>
-            <p><strong>Descripción:</strong> {userData.descripcion || "Sin descripción"}</p>
+            <p><strong>Nombre de usuario:</strong> {userData.nomusuari}</p>
             <p><strong>Email:</strong> {userData.email}</p>
             <p><strong>Última conexión:</strong> {userData.lastSingIn}</p>
-            
-            {/* ✅ Mostrar botón solo si es el propietario */}
+            <p><strong>Descripción:</strong> {userData.descripcio || "Sin descripción"}</p>
+
             {esPropietario && (
               <button
                 className="PerfilEmpresaBtnEditarPerfil"
@@ -129,31 +145,13 @@ function PerfilPropio() {
               name="nombre"
               value={formData.nombre}
               onChange={handleChange}
-              placeholder="Nombre completo"
+              placeholder="Nombre"
             />
             <input
-              name="ubicacion"
-              value={formData.ubicacion}
+              name="apellido"
+              value={formData.apellido}
               onChange={handleChange}
-              placeholder="Ubicación"
-            />
-            <input
-              name="telefono"
-              value={formData.telefono}
-              onChange={handleChange}
-              placeholder="Teléfono"
-            />
-            <input
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Email"
-            />
-            <input
-              name="fechaNacimiento"
-              value={formData.fechaNacimiento}
-              onChange={handleChange}
-              placeholder="Fecha de nacimiento"
+              placeholder="Apellido"
             />
             <textarea
               name="descripcion"
@@ -161,13 +159,21 @@ function PerfilPropio() {
               onChange={handleChange}
               placeholder="Descripción"
             />
+            <label className="perfilAlumnopopup-btnSubirImagen">
+              Subir foto de perfil
+              <input
+                type="file"
+                accept="image/*"
+                style={{ display: "none" }}
+                onChange={handleFileChange}
+              />
+            </label>
             <button onClick={handleSave}>Guardar</button>
             <button onClick={() => setIsEditing(false)}>Cancelar</button>
           </div>
         </div>
       )}
 
-      {/* ✅ Mostrar ListaOfertasSolicitadas solo si es el propio perfil */}
       {esPropietario && <ListaOfertasSolicitadas />}
     </main>
   );

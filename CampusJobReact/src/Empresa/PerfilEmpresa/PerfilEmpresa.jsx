@@ -10,29 +10,34 @@ function PerfilEmpresa() {
   const [userData, setUserData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
-    nombre: "",
-    email: "",
-    sector: "",
-    fundacion: "",
-    descripcion: ""
+    empresaNombre: "",
+    descripcion: "",
+    fotoPerfil: ""
   });
+
+  const userId = localStorage.getItem("idUsuario");
+  const esPropietario = idUsrEmpresa ? idUsrEmpresa === userId : true;
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
+        const idToFetch = idUsrEmpresa || userId;
         const response = await fetch(
-          `http://localhost:4000/api/buscausr/perfil/${idUsrEmpresa}`
+          `http://localhost:4000/api/buscausr/perfil/${idToFetch}`
         );
         const data = await response.json();
 
         if (data.success) {
-          setUserData(data.data);
+          const user = data.data;
+
+          // Mapeo si la clave real en DB no es "empresaNombre"
+          const empresaNombreReal = user.nombreempresa || user.nomempresa || user.nombre || "";
+
+          setUserData({ ...user, empresaNombre: empresaNombreReal });
           setFormData({
-            nombre: data.data.nom_empresausr || "",
-            email: data.data.email || "",
-            sector: data.data.sector || "",
-            fundacion: data.data.fundacion || "",
-            descripcion: data.data.descripcion || ""
+            empresaNombre: empresaNombreReal,
+            descripcion: user.descripcion || user.descripcio || "",
+            fotoPerfil: user.fotoperfil || ""
           });
         }
       } catch (err) {
@@ -41,7 +46,7 @@ function PerfilEmpresa() {
     };
 
     fetchUserData();
-  }, [idUsrEmpresa]);
+  }, [idUsrEmpresa, userId]);
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -50,14 +55,37 @@ function PerfilEmpresa() {
     }));
   };
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setFormData((prev) => ({ ...prev, fotoPerfil: event.target.result }));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleSave = async () => {
     try {
+      const updateData = {
+        nombre: formData.empresaNombre, // 👈 backend espera "nombre"
+        descripcion: formData.descripcion
+      };
+
+      if (formData.fotoPerfil && !formData.fotoPerfil.startsWith("data:image")) {
+        updateData.fotoPerfil = formData.fotoPerfil;
+      }
+
       const response = await fetch(
-        `http://localhost:4000/api/buscausr/perfil/${idUsrEmpresa}/editar`,
+        `http://localhost:4000/api/buscausr/perfil/${userId}/editar`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData)
+          body: JSON.stringify({
+            ...updateData,
+            nivel: "1"
+          })
         }
       );
 
@@ -79,9 +107,6 @@ function PerfilEmpresa() {
     return <div>Cargando...</div>;
   }
 
-  // ✅ Verificar si el usuario es el propietario del perfil
-  const esPropietario = userData.id === parseInt(localStorage.getItem("idUsuario"), 10);
-
   return (
     <main className="PerfilEmpresaContainer">
       <div className="PerfilEmpresaMain">
@@ -89,21 +114,17 @@ function PerfilEmpresa() {
           <img src={fondoEmpresa} alt="Fondo" />
           <img
             className="PerfilEmpresaLogo"
-            src={userData.fotoperfil}
+            src={userData.fotoperfil || logoEmpresa}
             alt="Logo de la empresa"
           />
         </div>
         <div className="PerfilEmpresaInfoContainer">
           <div className="PerfilEmpresaInfoPerfil">
             <h1>{userData.nom_empresausr}</h1>
-            <h4><strong>Nom Usuari:</strong> {userData.nomusuari}</h4>
-
-            <p>Granollers</p>
-            <p><strong>Descripción:</strong> {userData.descripcion || "Sin descripción"}</p>
+            <p><strong>Nombre de usuario:</strong> {userData.nomusuari}</p>
             <p><strong>Email:</strong> {userData.email}</p>
             <p><strong>Última conexión:</strong> {userData.lastSingIn}</p>
-            
-            {/* ✅ Mostrar botón solo si es el propietario */}
+            <p><strong>Descripción:</strong> {userData.descripcio || "Sin descripción"}</p>
             {esPropietario && (
               <button
                 className="PerfilEmpresaBtnEditarPerfil"
@@ -119,30 +140,12 @@ function PerfilEmpresa() {
       {isEditing && (
         <div className="PerfilEmpresaPopupOverlay">
           <div className="PerfilEmpresaPopupContenido">
-            <h3>Editar Perfil</h3>
+            <h3>Editar Perfil de la Empresa</h3>
             <input
-              name="nombre"
-              value={formData.nombre}
+              name="empresaNombre"
+              value={formData.empresaNombre}
               onChange={handleChange}
               placeholder="Nombre de la empresa"
-            />
-            <input
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Email"
-            />
-            <input
-              name="sector"
-              value={formData.sector}
-              onChange={handleChange}
-              placeholder="Sector"
-            />
-            <input
-              name="fundacion"
-              value={formData.fundacion}
-              onChange={handleChange}
-              placeholder="Año de fundación"
             />
             <textarea
               name="descripcion"
@@ -150,12 +153,20 @@ function PerfilEmpresa() {
               onChange={handleChange}
               placeholder="Descripción"
             />
+            <label className="perfilAlumnopopup-btnSubirImagen">
+              Subir foto de perfil
+              <input
+                type="file"
+                accept="image/*"
+                style={{ display: "none" }}
+                onChange={handleFileChange}
+              />
+            </label>
             <button onClick={handleSave}>Guardar</button>
             <button onClick={() => setIsEditing(false)}>Cancelar</button>
           </div>
         </div>
       )}
-      <ListaOfertasPropias />
     </main>
   );
 }

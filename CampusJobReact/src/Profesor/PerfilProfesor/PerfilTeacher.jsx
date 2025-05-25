@@ -1,30 +1,28 @@
 import React, { useState, useEffect } from "react";
-import "./Style/perfilTeacher.css";
+import "./Style/perfilTeacher.css"; // ✅ Usar mismo estilo que Empresa
 import fotoProfesor from "../../assets/yasin.jpg";
 import fondoProfesor from "../../assets/yasinfondo.jpg";
 import { useParams } from "react-router-dom";
 
-
 function PerfilTeacher() {
-    const { idUsrProfe } = useParams();
-  
+  const { idUsrProfe } = useParams();
   const [userData, setUserData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     nombre: "",
-    ubicacion: "",
-    especialidad: "",
-    experienciaDesde: "",
-    telefono: "",
-    email: "",
-    descripcion: ""
+    descripcion: "",
+    fotoPerfil: ""
   });
+
+  const userId = localStorage.getItem("idUsuario");
+  const esPropietario = idUsrProfe ? idUsrProfe === userId : true;
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
+        const idToFetch = idUsrProfe || userId;
         const response = await fetch(
-          `http://localhost:4000/api/buscausr/perfil/${idUsrProfe}`
+          `http://localhost:4000/api/buscausr/perfil/${idToFetch}`
         );
         const data = await response.json();
 
@@ -32,12 +30,8 @@ function PerfilTeacher() {
           setUserData(data.data);
           setFormData({
             nombre: data.data.nombre || "",
-            ubicacion: data.data.ubicacion || "",
-            especialidad: data.data.especialidad || "",
-            experienciaDesde: data.data.experienciaDesde || "",
-            telefono: data.data.telefono || "",
-            email: data.data.email || "",
-            descripcion: data.data.descripcion || ""
+            descripcion: data.data.descripcion || "",
+            fotoPerfil: data.data.fotoperfil || ""
           });
         }
       } catch (err) {
@@ -46,7 +40,7 @@ function PerfilTeacher() {
     };
 
     fetchUserData();
-  }, []);
+  }, [idUsrProfe, userId]);
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -55,14 +49,39 @@ function PerfilTeacher() {
     }));
   };
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setFormData((prev) => ({ ...prev, fotoPerfil: event.target.result }));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleSave = async () => {
     try {
+      const updateData = {
+        nombre: formData.nombre,
+        
+        descripcion: formData.descripcion
+      };
+
+      // ✅ Solo actualizar foto si hay una nueva
+      if (formData.fotoPerfil && !formData.fotoPerfil.startsWith("data:image")) {
+        updateData.fotoPerfil = formData.fotoPerfil;
+      }
+
       const response = await fetch(
-        `http://localhost:4000/api/buscausr/perfil/${idUsrProfe}}/editar`,
+        `http://localhost:4000/api/buscausr/perfil/${userId}/editar`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData)
+          body: JSON.stringify({
+            ...updateData,
+            nivel: localStorage.getItem("nivelUsuario")
+          })
         }
       );
 
@@ -84,13 +103,11 @@ function PerfilTeacher() {
     return <div>Cargando...</div>;
   }
 
-  const esPropietario = idUsrProfe === parseInt(localStorage.getItem("idUsuario"), 10);
-
   return (
     <main className="PerfilEmpresaContainer">
       <div className="PerfilEmpresaMain">
         <div className="PerfilEmpresaFondo">
-          <img src={fondoProfesor} alt="Fondo" />
+          <img src={fondoProfesor} alt="Fondo Profesor" />
           <img
             className="PerfilEmpresaLogo"
             src={userData.fotoperfil || fotoProfesor}
@@ -99,14 +116,10 @@ function PerfilTeacher() {
         </div>
         <div className="PerfilEmpresaInfoContainer">
           <div className="PerfilEmpresaInfoPerfil">
-          <h1>{userData.nombre} {userData.cognoms}</h1>
-            <p>{userData.nomusuari}</p>
-
-            <p>Granollers</p>
-            <p><strong>Descripción:</strong> {userData.descripcion || "Sin descripción"}</p>
+            <h1>{userData.nombre} {userData.cognoms}</h1>
             <p><strong>Email:</strong> {userData.email}</p>
             <p><strong>Última conexión:</strong> {userData.lastSingIn}</p>
-
+            <p><strong>Descripción:</strong> {userData.descripcio || "Sin descripción"}</p>
             
             {/* ✅ Mostrar botón solo si es el propietario */}
             {esPropietario && (
@@ -114,7 +127,7 @@ function PerfilTeacher() {
                 className="PerfilEmpresaBtnEditarPerfil"
                 onClick={() => setIsEditing(true)}
               >
-                Modificar perfil
+                Modificar Perfil
               </button>
             )}
           </div>
@@ -131,42 +144,21 @@ function PerfilTeacher() {
               onChange={handleChange}
               placeholder="Nombre completo"
             />
-            <input
-              name="ubicacion"
-              value={formData.ubicacion}
-              onChange={handleChange}
-              placeholder="Ubicación"
-            />
-            <input
-              name="especialidad"
-              value={formData.especialidad}
-              onChange={handleChange}
-              placeholder="Especialidad"
-            />
-            <input
-              name="experienciaDesde"
-              value={formData.experienciaDesde}
-              onChange={handleChange}
-              placeholder="Experiencia desde (año)"
-            />
-            <input
-              name="telefono"
-              value={formData.telefono}
-              onChange={handleChange}
-              placeholder="Teléfono"
-            />
-            <input
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Email"
-            />
             <textarea
               name="descripcion"
               value={formData.descripcion}
               onChange={handleChange}
               placeholder="Descripción"
             />
+            <label className="perfilAlumnopopup-btnSubirImagen">
+              Subir foto de perfil
+              <input
+                type="file"
+                accept="image/*"
+                style={{ display: "none" }}
+                onChange={handleFileChange}
+              />
+            </label>
             <button onClick={handleSave}>Guardar</button>
             <button onClick={() => setIsEditing(false)}>Cancelar</button>
           </div>
