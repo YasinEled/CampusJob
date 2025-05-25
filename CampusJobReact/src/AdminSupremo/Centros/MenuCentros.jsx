@@ -43,6 +43,7 @@ export default function MenuCentros() {
     // Redirigir según el rol del usuario
     if (nivelUsuario === "4") {
       // AdminSupremo → /centro/:centroId/elegirCurso
+      localStorage.setItem("idCentro", id);
       navigate(`/centro/${id}/elegirCurso`);
     } else {
       navigate("/unauthorized");
