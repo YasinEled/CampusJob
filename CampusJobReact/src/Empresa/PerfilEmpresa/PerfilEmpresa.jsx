@@ -179,7 +179,9 @@ function PerfilEmpresa() {
           </div>
         </div>
       )}
-            <ListaOfertasPropias />
+            {esPropietario && (
+              <ListaOfertasPropias />
+            )}
 
     </main>
   );
