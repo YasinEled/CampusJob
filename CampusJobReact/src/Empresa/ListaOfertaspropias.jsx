@@ -60,7 +60,7 @@ function ListaOfertasPropias() {
           >
             <img
               className="ofertaPropia-ImagenEmpresa"
-              src={campusJobFavicon}
+              src={oferta.imgoferte}
               alt="CampusJob Logo"
             />
             <div className="ofertaPropia-TextContainer">

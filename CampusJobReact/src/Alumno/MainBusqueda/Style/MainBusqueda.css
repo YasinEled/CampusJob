@@ -5,6 +5,25 @@
     align-items: flex-start;
     width: 100%;
 }
+/* ./Style/MainBusqueda.css */
+.btn-anadir-oferta {
+    display: inline-block;
+    padding: 0.8em 1.5em;
+    background-color: #045e56;
+    color: white;
+    border: none;
+    margin-right: 1000px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.1em;
+    margin-bottom: 1em;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-anadir-oferta:hover {
+    background-color: #037971;
+  }
 
 /* Contenedor para la búsqueda y el resultado (columna central) */
 .mainContent {
