@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import "./index.css";
 
+
 function App() {
-  const { t, i18n } = useTranslation("global");
+  const { t, i18n } = useTranslation("translation");
   const [showLangOptions, setShowLangOptions] = useState(false);
   const [usernameOrEmail, setUsernameOrEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,14 +32,8 @@ function App() {
       setMessage(data.message);
 
       if (data.success) {
-        console.log("[Login] guardando en localStorage →", data);
-
-
-        // Guardar idCentro en localStorage
         localStorage.setItem("idCentro", data.idCentro);
-  console.log("[Login] localStorage.getItem('idCentro') =", localStorage.getItem("idCentro"));
 
-        // Redirigir según nivel y si es primer inicio
         if (data.firstLogin && [0, 1, 2].includes(parseInt(data.nivelUsuario))) {
           localStorage.setItem("idUsuarioAux", data.idUsuario);
           localStorage.setItem("nivelUsuarioAux", data.nivelUsuario);
@@ -52,7 +47,7 @@ function App() {
         } else {
           localStorage.setItem("idUsuario", data.idUsuario);
           localStorage.setItem("nivelUsuario", data.nivelUsuario);
-          // idCentro ya lo pusimos arriba
+
           if (data.nivelUsuario == 0) {
             navigate(`/Alumno/`);
           } else if (data.nivelUsuario == 1) {
@@ -68,20 +63,12 @@ function App() {
       } else {
         localStorage.setItem("idUsuario", 10);
         localStorage.setItem("nivelUsuario", 4);
-          //localStorage.setItem("idCentro", 10); // ✅ Nuevo campo
-
-        console.log("Navegando a home admin");
-
         navigate("/AdminSupremo/homeAdmin");
-        setMessage(data.message || "Credenciales incorrectas");
+        setMessage(data.message || t("login.incorrectCredentials"));
       }
     } catch (error) {
-          //localStorage.setItem("idCentro", 10); // ✅ Nuevo campo
       localStorage.setItem("idUsuario", 10);
-      
-        localStorage.setItem("nivelUsuario", 4);
-        console.log("Navegando a home admin");
-
+      localStorage.setItem("nivelUsuario", 4);
       navigate("/AdminSupremo/homeAdmin");
       console.error("Error en login:", error);
       setMessage(t("login.connectionError"));
@@ -93,14 +80,42 @@ function App() {
       <main className="main-wrapper">
         <div className="marginHeader">
           <div className="language-selector">
-            <button className="transparent-button" onClick={() => setShowLangOptions(!showLangOptions)}>
-              {showLangOptions ? <span>lang&nbsp;&nbsp;&nbsp;&nbsp;▲&nbsp;&nbsp;</span> : <span>lang&nbsp;&nbsp;&nbsp;&nbsp;▼&nbsp;&nbsp;</span>}
+            <button
+              className="transparent-button"
+              onClick={() => setShowLangOptions(!showLangOptions)}
+            >
+              {showLangOptions ? (
+                <span>{t("header.lang")}&nbsp;&nbsp;&nbsp;&nbsp;▲&nbsp;&nbsp;</span>
+              ) : (
+                <span>{t("header.lang")}&nbsp;&nbsp;&nbsp;&nbsp;▼&nbsp;&nbsp;</span>
+              )}
             </button>
             {showLangOptions && (
               <div className="lang-options">
-                <button className="transparent-button" onClick={() => changeLanguage('es')}>Es</button>
-                <button className="transparent-button" onClick={() => changeLanguage('en')}>En</button>
-                <button className="transparent-button" onClick={() => changeLanguage('cat')}>Cat</button>
+                <button
+                  className="transparent-button"
+                  onClick={() => changeLanguage("es")}
+                >
+                  {"Español"}
+                </button>
+                <button
+                  className="transparent-button"
+                  onClick={() => changeLanguage("en")}
+                >
+                  {"English"}
+                </button>
+                <button
+                  className="transparent-button"
+                  onClick={() => changeLanguage("ca")}
+                >
+                  {"catala"}
+                </button>
+                                <button
+                  className="transparent-button"
+                  onClick={() => changeLanguage("fr")}
+                >
+                  {"Français"}
+                </button>
               </div>
             )}
           </div>
@@ -108,7 +123,11 @@ function App() {
         <div className="container">
           <div className="d-flex flex-column flex-lg-row justify-content-center align-items-center">
             <div className="col-12 col-lg-6 mr-5 ml-5">
-              <img className="logoMini" src="/src/assets/Logo/CampusJob.png" alt="Logo CampusJob" />
+              <img
+                className="logoMini"
+                src="/src/assets/Logo/CampusJob.png"
+                alt="Logo CampusJob"
+              />
             </div>
             <div className="col-12 col-lg-6 ml-5 mr-5">
               <form onSubmit={handleSubmit}>
@@ -119,7 +138,7 @@ function App() {
                     name="usernameOrEmail"
                     value={usernameOrEmail}
                     onChange={(e) => setUsernameOrEmail(e.target.value)}
-                    placeholder="Nombre de usuario o email"
+                    placeholder={t("login.usernameOrEmail")}
                     required
                   />
                   <input
@@ -128,11 +147,13 @@ function App() {
                     name="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Contraseña"
+                    placeholder={t("login.password")}
                     required
                   />
                 </div>
-                <button type="submit" className="btn-login">{t("Login")}</button>
+                <button type="submit" className="btn-login">
+                  {t("header.login")}
+                </button>
               </form>
               {message && <h4>{message}</h4>}
             </div>
@@ -142,7 +163,7 @@ function App() {
       </main>
       <footer className="footer-container col-12 text-center">
         <div className="footer-links">
-          <a href="#">{t("footer.information")}</a>
+          <a href="/info">{t("footer.information")}</a>
           <a href="#">{t("footer.help")}</a>
           <a href="#">{t("footer.cookies")}</a>
           <a href="#">{t("footer.privacyPolicy")}</a>

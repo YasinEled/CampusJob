@@ -1,21 +1,29 @@
 {
-    "header": {
-        "title": "Campus Jobs",
-        "login": "Iniciar sesion",
-        "contact": "Contacto",
-        "company": "¿ Eres una empresa ?"
-    },
-    "footer": {
-        "information": "Informacion",
-        "help": "Ayuda",
-        "cookies": "Politica de cookies",
-        "privacyPolicy": "Polotica de privacidad",
-        "accessibility": "Accesibilidad",
-        "termsOfService": "Terminos de servicio"
-    },
-    "login": {
-        "connectionError": "Hubo un problema conectando con el servidor"
-      },
+  
+
+  "header": {
+    "title": "Campus Jobs",
+    "login": "Iniciar sesión",
+    "contact": "Contacto",
+    "company": "¿ Eres una empresa ?",
+    "lang": "Idioma"
+  },
+  "footer": {
+    "information": "Información",
+    "help": "Ayuda",
+    "cookies": "Política de cookies",
+    "privacyPolicy": "Política de privacidad",
+    "accessibility": "Accesibilidad",
+    "termsOfService": "Términos de servicio"
+  },
+  "login": {
+    "connectionError": "Hubo un problema conectando con el servidor",
+    "usernameOrEmail": "Nombre de usuario o email",
+    "password": "Contraseña",
+    "incorrectCredentials": "Credenciales incorrectas"
+  },
+
+
     "GestionUsuarios": {
         "available_users": "Usuarios disponibles",
         "add": "Añadir",

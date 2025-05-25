@@ -3,18 +3,22 @@
     "title": "Campus Jobs",
     "login": "Log In",
     "contact": "Contact",
-    "company": "Are you a company?"
+    "company": "Are you a company?",
+    "lang": "Language"
   },
   "footer": {
     "information": "Information",
     "help": "Help",
-    "cookies": "Cookies Policy",
+    "cookies": "Cookie Policy",
     "privacyPolicy": "Privacy Policy",
     "accessibility": "Accessibility",
     "termsOfService": "Terms of Service"
   },
   "login": {
-    "connectionError": "There was a problem connecting to the server"
+    "connectionError": "There was a problem connecting to the server",
+    "usernameOrEmail": "Username or Email",
+    "password": "Password",
+    "incorrectCredentials": "Incorrect credentials"
   },
   "GestionUsuarios": {
     "available_users": "Available users",
@@ -29,18 +33,18 @@
   "perfil": {
     "fondo_alt": "Background",
     "perfil_alt": "Profile",
-    "modificar_perfil": "Edit profile",
-    "imagen_centro_alt": "Center Image",
-    "editar_perfil": "Edit Profile",
+    "modificar_perfil": "Modify profile",
+    "imagen_centro_alt": "Center image",
+    "editar_perfil": "Edit profile",
     "nombre": "Name",
     "ubicacion": "Location",
     "telefono": "Phone",
     "email": "Email",
-    "fecha_nacimiento": "Date of Birth",
+    "fecha_nacimiento": "Date of birth",
     "descripcion": "Description",
     "aniadir_cv": "Add CV (PDF or PNG)",
-    "aniadir_foto": "Add Profile Photo",
-    "archivo_seleccionado": "Selected file",
+    "aniadir_foto": "Add profile photo",
+    "archivo_seleccionado": "File selected",
     "guardar": "Save",
     "cancelar": "Cancel"
   },
@@ -53,8 +57,8 @@
     "logoCampusJob": "CampusJob Logo"
   },
   "informacionOferta": {
-    "fondo_alt": "Company Background",
-    "logo_alt": "Company Logo",
+    "fondo_alt": "Company background",
+    "logo_alt": "Company logo",
     "titulo": "{{titulo}}",
     "descripcion": "{{descripcion}}",
     "jornada": "{{jornada}}",
@@ -73,34 +77,32 @@
     "requisitos": {
       "titulo": "Requirements",
       "experiencia": "Previous experience in frontend development with React.",
-      "conocimiento": "Knowledge of HTML, CSS and JavaScript.",
+      "conocimiento": "Knowledge of HTML, CSS, and JavaScript.",
       "trabajoEquipo": "Ability to work in a team.",
       "comunicacion": "Good communication and proactive attitude."
     },
     "ubicacion": {
-      "titulo": "Company Location",
+      "titulo": "Company location",
       "mapaTitulo": "Map of {{ciudad}}",
       "verMapaCompleto": "View full map of {{ciudad}}"
     }
   },
   "crearCurso": {
-  "crear_en": "Create Course in Center ID: {{id}}",
-  "nombre": "Course Name",
-  "descripcion": "Description",
-  "logo": "Course Logo",
-  "vista_previa_logo": "Logo preview",
-  "crear": "Create Course",
-  "id_centro_no_encontrado": "Center ID not found",
-  "faltan_datos_usuario": "User data missing",
-  "curso_creado_exito": "Course created successfully",
-  "error_crear": "Error creating the course",
-  "error_conexion": "There was a problem connecting to the server"
-},
-"adminSup": {
-  "nombre": "Yasin El Edrissi",
-  "email": "Yasin@gmail.com",
-  "status": "STATUS"
-}
-
-
+    "crear_en": "Create course at Center ID: {{id}}",
+    "nombre": "Course name",
+    "descripcion": "Description",
+    "logo": "Course logo",
+    "vista_previa_logo": "Logo preview",
+    "crear": "Create course",
+    "id_centro_no_encontrado": "Center ID not found",
+    "faltan_datos_usuario": "User data missing",
+    "curso_creado_exito": "Course created successfully",
+    "error_crear": "Error creating the course",
+    "error_conexion": "There was a problem connecting to the server"
+  },
+  "adminSup": {
+    "nombre": "Yasin El Edrissi",
+    "email": "Yasin@gmail.com",
+    "status": "STATUS"
+  }
 }
