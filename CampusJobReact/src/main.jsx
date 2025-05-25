@@ -37,6 +37,7 @@ import ListaOfertasPropias from "./Empresa/ListaOfertaspropias.jsx";
 import Logout from "./logout.jsx";
 import NotFound from "./Common/NotFound/NotFound.jsx";
 import ProtectedRoute from "./Auth/Servicios/ProtectedRoute.jsx";
+import Info from "./Información/Info.jsx"
 
 // Traducciones
 import global_es from "./TRADUCCIONES/es/global.json";
@@ -298,9 +299,11 @@ root.render(
           >
             <Route path="" element={<SeachUser />} />
           </Route>
+            <Route path="/info" element={<Info />} />
 
           <Route path="*" element={<MenuHome userType={nivelUsuario} />}>
             <Route path="*" element={<NotFound />} />
+
           </Route>
         </Routes>
       </Router>
