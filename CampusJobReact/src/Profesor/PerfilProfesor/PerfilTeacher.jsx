@@ -10,6 +10,7 @@ function PerfilTeacher() {
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     nombre: "",
+    apellido: "",
     descripcion: "",
     fotoPerfil: ""
   });
@@ -30,6 +31,7 @@ function PerfilTeacher() {
           setUserData(data.data);
           setFormData({
             nombre: data.data.nombre || "",
+            apellido: data.data.cognoms || "", // ✅ Cargar apellido desde `cognoms`
             descripcion: data.data.descripcion || "",
             fotoPerfil: data.data.fotoperfil || ""
           });
@@ -64,11 +66,11 @@ function PerfilTeacher() {
     try {
       const updateData = {
         nombre: formData.nombre,
-        
+        apellido: formData.apellido, // ✅ Enviar apellido
         descripcion: formData.descripcion
       };
 
-      // ✅ Solo actualizar foto si hay una nueva
+      // ✅ Solo incluir foto si hay una nueva
       if (formData.fotoPerfil && !formData.fotoPerfil.startsWith("data:image")) {
         updateData.fotoPerfil = formData.fotoPerfil;
       }
@@ -80,7 +82,7 @@ function PerfilTeacher() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             ...updateData,
-            nivel: localStorage.getItem("nivelUsuario")
+            nivel: "2" // Fijo para profesores
           })
         }
       );
@@ -119,7 +121,7 @@ function PerfilTeacher() {
             <h1>{userData.nombre} {userData.cognoms}</h1>
             <p><strong>Email:</strong> {userData.email}</p>
             <p><strong>Última conexión:</strong> {userData.lastSingIn}</p>
-            <p><strong>Descripción:</strong> {userData.descripcio || "Sin descripción"}</p>
+            <p><strong>Descripción:</strong> {userData.descripcion || "Sin descripción"}</p>
             
             {/* ✅ Mostrar botón solo si es el propietario */}
             {esPropietario && (
@@ -127,7 +129,7 @@ function PerfilTeacher() {
                 className="PerfilEmpresaBtnEditarPerfil"
                 onClick={() => setIsEditing(true)}
               >
-                Modificar Perfil
+                Modificar perfil
               </button>
             )}
           </div>
@@ -142,7 +144,13 @@ function PerfilTeacher() {
               name="nombre"
               value={formData.nombre}
               onChange={handleChange}
-              placeholder="Nombre completo"
+              placeholder="Nombre"
+            />
+            <input
+              name="apellido"
+              value={formData.apellido}
+              onChange={handleChange}
+              placeholder="Apellido"
             />
             <textarea
               name="descripcion"

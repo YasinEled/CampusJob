@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Style/perfilPropio.css"; // ✅ Usar mismo estilo que Empresa
+import "./Style/perfilPropio.css";
 import pfp from "../../assets/yasin.jpg";
 import pfpFondo from "../../assets/yasinfondo.jpg";
 import ListaOfertasSolicitadas from "../llistaOfertasEstado";
@@ -13,7 +13,8 @@ function PerfilPropio() {
     nombre: "",
     apellido: "",
     descripcion: "",
-    fotoPerfil: ""
+    fotoPerfil: "",
+    curriculum: "" // ✅ Nuevo campo para el currículum
   });
 
   const userId = localStorage.getItem("idUsuario");
@@ -34,7 +35,8 @@ function PerfilPropio() {
             nombre: data.data.nombre || "",
             apellido: data.data.cognoms || "",
             descripcion: data.data.descripcion || "",
-            fotoPerfil: data.data.fotoperfil || ""
+            fotoPerfil: data.data.fotoperfil || "",
+            curriculum: data.data.curriculum || "" // ✅ Cargar currículum si existe
           });
         }
       } catch (err) {
@@ -63,16 +65,28 @@ function PerfilPropio() {
     }
   };
 
+  const handleCvChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setFormData((prev) => ({ ...prev, curriculum: event.target.result }));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleSave = async () => {
     try {
       const updateData = {
         nombre: formData.nombre,
-        apellido: formData.apellido, 
-        descripcion: formData.descripcion
+        apellido: formData.apellido,
+        descripcion: formData.descripcion,
+        curriculum: formData.curriculum // ✅ Enviar currículum con el perfil
       };
 
       // ✅ Solo incluir foto si se selecciona una nueva
-      if (formData.fotoPerfil) {
+      if (formData.fotoPerfil && !formData.fotoPerfil.startsWith("data:image")) {
         updateData.fotoPerfil = formData.fotoPerfil;
       }
 
@@ -123,8 +137,8 @@ function PerfilPropio() {
             <p><strong>Nombre de usuario:</strong> {userData.nomusuari}</p>
             <p><strong>Email:</strong> {userData.email}</p>
             <p><strong>Última conexión:</strong> {userData.lastSingIn}</p>
-            <p><strong>Descripción:</strong> {userData.descripcio || "Sin descripción"}</p>
-
+            <p><strong>Descripción:</strong> {userData.descripcion || "Sin descripción"}</p>
+            
             {esPropietario && (
               <button
                 className="PerfilEmpresaBtnEditarPerfil"
@@ -166,6 +180,15 @@ function PerfilPropio() {
                 accept="image/*"
                 style={{ display: "none" }}
                 onChange={handleFileChange}
+              />
+            </label>
+            <label className="perfilAlumnopopup-btnSubirCV">
+              Subir currículum (PDF/DOC)
+              <input
+                type="file"
+                accept=".pdf,.doc,.docx"
+                style={{ display: "none" }}
+                onChange={handleCvChange}
               />
             </label>
             <button onClick={handleSave}>Guardar</button>

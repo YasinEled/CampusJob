@@ -3,6 +3,7 @@ import "./Style/perfilEmpresa.css";
 import logoEmpresa from "../../assets/yasin.jpg";
 import fondoEmpresa from "../../assets/yasinfondo.jpg";
 import ListaOfertasPropias from "../ListaOfertaspropias";
+
 import { useParams } from "react-router-dom";
 
 function PerfilEmpresa() {
@@ -21,7 +22,7 @@ function PerfilEmpresa() {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const idToFetch = idUsrEmpresa || userId;
+        const idToFetch = idUsrEmpresa;
         const response = await fetch(
           `http://localhost:4000/api/buscausr/perfil/${idToFetch}`
         );
@@ -30,12 +31,15 @@ function PerfilEmpresa() {
         if (data.success) {
           const user = data.data;
 
-          // Mapeo si la clave real en DB no es "empresaNombre"
-          const empresaNombreReal = user.nombreempresa || user.nomempresa || user.nombre || "";
+          // ✅ Usar los campos correctos desde el backend
+          setUserData({
+            ...user,
+            empresaNombre: user.nom_empresausr || "",
+            descripcion: user.descripcion || user.descripcio || ""
+          });
 
-          setUserData({ ...user, empresaNombre: empresaNombreReal });
           setFormData({
-            empresaNombre: empresaNombreReal,
+            empresaNombre: user.nom_empresausr || "",
             descripcion: user.descripcion || user.descripcio || "",
             fotoPerfil: user.fotoperfil || ""
           });
@@ -68,11 +72,18 @@ function PerfilEmpresa() {
 
   const handleSave = async () => {
     try {
-      const updateData = {
-        nombre: formData.empresaNombre, // 👈 backend espera "nombre"
-        descripcion: formData.descripcion
-      };
+      const updateData = {};
 
+      // ✅ Solo incluir campos definidos
+      if (formData.empresaNombre) {
+        updateData.empresaNombre = formData.empresaNombre;
+      }
+
+      if (formData.descripcion) {
+        updateData.descripcion = formData.descripcion;
+      }
+
+      // ✅ Solo incluir foto si hay una nueva
       if (formData.fotoPerfil && !formData.fotoPerfil.startsWith("data:image")) {
         updateData.fotoPerfil = formData.fotoPerfil;
       }
@@ -84,7 +95,7 @@ function PerfilEmpresa() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             ...updateData,
-            nivel: "1"
+            nivel: "1" // Fijo para empresas
           })
         }
       );
@@ -120,11 +131,12 @@ function PerfilEmpresa() {
         </div>
         <div className="PerfilEmpresaInfoContainer">
           <div className="PerfilEmpresaInfoPerfil">
-            <h1>{userData.nom_empresausr}</h1>
+            <h1>{userData.empresaNombre}</h1> {/* ✅ Mostrar nombre correcto */}
             <p><strong>Nombre de usuario:</strong> {userData.nomusuari}</p>
             <p><strong>Email:</strong> {userData.email}</p>
             <p><strong>Última conexión:</strong> {userData.lastSingIn}</p>
-            <p><strong>Descripción:</strong> {userData.descripcio || "Sin descripción"}</p>
+            <p><strong>Descripción:</strong> {userData.descripcion || "Sin descripción"}</p>
+            
             {esPropietario && (
               <button
                 className="PerfilEmpresaBtnEditarPerfil"
@@ -140,7 +152,7 @@ function PerfilEmpresa() {
       {isEditing && (
         <div className="PerfilEmpresaPopupOverlay">
           <div className="PerfilEmpresaPopupContenido">
-            <h3>Editar Perfil de la Empresa</h3>
+            <h3>Editar Perfil</h3>
             <input
               name="empresaNombre"
               value={formData.empresaNombre}
@@ -167,6 +179,8 @@ function PerfilEmpresa() {
           </div>
         </div>
       )}
+            <ListaOfertasPropias />
+
     </main>
   );
 }
