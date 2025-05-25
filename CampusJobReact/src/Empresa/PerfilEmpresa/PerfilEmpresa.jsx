@@ -1,170 +1,160 @@
+import React, { useState, useEffect } from "react";
 import "./Style/perfilEmpresa.css";
 import logoEmpresa from "../../assets/yasin.jpg";
 import fondoEmpresa from "../../assets/yasinfondo.jpg";
-import { useState, useRef } from "react";
-import { useTranslation } from "react-i18next";
 import ListaOfertasPropias from "../ListaOfertaspropias";
+import { useParams } from "react-router-dom";
 
 function PerfilEmpresa() {
-  const { t } = useTranslation();
+  const { idUsrEmpresa } = useParams();
+  const [userData, setUserData] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [formData, setFormData] = useState({
+    nombre: "",
+    email: "",
+    sector: "",
+    fundacion: "",
+    descripcion: ""
+  });
 
-  const [mostrarPopup, setMostrarPopup] = useState(false);
-  const [mostrarMensaje, setMostrarMensaje] = useState(false);
-  const [mensaje, setMensaje] = useState("");
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:4000/api/buscausr/perfil/${idUsrEmpresa}`
+        );
+        const data = await response.json();
 
-  const [nombre, setNombre] = useState("TechNova Solutions");
-  const [ubicacion, setUbicacion] = useState("Barcelona, Cataluña, España");
-  const [sector, setSector] = useState("Desarrollo de Software");
-  const [fundacion, setFundacion] = useState("2015");
-  const [telefono, setTelefono] = useState("+34 654321098");
-  const [email, setEmail] = useState("contacto@technova.com");
-  const [descripcion, setDescripcion] = useState(
-    "Empresa dedicada a soluciones tecnológicas innovadoras con foco en eficiencia, escalabilidad y experiencia de usuario."
-  );
+        if (data.success) {
+          setUserData(data.data);
+          setFormData({
+            nombre: data.data.nom_empresausr || "",
+            email: data.data.email || "",
+            sector: data.data.sector || "",
+            fundacion: data.data.fundacion || "",
+            descripcion: data.data.descripcion || ""
+          });
+        }
+      } catch (err) {
+        console.error("Error al cargar perfil:", err);
+      }
+    };
 
-  const nivelUsuario = localStorage.getItem("nivelUsuario");
-  const fileInputRef = useRef(null);
+    fetchUserData();
+  }, [idUsrEmpresa]);
 
-  const handleGuardar = () => {
-    setMostrarPopup(false);
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
   };
 
-  const handleEnviarMensaje = () => {
-    console.log(t("perfilEmpresa.logMensajeEnviado"), mensaje);
-    setMensaje("");
-    setMostrarMensaje(false);
-  };
+  const handleSave = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/api/buscausr/perfil/${idUsrEmpresa}/editar`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData)
+        }
+      );
 
-  const handleCambiarFoto = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      console.log(t("perfilEmpresa.msgNuevaFoto", { name: file.name }));
-      // Implementa la lógica para actualizar la foto
+      const result = await response.json();
+      if (result.success) {
+        alert("Perfil actualizado exitosamente");
+        setUserData({ ...userData, ...formData });
+        setIsEditing(false);
+      } else {
+        alert("Error al actualizar el perfil");
+      }
+    } catch (error) {
+      console.error("Error al guardar cambios:", error);
+      alert("Hubo un problema al conectar con el servidor");
     }
   };
+
+  if (!userData) {
+    return <div>Cargando...</div>;
+  }
+
+  // ✅ Verificar si el usuario es el propietario del perfil
+  const esPropietario = userData.id === parseInt(localStorage.getItem("idUsuario"), 10);
 
   return (
     <main className="PerfilEmpresaContainer">
       <div className="PerfilEmpresaMain">
         <div className="PerfilEmpresaFondo">
-          <img src={fondoEmpresa} alt={t("perfilEmpresa.altFondo") || "Fondo"} />
+          <img src={fondoEmpresa} alt="Fondo" />
           <img
             className="PerfilEmpresaLogo"
-            src={logoEmpresa}
-            alt={t("perfilEmpresa.altLogo") || "Logo"}
+            src={userData.fotoperfil}
+            alt="Logo de la empresa"
           />
         </div>
         <div className="PerfilEmpresaInfoContainer">
           <div className="PerfilEmpresaInfoPerfil">
-            <h2>{nombre}</h2>
-            <p>{ubicacion}</p>
-            <p>
-              <strong>{t("perfilEmpresa.sector")}:</strong> {sector}
-            </p>
-            <p>
-              <strong>{t("perfilEmpresa.fundacion")}:</strong> {fundacion}
-            </p>
-            <p>
-              <strong>{t("perfilEmpresa.telefono")}:</strong> {telefono}
-            </p>
-            <p>
-              <strong>{t("perfilEmpresa.email")}:</strong> {email}
-            </p>
-            <p>{descripcion}</p>
-            {nivelUsuario == "1" && (
+            <h1>{userData.nom_empresausr}</h1>
+            <h4><strong>Nom Usuari:</strong> {userData.nomusuari}</h4>
+
+            <p>Granollers</p>
+            <p><strong>Descripción:</strong> {userData.descripcion || "Sin descripción"}</p>
+            <p><strong>Email:</strong> {userData.email}</p>
+            <p><strong>Última conexión:</strong> {userData.lastSingIn}</p>
+            
+            {/* ✅ Mostrar botón solo si es el propietario */}
+            {esPropietario && (
               <button
                 className="PerfilEmpresaBtnEditarPerfil"
-                onClick={() => setMostrarPopup(true)}
+                onClick={() => setIsEditing(true)}
               >
-                {t("perfilEmpresa.modificarPerfil")}
+                Modificar Perfil
               </button>
             )}
-
-            <button
-              className="PerfilEmpresaBtnMensaje"
-              onClick={() => setMostrarMensaje(true)}
-            >
-              {t("perfilEmpresa.enviarMensaje")}
-            </button>
           </div>
         </div>
       </div>
 
-      {mostrarPopup && (
+      {isEditing && (
         <div className="PerfilEmpresaPopupOverlay">
           <div className="PerfilEmpresaPopupContenido">
-            <h3>{t("perfilEmpresa.editarPerfil")}</h3>
+            <h3>Editar Perfil</h3>
             <input
-              value={nombre}
-              onChange={(e) => setNombre(e.target.value)}
-              placeholder={t("perfilEmpresa.nombreEmpresa")}
+              name="nombre"
+              value={formData.nombre}
+              onChange={handleChange}
+              placeholder="Nombre de la empresa"
             />
             <input
-              value={ubicacion}
-              onChange={(e) => setUbicacion(e.target.value)}
-              placeholder={t("perfilEmpresa.ubicacion")}
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Email"
             />
             <input
-              value={sector}
-              onChange={(e) => setSector(e.target.value)}
-              placeholder={t("perfilEmpresa.sector")}
+              name="sector"
+              value={formData.sector}
+              onChange={handleChange}
+              placeholder="Sector"
             />
             <input
-              value={fundacion}
-              onChange={(e) => setFundacion(e.target.value)}
-              placeholder={t("perfilEmpresa.anoFundacion")}
-            />
-            <input
-              value={telefono}
-              onChange={(e) => setTelefono(e.target.value)}
-              placeholder={t("perfilEmpresa.telefono")}
-            />
-            <input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder={t("perfilEmpresa.email")}
+              name="fundacion"
+              value={formData.fundacion}
+              onChange={handleChange}
+              placeholder="Año de fundación"
             />
             <textarea
-              value={descripcion}
-              onChange={(e) => setDescripcion(e.target.value)}
-              placeholder={t("perfilEmpresa.descripcion")}
+              name="descripcion"
+              value={formData.descripcion}
+              onChange={handleChange}
+              placeholder="Descripción"
             />
-
-            <button
-              className="PerfilEmpresaBtnCambiarFoto"
-              onClick={() => fileInputRef.current.click()}
-            >
-              {t("perfilEmpresa.cambiarFoto")}
-            </button>
-            <input
-              type="file"
-              accept="image/*"
-              ref={fileInputRef}
-              onChange={handleCambiarFoto}
-              style={{ display: "none" }}
-            />
-
-            <button onClick={handleGuardar}>{t("common.guardar")}</button>
-            <button onClick={() => setMostrarPopup(false)}>{t("common.cancelar")}</button>
+            <button onClick={handleSave}>Guardar</button>
+            <button onClick={() => setIsEditing(false)}>Cancelar</button>
           </div>
         </div>
       )}
-
-      {mostrarMensaje && (
-        <div className="PerfilEmpresaPopupOverlay">
-          <div className="PerfilEmpresaPopupContenido">
-            <h3>{t("perfilEmpresa.enviarMensajeEmpresa")}</h3>
-            <textarea
-              placeholder={t("perfilEmpresa.placeholderMensaje")}
-              value={mensaje}
-              onChange={(e) => setMensaje(e.target.value)}
-            />
-            <button onClick={handleEnviarMensaje}>{t("common.enviar")}</button>
-            <button onClick={() => setMostrarMensaje(false)}>{t("common.cancelar")}</button>
-          </div>
-        </div>
-      )}
-
       <ListaOfertasPropias />
     </main>
   );

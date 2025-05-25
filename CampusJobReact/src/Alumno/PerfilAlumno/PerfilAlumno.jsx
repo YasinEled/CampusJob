@@ -1,159 +1,174 @@
-import "./Style/perfilPropio.css";
-import pfp from '../../assets/yasin.jpg';
-import pfpFondo from '../../assets/yasinfondo.jpg';
+import React, { useState, useEffect } from "react";
+import "./Style/perfilPropio.css"; // ✅ Usar mismo estilo que PerfilEmpresa
+import pfp from "../../assets/yasin.jpg";
+import pfpFondo from "../../assets/yasinfondo.jpg";
 import ListaOfertasSolicitadas from "../llistaOfertasEstado";
-import { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
 
-function PerfilPropio({
-  nombreInicial,
-  ubicacionInicial,
-  telefonoInicial,
-  emailInicial,
-  fechaNacimientoInicial,
-  descripcionInicial,
-  fotoPerfil = pfp,
-  fotoFondo = pfpFondo
-}) {
-  const { t, ready } = useTranslation();
-  
-  const [mostrarPopup, setMostrarPopup] = useState(false);
-  const [nombre, setNombre] = useState(nombreInicial || "");
-  const [ubicacion, setUbicacion] = useState(ubicacionInicial || "");
-  const [telefono, setTelefono] = useState(telefonoInicial || "");
-  const [email, setEmail] = useState(emailInicial || "");
-  const [fechaNacimiento, setFechaNacimiento] = useState(fechaNacimientoInicial || "");
-  const [descripcion, setDescripcion] = useState(descripcionInicial || "");
 
-  
-  const handleGuardar = () => {
-    setMostrarPopup(false);
-    // Aquí podrías emitir un evento o llamar una función para guardar los cambios fuera
+function PerfilPropio() {
+  const { idUsrAlumno } = useParams();
+
+  const [userData, setUserData] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [formData, setFormData] = useState({
+    nombre: "",
+    ubicacion: "",
+    telefono: "",
+    email: "",
+    fechaNacimiento: "",
+    descripcion: ""
+  });
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:4000/api/buscausr/perfil/${idUsrAlumno}`
+        );
+        const data = await response.json();
+
+        if (data.success) {
+          setUserData(data.data);
+          setFormData({
+            nombre: data.data.nombre || "",
+            ubicacion: data.data.ubicacion || "",
+            telefono: data.data.telefono || "",
+            email: data.data.email || "",
+            fechaNacimiento: data.data.fechaNacimiento || "",
+            descripcion: data.data.descripcion || ""
+          });
+        }
+      } catch (err) {
+        console.error("Error al cargar perfil:", err);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
   };
 
-  if (!ready) {
+  const handleSave = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/api/buscausr/perfil/${idUsrAlumno}/editar`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData)
+        }
+      );
+
+      const result = await response.json();
+      if (result.success) {
+        alert("Perfil actualizado exitosamente");
+        setUserData({ ...userData, ...formData });
+        setIsEditing(false);
+      } else {
+        alert("Error al actualizar el perfil");
+      }
+    } catch (error) {
+      console.error("Error al guardar cambios:", error);
+      alert("Hubo un problema al conectar con el servidor");
+    }
+  };
+
+  if (!userData) {
     return <div>Cargando...</div>;
   }
 
-  return (
-    <main className="perfilContainer">
-      <div className="PerfilUsuario">
-        <div className="fondo">
-          <img src={fotoFondo} alt={t("perfil.fondo_alt")} />
-          <img className="profile" src={fotoPerfil} alt={t("perfil.perfil_alt")} />
-        </div>
+  // ✅ Verificar si es el propietario del perfil
+  const esPropietario = idUsrAlumno === parseInt(localStorage.getItem("idUsuario"), 10);
 
-        <div className="InfoContainer">
-          <div className="infoPerfil">
-            <div className="InformacionPrincipalUsuario">
-              <h2>{nombre}</h2>
-              <p>{ubicacion}</p>
-            </div>
-            <div className="InformacionContactoUsuario">
-              <p>{telefono}</p>
-              <p>{email}</p>
-              <p>{fechaNacimiento}</p>
-            </div>
-            <p>{descripcion}</p>
-            <button 
-              className="btnEditarPerfil" 
-              onClick={() => setMostrarPopup(true)}
-            >
-              {t("perfil.modificar_perfil")}
-            </button>
-          </div>
-          <div>
-            <img
-              src="https://www.micole.net/imagenes/colegio/logo/20718/educem-ii_512.png?v=MjAyMi0wOC0zMSAwMDoyODoyOA=="
-              alt={t("perfil.imagen_centro_alt")}
-              className="ImagenCentroPerfil"
-            />
+
+  return (
+    <main className="PerfilEmpresaContainer"> {/* ✅ Usar misma clase que PerfilEmpresa */}
+      <div className="PerfilEmpresaMain">
+        <div className="PerfilEmpresaFondo">
+          <img src={pfpFondo} alt="Fondo" />
+          <img
+            className="PerfilEmpresaLogo"
+            src={userData.fotoperfil || pfp}
+            alt="Foto de perfil"
+          />
+        </div>
+        <div className="PerfilEmpresaInfoContainer">
+          <div className="PerfilEmpresaInfoPerfil">
+            <h1>{userData.nombre} {userData.cognoms}</h1>
+            <p>{userData.nomusuari}</p>
+
+            <p>Granollers</p>
+            <p><strong>Descripción:</strong> {userData.descripcion || "Sin descripción"}</p>
+            <p><strong>Email:</strong> {userData.email}</p>
+            <p><strong>Última conexión:</strong> {userData.lastSingIn}</p>
+            
+            {/* ✅ Mostrar botón solo si es el propietario */}
+            {esPropietario && (
+              <button
+                className="PerfilEmpresaBtnEditarPerfil"
+                onClick={() => setIsEditing(true)}
+              >
+                Modificar Perfil
+              </button>
+            )}
           </div>
         </div>
       </div>
 
-      {mostrarPopup && (
-        <div className="perfilAlumnopopup-Overlay">
-          <div className="perfilAlumnopopup-Contenido">
-            <h3>{t("perfil.editar_perfil")}</h3>
-            <input 
-              value={nombre} 
-              onChange={e => setNombre(e.target.value)} 
-              placeholder={t("perfil.nombre")} 
+      {isEditing && (
+        <div className="PerfilEmpresaPopupOverlay">
+          <div className="PerfilEmpresaPopupContenido">
+            <h3>Editar Perfil</h3>
+            <input
+              name="nombre"
+              value={formData.nombre}
+              onChange={handleChange}
+              placeholder="Nombre completo"
             />
-            <input 
-              value={ubicacion} 
-              onChange={e => setUbicacion(e.target.value)} 
-              placeholder={t("perfil.ubicacion")} 
+            <input
+              name="ubicacion"
+              value={formData.ubicacion}
+              onChange={handleChange}
+              placeholder="Ubicación"
             />
-            <input 
-              value={telefono} 
-              onChange={e => setTelefono(e.target.value)} 
-              placeholder={t("perfil.telefono")} 
+            <input
+              name="telefono"
+              value={formData.telefono}
+              onChange={handleChange}
+              placeholder="Teléfono"
             />
-            <input 
-              value={email} 
-              onChange={e => setEmail(e.target.value)} 
-              placeholder={t("perfil.email")} 
+            <input
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Email"
             />
-            <input 
-              value={fechaNacimiento} 
-              onChange={e => setFechaNacimiento(e.target.value)} 
-              placeholder={t("perfil.fecha_nacimiento")} 
+            <input
+              name="fechaNacimiento"
+              value={formData.fechaNacimiento}
+              onChange={handleChange}
+              placeholder="Fecha de nacimiento"
             />
-            <textarea 
-              value={descripcion} 
-              onChange={e => setDescripcion(e.target.value)} 
-              placeholder={t("perfil.descripcion")} 
+            <textarea
+              name="descripcion"
+              value={formData.descripcion}
+              onChange={handleChange}
+              placeholder="Descripción"
             />
-
-            <label className="perfilAlumnopopup-btnSubirArchivo">
-              {t("perfil.aniadir_cv")}
-              <input
-                type="file"
-                accept="application/pdf,image/*"
-                style={{ display: "none" }}
-                onChange={e => {
-                  const file = e.target.files[0];
-                  if (file) {
-                    alert(`${t("perfil.archivo_seleccionado")}: ${file.name}`);
-                  }
-                }}
-              />
-            </label>
-
-            <label className="perfilAlumnopopup-btnSubirImagen">
-              {t("perfil.aniadir_foto")}
-              <input
-                type="file"
-                accept="image/*"
-                style={{ display: "none" }}
-                onChange={e => {
-                  const file = e.target.files[0];
-                  if (file) {
-                    alert(`${t("perfil.archivo_seleccionado")}: ${file.name}`);
-                  }
-                }}
-              />
-            </label>
-
-            <button 
-              className="perfilAlumnopopup-btnGuardar" 
-              onClick={handleGuardar}
-            >
-              {t("perfil.guardar")}
-            </button>
-            <button 
-              className="perfilAlumnopopup-btnCancelar" 
-              onClick={() => setMostrarPopup(false)}
-            >
-              {t("perfil.cancelar")}
-            </button>
+            <button onClick={handleSave}>Guardar</button>
+            <button onClick={() => setIsEditing(false)}>Cancelar</button>
           </div>
         </div>
       )}
-      
-      <ListaOfertasSolicitadas />
+
+      {/* ✅ Mostrar ListaOfertasSolicitadas solo si es el propio perfil */}
+      {esPropietario && <ListaOfertasSolicitadas />}
     </main>
   );
 }
