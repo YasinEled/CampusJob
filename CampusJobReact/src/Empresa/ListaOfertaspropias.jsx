@@ -1,139 +1,84 @@
 import React, { useEffect, useState } from "react";
 import "./PerfilEmpresa/Style/ListaOfertaPropias.css";
-import campusJobFavicon from "../assets/Logo/CampusJob.png"; // Asegúrate de que este import esté bien
-import   {Navigate} from "react-router-dom";
+import campusJobFavicon from "../assets/Logo/CampusJob.png";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function ListaOfertasPropias() {
+  const { idUsrEmpresa } = useParams(); // ✅ ID de la empresa desde la URL
   const [ofertas, setOfertas] = useState([]);
+  const [loading, setLoading] = useState(true); // ✅ Estado de carga
+  const navigate = useNavigate();
 
-  // Simular datos para pruebas
   useEffect(() => {
-    const datosDePrueba = [
-      {
-        id: 1,
-        titulo: "Desarrollador Frontend",
-        empresa: "Tech Solutions",
-        ubicacion: "Madrid, España",
-        jornada: "Remoto",
-        fecha: "2025-05-20",
-        descripcion:
-          "Buscamos desarrollador frontend con experiencia en React.",
-        tipoContrato: "Indefinido",
-        tipoJornada: "Jornada completa",
-        salario: "30.000 - 40.000 €/año",
-      },
-      {
-        id: 2,
-        titulo: "Diseñador UX/UI",
-        empresa: "Creative Minds",
-        ubicacion: "Barcelona, España",
-        jornada: "Presencial",
-        fecha: "2025-05-18",
-        descripcion: "Diseñador con experiencia en Figma y Adobe XD.",
-        tipoContrato: "Temporal",
-        tipoJornada: "Media jornada",
-        salario: "20.000 - 25.000 €/año",
-      },
-      {
-        id: 2,
-        titulo: "Diseñador UX/UI",
-        empresa: "Creative Minds",
-        ubicacion: "Barcelona, España",
-        jornada: "Presencial",
-        fecha: "2025-05-18",
-        descripcion: "Diseñador con experiencia en Figma y Adobe XD.",
-        tipoContrato: "Temporal",
-        tipoJornada: "Media jornada",
-        salario: "20.000 - 25.000 €/año",
-      },
-      {
-        id: 2,
-        titulo: "Diseñador UX/UI",
-        empresa: "Creative Minds",
-        ubicacion: "Barcelona, España",
-        jornada: "Presencial",
-        fecha: "2025-05-18",
-        descripcion: "Diseñador con experiencia en Figma y Adobe XD.",
-        tipoContrato: "Temporal",
-        tipoJornada: "Media jornada",
-        salario: "20.000 - 25.000 €/año",
-      },
-    ];
+    const fetchOfertas = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:4000/api/empresa/${idUsrEmpresa}/ofertas`
+        );
+        const data = await response.json();
 
-    setOfertas(datosDePrueba);
-  }, []);
+        console.log("Respuesta del backend:", data); // ✅ Debugging
+
+        if (data.success) {
+          setOfertas(data.data);
+        } else {
+          console.error("Error al cargar ofertas:", data.message);
+        }
+      } catch (err) {
+        console.error("Error de conexión:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchOfertas();
+  }, [idUsrEmpresa]);
+
+  // ✅ Navegar a la gestión de la oferta
+  const handleOfertaClick = (idOferta) => {
+    navigate(`/Empresa/gestioOferta/${idOferta}`);
+  };
+
+  if (loading) {
+    return <p>Cargando ofertas...</p>;
+  }
+
+  if (!ofertas || ofertas.length === 0) {
+    return <p>No hay ofertas disponibles</p>;
+  }
 
   return (
     <div className="containerBusquedaOfertasPropias">
-      <div className="buscador-containerOfertasPropias">
-        <h2>Buscar Oferta</h2>
-
-        <label htmlFor="busqueda">Introduce tu búsqueda de la empresa:</label>
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <input
-            type="text"
-            id="busqueda"
-            placeholder="Escribe aquí..."
-            className="input-busquedaOfertaPropias"
-          />
-
-          <button className="boton-buscarOfertaPropias">Buscar</button>
-        </div>
-
-        <p id="resultado" className="resultadoOfertaPropias"></p>
-      </div>
-      <div>
-        {ofertas.length === 0 ? (
-          <p>Cargando ofertas o no hay ofertas disponibles.</p>
-        ) : (
-          ofertas.map((oferta) => (
-            <div
-              key={oferta.id}
-              className="ofertaPropia-Container"
-              onClick={() => {
-                window.location.href = "/Empresa/InformacionOferta/3";
-              }}
-            >
-              <img
-                className="ofertaPropia-ImagenEmpresa"
-                src={campusJobFavicon}
-                alt="CampusJob Logo"
-              />
-              <div className="ofertaPropia-TextContainer">
-                <h3 className="ofertaPropia-TituloEmpresa">{oferta.titulo}</h3>
-                <h5 className="ofertaPropia-NombreEmpresa">{oferta.empresa}</h5>
-                <div className="ofertaPropia-InfoPrincipal">
-                  <p className="ofertaPropia-Ubicacion">{oferta.ubicacion}</p>
-                  <p> | </p>
-                  <p className="ofertaPropia-Modalidad">{oferta.jornada}</p>
-                  <p> | </p>
-                  <p className="ofertaPropia-Fecha">{oferta.fecha}</p>
-                </div>
-                <p
-                  className="ofertaPropia-Descripcion"
-                  style={{ maxWidth: "300px" }}
-                >
-                  {oferta.descripcion.length > 250 ? (
-                    <>{oferta.descripcion.substring(0, 250)}...</>
-                  ) : (
-                    oferta.descripcion
-                  )}
-                </p>
-                <div className="ofertaPropia-InfoExtra">
-                  <p className="ofertaPropia-TipoContrato">
-                    {oferta.tipoContrato}
-                  </p>
-                  <p> | </p>
-                  <p className="ofertaPropia-TipoJornada">
-                    {oferta.tipoJornada}
-                  </p>
-                  <p> | </p>
-                  <p className="ofertaPropia-Salario">{oferta.salario}</p>
-                </div>
+      <h2>Ofertas Propias</h2>
+      <div className="ofertas-lista">
+        {ofertas.map((oferta) => (
+          <div
+            key={oferta.idoferta}
+            className="ofertaPropia-Container"
+            onClick={() => handleOfertaClick(oferta.idoferta)}
+          >
+            <img
+              className="ofertaPropia-ImagenEmpresa"
+              src={oferta.imgoferte}
+              alt="CampusJob Logo"
+            />
+            <div className="ofertaPropia-TextContainer">
+              <h3 className="ofertaPropia-TituloEmpresa">{oferta.titoloferta}</h3>
+              <div className="ofertaPropia-InfoPrincipal">
+                <p className="ofertaPropia-Ubicacion">{oferta.fechapubli}</p>
+              </div>
+              <p className="ofertaPropia-Descripcion">
+                {oferta.descripciooferta.length > 250
+                  ? `${oferta.descripciooferta.substring(0, 250)}...`
+                  : oferta.descripciooferta}
+              </p>
+              <div className="ofertaPropia-InfoExtra">
+                <p className="ofertaPropia-Salario">{oferta.salariesperat}</p>
               </div>
             </div>
-          ))
-        )}
+          </div>
+        ))}
       </div>
     </div>
   );

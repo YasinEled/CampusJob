@@ -1,9 +1,10 @@
 {
   "header": {
     "title": "Campus Jobs",
-    "login": "Connexion",
+    "login": "Se connecter",
     "contact": "Contact",
-    "company": "Vous êtes une entreprise ?"
+    "company": "Êtes-vous une entreprise ?",
+    "lang": "Langue"
   },
   "footer": {
     "information": "Informations",
@@ -14,46 +15,49 @@
     "termsOfService": "Conditions d'utilisation"
   },
   "login": {
-    "connectionError": "Un problème est survenu lors de la connexion au serveur"
+    "connectionError": "Un problème est survenu lors de la connexion au serveur",
+    "usernameOrEmail": "Nom d'utilisateur ou e-mail",
+    "password": "Mot de passe",
+    "incorrectCredentials": "Identifiants incorrects"
   },
   "GestionUsuarios": {
     "available_users": "Utilisateurs disponibles",
     "add": "Ajouter",
     "new_user_placeholder": "Nouvel utilisateur",
-    "add_user": "Ajouter utilisateur",
+    "add_user": "Ajouter un utilisateur",
     "added_users": "Utilisateurs ajoutés",
-    "remove": "Supprimer",
+    "remove": "Retirer",
     "save": "Enregistrer",
     "users_saved": "Utilisateurs enregistrés avec succès"
   },
   "perfil": {
-    "fondo_alt": "Arrière-plan",
+    "fondo_alt": "Fond",
     "perfil_alt": "Profil",
     "modificar_perfil": "Modifier le profil",
-    "imagen_centro_alt": "Image centrale",
-    "editar_perfil": "Modifier le profil",
+    "imagen_centro_alt": "Image du centre",
+    "editar_perfil": "Éditer le profil",
     "nombre": "Nom",
-    "ubicacion": "Localisation",
+    "ubicacion": "Emplacement",
     "telefono": "Téléphone",
-    "email": "Email",
+    "email": "E-mail",
     "fecha_nacimiento": "Date de naissance",
     "descripcion": "Description",
-    "aniadir_cv": "Ajouter un CV (PDF ou PNG)",
-    "aniadir_foto": "Ajouter une photo de profil",
+    "aniadir_cv": "Ajouter CV (PDF ou PNG)",
+    "aniadir_foto": "Ajouter photo de profil",
     "archivo_seleccionado": "Fichier sélectionné",
     "guardar": "Enregistrer",
     "cancelar": "Annuler"
   },
   "ofertaPropia": {
     "buscarSolicitudes": "Rechercher vos candidatures",
-    "introduceBusqueda": "Entrez votre recherche d’offre :",
+    "introduceBusqueda": "Entrez votre recherche d'offre :",
     "placeholderBusqueda": "Écrivez ici...",
     "buscar": "Rechercher",
     "cargandoOFertas": "Chargement des offres ou aucune offre disponible.",
     "logoCampusJob": "Logo CampusJob"
   },
   "informacionOferta": {
-    "fondo_alt": "Image de fond de l'entreprise",
+    "fondo_alt": "Fond de l'entreprise",
     "logo_alt": "Logo de l'entreprise",
     "titulo": "{{titulo}}",
     "descripcion": "{{descripcion}}",
@@ -62,7 +66,7 @@
     "plazas": "{{count}} postes vacants",
     "modalidad": "{{modalidad}}",
     "salario": "{{salario}}",
-    "fechaPublicacion": "Publié le : {{fecha}}",
+    "fechaPublicacion": "Publication : {{fecha}}",
     "fechaFinal": "Se termine le : {{fecha}}",
     "estado": {
       "aceptado": "Accepté",
@@ -73,33 +77,32 @@
     "requisitos": {
       "titulo": "Exigences",
       "experiencia": "Expérience préalable en développement frontend avec React.",
-      "conocimiento": "Connaissances en HTML, CSS et JavaScript.",
+      "conocimiento": "Connaissance de HTML, CSS et JavaScript.",
       "trabajoEquipo": "Capacité à travailler en équipe.",
       "comunicacion": "Bonne communication et attitude proactive."
     },
     "ubicacion": {
-      "titulo": "Localisation de l'entreprise",
+      "titulo": "Emplacement de l'entreprise",
       "mapaTitulo": "Carte de {{ciudad}}",
       "verMapaCompleto": "Voir la carte complète de {{ciudad}}"
     }
   },
   "crearCurso": {
-  "crear_en": "Créer un cours dans le centre ID : {{id}}",
-  "nombre": "Nom du cours",
-  "descripcion": "Description",
-  "logo": "Logo du cours",
-  "vista_previa_logo": "Aperçu du logo",
-  "crear": "Créer le cours",
-  "id_centro_no_encontrado": "ID du centre introuvable",
-  "faltan_datos_usuario": "Données utilisateur manquantes",
-  "curso_creado_exito": "Cours créé avec succès",
-  "error_crear": "Erreur lors de la création du cours",
-  "error_conexion": "Un problème est survenu lors de la connexion au serveur"
-},
-"adminSup": {
-  "nombre": "Yasin El Edrissi",
-  "email": "Yasin@gmail.com",
-  "status": "STATUT"
-}
-
+    "crear_en": "Créer un cours dans le centre ID : {{id}}",
+    "nombre": "Nom du cours",
+    "descripcion": "Description",
+    "logo": "Logo du cours",
+    "vista_previa_logo": "Aperçu du logo",
+    "crear": "Créer un cours",
+    "id_centro_no_encontrado": "ID du centre introuvable",
+    "faltan_datos_usuario": "Données utilisateur manquantes",
+    "curso_creado_exito": "Cours créé avec succès",
+    "error_crear": "Erreur lors de la création du cours",
+    "error_conexion": "Un problème est survenu lors de la connexion au serveur"
+  },
+  "adminSup": {
+    "nombre": "Yasin El Edrissi",
+    "email": "Yasin@gmail.com",
+    "status": "STATUT"
+  }
 }

@@ -1,96 +1,175 @@
-import "./Style/perfilTeacher.css";
-import fotoProfesor from '../../assets/yasin.jpg';
-import fondoProfesor from '../../assets/yasinfondo.jpg';
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+import "./Style/perfilTeacher.css"; // ✅ Usar mismo estilo que Empresa
+import fotoProfesor from "../../assets/yasin.jpg";
+import fondoProfesor from "../../assets/yasinfondo.jpg";
+import { useParams } from "react-router-dom";
 
 function PerfilTeacher() {
-  const [mostrarPopup, setMostrarPopup] = useState(false);
-  const [mostrarMensaje, setMostrarMensaje] = useState(false);
-  const [mensaje, setMensaje] = useState("");
+  const { idUsrProfe } = useParams();
+  const [userData, setUserData] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [formData, setFormData] = useState({
+    nombre: "",
+    apellido: "",
+    descripcion: "",
+    fotoPerfil: ""
+  });
 
-  const [nombre, setNombre] = useState("Yasin Ahmed");
-  const [ubicacion, setUbicacion] = useState("Barcelona, Cataluña, España");
-  const [especialidad, setEspecialidad] = useState("Desarrollo Web y Bases de Datos");
-  const [experienciaDesde, setExperienciaDesde] = useState("2015");
-  const [telefono, setTelefono] = useState("+34 654321098");
-  const [email, setEmail] = useState("yasin.profesor@ejemplo.com");
-  const [biografia, setBiografia] = useState("Profesor comprometido con la innovación en el aula, especializado en tecnologías web y metodologías activas de enseñanza.");
+  const userId = localStorage.getItem("idUsuario");
+  const esPropietario = idUsrProfe ? idUsrProfe === userId : true;
 
-  const handleGuardar = () => {
-    setMostrarPopup(false);
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const idToFetch = idUsrProfe || userId;
+        const response = await fetch(
+          `http://localhost:4000/api/buscausr/perfil/${idToFetch}`
+        );
+        const data = await response.json();
+
+        if (data.success) {
+          setUserData(data.data);
+          setFormData({
+            nombre: data.data.nombre || "",
+            apellido: data.data.cognoms || "", // ✅ Cargar apellido desde `cognoms`
+            descripcion: data.data.descripcion || "",
+            fotoPerfil: data.data.fotoperfil || ""
+          });
+        }
+      } catch (err) {
+        console.error("Error al cargar perfil:", err);
+      }
+    };
+
+    fetchUserData();
+  }, [idUsrProfe, userId]);
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
   };
 
-  const handleEnviarMensaje = () => {
-    console.log("Mensaje enviado:", mensaje);
-    setMensaje("");
-    setMostrarMensaje(false);
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setFormData((prev) => ({ ...prev, fotoPerfil: event.target.result }));
+      };
+      reader.readAsDataURL(file);
+    }
   };
+
+  const handleSave = async () => {
+    try {
+      const updateData = {
+        nombre: formData.nombre,
+        apellido: formData.apellido, // ✅ Enviar apellido
+        descripcion: formData.descripcion
+      };
+
+      // ✅ Solo incluir foto si hay una nueva
+      if (formData.fotoPerfil && !formData.fotoPerfil.startsWith("data:image")) {
+        updateData.fotoPerfil = formData.fotoPerfil;
+      }
+
+      const response = await fetch(
+        `http://localhost:4000/api/buscausr/perfil/${userId}/editar`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...updateData,
+            nivel: "2" // Fijo para profesores
+          })
+        }
+      );
+
+      const result = await response.json();
+      if (result.success) {
+        alert("Perfil actualizado exitosamente");
+        setUserData({ ...userData, ...formData });
+        setIsEditing(false);
+      } else {
+        alert("Error al actualizar el perfil");
+      }
+    } catch (error) {
+      console.error("Error al guardar cambios:", error);
+      alert("Hubo un problema al conectar con el servidor");
+    }
+  };
+
+  if (!userData) {
+    return <div>Cargando...</div>;
+  }
 
   return (
-    <main className="perfilTeacherContainer">
-      <div className="PerfilTeacher">
-        <div className="fondoTeacher">
+    <main className="PerfilEmpresaContainer">
+      <div className="PerfilEmpresaMain">
+        <div className="PerfilEmpresaFondo">
           <img src={fondoProfesor} alt="Fondo Profesor" />
-          <img className="fotoProfesor" src={fotoProfesor} alt="Foto Profesor" />
+          <img
+            className="PerfilEmpresaLogo"
+            src={userData.fotoperfil || fotoProfesor}
+            alt="Foto del profesor"
+          />
         </div>
-        <div className="InfoTeacherContainer">
-          <div className="infoPerfilTeacher">
-            <h2>{nombre}</h2>
-            <p>{ubicacion}</p>
-            <p><strong>Especialidad:</strong> {especialidad}</p>
-            <p><strong>Experiencia desde:</strong> {experienciaDesde}</p>
-            <p><strong>Teléfono:</strong> {telefono}</p>
-            <p><strong>Email:</strong> {email}</p>
-            <p>{biografia}</p>
-
-            <button className="btnEditarPerfilTeacher" onClick={() => setMostrarPopup(true)}>Modificar perfil</button>
-            <button className="btnMensajeTeacher" onClick={() => setMostrarMensaje(true)}>Enviar mensaje</button>
+        <div className="PerfilEmpresaInfoContainer">
+          <div className="PerfilEmpresaInfoPerfil">
+            <h1>{userData.nombre} {userData.cognoms}</h1>
+            <p><strong>Nombre de usuario:</strong> {userData.nomusuari}</p>
+            <p><strong>Email:</strong> {userData.email}</p>
+            <p><strong>Última conexión:</strong> {userData.lastSingIn}</p>
+            <p><strong>Descripción:</strong> {userData.descripcio || "Sin descripción"}</p>
+            
+            {/* ✅ Mostrar botón solo si es el propietario */}
+            {esPropietario && (
+              <button
+                className="PerfilEmpresaBtnEditarPerfil"
+                onClick={() => setIsEditing(true)}
+              >
+                Modificar perfil
+              </button>
+            )}
           </div>
         </div>
       </div>
 
-      {mostrarPopup && (
-        <div className="popupOverlay">
-          <div className="popupContenido">
+      {isEditing && (
+        <div className="PerfilEmpresaPopupOverlay">
+          <div className="PerfilEmpresaPopupContenido">
             <h3>Editar Perfil del Profesor</h3>
-            <input value={nombre} onChange={e => setNombre(e.target.value)} placeholder="Nombre completo" />
-            <input value={ubicacion} onChange={e => setUbicacion(e.target.value)} placeholder="Ubicación" />
-            <input value={especialidad} onChange={e => setEspecialidad(e.target.value)} placeholder="Especialidad" />
-            <input value={experienciaDesde} onChange={e => setExperienciaDesde(e.target.value)} placeholder="Desde (año)" />
-            <input value={telefono} onChange={e => setTelefono(e.target.value)} placeholder="Teléfono" />
-            <input value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" />
-            <textarea value={biografia} onChange={e => setBiografia(e.target.value)} placeholder="Biografía" />
-              <label className="perfilAlumnopopup-btnSubirImagen">
-              Añadir foto Perfil
+            <input
+              name="nombre"
+              value={formData.nombre}
+              onChange={handleChange}
+              placeholder="Nombre"
+            />
+            <input
+              name="apellido"
+              value={formData.apellido}
+              onChange={handleChange}
+              placeholder="Apellido"
+            />
+            <textarea
+              name="descripcion"
+              value={formData.descripcion}
+              onChange={handleChange}
+              placeholder="Descripción"
+            />
+            <label className="perfilAlumnopopup-btnSubirImagen">
+              Subir foto de perfil
               <input
                 type="file"
                 accept="image/*"
                 style={{ display: "none" }}
-                onChange={e => {
-                  const file = e.target.files[0];
-                  if (file) {
-                    alert(`Archivo seleccionado: ${file.name}`);
-                  }
-                }}
+                onChange={handleFileChange}
               />
             </label>
-            <button onClick={handleGuardar}>Guardar</button>
-            <button onClick={() => setMostrarPopup(false)}>Cancelar</button>
-          </div>
-        </div>
-      )}
-
-      {mostrarMensaje && (
-        <div className="popupOverlay">
-          <div className="popupContenido">
-            <h3>Enviar mensaje al profesor</h3>
-            <textarea
-              placeholder="Escribe tu mensaje aquí..."
-              value={mensaje}
-              onChange={e => setMensaje(e.target.value)}
-            />
-            <button onClick={handleEnviarMensaje}>Enviar</button>
-            <button onClick={() => setMostrarMensaje(false)}>Cancelar</button>
+            <button onClick={handleSave}>Guardar</button>
+            <button onClick={() => setIsEditing(false)}>Cancelar</button>
           </div>
         </div>
       )}

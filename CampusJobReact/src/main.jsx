@@ -209,7 +209,7 @@ root.render(
           <Route
             path="/Alumno/*"
             element={
-              <ProtectedRoute requiredRole="0,2,3,4">
+              <ProtectedRoute requiredRole="0,1,2,3,4">
                 <MenuHome userType={nivelUsuario} pagina="0" />
               </ProtectedRoute>
             }

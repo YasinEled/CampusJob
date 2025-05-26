@@ -10,13 +10,25 @@ import {
 } from "@ant-design/icons";
 import { Popconfirm } from "antd";
 
-function SelectorOferta({
-  candidato,
-  estado,
-  onAceptar,
-  onRechazar,
-  onDescargarCV,
-}) {
+interface Candidato {
+  fotoPerfil: string;
+  nombre: string;
+  apellido: string;
+  email: string;
+  curriculum: string;
+  ubicacion: string;
+  telefono: string;
+}
+
+interface Props {
+  candidato: Candidato;
+  estado: number; // 0 = Solicitado, 1 = Aprobado, 2 = Rechazado
+  onAceptar: () => void;
+  onRechazar: () => void;
+  onDescargarCV: () => void;
+}
+
+function SelectorOferta({ candidato, estado, onAceptar, onRechazar, onDescargarCV }: Props) {
   return (
     <div
       style={{
@@ -60,7 +72,7 @@ function SelectorOferta({
             {candidato.nombre} {candidato.apellido}
           </h3>
           <p style={{ margin: "0.3em 0 0.7em 0", color: "#b2dfdb" }}>
-            {candidato.escuela}
+            {candidato.ubicacion}
           </p>
           <div style={{ marginTop: "0.7em", color: "#e0f2f1" }}>
             <p style={{ margin: "0.2em 0" }}>
@@ -73,7 +85,7 @@ function SelectorOferta({
             </p>
             <p style={{ margin: "0.2em 0" }}>
               <HomeOutlined style={{ marginRight: "0.5em" }} />
-              {candidato.direccion}
+              {candidato.ubicacion}
             </p>
           </div>
         </div>
@@ -114,7 +126,7 @@ function SelectorOferta({
         </button>
 
         {/* Botones de acción según estado */}
-        {estado === "solicitado" && (
+        {estado === 0 && (
           <div style={{ display: "flex", gap: "0.5em", height: "100%" }}>
             <button
               onClick={onAceptar}
@@ -165,7 +177,7 @@ function SelectorOferta({
             </Popconfirm>
           </div>
         )}
-        {estado === "aprobado" && (
+        {estado === 1 && (
           <span
             style={{
               color: "#4CAF50",
@@ -181,7 +193,7 @@ function SelectorOferta({
             <CheckOutlined />
           </span>
         )}
-        {estado === "rechazado" && (
+        {estado === 2 && (
           <span
             style={{
               color: "#f44336",

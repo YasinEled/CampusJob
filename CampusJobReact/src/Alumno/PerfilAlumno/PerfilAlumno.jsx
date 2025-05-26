@@ -1,159 +1,204 @@
+import React, { useState, useEffect } from "react";
 import "./Style/perfilPropio.css";
-import pfp from '../../assets/yasin.jpg';
-import pfpFondo from '../../assets/yasinfondo.jpg';
+import pfp from "../../assets/yasin.jpg";
+import pfpFondo from "../../assets/yasinfondo.jpg";
 import ListaOfertasSolicitadas from "../llistaOfertasEstado";
-import { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
 
-function PerfilPropio({
-  nombreInicial,
-  ubicacionInicial,
-  telefonoInicial,
-  emailInicial,
-  fechaNacimientoInicial,
-  descripcionInicial,
-  fotoPerfil = pfp,
-  fotoFondo = pfpFondo
-}) {
-  const { t, ready } = useTranslation();
-  
-  const [mostrarPopup, setMostrarPopup] = useState(false);
-  const [nombre, setNombre] = useState(nombreInicial || "");
-  const [ubicacion, setUbicacion] = useState(ubicacionInicial || "");
-  const [telefono, setTelefono] = useState(telefonoInicial || "");
-  const [email, setEmail] = useState(emailInicial || "");
-  const [fechaNacimiento, setFechaNacimiento] = useState(fechaNacimientoInicial || "");
-  const [descripcion, setDescripcion] = useState(descripcionInicial || "");
+function PerfilPropio() {
+  const { idUsrAlumno } = useParams();
+  const [userData, setUserData] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [formData, setFormData] = useState({
+    nombre: "",
+    apellido: "",
+    descripcion: "",
+    fotoPerfil: "",
+    curriculum: "" // ✅ Nuevo campo para el currículum
+  });
 
-  
-  const handleGuardar = () => {
-    setMostrarPopup(false);
-    // Aquí podrías emitir un evento o llamar una función para guardar los cambios fuera
+  const userId = localStorage.getItem("idUsuario");
+  const esPropietario = idUsrAlumno ? idUsrAlumno === userId : true;
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const idToFetch = idUsrAlumno || userId;
+        const response = await fetch(
+          `http://localhost:4000/api/buscausr/perfil/${idToFetch}`
+        );
+        const data = await response.json();
+
+        if (data.success) {
+          setUserData(data.data);
+          setFormData({
+            nombre: data.data.nombre || "",
+            apellido: data.data.cognoms || "",
+            descripcion: data.data.descripcion || "",
+            fotoPerfil: data.data.fotoperfil || "",
+            curriculum: data.data.curriculum || "" // ✅ Cargar currículum si existe
+          });
+        }
+      } catch (err) {
+        console.error("Error al cargar perfil:", err);
+      }
+    };
+
+    fetchUserData();
+  }, [idUsrAlumno, userId]);
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
   };
 
-  if (!ready) {
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setFormData((prev) => ({ ...prev, fotoPerfil: event.target.result }));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleCvChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setFormData((prev) => ({ ...prev, curriculum: event.target.result }));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleSave = async () => {
+    try {
+      // ✅ Siempre enviar `descripcion` y `curriculum`
+      const updateData = {
+        nombre: formData.nombre,
+        apellido: formData.apellido,
+        descripcion: formData.descripcion,
+        curriculum: formData.curriculum
+      };
+  
+      // ✅ Siempre incluir `fotoPerfil` si se selecciona una nueva
+      if (formData.fotoPerfil) {
+        updateData.fotoPerfil = formData.fotoPerfil;
+      }
+  
+      const response = await fetch(
+        `http://localhost:4000/api/buscausr/perfil/${userId}/editar`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...updateData,
+            nivel: localStorage.getItem("nivelUsuario")
+          })
+        }
+      );
+  
+      const result = await response.json();
+      if (result.success) {
+        alert("Perfil actualizado exitosamente");
+        setUserData({ ...userData, ...formData });
+        setIsEditing(false);
+      } else {
+        alert("Error al actualizar el perfil");
+      }
+    } catch (error) {
+      console.error("Error al guardar cambios:", error);
+      alert("Hubo un problema al conectar con el servidor");
+    }
+  };
+
+  if (!userData) {
     return <div>Cargando...</div>;
   }
 
   return (
-    <main className="perfilContainer">
-      <div className="PerfilUsuario">
-        <div className="fondo">
-          <img src={fotoFondo} alt={t("perfil.fondo_alt")} />
-          <img className="profile" src={fotoPerfil} alt={t("perfil.perfil_alt")} />
+    <main className="PerfilEmpresaContainer">
+      <div className="PerfilEmpresaMain">
+        <div className="PerfilEmpresaFondo">
+          <img src={pfpFondo} alt="Fondo" />
+          <img
+            className="PerfilEmpresaLogo"
+            src={userData.fotoperfil || pfp}
+            alt="Foto de perfil"
+          />
         </div>
-
-        <div className="InfoContainer">
-          <div className="infoPerfil">
-            <div className="InformacionPrincipalUsuario">
-              <h2>{nombre}</h2>
-              <p>{ubicacion}</p>
-            </div>
-            <div className="InformacionContactoUsuario">
-              <p>{telefono}</p>
-              <p>{email}</p>
-              <p>{fechaNacimiento}</p>
-            </div>
-            <p>{descripcion}</p>
-            <button 
-              className="btnEditarPerfil" 
-              onClick={() => setMostrarPopup(true)}
-            >
-              {t("perfil.modificar_perfil")}
-            </button>
-          </div>
-          <div>
-            <img
-              src="https://www.micole.net/imagenes/colegio/logo/20718/educem-ii_512.png?v=MjAyMi0wOC0zMSAwMDoyODoyOA=="
-              alt={t("perfil.imagen_centro_alt")}
-              className="ImagenCentroPerfil"
-            />
+        <div className="PerfilEmpresaInfoContainer">
+          <div className="PerfilEmpresaInfoPerfil">
+            <h1>{userData.nombre} {userData.cognoms}</h1>
+            <p><strong>Nombre de usuario:</strong> {userData.nomusuari}</p>
+            <p><strong>Email:</strong> {userData.email}</p>
+            <p><strong>Última conexión:</strong> {userData.lastSingIn}</p>
+            <p><strong>Descripción:</strong> {userData.descripcio || "Sin descripción"}</p>
+            
+            {esPropietario && (
+              <button
+                className="PerfilEmpresaBtnEditarPerfil"
+                onClick={() => setIsEditing(true)}
+              >
+                Modificar Perfil
+              </button>
+            )}
           </div>
         </div>
       </div>
 
-      {mostrarPopup && (
-        <div className="perfilAlumnopopup-Overlay">
-          <div className="perfilAlumnopopup-Contenido">
-            <h3>{t("perfil.editar_perfil")}</h3>
-            <input 
-              value={nombre} 
-              onChange={e => setNombre(e.target.value)} 
-              placeholder={t("perfil.nombre")} 
+      {isEditing && (
+        <div className="PerfilEmpresaPopupOverlay">
+          <div className="PerfilEmpresaPopupContenido">
+            <h3>Editar Perfil</h3>
+            <input
+              name="nombre"
+              value={formData.nombre}
+              onChange={handleChange}
+              placeholder="Nombre"
             />
-            <input 
-              value={ubicacion} 
-              onChange={e => setUbicacion(e.target.value)} 
-              placeholder={t("perfil.ubicacion")} 
+            <input
+              name="apellido"
+              value={formData.apellido}
+              onChange={handleChange}
+              placeholder="Apellido"
             />
-            <input 
-              value={telefono} 
-              onChange={e => setTelefono(e.target.value)} 
-              placeholder={t("perfil.telefono")} 
+            <textarea
+              name="descripcion"
+              value={formData.descripcion}
+              onChange={handleChange}
+              placeholder="Descripción"
             />
-            <input 
-              value={email} 
-              onChange={e => setEmail(e.target.value)} 
-              placeholder={t("perfil.email")} 
-            />
-            <input 
-              value={fechaNacimiento} 
-              onChange={e => setFechaNacimiento(e.target.value)} 
-              placeholder={t("perfil.fecha_nacimiento")} 
-            />
-            <textarea 
-              value={descripcion} 
-              onChange={e => setDescripcion(e.target.value)} 
-              placeholder={t("perfil.descripcion")} 
-            />
-
-            <label className="perfilAlumnopopup-btnSubirArchivo">
-              {t("perfil.aniadir_cv")}
-              <input
-                type="file"
-                accept="application/pdf,image/*"
-                style={{ display: "none" }}
-                onChange={e => {
-                  const file = e.target.files[0];
-                  if (file) {
-                    alert(`${t("perfil.archivo_seleccionado")}: ${file.name}`);
-                  }
-                }}
-              />
-            </label>
-
             <label className="perfilAlumnopopup-btnSubirImagen">
-              {t("perfil.aniadir_foto")}
+              Subir foto de perfil
               <input
                 type="file"
                 accept="image/*"
                 style={{ display: "none" }}
-                onChange={e => {
-                  const file = e.target.files[0];
-                  if (file) {
-                    alert(`${t("perfil.archivo_seleccionado")}: ${file.name}`);
-                  }
-                }}
+                onChange={handleFileChange}
               />
             </label>
-
-            <button 
-              className="perfilAlumnopopup-btnGuardar" 
-              onClick={handleGuardar}
-            >
-              {t("perfil.guardar")}
-            </button>
-            <button 
-              className="perfilAlumnopopup-btnCancelar" 
-              onClick={() => setMostrarPopup(false)}
-            >
-              {t("perfil.cancelar")}
-            </button>
+            <label className="perfilAlumnopopup-btnSubirCV">
+              Subir currículum (PDF/DOC)
+              <input
+                type="file"
+                accept=".pdf,.doc,.docx"
+                style={{ display: "none" }}
+                onChange={handleCvChange}
+              />
+            </label>
+            <button onClick={handleSave}>Guardar</button>
+            <button onClick={() => setIsEditing(false)}>Cancelar</button>
           </div>
         </div>
       )}
-      
-      <ListaOfertasSolicitadas />
+
+      {esPropietario && <ListaOfertasSolicitadas />}
     </main>
   );
 }

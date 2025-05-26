@@ -85,7 +85,7 @@ const menuConfig = {
       label: "Fitrado Usuario",
       allowedTypes: [0,1,2, 3, 4],
     },
-    { path: "/Profesor/PerfilProfesor/:id", 
+    { path: "/Alumno/PerfilProfesor/" + localStorage.getItem("idUsuario"), 
       icon: <UserOutlined />, 
       label: "Perfil",
       allowedTypes: [2]
@@ -99,7 +99,7 @@ const menuConfig = {
       allowedTypes: [0,1,2, 3, 4],
     },
     {
-      path: "/Alumno/PerfilAlumno/:idUsrAlumno",
+      path: "/Alumno/PerfilAlumno/" + localStorage.getItem("idUsuario"),
       icon: <UserOutlined />,
       label: "Perfil",
       allowedTypes: [0],
@@ -119,7 +119,7 @@ const menuConfig = {
       allowedTypes: [0,1,2, 3, 4],
     },
     {
-      path: "/Empresa/PerfilEmpresa/:idUsrEmpresa",
+      path: "/Empresa/PerfilEmpresa/" + localStorage.getItem("idUsuario"),
       icon: <UserOutlined />,
       label: "Perfil",
       allowedTypes: [1],
