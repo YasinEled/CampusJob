@@ -138,7 +138,7 @@ function PerfilPropio() {
             <p><strong>Nombre de usuario:</strong> {userData.nomusuari}</p>
             <p><strong>Email:</strong> {userData.email}</p>
             <p><strong>Última conexión:</strong> {userData.lastSingIn}</p>
-            <p><strong>Descripción:</strong> {userData.descripcion || "Sin descripción"}</p>
+            <p><strong>Descripción:</strong> {userData.descripcio || "Sin descripción"}</p>
             
             {esPropietario && (
               <button
