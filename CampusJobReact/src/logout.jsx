@@ -6,7 +6,7 @@ export default function Logout() {
   const navigate = useNavigate();
   useEffect(() => {
     // Borra TODO
-    localStorage.clear();
+    // localStorage.clear();
     navigate("/login", { replace: true });
   }, []);
   return null; // no renderizamos nada

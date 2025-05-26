@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from "react-router-dom";
 import "./index.css";
 
 function App() {
-  const { t, i18n } = useTranslation("global");
+  const { t } = useTranslation();
   const [showLangOptions, setShowLangOptions] = useState(false);
   const [usernameOrEmail, setUsernameOrEmail] = useState("");
   const [password, setPassword] = useState("");

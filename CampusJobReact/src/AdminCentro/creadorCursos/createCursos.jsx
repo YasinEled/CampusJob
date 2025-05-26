@@ -29,19 +29,29 @@ const CreaCurso = () => {
     setCurso((prev) => ({ ...prev, [name]: value }));
   };
 
-  // const handleFotoChange = (e) => {
-  //   const file = e.target.files?.[0];
-  //   if (!file) return;
+  const handleFotoChange = (e) => {
+  const file = e.target.files?.[0];
+  if (!file) return;
 
-  //   const reader = new FileReader();
-  //   reader.onload = (event) => {
-  //     setCurso((prev) => ({
-  //       ...prev,
-  //       foto: event.target?.result,
-  //     }));
-  //   };
-  //   reader.readAsDataURL(file);
-  // };
+  // Validación opcional
+  if (!file.type.startsWith("image/")) {
+    alert("Por favor, selecciona una imagen válida.");
+    return;
+  }
+  if (file.size > 2 * 1024 * 1024) {
+    alert("La imagen es demasiado grande (máx. 2MB).");
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = (event) => {
+    setCurso((prev) => ({
+      ...prev,
+      foto: event.target?.result,
+    }));
+  };
+  reader.readAsDataURL(file);
+};
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -140,7 +150,7 @@ const CreaCurso = () => {
           <div>
             <label className="ButtonSeleccionarLogoCrearCentro">
               {t("crearCurso.logo")}:
-              {/* <input type="file" accept="image/*" onChange={handleFotoChange} /> */}
+              <input type="file" accept="image/*" onChange={handleFotoChange} />
             </label>
           </div>
           {curso.foto && (

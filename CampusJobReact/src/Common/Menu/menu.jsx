@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
-import { UserOutlined,ShopOutlined, HomeOutlined, BookOutlined,HeartOutlined,TeamOutlined,SettingOutlined,AppstoreAddOutlined/* ... otros iconos ... */ } from "@ant-design/icons";
+import { UserOutlined,ShopOutlined, HomeOutlined, BookOutlined,HeartOutlined,LogoutOutlined,TeamOutlined,SettingOutlined,AppstoreAddOutlined/* ... otros iconos ... */ } from "@ant-design/icons";
 import { canSee } from '../utils/permissions'; // Ajusta la ruta
 import './Style/menu.css';
 
@@ -98,6 +98,14 @@ function Menu({ userType }) {
                 </Link>
               </li>
             ))}
+            <li  className="limenuizq">
+              <li className="limenuizq">
+                <Link to="/" className="inici" title="Cerrar sesión">
+                  <LogoutOutlined />
+                </Link>
+              </li>
+              
+            </li>
         </ul>
       </nav>
     </main>
