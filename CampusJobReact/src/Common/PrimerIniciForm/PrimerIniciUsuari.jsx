@@ -80,7 +80,7 @@ export default function FormularioRegistro() {
         localStorage.setItem("nivelUsuario", nivelUsuario);
         localStorage.removeItem("idUsuarioAux");
         localStorage.removeItem("nivelUsuarioAux");
-        navigate("/Alumno/BusquedaOfertas");
+        navigate("/");
       } else {
         setError(data.message || "Error al completar perfil");
       }
