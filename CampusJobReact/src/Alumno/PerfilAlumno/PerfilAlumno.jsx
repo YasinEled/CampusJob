@@ -78,18 +78,19 @@ function PerfilPropio() {
 
   const handleSave = async () => {
     try {
+      // ✅ Siempre enviar `descripcion` y `curriculum`
       const updateData = {
         nombre: formData.nombre,
         apellido: formData.apellido,
         descripcion: formData.descripcion,
-        curriculum: formData.curriculum // ✅ Enviar currículum con el perfil
+        curriculum: formData.curriculum
       };
-
-      // ✅ Solo incluir foto si se selecciona una nueva
-      if (formData.fotoPerfil && !formData.fotoPerfil.startsWith("data:image")) {
+  
+      // ✅ Siempre incluir `fotoPerfil` si se selecciona una nueva
+      if (formData.fotoPerfil) {
         updateData.fotoPerfil = formData.fotoPerfil;
       }
-
+  
       const response = await fetch(
         `http://localhost:4000/api/buscausr/perfil/${userId}/editar`,
         {
@@ -101,7 +102,7 @@ function PerfilPropio() {
           })
         }
       );
-
+  
       const result = await response.json();
       if (result.success) {
         alert("Perfil actualizado exitosamente");
